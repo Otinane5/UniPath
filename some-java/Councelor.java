@@ -5,7 +5,7 @@ import java.util.List;
 public class Councelor extends User{
     public List<Apointment> apointments;
 
-    public Councelor(int password, int userType) {
+    public Councelor(String password, int userType) {
         super(password, userType);
     }
 
