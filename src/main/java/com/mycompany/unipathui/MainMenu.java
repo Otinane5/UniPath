@@ -48,6 +48,7 @@ public class MainMenu extends JFrame
         actionPanel.add(viewApplicationsButton);
         
         viewApplicationsButton.addActionListener(e-> new StudentApplicationsFrame().setVisible(true));
+        //dispose
         
         JButton viewDepartmentsButton= new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίου");
         viewDepartmentsButton.setBounds(10,80,280,30);
