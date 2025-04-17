@@ -18,6 +18,7 @@ public class MainMenu extends JFrame
         title.setBounds(155,20,200,30);
         add(title);
         
+        //θα κάνει ανάκτηση του ονόματος μέσω του login
         JLabel uni_name=new JLabel("<Όνομα πανεπιστημίου>", SwingConstants.CENTER);
         uni_name.setFont(new Font("Arial", Font.ITALIC,14));
         uni_name.setBounds(155,55,200,20);
@@ -41,10 +42,12 @@ public class MainMenu extends JFrame
         actionLabel.setBounds(80,10,200,20);
         actionPanel.add(actionLabel);
         
-        JButton viewRequestsButton= new JButton("Προβολή Αιτήσεων Μαθητών");
-        viewRequestsButton.setBounds(50,40,200,30);
-        viewRequestsButton.setBackground(Color.decode("#B3FF66"));
-        actionPanel.add(viewRequestsButton);
+        JButton viewApplicationsButton= new JButton("Προβολή Αιτήσεων Μαθητών");
+        viewApplicationsButton.setBounds(50,40,200,30);
+        viewApplicationsButton.setBackground(Color.decode("#B3FF66"));
+        actionPanel.add(viewApplicationsButton);
+        
+        viewApplicationsButton.addActionListener(e-> new StudentApplicationsFrame().setVisible(true));
         
         JButton viewDepartmentsButton= new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίου");
         viewDepartmentsButton.setBounds(10,80,280,30);
@@ -72,3 +75,4 @@ public class MainMenu extends JFrame
 
 //CHANGE VAR NAMES!!
 //fullscreen
+// Να κλείνει η παλιά οθόνη
