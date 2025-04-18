@@ -76,6 +76,7 @@ public class UniversityLoginFrame extends JFrame
             String password= new String(passwordField.getPassword());
             
             // static password=1111
+            // στην πορεία θα γινει ΔΥΝΑΜΙΚΟ
             if(username.equals("admin") && password.equals("1111"))
             {
                 new MainMenu().setVisible(true);
@@ -93,9 +94,7 @@ public class UniversityLoginFrame extends JFrame
     public static void main(String[] args)
     {
         SwingUtilities.invokeLater(()->new UniversityLoginFrame().setVisible(true));
-    }
-    
-    
+    }  
 }
 
 
