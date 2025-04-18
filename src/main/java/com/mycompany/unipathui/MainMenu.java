@@ -55,6 +55,16 @@ public class MainMenu extends JFrame
         viewDepartmentsButton.setBackground(Color.decode("#99EBFF"));
         actionPanel.add(viewDepartmentsButton);
         
+        //String uni_name="Upatras"; //static
+        //viewDepartmentsButton.addActionListener(e-> new DepartmentListFrame().setVisible(true));
+        
+        viewDepartmentsButton.addActionListener(e -> 
+        {
+        String universityName = uni_name.getText(); 
+        new DepartmentListFrame(universityName).setVisible(true);
+        });
+
+        
         JButton logoutButton = new JButton("Αποσύνδεση");
         logoutButton.setBounds(185,280,150,30);
         logoutButton.setBackground(Color.decode("#FF6666"));
