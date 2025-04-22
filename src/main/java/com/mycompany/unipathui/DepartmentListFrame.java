@@ -67,7 +67,8 @@ public class DepartmentListFrame extends JFrame
             viewProfile.setBackground(Color.CYAN);
             viewProfile.addActionListener(e->
             {
-                JOptionPane.showMessageDialog(this, "Προφίλ τμήματος:"+department);
+                new ProfileFrame(uni_name, department).setVisible(true);
+                //JOptionPane.showMessageDialog(this, "Προφίλ τμήματος:"+department);
                 // Will add more logic here soon
             });
             

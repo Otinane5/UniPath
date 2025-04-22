@@ -2,6 +2,7 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class ProfileFrame extends JFrame
 {
     public ProfileFrame(String uni_name, String department_name)
@@ -55,7 +56,7 @@ public class ProfileFrame extends JFrame
             //η νέα περιγραφή απο το πανεπιστήμιο, αποθηκεύεται και πλέον υπάρχει η νέα περιγραφή
             //+ μπορεί και εδώ να χρειαστεί νέο scroll bar (μπορει η περιγραφή να ειναι μεγάλη
             descriptionArea.setBounds(10,65,380,50);
-            descriptionArea.setEditable(false);
+            descriptionArea.setEditable(true);
             profilePanel.add(descriptionArea);
             
             JLabel announcements= new JLabel("Ανακοινώσεις");
@@ -100,5 +101,22 @@ public class ProfileFrame extends JFrame
             back.addActionListener(e-> dispose());
             add(back);
             
+            edit.addActionListener(e->
+            {
+               new EditDescriptionFrame(uni_name,department_name).setVisible(true);
+  
+            });
+            profilePanel.add(edit);
+            
+            add_announcement.addActionListener(e->
+            {
+               new AddAnnouncementFrame(uni_name,department_name).setVisible(true);
+  
+            });
+            profilePanel.add(add_announcement);
+            
+            
     }
 }
+
+        
