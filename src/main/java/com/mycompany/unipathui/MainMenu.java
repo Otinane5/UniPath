@@ -12,8 +12,6 @@ public class MainMenu extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-<<<<<<< HEAD
-=======
         
         JLabel title = new JLabel("UniPath", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 24));
@@ -73,8 +71,6 @@ public class MainMenu extends JFrame
         add(logoutButton);
         
         //logoutButton.addActionListener(e -> System.exit(0));
-
->>>>>>> use_case_10_ui
     }
 
     public static void main(String[] args)
@@ -85,12 +81,9 @@ public class MainMenu extends JFrame
         }
         );
     }
-<<<<<<< HEAD
-}
-=======
+
 }
 
 //CHANGE VAR NAMES!!
 //fullscreen
 // Να κλείνει η παλιά οθόνη
->>>>>>> use_case_10_ui
