@@ -78,14 +78,10 @@ public class MainMenu extends JFrame {
 
             if (result == JOptionPane.YES_OPTION) {
                 dispose(); // Κλείσιμο αυτού του frame
-                new LoginFrame(); // Άνοιγμα login από την αρχή
+                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
             }
         });
     }
-
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater( ()->new MainMenu().setVisible(true));
-//    }
 }
 
 //CHANGE VAR NAMES!!

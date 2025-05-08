@@ -1,20 +1,10 @@
-//package com.mycompany.testing;
-
-/**
- *
- * @HelenaSiskou User
- */
 package com.mycompany.unipathui;
 
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 
-public class StudentApplicationsFrame extends JFrame
-{
-    public StudentApplicationsFrame()
-    {
+public class StudentApplicationsFrame extends JFrame {
+    public StudentApplicationsFrame() {
         setTitle("Αιτήσεις Εγγραφής");
         setSize(500,400);
         // setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -51,8 +41,7 @@ public class StudentApplicationsFrame extends JFrame
         //scroll
         
         int application_num=10; //static for now. then we will make it dynamic
-        for(int i=1; i<=application_num; i++)
-        {
+        for(int i=1; i<=application_num; i++) {
             JPanel singlePanel= new JPanel(null);
             singlePanel.setPreferredSize(new Dimension(700,110));
             singlePanel.setMaximumSize(new Dimension(700,110));
@@ -127,11 +116,10 @@ public class StudentApplicationsFrame extends JFrame
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
-        homeButton.addActionListener(e -> 
-            {
-                new MainMenu().setVisible(true); 
-                dispose(); 
-            });
+        homeButton.addActionListener(e -> {
+            new MainMenu().setVisible(true); 
+            dispose(); 
+        });
 
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
@@ -142,11 +130,6 @@ public class StudentApplicationsFrame extends JFrame
         //logout.addActionListener(e -> System.exit(0));
         //back.addActionListener(e -> dispose());
     } 
-    
-   
-    //public static void main(String[] args) {
-    //    SwingUtilities.invokeLater(() -> new StudentApplicationsFrame().setVisible(true));
-    //}
 }
 
        

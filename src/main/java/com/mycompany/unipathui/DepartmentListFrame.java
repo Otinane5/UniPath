@@ -2,15 +2,8 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- *
- * @HelenaSiskou User
- */
-
-public class DepartmentListFrame extends JFrame
-{
-    public DepartmentListFrame(String uni_name)
-    {
+public class DepartmentListFrame extends JFrame {
+    public DepartmentListFrame(String uni_name) {
         setTitle("Λίστα Τμημάτων - "+uni_name);
         setSize(500,400); // screen size 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,14 +39,12 @@ public class DepartmentListFrame extends JFrame
         //static for now
         //πως θα εισάγει κάθε πανεπιστήμιο τα τμήματά του? Import από αρχείο? στατικά/δυναμικα?
         
-        
         JPanel actionPanel = new JPanel();
         actionPanel.setLayout(new GridLayout(0,1,15,15));
         actionPanel.setBackground(Color.LIGHT_GRAY);        
         actionPanel.setPreferredSize(new Dimension(420, departments.length*60));
         
-        for(String department : departments)
-        {
+        for(String department : departments) {
             JPanel departmentPanel=new JPanel(new BorderLayout());
             departmentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
             
@@ -65,8 +56,7 @@ public class DepartmentListFrame extends JFrame
             
             JButton viewProfile= new JButton("Προβολή Προφίλ Τμήματος");
             viewProfile.setBackground(Color.CYAN);
-            viewProfile.addActionListener(e->
-            {
+            viewProfile.addActionListener(e-> {
                 new ProfileFrame(uni_name, department).setVisible(true);
                 //JOptionPane.showMessageDialog(this, "Προφίλ τμήματος:"+department);
                 // Will add more logic here soon
@@ -86,17 +76,29 @@ public class DepartmentListFrame extends JFrame
         logout.setBackground(Color.decode("#FF6666"));
         logout.setForeground(Color.BLACK);
         add(logout);
+        logout.addActionListener(e -> {
+            int result = JOptionPane.showConfirmDialog(
+                    this,
+                    "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;",
+                    "Επιβεβαίωση Αποσύνδεσης",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (result == JOptionPane.YES_OPTION) {
+                dispose(); // Κλείσιμο αυτού του frame
+                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
+            }
+        });
         //fix
         
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
-        homeButton.addActionListener(e -> 
-            {
-                new MainMenu().setVisible(true); 
-                dispose(); 
-            });
+        homeButton.addActionListener(e -> {
+            new MainMenu().setVisible(true); 
+            dispose(); 
+        });
         
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));

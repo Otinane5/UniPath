@@ -2,10 +2,8 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class EditDescriptionFrame extends JFrame
-{
-    public EditDescriptionFrame(String uni_name, String department_name)
-    {
+public class EditDescriptionFrame extends JFrame {
+    public EditDescriptionFrame(String uni_name, String department_name) {
         setTitle("Τροποποίηση Προφίλ Τμήματος "+department_name);
         setSize(500,400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -77,17 +75,29 @@ public class EditDescriptionFrame extends JFrame
         logout.setBackground(Color.decode("#FF6666"));
         logout.setForeground(Color.BLACK);
         add(logout);
+        logout.addActionListener(e -> {
+            int result = JOptionPane.showConfirmDialog(
+                    this,
+                    "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;",
+                    "Επιβεβαίωση Αποσύνδεσης",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (result == JOptionPane.YES_OPTION) {
+                dispose(); // Κλείσιμο αυτού του frame
+                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
+            }
+        });
         //fix
 
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
-        homeButton.addActionListener(e -> 
-            {
-                new MainMenu().setVisible(true); 
-                dispose(); 
-            });
+        homeButton.addActionListener(e -> {
+            new MainMenu().setVisible(true);
+            dispose();
+        });
 
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));

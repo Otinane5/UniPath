@@ -73,7 +73,7 @@ public class CounselorMenuFrame extends JFrame {
         // --- BOTTOM ---
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton logoutButton = new JButton("Αποσύνδεση");
-        logoutButton.setBackground(new Color(255, 204, 204));
+        logoutButton.setBackground(Color.decode("#FF6666"));
         bottomPanel.add(logoutButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
@@ -115,7 +115,7 @@ public class CounselorMenuFrame extends JFrame {
 
             if (result == JOptionPane.YES_OPTION) {
                 dispose(); // Κλείσιμο αυτού του frame
-                new LoginFrame(); // Άνοιγμα login από την αρχή
+                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
             }
         });
 

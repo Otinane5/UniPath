@@ -1,15 +1,9 @@
-
-//package com.mycompany.testing;
-
 package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-
-public class ProfileFrame extends JFrame
-{
-    public ProfileFrame(String uni_name, String department_name)
-    {
+public class ProfileFrame extends JFrame {
+    public ProfileFrame(String uni_name, String department_name) {
             setTitle("Προφίλ Τμήματος " + department_name);
             setSize(500,400);
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -98,8 +92,7 @@ public class ProfileFrame extends JFrame
             homeButton.setBackground(Color.decode("#B3FF66"));
             homeButton.setBounds(170,330,150,30);
             add(homeButton);
-            homeButton.addActionListener(e -> 
-            {
+            homeButton.addActionListener(e -> {
                 new MainMenu().setVisible(true); 
                 dispose(); 
             });
@@ -110,15 +103,13 @@ public class ProfileFrame extends JFrame
             back.addActionListener(e-> dispose());
             add(back);
             
-            edit.addActionListener(e->
-            {
+            edit.addActionListener(e-> {
                new EditDescriptionFrame(uni_name,department_name).setVisible(true);
   
             });
             profilePanel.add(edit);
             
-            add_announcement.addActionListener(e->
-            {
+            add_announcement.addActionListener(e-> {
                new AddAnnouncementFrame(uni_name,department_name).setVisible(true);
   
             });

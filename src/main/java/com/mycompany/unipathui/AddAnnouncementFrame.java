@@ -93,12 +93,23 @@ public class AddAnnouncementFrame extends JFrame {
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
-        homeButton.addActionListener(e -> 
-            {
-                new MainMenu().setVisible(true); 
-                dispose(); 
-            });
+        homeButton.addActionListener(e -> {
+            new MainMenu().setVisible(true); 
+            dispose(); 
+        });
+        logout.addActionListener(e -> {
+            int result = JOptionPane.showConfirmDialog(
+                    this,
+                    "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;",
+                    "Επιβεβαίωση Αποσύνδεσης",
+                    JOptionPane.YES_NO_OPTION
+            );
 
+            if (result == JOptionPane.YES_OPTION) {
+                dispose(); // Κλείσιμο αυτού του frame
+                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
+            }
+        });
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);
