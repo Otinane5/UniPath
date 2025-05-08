@@ -3,9 +3,9 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class RejectAppointmentPanel extends JPanel {
+public class CounselorRejectAppointmentPanel extends JPanel {
 
-    public RejectAppointmentPanel(CardLayout cardLayout, JPanel cardPanel) {
+    public CounselorRejectAppointmentPanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel title = new JLabel("Σύνταξη Μηνύματος Απόρριψης", SwingConstants.CENTER);

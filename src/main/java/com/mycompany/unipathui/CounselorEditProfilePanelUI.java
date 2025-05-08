@@ -3,11 +3,11 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class EditProfilePanelUI extends JPanel {
+public class CounselorEditProfilePanelUI extends JPanel {
     private JTextField nameField, surnameField, emailField, phoneField;
     private JTextArea bioArea;
 
-    public EditProfilePanelUI(Runnable onBackToMainMenu, Runnable onBack) {
+    public CounselorEditProfilePanelUI(Runnable onBackToMainMenu, Runnable onBack) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel titleLabel = new JLabel("Επεξεργασία Προφίλ", SwingConstants.CENTER);

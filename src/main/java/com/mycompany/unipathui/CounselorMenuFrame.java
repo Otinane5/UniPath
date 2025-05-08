@@ -84,11 +84,11 @@ public class CounselorMenuFrame extends JFrame {
         );
 
         // Panels
-        AcceptAppointmentPanel acceptPanel = new AcceptAppointmentPanel(cardLayout, cardPanel);
-        RejectAppointmentPanel rejectPanel = new RejectAppointmentPanel(cardLayout, cardPanel);
-        AppointmentDetailsPanel detailsPanel = new AppointmentDetailsPanel(cardLayout, cardPanel, acceptPanel, rejectPanel);
-        AppointmentRequestsPanel appointmentPanel = new AppointmentRequestsPanel(cardLayout, cardPanel, detailsPanel);
-        EditProfilePanelUI editPanel = new EditProfilePanelUI(
+        CounselorAcceptAppointmentPanel acceptPanel = new CounselorAcceptAppointmentPanel(cardLayout, cardPanel);
+        CounselorRejectAppointmentPanel rejectPanel = new CounselorRejectAppointmentPanel(cardLayout, cardPanel);
+        CounselorAppointmentDetailsPanel detailsPanel = new CounselorAppointmentDetailsPanel(cardLayout, cardPanel, acceptPanel, rejectPanel);
+        CounselorAppointmentRequestsPanel appointmentPanel = new CounselorAppointmentRequestsPanel(cardLayout, cardPanel, detailsPanel);
+        CounselorEditProfilePanelUI editPanel = new CounselorEditProfilePanelUI(
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "profile")
         );

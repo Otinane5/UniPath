@@ -3,16 +3,16 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class AppointmentDetailsPanel extends JPanel {
+public class CounselorAppointmentDetailsPanel extends JPanel {
 
     private JLabel nameLabel;
     private JLabel phoneLabel;
     private JLabel emailLabel;
     private JTextArea interestsArea;
     
-    public AppointmentDetailsPanel(CardLayout cardLayout, JPanel cardPanel,
-                                    AcceptAppointmentPanel acceptPanel,
-                                    RejectAppointmentPanel rejectPanel) {
+    public CounselorAppointmentDetailsPanel(CardLayout cardLayout, JPanel cardPanel,
+                                    CounselorAcceptAppointmentPanel acceptPanel,
+                                    CounselorRejectAppointmentPanel rejectPanel) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel title = new JLabel("Λεπτομέρειες Αιτήματος", SwingConstants.CENTER);

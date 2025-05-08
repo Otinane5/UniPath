@@ -4,9 +4,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class AppointmentRequestsPanel extends JPanel {
+public class CounselorAppointmentRequestsPanel extends JPanel {
 
-    public AppointmentRequestsPanel(CardLayout cardLayout, JPanel cardPanel, AppointmentDetailsPanel detailsPanel) {
+    public CounselorAppointmentRequestsPanel(CardLayout cardLayout, JPanel cardPanel, CounselorAppointmentDetailsPanel detailsPanel) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel title = new JLabel("Εκκρεμή Αιτήματα Ραντεβού", SwingConstants.CENTER);
