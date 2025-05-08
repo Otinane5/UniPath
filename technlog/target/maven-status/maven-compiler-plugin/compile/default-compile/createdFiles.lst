@@ -1,3 +1,10 @@
+com\mycompany\technlog\CounselorMenuFrame.class
+com\mycompany\technlog\AppointmentRequestsPanel.class
 com\mycompany\technlog\Technlog.class
-com\mycompany\technlog\AcceptAppointmentFrame.class
-com\mycompany\technlog\AppointmentRequestsFrame.class
+com\mycompany\technlog\AppointmentDetailsPanel.class
+com\mycompany\technlog\EditProfilePanelUI.class
+com\mycompany\technlog\RejectAppointmentPanel.class
+com\mycompany\technlog\CounselorProfilePanel.class
+com\mycompany\technlog\CounselorLoginPanel.class
+com\mycompany\technlog\LoginFrame.class
+com\mycompany\technlog\AcceptAppointmentPanel.class

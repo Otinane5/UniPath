@@ -1,9 +1,10 @@
 package com.mycompany.technlog;
 
-import javax.swing.SwingUtilities;
+//import javax.swing.SwingUtilities;
 
 public class Technlog {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new AppointmentRequestsFrame());
+        //SwingUtilities.invokeLater(() -> new CounselorMenuFrame());
+        new LoginFrame();
     }
 }
