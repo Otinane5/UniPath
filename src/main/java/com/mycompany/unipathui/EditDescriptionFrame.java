@@ -61,7 +61,7 @@ public class EditDescriptionFrame extends JFrame
         cancel.setBounds(60,180,120,30);
         cancel.setBackground(Color.RED);
         cancel.setForeground(Color.WHITE);
-        cancel.addActionListener(e->dispose());
+        cancel.addActionListener(e->dispose()); //σβηνει το ποπ απ
         editPanel.add(cancel);
         
         JButton accept=new JButton("Αποδοχή Αλλαγών");
@@ -69,6 +69,7 @@ public class EditDescriptionFrame extends JFrame
         accept.setBackground(Color.GREEN);
         accept.setForeground(Color.WHITE);
         //accept.addActionListener(e->...); will add logic here
+        //αποδοχή συνδεση με db 
         editPanel.add(accept);
             
         JButton logout=new JButton("Αποσύνδεση");
@@ -76,11 +77,17 @@ public class EditDescriptionFrame extends JFrame
         logout.setBackground(Color.decode("#FF6666"));
         logout.setForeground(Color.BLACK);
         add(logout);
+        //fix
 
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
+        homeButton.addActionListener(e -> 
+            {
+                new MainMenu().setVisible(true); 
+                dispose(); 
+            });
 
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
@@ -88,6 +95,8 @@ public class EditDescriptionFrame extends JFrame
         back.addActionListener(e-> dispose());
         add(back);
     }
-            
-    
 }
+
+
+
+

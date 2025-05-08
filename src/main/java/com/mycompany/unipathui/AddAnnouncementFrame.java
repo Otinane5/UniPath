@@ -41,10 +41,10 @@ public class AddAnnouncementFrame extends JFrame
         departmentLabel.setBounds(0,0,400,30);
         annPanel.add(departmentLabel);
             
-        JLabel new_announcement= new JLabel("Νέα Ανακοίνωση");
-        new_announcement.setBounds(80,40,200,20);
+        JLabel new_announcement= new JLabel("Νέα Ανακοίνωση", SwingConstants.CENTER);
+        new_announcement.setBounds(0,40,400,20);
         annPanel.add(new_announcement);
-        
+
         JLabel announcement_title=new JLabel("Τίτλος Νέας Ανακοίνωσης:");
         announcement_title.setBounds(10,65,200,20);
         annPanel.add(announcement_title);
@@ -74,22 +74,32 @@ public class AddAnnouncementFrame extends JFrame
         cancel.setBounds(60,180,120,30);
         annPanel.add(cancel);
         
+        
         JButton publish=new JButton("Δημοσίευση");
         publish.setBackground(Color.GREEN);
-        publish.setBounds(220,180,120,30);
-        annPanel.add(publish);
+        publish.setBounds(50,300,120,30);
+        add(publish);
+        
+        //annPanel.add(publish);
         // add logic for saving the new announcement to the DB
+        
         
         JButton logout=new JButton("Αποσύνδεση");
         logout.setBounds(10,330,150,30);
         logout.setBackground(Color.decode("#FF6666"));
         logout.setForeground(Color.BLACK);
         add(logout);
+        //fix
 
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
+        homeButton.addActionListener(e -> 
+            {
+                new MainMenu().setVisible(true); 
+                dispose(); 
+            });
 
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));

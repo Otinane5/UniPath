@@ -1,12 +1,9 @@
-/**
- *
- * @HelenaSiskou User
- */
+//package com.mycompany.testing;
 
 package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+//import java.awt.event.ActionEvent;
 
 public class UniversityLoginFrame extends JFrame
 {

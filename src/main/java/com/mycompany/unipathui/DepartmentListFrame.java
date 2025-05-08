@@ -86,11 +86,17 @@ public class DepartmentListFrame extends JFrame
         logout.setBackground(Color.decode("#FF6666"));
         logout.setForeground(Color.BLACK);
         add(logout);
+        //fix
         
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
+        homeButton.addActionListener(e -> 
+            {
+                new MainMenu().setVisible(true); 
+                dispose(); 
+            });
         
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
@@ -99,3 +105,6 @@ public class DepartmentListFrame extends JFrame
         add(back);
     }
 }
+
+//μεγαλύτερο box λίστας
+//αρχικη

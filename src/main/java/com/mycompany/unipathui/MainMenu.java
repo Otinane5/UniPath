@@ -1,3 +1,5 @@
+//package com.mycompany.testing;
+
 package com.mycompany.unipathui;
 
 import javax.swing.*;
@@ -26,6 +28,7 @@ public class MainMenu extends JFrame
         
         JButton messagesButton = new JButton("Τα μηνύματά μου"); 
         ImageIcon envelopeIcon = new ImageIcon(getClass().getResource("/icons/envelope.png"));
+        
         Image envelopeImage = envelopeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH); 
         messagesButton.setIcon(new ImageIcon(envelopeImage));
         messagesButton.setBounds(330,20,160,30); // adjust width for icon
@@ -64,11 +67,12 @@ public class MainMenu extends JFrame
         new DepartmentListFrame(universityName).setVisible(true);
         });
 
-        
+       
         JButton logoutButton = new JButton("Αποσύνδεση");
         logoutButton.setBounds(185,280,150,30);
         logoutButton.setBackground(Color.decode("#FF6666"));
         add(logoutButton);
+        //fix it
         
         //logoutButton.addActionListener(e -> System.exit(0));
     }
@@ -77,7 +81,9 @@ public class MainMenu extends JFrame
     {
         SwingUtilities.invokeLater( ()-> 
         {
-            new MainMenu().setVisible(true);  
+            new MainMenu().setVisible(true); 
+            
+
         }
         );
     }

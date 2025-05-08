@@ -1,3 +1,5 @@
+//package com.mycompany.testing;
+
 /**
  *
  * @HelenaSiskou User
@@ -93,6 +95,7 @@ public class StudentApplicationsFrame extends JFrame
             accept.setBounds(230,30,100,25);
             singlePanel.add(accept);
             //add(accept);
+            //όταν υλοποιηθει το message box: connect για να στελνει μηνυμα αποδοχης
             
             JButton reject= new JButton("Απόρριψη");
             reject.setBackground(Color.decode("#FF0000"));
@@ -101,6 +104,8 @@ public class StudentApplicationsFrame extends JFrame
             reject.setBounds(230,65,100,25);
             singlePanel.add(reject);
             //add(reject);
+            //όταν υλοποιηθει το message box: connect για να στελνει μηνυμα απόρριψης
+
             
             applicationListPanel.add(singlePanel);
             applicationListPanel.add(Box.createVerticalStrut(10));
@@ -116,15 +121,22 @@ public class StudentApplicationsFrame extends JFrame
         logout.setBackground(Color.decode("#FF6666"));
         logout.setForeground(Color.BLACK);
         add(logout);
+        //fix
         
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
-        
+        homeButton.addActionListener(e -> 
+            {
+                new MainMenu().setVisible(true); 
+                dispose(); 
+            });
+
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);
+        back.addActionListener(e-> dispose());
         add(back);
         
         //logout.addActionListener(e -> System.exit(0));
@@ -136,3 +148,5 @@ public class StudentApplicationsFrame extends JFrame
     //    SwingUtilities.invokeLater(() -> new StudentApplicationsFrame().setVisible(true));
     //}
 }
+
+       
