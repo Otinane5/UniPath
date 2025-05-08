@@ -1,5 +1,3 @@
-//package com.mycompany.testing;
-
 package com.mycompany.unipathui;
 
 import javax.swing.*;
@@ -75,17 +73,9 @@ public class MainMenu extends JFrame {
         //logoutButton.addActionListener(e -> System.exit(0));
     }
 
-    public static void main(String[] args)
-    {
-        SwingUtilities.invokeLater( ()-> 
-        {
-            new MainMenu().setVisible(true); 
-            
-
-        }
-        );
-    }
-
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater( ()->new MainMenu().setVisible(true));
+//    }
 }
 
 //CHANGE VAR NAMES!!

@@ -10,79 +10,89 @@ import java.awt.*;
 public class LoginFrame extends JFrame {
     //ATTRIBUTES
     private final CardLayout cardLayout;
-    private final JPanel mainPanel;
+    private final JPanel contentPanel;
     //CONSTRUCTOR
     public LoginFrame() {
-        //Τίτλος Παραθύρου
+        //Παραμετροποίηση Παραθύρου
         setTitle("UniPath - Σύνδεση");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 400);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
         
-        // Αρχικοποίηση του κύριου panel με CardLayout για εναλλαγή μεταξύ ρόλων
+        //Επικεφαλίδα (σταθερό κομμάτι)
+        JPanel headerPanel = new JPanel();
+        headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.Y_AXIS));
+        headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
+        headerPanel.setBackground(new Color(240, 248, 255));
+
+        JLabel titleLabel = new JLabel("UniPath", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JLabel welcomeLabel = new JLabel("Καλώς Ορίσατε!", SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        headerPanel.add(titleLabel);
+        headerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        headerPanel.add(welcomeLabel);
+
+        add(headerPanel, BorderLayout.NORTH);
+        
+        // Κεντρικό Panel με CardLayout για εναλλαγή περιεχομένου
         cardLayout = new CardLayout();
-        mainPanel = new JPanel(cardLayout);
+        contentPanel = new JPanel(cardLayout);
         
         // Προσθήκη panels στο CardLayout
-        mainPanel.add(createRoleSelectionPanel(), "roleSelection");
-        CounselorLoginPanel counselorLoginPanel = new CounselorLoginPanel(this);
-        mainPanel.add(counselorLoginPanel, "counselorLogin");
-
-        // Εμφάνιση πρώτου panel
-        cardLayout.show(mainPanel, "roleSelection");
-        add(mainPanel);
+        contentPanel.add(createRoleSelectionPanel(), "roleSelection");
+        contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
+        contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
+        
+        add(contentPanel, BorderLayout.CENTER);
+        
+        // Αρχική οθόνη
+        cardLayout.show(contentPanel, "roleSelection");
         setVisible(true);
     }
     //METHODS
     //Δημιουργεί το αρχικό panel επιλογής ρόλου με τίτλους και κουμπιά.
     private JPanel createRoleSelectionPanel() {
-        JPanel panel = new JPanel(new BorderLayout());
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(30, 80, 30, 80));
         
         //Τίτλοι
-        JPanel headerPanel = new JPanel(null);
-        headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.Y_AXIS));
-        headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 0, 10));
-        
-        JLabel title = new JLabel("UniPath", SwingConstants.CENTER);
-        title.setFont(new Font("Arial", Font.BOLD, 24));
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        JLabel welcome=new JLabel("Καλώς Ορίσατε!", SwingConstants.CENTER);
-        welcome.setFont(new Font("Arial", Font.PLAIN,18));
-        welcome.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        headerPanel.add(title);
-        headerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        headerPanel.add(welcome);
+        JLabel loginAs = new JLabel("Σύνδεση ως:", SwingConstants.CENTER);
+        loginAs.setFont(new Font("Arial", Font.ITALIC, 16));
+        loginAs.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         //Κουμπιά επιλογής ρόλου
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 80, 30, 80));
-        
-        JLabel loginAs = new JLabel("Σύνδεση ως:", SwingConstants.CENTER);
-        loginAs.setFont(new Font("Arial", Font.ITALIC,14));
-        loginAs.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         JButton studentButton = new JButton("Μαθητής");
         JButton counselorButton = new JButton("Σύμβουλος");
         JButton universityButton = new JButton("Πανεπιστήμιο");
         
+        //Κουμπί εξόδου από το σύστημα
+        JButton exit = new JButton("Έξοδος από το σύστημα");
+        exit.setBackground(Color.RED);
+        
         //Μέγεθος και στοίχιση κουμπιών ρόλου
         Dimension buttonSize = new Dimension(200, 35);
-        for (JButton btn : new JButton[]{studentButton, counselorButton, universityButton}) {
+        for (JButton btn : new JButton[]{studentButton, counselorButton, universityButton, exit}) {
             btn.setMaximumSize(buttonSize);
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         }
 
         //Προσθήκη κουμπιών
-        buttonPanel.add(loginAs);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 15)));
-        buttonPanel.add(studentButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 15)));
-        buttonPanel.add(counselorButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 15)));
-        buttonPanel.add(universityButton);
+        panel.add(loginAs);
+        panel.add(Box.createRigidArea(new Dimension(0, 15)));
+        panel.add(studentButton);
+        panel.add(Box.createRigidArea(new Dimension(0, 15)));
+        panel.add(counselorButton);
+        panel.add(Box.createRigidArea(new Dimension(0, 15)));
+        panel.add(universityButton);
+        panel.add(Box.createRigidArea(new Dimension(0, 15)));
+        panel.add(exit);
         
         //Λειτουργικότητα κουμπιών
         studentButton.addActionListener(e -> {
@@ -90,24 +100,23 @@ public class LoginFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "Login Μαθητή δεν έχει υλοποιηθεί ακόμα.");
         });
         counselorButton.addActionListener(e -> {
-            cardLayout.show(mainPanel, "counselorLogin");
+            cardLayout.show(contentPanel, "counselorLogin");
         });
         universityButton.addActionListener(e -> {
             // TODO: Εμφάνιση του university login panel
-            JOptionPane.showMessageDialog(this, "Login Πανεπιστημίου δεν έχει υλοποιηθεί ακόμα.");
+            cardLayout.show(contentPanel, "UniversityLogin");
         });
+        exit.addActionListener(e -> System.exit(0));
         
-        //Δάταξη panel
-        panel.add(headerPanel, BorderLayout.NORTH);
-        panel.add(buttonPanel, BorderLayout.CENTER);
-
         return panel;
     }
+    //Επιστρέφει τον χρήστη στο panel επιλογής ρόλου.
+    public void showRoleSelectionPanel() {
+        cardLayout.show(contentPanel, "roleSelection");
+    }
+    //Εκκίνηση εφαρμογής
     public static void main(String[] args) {
         //SwingUtilities.invokeLater(() -> new LoginFrame().setVisible(true));
         SwingUtilities.invokeLater(LoginFrame::new);
-    }
-    public void showRoleSelectionPanel() {
-        cardLayout.show(mainPanel, "roleSelection");
     }
 }

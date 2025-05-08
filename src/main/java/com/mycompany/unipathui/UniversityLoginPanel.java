@@ -6,16 +6,16 @@ import java.awt.*;
 //Πάνελ Σύνδεσης Συμβούλου: Εμφανίζει πλαίσια για όνομα χρή-
 //στη και κωδικό, καθώς και τα κουμπιά "Σύνδεση" και "Πίσω".
 
-public class CounselorLoginPanel extends JPanel {
+public class UniversityLoginPanel extends JPanel {
     //ATTRIBUTES
     private JTextField usernameField;
     private JPasswordField passwordField;
     //CONSTRUCTOR
-    public CounselorLoginPanel(LoginFrame parentFrame) {
+    public UniversityLoginPanel(LoginFrame parentFrame) {
         setLayout(new BorderLayout());
 
         //Επικεφαλίδα
-        JLabel subtitle  = new JLabel("Σύνδεση Συμβούλου", SwingConstants.CENTER);
+        JLabel subtitle  = new JLabel("Σύνδεση Πανεπιστημίου", SwingConstants.CENTER);
         subtitle.setFont(new Font("Arial", Font.BOLD, 18));
         subtitle.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(subtitle, BorderLayout.NORTH);
@@ -74,7 +74,7 @@ public class CounselorLoginPanel extends JPanel {
 
             if (username.equals("admin") && password.equals("1111")) {
                 // TODO: Άνοιγμα νέου παραθύρου συμβούλου
-                new CounselorMenuFrame();
+                new MainMenu();
                 SwingUtilities.getWindowAncestor(this).dispose();
             }
             else {
