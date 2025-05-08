@@ -57,20 +57,30 @@ public class MainMenu extends JFrame {
         //String uni_name="Upatras"; //static
         //viewDepartmentsButton.addActionListener(e-> new DepartmentListFrame().setVisible(true));
         
-        viewDepartmentsButton.addActionListener(e -> 
-        {
-        String universityName = uni_name.getText(); 
-        new DepartmentListFrame(universityName).setVisible(true);
+        viewDepartmentsButton.addActionListener(e -> {
+            String universityName = uni_name.getText(); 
+            new DepartmentListFrame(universityName).setVisible(true);
         });
 
-       
         JButton logoutButton = new JButton("Αποσύνδεση");
         logoutButton.setBounds(185,280,150,30);
         logoutButton.setBackground(Color.decode("#FF6666"));
         add(logoutButton);
         //fix it
         
-        //logoutButton.addActionListener(e -> System.exit(0));
+        logoutButton.addActionListener(e -> {
+            int result = JOptionPane.showConfirmDialog(
+                    this,
+                    "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;",
+                    "Επιβεβαίωση Αποσύνδεσης",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (result == JOptionPane.YES_OPTION) {
+                dispose(); // Κλείσιμο αυτού του frame
+                new LoginFrame(); // Άνοιγμα login από την αρχή
+            }
+        });
     }
 
 //    public static void main(String[] args) {
