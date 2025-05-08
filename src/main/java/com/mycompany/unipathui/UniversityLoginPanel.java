@@ -73,8 +73,7 @@ public class UniversityLoginPanel extends JPanel {
             String password = new String(passwordField.getPassword());
 
             if (username.equals("admin") && password.equals("1111")) {
-                // TODO: Άνοιγμα νέου παραθύρου συμβούλου
-                new MainMenu();
+                new MainMenu().setVisible(true);
                 SwingUtilities.getWindowAncestor(this).dispose();
             }
             else {

@@ -73,8 +73,7 @@ public class CounselorLoginPanel extends JPanel {
             String password = new String(passwordField.getPassword());
 
             if (username.equals("admin") && password.equals("1111")) {
-                // TODO: Άνοιγμα νέου παραθύρου συμβούλου
-                new CounselorMenuFrame();
+                new CounselorMenuFrame().setVisible(true);
                 SwingUtilities.getWindowAncestor(this).dispose();
             }
             else {
