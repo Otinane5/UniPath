@@ -1,14 +1,10 @@
-//package com.mycompany.testing;
-
 package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 //import java.awt.event.ActionEvent;
 
-public class UniversityLoginFrame extends JFrame
-{
-    public UniversityLoginFrame()
-    {
+public class UniversityLoginFrame extends JFrame {
+    public UniversityLoginFrame() {
         setTitle("University Login Menu");
         setSize(500,400);
         setLocationRelativeTo(null);
@@ -67,31 +63,25 @@ public class UniversityLoginFrame extends JFrame
         exit.setBackground(Color.RED);
         add(exit);
         
-        login.addActionListener(e-> 
-        {
+        login.addActionListener(e-> {
             String username = usernameField.getText();
             String password= new String(passwordField.getPassword());
             
             // static password=1111
             // στην πορεία θα γινει ΔΥΝΑΜΙΚΟ
-            if(username.equals("admin") && password.equals("1111"))
-            {
+            if(username.equals("admin") && password.equals("1111")) {
                 new MainMenu().setVisible(true);
                 dispose(); //kleinei to login parathiro
             }
-            else
-            {
+            else {
                 JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
             }
         });
         exit.addActionListener(e -> System.exit(0));
-        
+}
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new UniversityLoginFrame().setVisible(true));
     }
-    
-    public static void main(String[] args)
-    {
-        SwingUtilities.invokeLater(()->new UniversityLoginFrame().setVisible(true));
-    }  
 }
 
 

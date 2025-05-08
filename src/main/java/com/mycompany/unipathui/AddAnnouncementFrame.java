@@ -2,10 +2,8 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddAnnouncementFrame extends JFrame
-{
-    public AddAnnouncementFrame(String uni_name, String department_name)
-    {
+public class AddAnnouncementFrame extends JFrame {
+    public AddAnnouncementFrame(String uni_name, String department_name) {
         setTitle("Προσθήκη Νέας Ανακοίνωσης Τμήματος "+department_name);
         setSize(500,400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
