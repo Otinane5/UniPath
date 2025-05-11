@@ -45,12 +45,14 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
         JButton acceptAppointment = new JButton("Αποδοχή");
         JButton rejectAppointment = new JButton("Απόρριψη");
         JButton backToMain = new JButton("Πίσω Στο Αρχικό Μενού");
+        backToMain.setBackground(Color.decode("#B3FF66"));
         JButton backButton = new JButton("Πίσω");
+        backButton.setBackground(Color.decode("#FFCC66"));
         
         acceptAppointment.setBackground(new Color(102, 255, 102));
         rejectAppointment.setBackground(new Color(255, 102, 102));
-        backToMain.setBackground(new Color(224, 224, 224));
-        backButton.setBackground(new Color(255, 229, 180));
+        //backToMain.setBackground(new Color(224, 224, 224));
+        //backButton.setBackground(new Color(255, 229, 180));
         
         acceptAppointment.addActionListener(e -> cardLayout.show(cardPanel, "acceptAppointment"));
         rejectAppointment.addActionListener(e -> cardLayout.show(cardPanel, "rejectAppointment"));

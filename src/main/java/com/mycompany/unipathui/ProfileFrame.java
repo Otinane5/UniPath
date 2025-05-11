@@ -4,6 +4,11 @@ import java.awt.*;
 
 public class ProfileFrame extends JFrame {
     public ProfileFrame(String uni_name, String department_name) {
+        
+            //profile: Department
+            //description: String
+            //announcements : List
+            
             setTitle("Προφίλ Τμήματος " + department_name);
             setSize(500,400);
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -113,10 +118,38 @@ public class ProfileFrame extends JFrame {
                new AddAnnouncementFrame(uni_name,department_name).setVisible(true);
   
             });
-            profilePanel.add(add_announcement);
-            
-            
+            profilePanel.add(add_announcement);     
     }
+    
+    public void openDepartmentProfile() //departmentID:int
+    {}
+    
+    public void getDepartmentProfile() //departmentID:int
+    {}
+    
+    public void getDescription() //departmentID: int
+    {}
+    
+    public void getAnnouncements() //departmentID:int
+    {}
+    
+    public void displayProfile()
+    {}
+    
+    public void displayFullProfile()
+    {}
+    
+    public void editDescription()
+    {}
+    
+    public void addAnnouncement()
+    {}
+    
+    public void publishAnnouncement()
+    {}
+    
+    //public void pressBack()
+    //{}
 }
 
-        
+//public,private...        

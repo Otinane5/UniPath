@@ -41,7 +41,9 @@ public class CounselorLoginPanel extends JPanel {
         loginButton.setBackground(Color.CYAN);
         
         JButton backButton = new JButton("Πίσω");
-        backButton.setBackground(Color.PINK);
+        backButton.setBackground(Color.decode("#FFCC66"));
+
+        //backButton.setBackground(Color.PINK);
         
         //Μέγεθος και στοίχιση κουμπιών ρόλου
         Dimension buttonSize = new Dimension(200, 35);

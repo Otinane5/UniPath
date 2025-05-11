@@ -4,6 +4,11 @@ import java.awt.*;
 
 public class EditDescriptionFrame extends JFrame {
     public EditDescriptionFrame(String uni_name, String department_name) {
+        
+        //attributes
+        //currentDescription (string?)
+        //newDescription
+        
         setTitle("Τροποποίηση Προφίλ Τμήματος "+department_name);
         setSize(500,400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -105,8 +110,13 @@ public class EditDescriptionFrame extends JFrame {
         back.addActionListener(e-> dispose());
         add(back);
     }
+    
+    public void openEditDescriptionWindow()
+    {}
+    
+    public void acceptChanges()
+    {}
+    
+    public void pressCancelEdit()
+    {}
 }
-
-
-
-

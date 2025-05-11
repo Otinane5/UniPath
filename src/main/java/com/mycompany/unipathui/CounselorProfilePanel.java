@@ -34,11 +34,14 @@ public class CounselorProfilePanel extends JPanel {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         JButton editButton = new JButton("Επεξεργασία Προφίλ");
         JButton backToMain = new JButton("Πίσω Στο Αρχικό Μενού");
+        backToMain.setBackground(Color.decode("#B3FF66"));
         JButton backButton = new JButton("Πίσω");
+        backButton.setBackground(Color.decode("#FFCC66"));
+
 
         editButton.setBackground(new Color(173, 216, 230));
-        backToMain.setBackground(new Color(224, 224, 224));
-        backButton.setBackground(new Color(255, 229, 180));
+        //backToMain.setBackground(new Color(224, 224, 224));
+        //backButton.setBackground(new Color(255, 229, 180));
 
         editButton.addActionListener(e -> onEditProfile.run());
         backToMain.addActionListener(e -> onBackToMainMenu.run());

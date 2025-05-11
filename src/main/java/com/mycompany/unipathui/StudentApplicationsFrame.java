@@ -130,6 +130,10 @@ public class StudentApplicationsFrame extends JFrame {
         //logout.addActionListener(e -> System.exit(0));
         //back.addActionListener(e -> dispose());
     } 
+    
+    public void viewApplications()
+    {}
+    
+    public void applyFilters()
+    {}
 }
-
-       

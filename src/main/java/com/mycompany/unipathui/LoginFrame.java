@@ -15,7 +15,7 @@ public class LoginFrame extends JFrame {
     public LoginFrame() {
         //Παραμετροποίηση Παραθύρου
         setTitle("UniPath - Σύνδεση");
-        setSize(500, 400);
+        setSize(500, 400); //πρέπει να αλλαχτεί παντού και να είναι ίδιο σε όλη την εφαρμογή
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -71,6 +71,10 @@ public class LoginFrame extends JFrame {
         JButton studentButton = new JButton("Μαθητής");
         JButton counselorButton = new JButton("Σύμβουλος");
         JButton universityButton = new JButton("Πανεπιστήμιο");
+        
+        studentButton.setBackground(Color.GREEN);
+        counselorButton.setBackground(Color.GREEN);
+        universityButton.setBackground(Color.GREEN);
         
         //Κουμπί εξόδου από το σύστημα
         JButton exit = new JButton("Έξοδος από το σύστημα");

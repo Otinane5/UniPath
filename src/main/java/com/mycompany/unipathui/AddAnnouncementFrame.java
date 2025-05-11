@@ -4,6 +4,10 @@ import java.awt.*;
 
 public class AddAnnouncementFrame extends JFrame {
     public AddAnnouncementFrame(String uni_name, String department_name) {
+        
+        //attributes
+        //newAnnouncement
+        
         setTitle("Προσθήκη Νέας Ανακοίνωσης Τμήματος "+department_name);
         setSize(500,400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -114,7 +118,16 @@ public class AddAnnouncementFrame extends JFrame {
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);
         back.addActionListener(e-> dispose());
-        add(back);
-       
+        add(back); 
     } 
+    
+    public void writeAnnouncement()
+    {}
+    
+    public void postAnnouncement() //arg departmentID : int
+    {}
+    
+    public void pressCancelNewAnnouncement()
+    {}
+    
 }

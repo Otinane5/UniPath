@@ -46,21 +46,22 @@ public class CounselorMenuFrame extends JFrame {
         profileButton.setPreferredSize(buttonSize);
         profileButton.setMaximumSize(buttonSize);
         profileButton.setBackground(new Color(100, 149, 237));
-        profileButton.setForeground(Color.WHITE);
+        profileButton.setBackground(Color.GREEN);
 
         JButton appointmentButton = new JButton("Προβολή αιτήσεων ραντεβού");
         appointmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         appointmentButton.setPreferredSize(buttonSize);
         appointmentButton.setMaximumSize(buttonSize);
         appointmentButton.setBackground(new Color(25, 25, 112));
-        appointmentButton.setForeground(Color.WHITE);
+        appointmentButton.setBackground(Color.CYAN);
 
         JButton departmentButton = new JButton("Προβολή λίστας τμημάτων");
         departmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         departmentButton.setPreferredSize(buttonSize);
         departmentButton.setMaximumSize(buttonSize);
         departmentButton.setBackground(new Color(25, 25, 112));
-        departmentButton.setForeground(Color.WHITE);
+        departmentButton.setBackground(Color.CYAN);
+        
 
         menuPanel.add(profileButton);
         menuPanel.add(Box.createRigidArea(new Dimension(0, 20)));

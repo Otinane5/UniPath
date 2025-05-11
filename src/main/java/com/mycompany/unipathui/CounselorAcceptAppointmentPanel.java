@@ -44,12 +44,14 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
         JButton sendButton = new JButton("Αποδοχή Μηνύματος");
         JButton cancelButton = new JButton("Ακύρωση");
         JButton backToMain = new JButton("Πίσω Στο Αρχικό Μενού");
+        backToMain.setBackground(Color.decode("#B3FF66"));
         JButton backButton = new JButton("Πίσω");
+        backButton.setBackground(Color.decode("#FFCC66"));
 
         sendButton.setBackground(new Color(102, 255, 102));
         cancelButton.setBackground(new Color(255, 102, 102));
-        backToMain.setBackground(new Color(224, 224, 224));
-        backButton.setBackground(new Color(255, 229, 180));
+        //backToMain.setBackground(new Color(224, 224, 224));
+        //backButton.setBackground(new Color(255, 229, 180));
        
         sendButton.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Το μήνυμα αποδοχής στάλθηκε με επιτυχία!");

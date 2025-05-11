@@ -4,6 +4,9 @@ import java.awt.*;
 
 public class DepartmentListFrame extends JFrame {
     public DepartmentListFrame(String uni_name) {
+        
+        //attribute departmentList
+        
         setTitle("Λίστα Τμημάτων - "+uni_name);
         setSize(500,400); // screen size 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,6 +109,25 @@ public class DepartmentListFrame extends JFrame {
         back.addActionListener(e-> dispose());
         add(back);
     }
+    
+    public void getDepartments()
+    {
+    
+    }
+    
+    public void getDepartmentList()
+    {
+    }
+    
+    public void selectDepartment() //argument departmentID int
+    {
+    }
+    
+    public void requestDepartmentList()
+    {
+    }
+    
+    
 }
 
 //μεγαλύτερο box λίστας
