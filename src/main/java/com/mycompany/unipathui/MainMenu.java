@@ -25,7 +25,7 @@ public class MainMenu extends JFrame {
         JButton messagesButton = new JButton("Τα μηνύματά μου"); 
         ImageIcon envelopeIcon = new ImageIcon(getClass().getResource("/icons/envelope.png"));
         
-        Image envelopeImage = envelopeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH); 
+        Image envelopeImage = envelopeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         messagesButton.setIcon(new ImageIcon(envelopeImage));
         messagesButton.setBounds(330,20,160,30); // adjust width for icon
         add(messagesButton); 

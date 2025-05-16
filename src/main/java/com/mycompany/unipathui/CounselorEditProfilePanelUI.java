@@ -11,7 +11,7 @@ public class CounselorEditProfilePanelUI extends JPanel {
         setLayout(new BorderLayout(10, 10));
 
         JLabel titleLabel = new JLabel("Επεξεργασία Προφίλ", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         add(titleLabel, BorderLayout.NORTH);
 
         JPanel formPanel = new JPanel(new GridLayout(6, 2, 10, 10));
