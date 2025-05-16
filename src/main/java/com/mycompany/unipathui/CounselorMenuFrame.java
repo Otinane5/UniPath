@@ -16,7 +16,7 @@ public class CounselorMenuFrame extends JFrame {
 
         // --- TOP PANEL ---
         JPanel topPanel = new JPanel(new GridBagLayout());
-        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Προαιρετικό padding
+        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //Προαιρετικό padding
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 1; // κεντρική στήλη
@@ -90,24 +90,20 @@ public class CounselorMenuFrame extends JFrame {
         profileButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         profileButton.setPreferredSize(buttonSize);
         profileButton.setMaximumSize(buttonSize);
-        profileButton.setBackground(new Color(100, 149, 237));
         profileButton.setBackground(Color.GREEN);
 
         JButton appointmentButton = new JButton("Προβολή Αιτήσεων Ραντεβού");
         appointmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         appointmentButton.setPreferredSize(buttonSize);
         appointmentButton.setMaximumSize(buttonSize);
-        appointmentButton.setBackground(new Color(25, 25, 112));
         appointmentButton.setBackground(Color.CYAN);
 
         JButton departmentButton = new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίων");
         departmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         departmentButton.setPreferredSize(buttonSize);
         departmentButton.setMaximumSize(buttonSize);
-        departmentButton.setBackground(new Color(25, 25, 112));
         departmentButton.setBackground(Color.CYAN);
         
-
         menuPanel.add(profileButton);
         menuPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         menuPanel.add(appointmentButton);
