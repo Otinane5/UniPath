@@ -32,7 +32,7 @@ public class MainMenu extends JFrame {
        
         JPanel actionPanel = new JPanel();
         actionPanel.setLayout(null);
-        actionPanel.setBackground(Color.LIGHT_GRAY);
+        //actionPanel.setBackground(Color.LIGHT_GRAY);
         actionPanel.setBounds(110,100,300,150);
         add(actionPanel);
         
