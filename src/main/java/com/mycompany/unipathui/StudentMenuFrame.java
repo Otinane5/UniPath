@@ -84,18 +84,18 @@ public class StudentMenuFrame extends JFrame {
                 () -> cardLayout.show(cardPanel, "applicationForm")
         );        
          
-        StarterQuiz doQuiz = new StarterQuiz(
+        StarterQuiz quizStarterPanel = new StarterQuiz(
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "startQuiz")
         );          
                 
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(deplistPanel, "seeListOfDepartments");
+        cardPanel.add(quizStarterPanel, "doQuiz");
 
        // Action Listeners
        quizButton.addActionListener(e -> cardLayout.show(cardPanel, "doQuiz"));
        viewdepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
-       // councelorcontactButton.addActionListener(e -> cardLayout.show(cardPanel, "profile"));
 
         logoutButton.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(

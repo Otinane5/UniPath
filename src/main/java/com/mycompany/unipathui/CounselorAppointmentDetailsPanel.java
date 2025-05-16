@@ -16,7 +16,7 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
         setLayout(new BorderLayout(10, 10));
 
         JLabel title = new JLabel("Λεπτομέρειες Αιτήματος", SwingConstants.CENTER);
-        title.setFont(new Font("SansSerif", Font.BOLD, 20));
+        title.setFont(new Font("Arial", Font.BOLD, 20));
         add(title, BorderLayout.NORTH);
 
         JPanel detailsPanel = new JPanel();

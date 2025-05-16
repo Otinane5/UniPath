@@ -10,7 +10,7 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
         setLayout(new BorderLayout(10, 10));
 
         JLabel title = new JLabel("Εκκρεμή Αιτήματα Ραντεβού", SwingConstants.CENTER);
-        title.setFont(new Font("SansSerif", Font.BOLD, 20));
+        title.setFont(new Font("Arial", Font.BOLD, 20));
         add(title, BorderLayout.NORTH);
 
         // Δεδομένα για τώρα μόνο (από Βάση Δεδομένων κανονικά)
