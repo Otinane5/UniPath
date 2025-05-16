@@ -76,6 +76,13 @@ public class CounselorMenuFrame extends JFrame {
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
+        
+        // Προσθήκη τίτλου
+        JLabel actionTitle = new JLabel("Επιλογή Ενέργειας:");
+        actionTitle.setFont(new Font("Arial", Font.BOLD, 18));
+        actionTitle.setAlignmentX(Component.CENTER_ALIGNMENT); // Κέντρο
+        menuPanel.add(actionTitle);
+        menuPanel.add(Box.createRigidArea(new Dimension(0, 30))); // Απόσταση από κουμπιά
 
         Dimension buttonSize = new Dimension(300, 50);
 
