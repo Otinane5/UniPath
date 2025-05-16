@@ -19,7 +19,7 @@ public class LoginFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        
+
         //Επικεφαλίδα (σταθερό κομμάτι)
         JPanel headerPanel = new JPanel();
         headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.Y_AXIS));
@@ -39,18 +39,19 @@ public class LoginFrame extends JFrame {
         headerPanel.add(welcomeLabel);
 
         add(headerPanel, BorderLayout.NORTH);
-        
+
         // Κεντρικό Panel με CardLayout για εναλλαγή περιεχομένου
         cardLayout = new CardLayout();
         contentPanel = new JPanel(cardLayout);
-        
+
         // Προσθήκη panels στο CardLayout
         contentPanel.add(createRoleSelectionPanel(), "roleSelection");
+        contentPanel.add(new StudentLoginPanel(this), "studentLogin");
         contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
         contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
-        
+
         add(contentPanel, BorderLayout.CENTER);
-        
+
         // Αρχική οθόνη
         cardLayout.show(contentPanel, "roleSelection");
         setVisible(true);
@@ -61,25 +62,25 @@ public class LoginFrame extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(30, 80, 30, 80));
-        
+
         //Τίτλοι
         JLabel loginAs = new JLabel("Σύνδεση ως:", SwingConstants.CENTER);
         loginAs.setFont(new Font("Arial", Font.ITALIC, 16));
         loginAs.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
+
         //Κουμπιά επιλογής ρόλου
         JButton studentButton = new JButton("Μαθητής");
         JButton counselorButton = new JButton("Σύμβουλος");
         JButton universityButton = new JButton("Πανεπιστήμιο");
-        
+
         studentButton.setBackground(Color.GREEN);
         counselorButton.setBackground(Color.GREEN);
         universityButton.setBackground(Color.GREEN);
-        
+
         //Κουμπί εξόδου από το σύστημα
         JButton exit = new JButton("Έξοδος από το σύστημα");
         exit.setBackground(Color.RED);
-        
+
         //Μέγεθος και στοίχιση κουμπιών ρόλου
         Dimension buttonSize = new Dimension(200, 35);
         for (JButton btn : new JButton[]{studentButton, counselorButton, universityButton, exit}) {
@@ -97,11 +98,11 @@ public class LoginFrame extends JFrame {
         panel.add(universityButton);
         panel.add(Box.createRigidArea(new Dimension(0, 15)));
         panel.add(exit);
-        
+
         //Λειτουργικότητα κουμπιών
         studentButton.addActionListener(e -> {
             // TODO: Εμφάνιση του student login panel
-            JOptionPane.showMessageDialog(this, "Login Μαθητή δεν έχει υλοποιηθεί ακόμα.");
+            cardLayout.show(contentPanel, "studentLogin");
         });
         counselorButton.addActionListener(e -> {
             cardLayout.show(contentPanel, "counselorLogin");
@@ -111,7 +112,7 @@ public class LoginFrame extends JFrame {
             cardLayout.show(contentPanel, "UniversityLogin");
         });
         exit.addActionListener(e -> System.exit(0));
-        
+
         return panel;
     }
     //Επιστρέφει τον χρήστη στο panel επιλογής ρόλου.
