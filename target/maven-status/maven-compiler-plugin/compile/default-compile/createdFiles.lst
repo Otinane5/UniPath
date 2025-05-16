@@ -1,12 +1,14 @@
 com\mycompany\unipathui\AddAnnouncementFrame.class
 com\mycompany\unipathui\CounselorAcceptAppointmentPanel.class
 com\mycompany\unipathui\CounselorMenuFrame.class
+com\mycompany\unipathui\FilteredListScreen.class
 com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\DepartmentListFrame.class
 com\mycompany\unipathui\CounselorProfilePanel.class
 com\mycompany\unipathui\LoginFrame.class
 com\mycompany\unipathui\CounselorAppointmentRequestsPanel.class
 com\mycompany\unipathui\MainMenu.class
+com\mycompany\unipathui\ChooseFiltersScreen.class
 com\mycompany\unipathui\EditDescriptionFrame.class
 com\mycompany\unipathui\CounselorRejectAppointmentPanel.class
 com\mycompany\unipathui\ProfileFrame.class
