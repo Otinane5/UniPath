@@ -129,10 +129,17 @@ public class StudentMenuFrame extends JFrame {
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "startQuiz")
         );          
-                
+           
+        QuizUI quizPanel = new QuizUI(
+            () -> cardLayout.show(cardPanel, "doQuiz"),
+            () -> System.out.println("Επόμενη ερώτηση"),  
+            () -> System.out.println("Προηγούμενη ερώτηση")
+        );
+        
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(quizStarterPanel, "doQuiz");
+        cardPanel.add(quizPanel, "startQuiz");
 
        // Action Listeners
        quizButton.addActionListener(e -> cardLayout.show(cardPanel, "doQuiz"));
