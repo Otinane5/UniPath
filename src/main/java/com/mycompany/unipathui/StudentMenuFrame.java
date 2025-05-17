@@ -133,7 +133,8 @@ public class StudentMenuFrame extends JFrame {
         QuizUI quizPanel = new QuizUI(
             () -> cardLayout.show(cardPanel, "doQuiz"),
             () -> System.out.println("Επόμενη ερώτηση"),  
-            () -> System.out.println("Προηγούμενη ερώτηση")
+            () -> System.out.println("Προηγούμενη ερώτηση"),
+            () -> System.out.println("Εκκαθάριση Quiz")   
         );
         
         cardPanel.add(menuPanel, "menu");
