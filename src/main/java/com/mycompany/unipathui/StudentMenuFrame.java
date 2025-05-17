@@ -128,15 +128,15 @@ public class StudentMenuFrame extends JFrame {
         StarterQuiz quizStarterPanel = new StarterQuiz(
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "startQuiz")
-        );          
-           
-        QuizUI quizPanel = new QuizUI(
+        );  
+        
+         QuizUI quizPanel = new QuizUI(
             () -> cardLayout.show(cardPanel, "doQuiz"),
             () -> System.out.println("Επόμενη ερώτηση"),  
             () -> System.out.println("Προηγούμενη ερώτηση"),
             () -> System.out.println("Εκκαθάριση Quiz")   
         );
-        
+         
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(quizStarterPanel, "doQuiz");
@@ -145,7 +145,10 @@ public class StudentMenuFrame extends JFrame {
        // Action Listeners
        quizButton.addActionListener(e -> cardLayout.show(cardPanel, "doQuiz"));
        viewdepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
-
+       
+       councelorcontactButton.addActionListener(e -> {
+       new ViewScreenCounselor("Ανδρέας", "Χρήστου").setVisible(true);
+});
         logoutButton.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(
                     this,
