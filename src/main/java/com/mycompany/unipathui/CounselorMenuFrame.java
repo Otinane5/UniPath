@@ -98,17 +98,17 @@ public class CounselorMenuFrame extends JFrame {
         appointmentButton.setMaximumSize(buttonSize);
         appointmentButton.setBackground(Color.CYAN);
 
-        JButton departmentButton = new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίων");
-        departmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        departmentButton.setPreferredSize(buttonSize);
-        departmentButton.setMaximumSize(buttonSize);
-        departmentButton.setBackground(Color.CYAN);
+        JButton viewdepartmentsButton = new JButton("Προβολή λίστας τμημάτων");
+        viewdepartmentsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        viewdepartmentsButton.setPreferredSize(buttonSize);
+        viewdepartmentsButton.setMaximumSize(buttonSize);
+        viewdepartmentsButton.setBackground(Color.CYAN);
         
         menuPanel.add(profileButton);
         menuPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         menuPanel.add(appointmentButton);
         menuPanel.add(Box.createRigidArea(new Dimension(0, 15)));
-        menuPanel.add(departmentButton);
+        menuPanel.add(viewdepartmentsButton);
 
         add(cardPanel, BorderLayout.CENTER);
 
@@ -135,6 +135,12 @@ public class CounselorMenuFrame extends JFrame {
                 () -> cardLayout.show(cardPanel, "profile")
         );
 
+        DepartmentListCounselor deplistPanel = new DepartmentListCounselor(
+                () -> cardLayout.show(cardPanel, "menu"),
+                () -> cardLayout.show(cardPanel, "showDepartment"),
+                () -> cardLayout.show(cardPanel, "applicationForm")
+        ); 
+        
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(appointmentPanel, "appointments");
         cardPanel.add(detailsPanel, "appointmentDetails");
@@ -142,10 +148,12 @@ public class CounselorMenuFrame extends JFrame {
         cardPanel.add(rejectPanel, "rejectAppointment");
         cardPanel.add(profilePanel, "profile");
         cardPanel.add(editPanel, "editProfile");
+        cardPanel.add(deplistPanel, "seeListOfDepartments");
 
         // Action Listeners
         appointmentButton.addActionListener(e -> cardLayout.show(cardPanel, "appointments"));
         profileButton.addActionListener(e -> cardLayout.show(cardPanel, "profile"));
+        viewdepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
         logoutButton.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(
                     this,
