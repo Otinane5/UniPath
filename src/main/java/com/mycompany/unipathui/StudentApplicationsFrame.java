@@ -35,6 +35,18 @@ public class StudentApplicationsFrame extends JFrame {
         sectionLabel.setBounds(190,90,200,20);
         add(sectionLabel);
         
+        
+        JButton filt= new JButton("Ορισμός Φίλτρων");
+        filt.setBackground(Color.decode("#ABCDDE")); //κολορ
+        filt.setForeground(Color.BLACK);
+        filt.setFocusPainted(false);
+        filt.setBounds(50,85,138,25);
+        add(filt);
+        filt.addActionListener(e-> new ChooseFiltersScreen().setVisible(true));
+   
+        
+      
+        
         JPanel applicationListPanel=new JPanel();
         applicationListPanel.setLayout(new BoxLayout(applicationListPanel, BoxLayout.Y_AXIS));
         applicationListPanel.setBackground(Color.WHITE);
