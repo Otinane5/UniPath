@@ -59,9 +59,8 @@ public class StudentApplicationsFrame extends JFrame {
             //static (for now!)
             String name="Ονοματεπώνυμο_"+i;
             String department="Τμήμα_"+i;
-            int grades= 15000+3*i; //den tha ypologizetai profanws alla tha eisagetai apo ton foithth
+            int grades= 15000+3*i; //τυχαία εδώ. θα εισαγεται απο φοιτητη μετά τις Πανελλήνιες πχ.
             
-            //might change the variable names to fit with the rest of the use cases-code
             JLabel nameLabel=new JLabel("Ονοματεπώνυμο: "+name);
             nameLabel.setFont(new Font("Arial", Font.PLAIN,13));
             nameLabel.setBounds(10,30,300,20);
@@ -95,7 +94,6 @@ public class StudentApplicationsFrame extends JFrame {
             //add(reject);
             //όταν υλοποιηθει το message box: connect για να στελνει μηνυμα απόρριψης
 
-            
             applicationListPanel.add(singlePanel);
             applicationListPanel.add(Box.createVerticalStrut(10));
             

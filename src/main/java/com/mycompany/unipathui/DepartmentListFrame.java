@@ -131,4 +131,3 @@ public class DepartmentListFrame extends JFrame {
 }
 
 //μεγαλύτερο box λίστας
-//αρχικη

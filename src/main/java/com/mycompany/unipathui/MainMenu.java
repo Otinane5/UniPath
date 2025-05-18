@@ -32,7 +32,6 @@ public class MainMenu extends JFrame {
        
         JPanel actionPanel = new JPanel();
         actionPanel.setLayout(null);
-        //actionPanel.setBackground(Color.LIGHT_GRAY);
         actionPanel.setBounds(110,100,300,150);
         add(actionPanel);
         
@@ -47,7 +46,6 @@ public class MainMenu extends JFrame {
         actionPanel.add(viewApplicationsButton);
         
         viewApplicationsButton.addActionListener(e-> new StudentApplicationsFrame().setVisible(true));
-        //dispose
         
         JButton viewDepartmentsButton= new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίου");
         viewDepartmentsButton.setBounds(10,80,280,30);
@@ -84,6 +82,4 @@ public class MainMenu extends JFrame {
     }
 }
 
-//CHANGE VAR NAMES!!
-//fullscreen
-// Να κλείνει η παλιά οθόνη
+//fullscreen?

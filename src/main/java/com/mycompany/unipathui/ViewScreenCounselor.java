@@ -33,8 +33,7 @@ public class ViewScreenCounselor extends JFrame {
         add(messagesButton);
         messagesButton.addActionListener(e -> {
         new MessageBoxFrame().setVisible(true);
-});
-
+        });
 
         // Τίτλος συμβούλων
         JLabel advisorTitle = new JLabel("Διαθέσιμοι Σύμβουλοι:");

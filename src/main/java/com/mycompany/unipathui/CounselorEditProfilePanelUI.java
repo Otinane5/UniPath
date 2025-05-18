@@ -47,8 +47,6 @@ public class CounselorEditProfilePanelUI extends JPanel {
 
         previewButton.setBackground(new Color(100, 149, 237));
         cancelButton.setBackground(new Color(255, 102, 102));
-        //backToMain.setBackground(new Color(224, 224, 224));
-        //backButton.setBackground(new Color(255, 229, 180));
         
         // Προεπισκόπηση
         previewButton.addActionListener(e -> {

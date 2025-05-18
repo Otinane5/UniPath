@@ -30,9 +30,7 @@ public class CounselorRejectAppointmentPanel extends JPanel {
         
         sendButton.setBackground(new Color(102, 255, 102));
         cancelButton.setBackground(new Color(255, 102, 102));
-        //backToMain.setBackground(new Color(224, 224, 224));
-        //backButton.setBackground(new Color(255, 229, 180));
-        
+                
         sendButton.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Το μήνυμα απόρριψης στάλθηκε!");
             cardLayout.show(cardPanel, "appointments");

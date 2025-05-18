@@ -64,7 +64,7 @@ public class EditDescriptionFrame extends JFrame {
         cancel.setBounds(60,180,120,30);
         cancel.setBackground(Color.RED);
         cancel.setForeground(Color.WHITE);
-        cancel.addActionListener(e->dispose()); //σβηνει το ποπ απ
+        cancel.addActionListener(e->dispose());
         editPanel.add(cancel);
         
         JButton accept=new JButton("Αποδοχή Αλλαγών");

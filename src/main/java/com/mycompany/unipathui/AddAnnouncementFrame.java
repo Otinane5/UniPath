@@ -85,7 +85,6 @@ public class AddAnnouncementFrame extends JFrame {
         //annPanel.add(publish);
         // add logic for saving the new announcement to the DB
         
-        
         JButton logout=new JButton("Αποσύνδεση");
         logout.setBounds(10,330,150,30);
         logout.setBackground(Color.decode("#FF6666"));

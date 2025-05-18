@@ -40,9 +40,6 @@ public class CounselorProfilePanel extends JPanel {
 
 
         editButton.setBackground(new Color(173, 216, 230));
-        //backToMain.setBackground(new Color(224, 224, 224));
-        //backButton.setBackground(new Color(255, 229, 180));
-
         editButton.addActionListener(e -> onEditProfile.run());
         backToMain.addActionListener(e -> onBackToMainMenu.run());
         backButton.addActionListener(e -> onBackToMainMenu.run()); // εναλλακτικά: επιστροφή σε προηγούμενη οθόνη

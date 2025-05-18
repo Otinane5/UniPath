@@ -51,9 +51,7 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
         
         acceptAppointment.setBackground(new Color(102, 255, 102));
         rejectAppointment.setBackground(new Color(255, 102, 102));
-        //backToMain.setBackground(new Color(224, 224, 224));
-        //backButton.setBackground(new Color(255, 229, 180));
-        
+               
         acceptAppointment.addActionListener(e -> cardLayout.show(cardPanel, "acceptAppointment"));
         rejectAppointment.addActionListener(e -> cardLayout.show(cardPanel, "rejectAppointment"));
         backToMain.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
