@@ -6,6 +6,7 @@ com\mycompany\unipathui\CounselorAppointmentRequestsPanel.class
 com\mycompany\unipathui\MainMenu.class
 com\mycompany\unipathui\ChooseFiltersScreen.class
 com\mycompany\unipathui\CounselorRejectAppointmentPanel.class
+com\mycompany\unipathui\NewMessageFrame.class
 com\mycompany\unipathui\ProfileFrame.class
 com\mycompany\unipathui\CounselorAppointmentDetailsPanel.class
 com\mycompany\unipathui\CounselorEditProfilePanelUI.class
@@ -19,6 +20,8 @@ com\mycompany\unipathui\CounselorMenuFrame.class
 com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\DepartmentListFrame.class
 com\mycompany\unipathui\CounselorProfilePanel.class
+com\mycompany\unipathui\MessageBoxFrame.class
 com\mycompany\unipathui\EditDescriptionFrame.class
+com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\QuizUI.class
 com\mycompany\unipathui\StudentLoginPanel.class
