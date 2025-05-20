@@ -128,9 +128,4 @@ public class LoginFrame extends JFrame {
         cardLayout.show(contentPanel, "mainMenu");
     }
     
-    //Εκκίνηση εφαρμογής
-    public static void main(String[] args) {
-        //SwingUtilities.invokeLater(() -> new LoginFrame().setVisible(true));
-        SwingUtilities.invokeLater(LoginFrame::new);
-    }
 }

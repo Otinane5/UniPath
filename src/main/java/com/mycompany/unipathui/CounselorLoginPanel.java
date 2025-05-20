@@ -1,5 +1,7 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Unipath;
+import com.mycompany.baseClasses.User;
 import javax.swing.*;
 import java.awt.*;
 
@@ -74,7 +76,9 @@ public class CounselorLoginPanel extends JPanel {
             String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
 
-            if (username.equals("admin") && password.equals("1111")) {
+            User myUser = User.login(username,password);
+            if (myUser != null && myUser.userType==2) {
+                Unipath.userName = username;
                 new CounselorMenuFrame().setVisible(true);
                 SwingUtilities.getWindowAncestor(this).dispose();
             }

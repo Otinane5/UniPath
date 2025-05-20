@@ -64,6 +64,7 @@ public class User {
         for (User user : users) {
             if (user.userName.equals(userName) && user.password.equals(password)) {
                 System.out.println("Success");
+                
                 return user; // Επιστρέφουμε το χρήστη αν βρεθεί
             }
         }

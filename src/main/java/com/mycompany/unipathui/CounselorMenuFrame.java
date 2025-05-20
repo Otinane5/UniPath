@@ -1,5 +1,6 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
 
@@ -31,7 +32,7 @@ public class CounselorMenuFrame extends JFrame {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        JLabel counselorNameLabel = new JLabel("Κώστας Παπαδόπουλος");
+        JLabel counselorNameLabel = new JLabel(Unipath.userName);
         counselorNameLabel.setFont(new Font("Arial", Font.ITALIC,14));
         counselorNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         counselorNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -1,5 +1,7 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Unipath;
+import com.mycompany.baseClasses.User;
 import javax.swing.*;
 import java.awt.*;
 
@@ -69,11 +71,13 @@ public class StudentLoginPanel extends JPanel {
         add(centerWrapper, BorderLayout.CENTER);
 
         //Λειτουργικότητα κουμπιών
-        loginButton.addActionListener(e -> {
+        loginButton.addActionListener((var e) -> {
             String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
-
-            if (username.equals("admin") && password.equals("1111")) {
+            //Αναζήτηση χρήστη:
+            User myUser = User.login(username,password);
+            if (myUser != null && myUser.userType==3) {
+                Unipath.userName = username;
                 new StudentMenuFrame().setVisible(true);
                 SwingUtilities.getWindowAncestor(this).dispose();
             }
