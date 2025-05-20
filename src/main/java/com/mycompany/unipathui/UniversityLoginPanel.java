@@ -42,8 +42,6 @@ public class UniversityLoginPanel extends JPanel {
         
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));
-
-        //backButton.setBackground(Color.PINK);
         
         //Μέγεθος και στοίχιση κουμπιών ρόλου
         Dimension buttonSize = new Dimension(200, 35);
@@ -75,8 +73,10 @@ public class UniversityLoginPanel extends JPanel {
             String password = new String(passwordField.getPassword());
 
             if (username.equals("admin") && password.equals("1111")) {
-                new MainMenu().setVisible(true);
-                SwingUtilities.getWindowAncestor(this).dispose();
+                //new MainMenu().setVisible(true);
+                parentFrame.showMainMenu(username);
+                //SwingUtilities.getWindowAncestor(this).dispose();
+                
             }
             else {
                 JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");

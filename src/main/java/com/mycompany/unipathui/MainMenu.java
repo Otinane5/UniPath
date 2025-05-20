@@ -3,13 +3,20 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainMenu extends JFrame {
-    public MainMenu() {
-        setTitle("Main Menu (Πανεπιστήμιο)");
+public class MainMenu extends JPanel {
+    private final JLabel uni_name;
+    private LoginFrame parentFrame;
+    
+    public MainMenu(LoginFrame parentFrame) { 
+
+        this.parentFrame=parentFrame;
+        setLayout(null);
+        
+        /*setTitle("Main Menu (Πανεπιστήμιο)");
         setSize(500,400); // screen size 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(null);
+        setLayout(null);*/
         
         JLabel title = new JLabel("UniPath", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 24));
@@ -17,7 +24,7 @@ public class MainMenu extends JFrame {
         add(title);
         
         //θα κάνει ανάκτηση του ονόματος μέσω του login
-        JLabel uni_name=new JLabel("<Όνομα πανεπιστημίου>", SwingConstants.CENTER);
+        uni_name=new JLabel("<Όνομα πανεπιστημίου>", SwingConstants.CENTER);
         uni_name.setFont(new Font("Arial", Font.ITALIC,14));
         uni_name.setBounds(155,55,200,20);
         add(uni_name);
@@ -44,20 +51,16 @@ public class MainMenu extends JFrame {
         viewApplicationsButton.setBounds(50,40,200,30);
         viewApplicationsButton.setBackground(Color.decode("#B3FF66"));
         actionPanel.add(viewApplicationsButton);
-        
-        viewApplicationsButton.addActionListener(e-> new StudentApplicationsFrame().setVisible(true));
+        viewApplicationsButton.addActionListener(e-> new StudentApplicationsFrame(parentFrame,uni_name.getText()).setVisible(true));
         
         JButton viewDepartmentsButton= new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίου");
         viewDepartmentsButton.setBounds(10,80,280,30);
         viewDepartmentsButton.setBackground(Color.decode("#99EBFF"));
         actionPanel.add(viewDepartmentsButton);
         
-        //String uni_name="Upatras"; //static
-        //viewDepartmentsButton.addActionListener(e-> new DepartmentListFrame().setVisible(true));
-        
         viewDepartmentsButton.addActionListener(e -> {
             String universityName = uni_name.getText(); 
-            new DepartmentListFrame(universityName).setVisible(true);
+            new DepartmentListFrame(parentFrame,universityName).setVisible(true);
         });
 
         JButton logoutButton = new JButton("Αποσύνδεση");
@@ -75,11 +78,16 @@ public class MainMenu extends JFrame {
             );
 
             if (result == JOptionPane.YES_OPTION) {
-                dispose(); // Κλείσιμο αυτού του frame
-                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
+                if (parentFrame != null) {
+                    parentFrame.showRoleSelectionPanel();
+                }
             }
         });
     }
+    
+    public void setUniversityName(String name)
+    {uni_name.setText(name);}
+    
 }
 
 //fullscreen?

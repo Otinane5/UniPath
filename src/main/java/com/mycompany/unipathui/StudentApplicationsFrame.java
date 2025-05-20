@@ -4,7 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StudentApplicationsFrame extends JFrame {
-    public StudentApplicationsFrame() {
+    
+    private final LoginFrame parentFrame;
+    
+    public StudentApplicationsFrame(LoginFrame parentFrame, String universityName) {
+        //prepei MainMenu mallon
+        this.parentFrame=parentFrame;
         setTitle("Αιτήσεις Εγγραφής");
         setSize(500,400);
         // setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -94,6 +99,8 @@ public class StudentApplicationsFrame extends JFrame {
             //add(accept);
             //όταν υλοποιηθει το message box: connect για να στελνει μηνυμα αποδοχης
             
+            
+            
             JButton reject= new JButton("Απόρριψη");
             reject.setBackground(Color.decode("#FF0000"));
             reject.setForeground(Color.WHITE);
@@ -124,8 +131,9 @@ public class StudentApplicationsFrame extends JFrame {
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
         homeButton.addActionListener(e -> {
-            new MainMenu().setVisible(true); 
-            dispose(); 
+            //new MainMenu().setVisible(true); 
+            //dispose(); 
+            parentFrame.showMainMenu(universityName);
         });
 
         JButton back= new JButton("Πίσω");

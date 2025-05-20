@@ -11,6 +11,7 @@ public class LoginFrame extends JFrame {
     //ATTRIBUTES
     private final CardLayout cardLayout;
     private final JPanel contentPanel;
+    private final MainMenu mainMenuPanel;
     //CONSTRUCTOR
     public LoginFrame() {
         //Παραμετροποίηση Παραθύρου
@@ -37,7 +38,6 @@ public class LoginFrame extends JFrame {
         headerPanel.add(titleLabel);
         headerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         headerPanel.add(welcomeLabel);
-
         add(headerPanel, BorderLayout.NORTH);
 
         // Κεντρικό Panel με CardLayout για εναλλαγή περιεχομένου
@@ -50,6 +50,9 @@ public class LoginFrame extends JFrame {
         contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
         contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
 
+        mainMenuPanel= new MainMenu(this);
+        contentPanel.add(mainMenuPanel, "mainMenu");
+        
         add(contentPanel, BorderLayout.CENTER);
 
         // Αρχική οθόνη
@@ -119,6 +122,12 @@ public class LoginFrame extends JFrame {
     public void showRoleSelectionPanel() {
         cardLayout.show(contentPanel, "roleSelection");
     }
+    
+    public void showMainMenu(String universityName) {
+        mainMenuPanel.setUniversityName(universityName);
+        cardLayout.show(contentPanel, "mainMenu");
+    }
+    
     //Εκκίνηση εφαρμογής
     public static void main(String[] args) {
         //SwingUtilities.invokeLater(() -> new LoginFrame().setVisible(true));

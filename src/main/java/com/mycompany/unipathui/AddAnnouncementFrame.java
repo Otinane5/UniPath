@@ -3,8 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AddAnnouncementFrame extends JFrame {
-    public AddAnnouncementFrame(String uni_name, String department_name) {
-        
+    private LoginFrame parentFrame;
+    public AddAnnouncementFrame(LoginFrame parentFrame,String uni_name, String department_name) {
+        this.parentFrame=parentFrame;
         //attributes
         //newAnnouncement
         
@@ -97,7 +98,7 @@ public class AddAnnouncementFrame extends JFrame {
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
         homeButton.addActionListener(e -> {
-            new MainMenu().setVisible(true); 
+            new MainMenu(parentFrame).setVisible(true); 
             dispose(); 
         });
         logout.addActionListener(e -> {

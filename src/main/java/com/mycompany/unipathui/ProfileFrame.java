@@ -3,11 +3,19 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ProfileFrame extends JFrame {
-    public ProfileFrame(String uni_name, String department_name) {
+    private final String uni_name;
+    private final String department_name;
+    private LoginFrame parentFrame; //login?
+    
+    public ProfileFrame(LoginFrame parentFrame,String uni_name, String department_name) {
         
             //profile: Department
             //description: String
             //announcements : List
+            
+            this.uni_name=uni_name;
+            this.department_name=department_name;
+            this.parentFrame=parentFrame;
             
             setTitle("Προφίλ Τμήματος " + department_name);
             setSize(500,400);
@@ -98,7 +106,7 @@ public class ProfileFrame extends JFrame {
             homeButton.setBounds(170,330,150,30);
             add(homeButton);
             homeButton.addActionListener(e -> {
-                new MainMenu().setVisible(true); 
+                new MainMenu(parentFrame).setVisible(true); 
                 dispose(); 
             });
 
@@ -109,17 +117,18 @@ public class ProfileFrame extends JFrame {
             add(back);
             
             edit.addActionListener(e-> {
-               new EditDescriptionFrame(uni_name,department_name).setVisible(true);
+               new EditDescriptionFrame(this,uni_name,department_name).setVisible(true);
   
             });
             profilePanel.add(edit);
             
             add_announcement.addActionListener(e-> {
-               new AddAnnouncementFrame(uni_name,department_name).setVisible(true);
+               new AddAnnouncementFrame(parentFrame,uni_name,department_name).setVisible(true);
   
             });
             profilePanel.add(add_announcement);     
     }
+    
     
     public void openDepartmentProfile() //departmentID:int
     {}
@@ -150,6 +159,20 @@ public class ProfileFrame extends JFrame {
     
     //public void pressBack()
     //{}
+    
+    public void showMainMenu(String uniName) {
+        this.setVisible(false);
+        JFrame frame = new JFrame("Main Menu");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 400);
+        frame.setLocationRelativeTo(null);
+
+        MainMenu mainMenu = new MainMenu(null); // or pass LoginFrame if available
+        mainMenu.setUniversityName(uniName);
+        frame.setContentPane(mainMenu);
+        frame.setVisible(true);
+    }
+
 }
 
 //public,private...        

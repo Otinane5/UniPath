@@ -3,10 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DepartmentListFrame extends JFrame {
-    public DepartmentListFrame(String uni_name) {
+    private  LoginFrame parentFrame; //mainmenu
+    
+    //mainmenu
+    public DepartmentListFrame(LoginFrame parentFrame,String uni_name) {
         
         //attribute departmentList
-        
+        this.parentFrame=parentFrame;
         setTitle("Λίστα Τμημάτων - "+uni_name);
         setSize(500,400); // screen size 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,7 +63,7 @@ public class DepartmentListFrame extends JFrame {
             JButton viewProfile= new JButton("Προβολή Προφίλ Τμήματος");
             viewProfile.setBackground(Color.CYAN);
             viewProfile.addActionListener(e-> {
-                new ProfileFrame(uni_name, department).setVisible(true);
+                new ProfileFrame(parentFrame,uni_name, department).setVisible(true);
                 //JOptionPane.showMessageDialog(this, "Προφίλ τμήματος:"+department);
                 // Will add more logic here soon
             });
@@ -99,10 +102,19 @@ public class DepartmentListFrame extends JFrame {
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
         homeButton.addActionListener(e -> {
-            new MainMenu().setVisible(true); 
-            dispose(); 
+        JFrame frame = new JFrame("Main Menu");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 400);
+        frame.setLocationRelativeTo(null);
+
+        MainMenu mainMenu = new MainMenu(null);
+        mainMenu.setUniversityName(uni_name);
+        frame.setContentPane(mainMenu);
+        frame.setVisible(true);
+
+        dispose();
         });
-        
+
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);

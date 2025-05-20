@@ -7,8 +7,10 @@ import java.awt.*;
  */
 public class ChooseFiltersScreen extends JFrame {
      private JTextField name,dept,city,min,max;
+     private LoginFrame parentFrame;
    public ChooseFiltersScreen()
    {
+       this.parentFrame=parentFrame;
         setTitle("Ορισμός Φίλτρων");
         setSize(500,400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -81,7 +83,7 @@ public class ChooseFiltersScreen extends JFrame {
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
         homeButton.addActionListener(e -> {
-            new MainMenu().setVisible(true); 
+            new MainMenu(parentFrame).setVisible(true); 
             dispose(); 
         });
 

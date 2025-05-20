@@ -3,11 +3,18 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EditDescriptionFrame extends JFrame {
-    public EditDescriptionFrame(String uni_name, String department_name) {
+    private final ProfileFrame parentFrame;
+    private final String uni_name;
+    private final String department_name;
+    public EditDescriptionFrame(ProfileFrame parentFrame, String uni_name, String department_name) {
         
         //attributes
         //currentDescription (string?)
         //newDescription
+        
+        this.parentFrame= parentFrame;
+        this.uni_name=uni_name;
+        this.department_name=department_name;
         
         setTitle("Τροποποίηση Προφίλ Τμήματος "+department_name);
         setSize(500,400);
@@ -64,15 +71,24 @@ public class EditDescriptionFrame extends JFrame {
         cancel.setBounds(60,180,120,30);
         cancel.setBackground(Color.RED);
         cancel.setForeground(Color.WHITE);
-        cancel.addActionListener(e->dispose());
+        cancel.addActionListener(e-> {
+                parentFrame.setVisible(true);
+                dispose();
+            });
         editPanel.add(cancel);
         
         JButton accept=new JButton("Αποδοχή Αλλαγών");
         accept.setBounds(200,180,150,30);
         accept.setBackground(Color.GREEN);
         accept.setForeground(Color.WHITE);
-        //accept.addActionListener(e->...); will add logic here
         //αποδοχή συνδεση με db 
+        //accept.addActionListener(e -> {
+        //    String newDescription = descriptionArea.getText().trim();
+            // TODO: Save to database
+         //   JOptionPane.showMessageDialog(this, "Η περιγραφή αποθηκεύτηκε επιτυχώς!");
+           // parentFrame.setVisible(true);
+            //dispose();
+        //});
         editPanel.add(accept);
             
         JButton logout=new JButton("Αποσύνδεση");
@@ -100,8 +116,8 @@ public class EditDescriptionFrame extends JFrame {
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
         homeButton.addActionListener(e -> {
-            new MainMenu().setVisible(true);
-            dispose();
+            parentFrame.showMainMenu(uni_name);
+            dispose(); 
         });
 
         JButton back= new JButton("Πίσω");
