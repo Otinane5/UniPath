@@ -44,15 +44,12 @@ public class StudentApplicationsFrame extends JFrame {
         add(filt);
         filt.addActionListener(e-> new ChooseFiltersScreen().setVisible(true));
    
-        
-      
-        
         JPanel applicationListPanel=new JPanel();
         applicationListPanel.setLayout(new BoxLayout(applicationListPanel, BoxLayout.Y_AXIS));
         applicationListPanel.setBackground(Color.WHITE);
         //scroll
         
-        int application_num=10; //static for now. then we will make it dynamic
+        int application_num=8; //static for now. then we will make it dynamic
         for(int i=1; i<=application_num; i++) {
             JPanel singlePanel= new JPanel(null);
             singlePanel.setPreferredSize(new Dimension(700,110));
@@ -60,7 +57,7 @@ public class StudentApplicationsFrame extends JFrame {
             singlePanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
             singlePanel.setBackground(Color.WHITE);
             
-            JLabel applicationLabel=new JLabel("Αίτηση "+i); //kwdikos aithshs?
+            JLabel applicationLabel=new JLabel("Αίτηση "+i);
             //alliws etsi opws einai mporei na erthoun ki alles
             //ara to application_num synexws ayxanetai
             //++ σύνολο υπολειπόμενων αιτήσεων
@@ -71,7 +68,7 @@ public class StudentApplicationsFrame extends JFrame {
             //static (for now!)
             String name="Ονοματεπώνυμο_"+i;
             String department="Τμήμα_"+i;
-            int grades= 15000+3*i; //τυχαία εδώ. θα εισαγεται απο φοιτητη μετά τις Πανελλήνιες πχ.
+            int grades= 15000+30*i; //τυχαία εδώ. θα εισαγεται απο φοιτητη μετά τις Πανελλήνιες πχ.
             
             JLabel nameLabel=new JLabel("Ονοματεπώνυμο: "+name);
             nameLabel.setFont(new Font("Arial", Font.PLAIN,13));

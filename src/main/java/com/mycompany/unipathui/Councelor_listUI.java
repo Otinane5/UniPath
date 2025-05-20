@@ -1,7 +1,7 @@
-public class Councelor_list extends javax.swing.JPanel {
+public class Councelor_listUI extends javax.swing.JPanel {
 
     // Constructor for initializing the component
-    public Councelor_list() {
+    public Councelor_listUI() {
         initComponents();
     }
 
