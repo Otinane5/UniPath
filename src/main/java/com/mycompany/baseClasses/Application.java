@@ -1,5 +1,4 @@
-
-package com.mycompany.unipath;
+package com.mycompany.baseClasses;
 
 import java.util.List;
 

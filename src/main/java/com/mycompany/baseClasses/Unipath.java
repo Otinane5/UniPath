@@ -1,4 +1,5 @@
-package com.mycompany.unipath;
+package com.mycompany.baseClasses;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -9,6 +10,7 @@ public class Unipath {
 
 public static void main (String[] args){
     //Αρχικοποίηση του πρότζεκτ
+    User.login("sampleCounselor","s2");
     }
 }
 

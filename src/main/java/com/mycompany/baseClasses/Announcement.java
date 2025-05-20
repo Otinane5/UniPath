@@ -1,4 +1,4 @@
-package com.mycompany.unipath;
+package com.mycompany.baseClasses;
 
 public class Announcement {
     //data

@@ -10,4 +10,27 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>com.mycompany.unipathui.UniPathUI</exec.mainClass>
     </properties>
+    
+    <dependencies>
+        <!-- Jackson Databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.0</version> <!-- Check for the latest version -->
+        </dependency>
+        
+        <!-- Jackson Core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.15.0</version> <!-- Check for the latest version -->
+        </dependency>
+        
+        <!-- Jackson Annotations -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.15.0</version> <!-- Check for the latest version -->
+        </dependency>
+    </dependencies>
 </project>
