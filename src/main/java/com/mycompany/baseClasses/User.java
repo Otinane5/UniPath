@@ -20,7 +20,6 @@ public class User {
         this.password = password;
         this.userType = userType;
         this.userName = userName;
-        saveUser(); // προσθέτει τον user στο savefile
     }
     
         public User() {
@@ -28,19 +27,6 @@ public class User {
     }
 
 
-    private void saveUser() {
-        List<User> users = loadUsers();
-        users.add(this);
-        
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        
-        try { // εδώ υπάρχει ένα try-catch σε περίπτωση error κατά την εγγραφή
-            objectMapper.writeValue(new File(SAVE_FILE), users);
-        } catch (IOException e) {
-            e.printStackTrace(); 
-        }
-    }
 
     private static List<User> loadUsers() { // επιστρέφει λίστα απο user-objects 
     ObjectMapper objectMapper = new ObjectMapper();
