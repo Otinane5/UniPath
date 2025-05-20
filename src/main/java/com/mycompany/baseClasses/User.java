@@ -14,7 +14,7 @@ public class User {
     public String password;
     public int userType; // 1=πανεπιστήμιο, 2=σύμβουλος, 3=μαθητής
 
-    private static final String SAVE_FILE = "users.json"; // static και final
+    private static final String SAVE_FILE = "C:/Users/User/Documents/NetBeansProjects/Unipath/src/main/java/com/mycompany/saveFiles/users.json"; // static και final
 
     public User(String password, int userType, String userName) {
         this.password = password;
@@ -22,6 +22,11 @@ public class User {
         this.userName = userName;
         saveUser(); // προσθέτει τον user στο savefile
     }
+    
+        public User() {
+        // No-argument constructor for Jackson
+    }
+
 
     private void saveUser() {
         List<User> users = loadUsers();
@@ -43,11 +48,10 @@ public class User {
 
     try {
         // Read the JSON file and convert it to a List<User>
-         File file = new File("users.json");
+         File file = new File(SAVE_FILE);       
         if (file.exists()) {
-            System.out.println("EXISTS");
             users = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, User.class));
-        }else{System.out.println("Files does not Exist!");}
+        }else{System.out.println("File does not Exist!");}
     } catch (IOException e) {
         e.printStackTrace(); // Handle the exception (you might want to log this instead)
     }
@@ -58,7 +62,6 @@ public class User {
     public static User login(String userName, String password) { // Αυτή η μέθοδος επιστρέφει τον user αν αυτός βρεθεί.
         List<User> users = loadUsers(); // Φορτώνει όλους τους users
         for (User user : users) {
-            System.out.println(user);
             if (user.userName.equals(userName) && user.password.equals(password)) {
                 System.out.println("Success");
                 return user; // Επιστρέφουμε το χρήστη αν βρεθεί

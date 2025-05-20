@@ -10,7 +10,7 @@ public class Unipath {
 
 public static void main (String[] args){
     //Αρχικοποίηση του πρότζεκτ
-    User.login("sampleCounselor","s2");
+   // User.login("sampleCounselor","s2");
     }
 }
 
