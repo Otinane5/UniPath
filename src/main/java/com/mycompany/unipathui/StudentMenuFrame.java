@@ -148,7 +148,7 @@ public class StudentMenuFrame extends JFrame {
        viewdepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
        
        councelorcontactButton.addActionListener(e -> {
-       new ViewScreenCounselor("Ανδρέας", "Χρήστου").setVisible(true);
+       new ViewScreenCounselor().setVisible(true);
 });
         logoutButton.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(

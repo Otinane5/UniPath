@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ViewScreenCounselor extends JFrame {
 
-    public ViewScreenCounselor(String firstName, String lastName) {
+    public ViewScreenCounselor() {
         setTitle("Προφίλ Συμβούλου");
         setSize(800, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -18,12 +18,6 @@ public class ViewScreenCounselor extends JFrame {
         title.setBounds(300, 10, 200, 30);
         add(title);
 
-        // Όνομα χρήστη
-        JLabel nameLabel = new JLabel(firstName + " " + lastName, SwingConstants.CENTER);
-        nameLabel.setFont(new Font("Arial", Font.ITALIC, 14));
-        nameLabel.setBounds(300, 40, 200, 20);
-        add(nameLabel);
-
         // Κουμπί Μηνυμάτων
         JButton messagesButton = new JButton("Τα μηνύματά μου");
         ImageIcon envelopeIcon = new ImageIcon(getClass().getResource("/icons/envelope.png"));
@@ -32,7 +26,7 @@ public class ViewScreenCounselor extends JFrame {
         messagesButton.setBounds(630, 10, 150, 30);
         add(messagesButton);
         messagesButton.addActionListener(e -> {
-        new MessageBoxFrame().setVisible(true);
+            new MessageBoxFrame().setVisible(true);
         });
 
         // Τίτλος συμβούλων
@@ -46,7 +40,6 @@ public class ViewScreenCounselor extends JFrame {
         advisorsPanel.setLayout(new GridLayout(0, 1, 10, 10));
         advisorsPanel.setBackground(Color.LIGHT_GRAY);
 
-        // Προσθήκη συμβούλων (μπορείς να προσθέσεις κι άλλους)
         String[][] advisors = {
             {"Μαρία Παπαδοπούλου", "2101234567"},
             {"Γιάννης Δημητρίου", "2107654321"},
@@ -56,7 +49,7 @@ public class ViewScreenCounselor extends JFrame {
         };
 
         for (String[] advisor : advisors) {
-            JPanel row = new JPanel(new GridLayout(2, 2));
+            JPanel row = new JPanel(new GridLayout(3, 2, 5, 5));
             row.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
             JLabel name = new JLabel(advisor[0]);
@@ -64,13 +57,29 @@ public class ViewScreenCounselor extends JFrame {
             JButton profileBtn = new JButton("Προβολή προφίλ");
             JButton appointmentBtn = new JButton("Ραντεβού");
 
-            profileBtn.setBackground(Color.decode("#E6B3FF")); // ανοιχτό μοβ
+            profileBtn.setBackground(Color.decode("#E6B3FF")); // light purple
             appointmentBtn.setBackground(Color.GREEN);
+
+            // Numeric input (spinner) for review
+            JLabel reviewLabel = new JLabel("Βαθμολόγηση:");
+            SpinnerModel model = new SpinnerNumberModel(0, 0, 5, 1);
+            JSpinner reviewSpinner = new JSpinner(model);
+
+            // Submit button for review
+            JButton submitReviewBtn = new JButton("Υποβολή");
+            submitReviewBtn.addActionListener(e -> {
+                System.out.println("pressed button!");
+            });
 
             row.add(name);
             row.add(profileBtn);
             row.add(phone);
             row.add(appointmentBtn);
+            row.add(reviewLabel);
+            JPanel reviewPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+            reviewPanel.add(reviewSpinner);
+            reviewPanel.add(submitReviewBtn);
+            row.add(reviewPanel);
 
             advisorsPanel.add(row);
         }
@@ -96,6 +105,16 @@ public class ViewScreenCounselor extends JFrame {
         backBtn.setBounds(580, 400, 180, 30);
         add(backBtn);
 
+        // Νέο κουμπί: "Προτάσεις Για Εσένα"
+        JButton suggestionsBtn = new JButton("Προτάσεις Για Εσένα");
+        suggestionsBtn.setBackground(Color.decode("#66CCFF")); // Light blue
+        suggestionsBtn.setBounds(300, 360, 180, 30);
+        add(suggestionsBtn);
+
+        suggestionsBtn.addActionListener(e -> {
+            System.out.println("pressed!");
+        });
+
         // Λειτουργίες κουμπιών
         logoutBtn.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(this, "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;", "Επιβεβαίωση", JOptionPane.YES_NO_OPTION);
@@ -116,4 +135,3 @@ public class ViewScreenCounselor extends JFrame {
         });
     }
 }
-
