@@ -77,7 +77,7 @@ public class StudentLoginPanel extends JPanel {
             //Αναζήτηση χρήστη:
             User myUser = User.login(username,password);
             if (myUser != null && myUser.userType==3) {
-                Unipath.userName = username;
+                Unipath.currentUser = myUser;
                 new StudentMenuFrame().setVisible(true);
                 SwingUtilities.getWindowAncestor(this).dispose();
             }

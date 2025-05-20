@@ -31,7 +31,7 @@ public class StudentMenuFrame extends JFrame {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        JLabel studentNameLabel = new JLabel(Unipath.userName);
+        JLabel studentNameLabel = new JLabel(Unipath.currentUser.userName);
         studentNameLabel.setFont(new Font("Arial", Font.ITALIC,14));
         studentNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         studentNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);

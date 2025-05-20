@@ -76,7 +76,7 @@ public class UniversityLoginPanel extends JPanel {
 
             User myUser = User.login(username,password);
             if (myUser != null && myUser.userType==1) {
-                Unipath.userName = username;
+                Unipath.currentUser = myUser;
                 parentFrame.showMainMenu(username);
                 //SwingUtilities.getWindowAncestor(this).dispose();
                 

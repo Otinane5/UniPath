@@ -78,7 +78,13 @@ public class CounselorLoginPanel extends JPanel {
 
             User myUser = User.login(username,password);
             if (myUser != null && myUser.userType==2) {
-                Unipath.userName = username;
+                Unipath.currentUser = myUser;
+                CounselorProfilePanel.CounselorToDisplay.userName=Unipath.currentUser.userName;
+                CounselorProfilePanel.CounselorToDisplay.name="SampleName";
+                CounselorProfilePanel.CounselorToDisplay.lastName="SampleLastName";
+                CounselorProfilePanel.CounselorToDisplay.email="SampleEmail";
+                CounselorProfilePanel.CounselorToDisplay.phoneNum="6900000000";
+                CounselorProfilePanel.CounselorToDisplay.bio="Samplebio";
                 new CounselorMenuFrame().setVisible(true);
                 SwingUtilities.getWindowAncestor(this).dispose();
             }

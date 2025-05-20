@@ -1,13 +1,11 @@
 [ {
-  "userName" : "sampleUniversity",
-  "password" : "s1",
-  "userType" : 1
-},{
-  "userName" : "sampleCounselor",
-  "password" : "s2",
-  "userType" : 2
-},{
-  "userName" : "sampleStudent",
-  "password" : "s3",
-  "userType" : 3
+  "userName" : "nvasileiou",
+  "password" : "pass4",
+  "userType" : 2,
+  "apointments" : null,
+  "name" : null,
+  "lastName" : null,
+  "email" : null,
+  "phoneNum" : null,
+  "bio" : null
 } ]

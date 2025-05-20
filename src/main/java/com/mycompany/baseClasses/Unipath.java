@@ -7,13 +7,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Unipath {
-    public static String userName;
+    public static User currentUser;
     //+other data
 
 public static void main (String[] args){
     LoginFrame login = new LoginFrame();
-    //Αρχικοποίηση του πρότζεκτ
-   // User.login("sampleCounselor","s2");
     }
 }
 

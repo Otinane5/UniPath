@@ -32,7 +32,7 @@ public class CounselorMenuFrame extends JFrame {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        JLabel counselorNameLabel = new JLabel(Unipath.userName);
+        JLabel counselorNameLabel = new JLabel(Unipath.currentUser.userName);
         counselorNameLabel.setFont(new Font("Arial", Font.ITALIC,14));
         counselorNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         counselorNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
