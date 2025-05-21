@@ -1,4 +1,3 @@
-Application_FormUI$1.class
 com\mycompany\unipathui\CounselorAcceptAppointmentPanel.class
 com\mycompany\baseClasses\Student.class
 com\mycompany\baseClasses\Announcement.class
@@ -9,6 +8,7 @@ com\mycompany\unipathui\ManageSearchClass.class
 com\mycompany\unipathui\FilteredListScreen.class
 com\mycompany\unipathui\DepartmentListCounselor.class
 com\mycompany\unipathui\LoginFrame.class
+com\mycompany\unipathui\Application_FormUI.class
 com\mycompany\unipathui\CounselorAppointmentRequestsPanel.class
 com\mycompany\unipathui\MainMenu.class
 com\mycompany\unipathui\ChooseFiltersScreen.class
@@ -19,11 +19,9 @@ com\mycompany\unipathui\NewMessageFrame.class
 com\mycompany\unipathui\ProfileFrame.class
 com\mycompany\unipathui\CounselorAppointmentDetailsPanel.class
 com\mycompany\unipathui\CounselorEditProfilePanelUI.class
-Application_FormUI$2.class
 com\mycompany\unipathui\StudentApplicationsFrame.class
 com\mycompany\unipathui\DepartmentListUI.class
 com\mycompany\unipathui\UniversityLoginPanel.class
-Application_FormUI.class
 com\mycompany\unipathui\StarterQuiz.class
 com\mycompany\baseClasses\MessageBox.class
 com\mycompany\unipathui\StudentMenuFrame.class
