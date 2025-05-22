@@ -37,7 +37,7 @@ public class ViewScreenCounselor extends JFrame {
         advisorsPanel.setLayout(new GridLayout(0, 1, 10, 10));
         advisorsPanel.setBackground(Color.LIGHT_GRAY);
 
-        List<Counselor> counselors = Counselor.sample; // Your sample list
+        List<Counselor> counselors = Counselor.getSampleCounselors(); // Your sample list
 
         for (Counselor counselor : counselors) {
             JPanel row = new JPanel(new GridLayout(3, 2, 5, 5));
@@ -47,6 +47,11 @@ public class ViewScreenCounselor extends JFrame {
             JLabel phone = new JLabel(counselor.phoneNum);
             JButton profileBtn = new JButton("Προβολή προφίλ");
             JButton appointmentBtn = new JButton("Ραντεβού");
+            appointmentBtn.addActionListener(e -> {
+             String studentName = "Όνομα Μαθητή"; 
+            String counselorFullName = counselor.name + " " + counselor.lastName;
+            new CounselorFormScreen(studentName, counselorFullName).setVisible(true);
+            });
 
             profileBtn.setBackground(Color.decode("#E6B3FF"));
             appointmentBtn.setBackground(Color.GREEN);
