@@ -11,12 +11,12 @@ public class LoginFrame extends JFrame {
     //ATTRIBUTES
     private final CardLayout cardLayout;
     private final JPanel contentPanel;
-    private final MainMenu mainMenuPanel;
+    private  MainMenu mainMenuPanel;
     //CONSTRUCTOR
     public LoginFrame() {
         //Παραμετροποίηση Παραθύρου
         setTitle("UniPath - Σύνδεση");
-        setSize(500, 400); //πρέπει να αλλαχτεί παντού και να είναι ίδιο σε όλη την εφαρμογή
+        setSize(500, 400); 
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -120,12 +120,31 @@ public class LoginFrame extends JFrame {
     }
     //Επιστρέφει τον χρήστη στο panel επιλογής ρόλου.
     public void showRoleSelectionPanel() {
-        cardLayout.show(contentPanel, "roleSelection");
+        //cardLayout.show(contentPanel, "roleSelection");
+        setTitle("UniPath - Σύνδεση"); // Reset τον τίτλο όταν πάει πίσω
+    cardLayout.show(contentPanel, "roleSelection");
     }
     
     public void showMainMenu(String universityName) {
-        mainMenuPanel.setUniversityName(universityName);
-        cardLayout.show(contentPanel, "mainMenu");
+        //mainMenuPanel.setUniversityName(universityName);
+        //cardLayout.show(contentPanel, "mainMenu");
+        if (mainMenuPanel != null) {
+        contentPanel.remove(mainMenuPanel);
     }
+    
+    //νέο MainMenu με τον τωρινό constructor
+    mainMenuPanel = new MainMenu(this); 
+    mainMenuPanel.setUniversityName(universityName);  
+    contentPanel.add(mainMenuPanel, "mainMenu");
+    
+    //Update τον τίτλο
+    setTitle("Main Menu (Πανεπιστήμιο)");
+    
+    // δείχνει το MainMenu
+    cardLayout.show(contentPanel, "mainMenu");
+    
+    // Refresh 
+    contentPanel.revalidate();
+    contentPanel.repaint();}
     
 }

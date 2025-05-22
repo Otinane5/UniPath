@@ -18,10 +18,11 @@ public class MainMenu extends JPanel {
         setLocationRelativeTo(null);
         setLayout(null);*/
         
-        JLabel title = new JLabel("UniPath", SwingConstants.CENTER);
-        title.setFont(new Font("Arial", Font.BOLD, 24));
-        title.setBounds(155,20,200,30);
-        add(title);
+        //overlapping
+        //JLabel title = new JLabel("UniPath", SwingConstants.CENTER);
+        //title.setFont(new Font("Arial", Font.BOLD, 24));
+        //title.setBounds(155,20,200,30);
+        //add(title);
         
         //θα κάνει ανάκτηση του ονόματος μέσω του login
         uni_name=new JLabel("<Όνομα πανεπιστημίου>", SwingConstants.CENTER);
@@ -90,4 +91,3 @@ public class MainMenu extends JPanel {
     
 }
 
-//fullscreen?

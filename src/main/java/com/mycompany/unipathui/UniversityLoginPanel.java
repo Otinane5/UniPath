@@ -78,6 +78,7 @@ public class UniversityLoginPanel extends JPanel {
             if (myUser != null && myUser.userType==1) {
                 Unipath.currentUser = myUser;
                 parentFrame.showMainMenu(username);
+                //parentFrame.showMainMenu(myUser.getUniversityName());
                 //SwingUtilities.getWindowAncestor(this).dispose();
                 
             }
@@ -98,3 +99,19 @@ public class UniversityLoginPanel extends JPanel {
         passwordField.setText("");
     }
 }
+
+/*
+
+loginButton.addActionListener(e -> {
+    loginButton.setEnabled(false);
+    loginButton.setText("Σύνδεση...");
+    
+    ...
+    
+    loginButton.setEnabled(true);
+    loginButton.setText("Σύνδεση");
+});
+
+usernameField.addActionListener(e -> passwordField.requestFocus());
+passwordField.addActionListener(e -> loginButton.doClick());
+*/
