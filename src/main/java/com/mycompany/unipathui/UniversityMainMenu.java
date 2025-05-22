@@ -85,22 +85,14 @@ public class UniversityMainMenu extends JFrame {
         menuPanel.add(actionTitle);
         menuPanel.add(Box.createRigidArea(new Dimension(0, 30))); // Απόσταση από κουμπιά
 
-        Dimension buttonSize = new Dimension(300, 50);
-
         JButton viewApplicationsButton = new JButton("Προβολή Αιτήσεων Μαθητών");
         viewApplicationsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         viewApplicationsButton.setBounds(50,40,200,30);
-        //viewApplicationsButton.setPreferredSize(buttonSize);
-        //viewApplicationsButton.setMaximumSize(buttonSize);
-        //viewApplicationsButton.setBackground(Color.decode("#B3FF66"));
         viewApplicationsButton.setBackground(Color.GREEN);
 
         JButton viewDepartmentsButton= new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίου");
         viewDepartmentsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         viewDepartmentsButton.setBounds(10,80,280,30);
-        //viewDepartmentsButton.setPreferredSize(buttonSize);
-        //viewDepartmentsButton.setMaximumSize(buttonSize);
-        //viewDepartmentsButton.setBackground(Color.decode("#99EBFF"));
         viewDepartmentsButton.setBackground(Color.CYAN);
         
         menuPanel.add(viewApplicationsButton);
@@ -119,11 +111,15 @@ public class UniversityMainMenu extends JFrame {
 
         // --- Panels --- 
         StudentApplicationsPanel applicationsPanel = new StudentApplicationsPanel(cardLayout, cardPanel);
-        DepartmentListCounselor deplistPanel = new DepartmentListCounselor(
-                () -> cardLayout.show(cardPanel, "menu"),
-                () -> cardLayout.show(cardPanel, "showDepartment"),
-                () -> cardLayout.show(cardPanel, "applicationForm")
-        ); 
+        EditDescriptionFrame editDesc = new EditDescriptionFrame(cardLayout, cardPanel);
+        AddAnnouncementFrame addAnnoun = new AddAnnouncementFrame(cardLayout, cardPanel);
+        ProfilePanel profileDetailsPanel = new ProfilePanel(cardLayout, cardPanel, editDesc, addAnnoun);
+        DepartmentListPanel deplistPanel = new DepartmentListPanel(cardLayout, cardPanel, profileDetailsPanel);
+        //DepartmentListCounselor deplistPanel = new DepartmentListCounselor(
+        //        () -> cardLayout.show(cardPanel, "menu"),
+        //        () -> cardLayout.show(cardPanel, "showDepartment"),
+        //        () -> cardLayout.show(cardPanel, "applicationForm")
+        //); 
         
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(applicationsPanel, "applications");

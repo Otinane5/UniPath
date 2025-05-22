@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class EditDescriptionFrame extends JFrame {
 
-    public EditDescriptionFrame(ProfilePanel parentFrame, String uni_name, String department_name) {
+    public EditDescriptionFrame(CardLayout cardLayout, JPanel cardPanel) {
         /*
         //attributes
         //currentDescription (string?)

@@ -3,8 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AddAnnouncementFrame extends JFrame {
-    private LoginFrame parentFrame;
-    public AddAnnouncementFrame(LoginFrame parentFrame,String uni_name, String department_name) {
+    
+    public AddAnnouncementFrame(CardLayout cardLayout, JPanel cardPanel) {
     /*    this.parentFrame=parentFrame;
         //attributes
         //newAnnouncement

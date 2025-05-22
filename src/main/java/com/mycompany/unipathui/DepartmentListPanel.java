@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class DepartmentListPanel extends JPanel {
     
-    public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel, ProfilePanel detailsProfilePanel) {
+    public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel, ProfilePanel detailsPanel) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel listTitle = new JLabel("Λίστα Τμημάτων Πανεπιστημίου", SwingConstants.CENTER);
@@ -28,10 +28,6 @@ public class DepartmentListPanel extends JPanel {
             JButton viewProfile= new JButton("Προβολή Προφίλ Τμήματος");
             viewProfile.setBackground(Color.CYAN);
             viewProfile.addActionListener(e-> cardLayout.show(cardPanel, "profileDetails"));
-                //new ProfileFrame(parentFrame,uni_name, department).setVisible(true);
-                //JOptionPane.showMessageDialog(this, "Προφίλ τμήματος:"+department);
-                // Will add more logic here soon
-                //});
             departmentPanel.add(viewProfile, BorderLayout.EAST);
         }
         
@@ -54,13 +50,16 @@ public class DepartmentListPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
     public void getDepartments() {
+        // For future use
     }
     public void getDepartmentList() {
+        // For future use
     }
     //argument departmentID int
     public void selectDepartment() {
+        // For future use
     }
     public void requestDepartmentList() {
+        // For future use
     }
 }
-//μεγαλύτερο box λίστας
