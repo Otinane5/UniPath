@@ -105,17 +105,27 @@ public class Application_FormUI extends JPanel {
     }
 
     private void submitForm(ActionEvent evt) {
-        String fullName = jTextField1.getText();
+        String fullName = jTextField1.getText().trim();
         String residence = jComboBox1.getSelectedItem().toString();
-        String birthDate = jTextField2.getText();
-        String phone = jTextField3.getText();
-        String email = jTextField4.getText();
-        String gradePoints = jTextField5.getText();
+        String birthDate = jTextField2.getText().trim();
+        String phone = jTextField3.getText().trim();
+        String email = jTextField4.getText().trim();
+        String gradePoints = jTextField5.getText().trim();
 
-        Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints);
-        Application.sample.add(newApp);
+        // Check if all fields are filled
+        if (fullName.isEmpty() || residence.isEmpty() || birthDate.isEmpty() || phone.isEmpty() || email.isEmpty() || gradePoints.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Παρακαλώ συμπληρώστε όλα τα πεδία.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-        JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!");
-        resetForm(null);
+        // Ask for confirmation before submitting
+        int response = JOptionPane.showConfirmDialog(this, "Είστε σίγουροι ότι θέλετε να υποβάλετε την αίτηση;", 
+                                                     "Επιβεβαίωση Υποβολής", JOptionPane.YES_NO_OPTION);
+        if (response == JOptionPane.YES_OPTION) {
+            Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints);
+            Application.sample.add(newApp);
+            JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!");
+            resetForm(null);
+        }
     }
 }
