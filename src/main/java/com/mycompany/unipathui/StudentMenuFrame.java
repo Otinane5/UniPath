@@ -53,6 +53,12 @@ public class StudentMenuFrame extends JFrame {
         ImageIcon envelopeIcon = new ImageIcon(getClass().getResource("/icons/envelope.png"));
         Image envelopeImage = envelopeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         messagesButton.setIcon(new ImageIcon(envelopeImage));
+        messagesButton.setBounds(630, 10, 150, 30);
+        add(messagesButton);
+        messagesButton.addActionListener(e -> new MessageBoxFrame().setVisible(true));
+        
+        
+        
         
         //Τοποθέτηση κουμπιού δεξιά
         gbc.gridx = 2;
