@@ -13,7 +13,7 @@ public class LoginFrame extends JFrame {
     private final JPanel contentPanel;
     private  UniversityMainMenu mainMenuPanel;
     
-     private UniversityLoginPanel universityLoginPanel;
+    private UniversityLoginPanel universityLoginPanel;
     //CONSTRUCTOR
     public LoginFrame() {
         //Παραμετροποίηση Παραθύρου
@@ -52,11 +52,8 @@ public class LoginFrame extends JFrame {
         contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
         contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
 
-         universityLoginPanel = new UniversityLoginPanel(this);
+        universityLoginPanel = new UniversityLoginPanel(this);
         contentPanel.add(universityLoginPanel, "UniversityLogin");
-        
-        mainMenuPanel= new UniversityMainMenu(this);
-        contentPanel.add(mainMenuPanel, "mainMenu");
         
         add(contentPanel, BorderLayout.CENTER);
 
@@ -116,7 +113,6 @@ public class LoginFrame extends JFrame {
             cardLayout.show(contentPanel, "counselorLogin");
         });
         universityButton.addActionListener(e -> {
-            // TODO: Εμφάνιση του university login panel
             cardLayout.show(contentPanel, "UniversityLogin");
             universityLoginPanel.requestFocusOnUsername();
         });
@@ -130,27 +126,4 @@ public class LoginFrame extends JFrame {
         setTitle("UniPath - Σύνδεση"); // Reset τον τίτλο όταν πάει πίσω
     cardLayout.show(contentPanel, "roleSelection");
     }
-    
-    public void showMainMenu(String universityName) {
-        //mainMenuPanel.setUniversityName(universityName);
-        //cardLayout.show(contentPanel, "mainMenu");
-        if (mainMenuPanel != null) {
-        contentPanel.remove(mainMenuPanel);
-    }
-    
-    //νέο MainMenu με τον τωρινό constructor
-    mainMenuPanel = new UniversityMainMenu(this); 
-    mainMenuPanel.setUniversityName(universityName);  
-    contentPanel.add(mainMenuPanel, "mainMenu");
-    
-    //Update τον τίτλο
-    setTitle("Main Menu (Πανεπιστήμιο)");
-    
-    // δείχνει το MainMenu
-    cardLayout.show(contentPanel, "mainMenu");
-    
-    // Refresh 
-    contentPanel.revalidate();
-    contentPanel.repaint();}
-    
 }

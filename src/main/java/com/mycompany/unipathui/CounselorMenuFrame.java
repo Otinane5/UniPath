@@ -10,7 +10,7 @@ public class CounselorMenuFrame extends JFrame {
     private CardLayout cardLayout;
 
     public CounselorMenuFrame() {
-        setTitle("UniPath - Αρχικό Μενού συμβούλου");
+        setTitle("UniPath - Σύμβουλος");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
         setLayout(new BorderLayout(10, 10));
@@ -125,8 +125,6 @@ public class CounselorMenuFrame extends JFrame {
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "editProfile")
         );
-
-        // Panels
         CounselorAcceptAppointmentPanel acceptPanel = new CounselorAcceptAppointmentPanel(cardLayout, cardPanel);
         CounselorRejectAppointmentPanel rejectPanel = new CounselorRejectAppointmentPanel(cardLayout, cardPanel);
         CounselorAppointmentDetailsPanel detailsPanel = new CounselorAppointmentDetailsPanel(cardLayout, cardPanel, acceptPanel, rejectPanel);
@@ -168,7 +166,6 @@ public class CounselorMenuFrame extends JFrame {
                 new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
             }
         });
-
         setVisible(true);
     }
 }

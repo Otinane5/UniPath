@@ -1,75 +1,137 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
 
-public class UniversityMainMenu extends JPanel {
-    private final JLabel uni_name;
-    private LoginFrame parentFrame;
+public class UniversityMainMenu extends JFrame {
     
-    public UniversityMainMenu(LoginFrame parentFrame) { 
-
-        this.parentFrame=parentFrame;
-        setLayout(null);
-        
-        /*setTitle("Main Menu (Πανεπιστήμιο)");
-        setSize(500,400); // screen size 
+    private JPanel cardPanel;
+    private CardLayout cardLayout;
+    
+    public UniversityMainMenu() { 
+        setTitle("UniPath - Πανεπιστήμιο");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setLayout(null);*/
+        setSize(600, 600);
+        setLayout(new BorderLayout(10, 10));
+
+        // --- TOP PANEL ---
+        JPanel topPanel = new JPanel(new GridBagLayout());
+        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //Προαιρετικό padding
         
-        //overlapping
-        //JLabel title = new JLabel("UniPath", SwingConstants.CENTER);
-        //title.setFont(new Font("Arial", Font.BOLD, 24));
-        //title.setBounds(155,20,200,30);
-        //add(title);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 1; // κεντρική στήλη
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 1.0;
+
+        //Τίτλοι (στο κέντρο)
+        JLabel titleLabel = new JLabel("UniPath");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        //θα κάνει ανάκτηση του ονόματος μέσω του login
-        uni_name=new JLabel("<Όνομα πανεπιστημίου>", SwingConstants.CENTER);
+        JLabel uni_name = new JLabel(Unipath.currentUser.userName);
         uni_name.setFont(new Font("Arial", Font.ITALIC,14));
-        uni_name.setBounds(155,55,200,20);
-        add(uni_name);
+        uni_name.setHorizontalAlignment(SwingConstants.CENTER);
+        uni_name.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        JButton messagesButton = new JButton("Τα μηνύματά μου"); 
+        //Τίτλοι σε κάθετη στοίχιση
+        JPanel titleBox = new JPanel();
+        titleBox.setLayout(new BoxLayout(titleBox, BoxLayout.Y_AXIS));
+        titleBox.setOpaque(false);
+        titleBox.add(titleLabel);
+        titleBox.add(uni_name);
+        
+        //Προσθήκη τίτλων στο κέντρο
+        topPanel.add(titleBox, gbc);
+        
+        //Κουμπί Μηνυμάτων (δεξιά)
+        JButton messagesButton = new JButton("Τα μηνύματά μου");
+        messagesButton.setPreferredSize(new Dimension(160, 30)); //Σταθερό μέγεθος
+
         ImageIcon envelopeIcon = new ImageIcon(getClass().getResource("/icons/envelope.png"));
-        
         Image envelopeImage = envelopeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         messagesButton.setIcon(new ImageIcon(envelopeImage));
-        messagesButton.setBounds(330,20,160,30); // adjust width for icon
-        add(messagesButton); 
-       
-        JPanel actionPanel = new JPanel();
-        actionPanel.setLayout(null);
-        actionPanel.setBounds(110,100,300,150);
-        add(actionPanel);
         
-        JLabel actionLabel= new JLabel("Επιλογή Ενέργειας:");
-        actionLabel.setFont(new Font("Arial", Font.BOLD,14));
-        actionLabel.setBounds(80,10,200,20);
-        actionPanel.add(actionLabel);
+        //Τοποθέτηση κουμπιού δεξιά
+        gbc.gridx = 2;
+        gbc.anchor = GridBagConstraints.EAST;
+        gbc.weightx = 0.0;
+        topPanel.add(messagesButton, gbc);
         
-        JButton viewApplicationsButton= new JButton("Προβολή Αιτήσεων Μαθητών");
-        viewApplicationsButton.setBounds(50,40,200,30);
-        viewApplicationsButton.setBackground(Color.decode("#B3FF66"));
-        actionPanel.add(viewApplicationsButton);
-        viewApplicationsButton.addActionListener(e-> new StudentApplicationsFrame(parentFrame,uni_name.getText()).setVisible(true));
+        //Dummy "αόρατο" panel αριστερά για να εξισορροπήσει το βάρος
+        gbc.gridx = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.weightx = 0.0;
+        topPanel.add(Box.createHorizontalStrut(160), gbc); // ίδιο πλάτος με το κουμπί
         
-        JButton viewDepartmentsButton= new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίου");
-        viewDepartmentsButton.setBounds(10,80,280,30);
-        viewDepartmentsButton.setBackground(Color.decode("#99EBFF"));
-        actionPanel.add(viewDepartmentsButton);
+        //Προσθήκη panel στο frame
+        add(topPanel, BorderLayout.NORTH);
         
-        viewDepartmentsButton.addActionListener(e -> {
-            String universityName = uni_name.getText(); 
-            new DepartmentListFrame(parentFrame,universityName).setVisible(true);
-        });
+        // --- CENTER ---
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
 
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        menuPanel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
+
+        // Προσθήκη τίτλου
+        JLabel actionTitle = new JLabel("Επιλογή Ενέργειας:");
+        actionTitle.setFont(new Font("Arial", Font.BOLD, 18));
+        actionTitle.setAlignmentX(Component.CENTER_ALIGNMENT); // Κέντρο
+        menuPanel.add(actionTitle);
+        menuPanel.add(Box.createRigidArea(new Dimension(0, 30))); // Απόσταση από κουμπιά
+
+        Dimension buttonSize = new Dimension(300, 50);
+
+        JButton viewApplicationsButton = new JButton("Προβολή Αιτήσεων Μαθητών");
+        viewApplicationsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        viewApplicationsButton.setBounds(50,40,200,30);
+        //viewApplicationsButton.setPreferredSize(buttonSize);
+        //viewApplicationsButton.setMaximumSize(buttonSize);
+        //viewApplicationsButton.setBackground(Color.decode("#B3FF66"));
+        viewApplicationsButton.setBackground(Color.GREEN);
+
+        JButton viewDepartmentsButton= new JButton("Προβολή Λίστας Τμημάτων Πανεπιστημίου");
+        viewDepartmentsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        viewDepartmentsButton.setBounds(10,80,280,30);
+        //viewDepartmentsButton.setPreferredSize(buttonSize);
+        //viewDepartmentsButton.setMaximumSize(buttonSize);
+        //viewDepartmentsButton.setBackground(Color.decode("#99EBFF"));
+        viewDepartmentsButton.setBackground(Color.CYAN);
+        
+        menuPanel.add(viewApplicationsButton);
+        menuPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        menuPanel.add(viewDepartmentsButton);
+
+        add(cardPanel, BorderLayout.CENTER);
+
+        // --- BOTTOM ---
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton logoutButton = new JButton("Αποσύνδεση");
         logoutButton.setBounds(185,280,150,30);
         logoutButton.setBackground(Color.decode("#FF6666"));
-        add(logoutButton);
-        //fix it
+        bottomPanel.add(logoutButton);
+        add(bottomPanel, BorderLayout.SOUTH);
+
+        // --- Panels --- 
+        StudentApplicationsPanel applicationsPanel = new StudentApplicationsPanel(cardLayout, cardPanel);
+        DepartmentListCounselor deplistPanel = new DepartmentListCounselor(
+                () -> cardLayout.show(cardPanel, "menu"),
+                () -> cardLayout.show(cardPanel, "showDepartment"),
+                () -> cardLayout.show(cardPanel, "applicationForm")
+        ); 
         
+        cardPanel.add(menuPanel, "menu");
+        cardPanel.add(applicationsPanel, "applications");
+        cardPanel.add(deplistPanel, "seeListOfDepartments");
+
+        // Action Listeners
+        viewApplicationsButton.addActionListener(e -> cardLayout.show(cardPanel, "applications"));
+        viewDepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
         logoutButton.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(
                     this,
@@ -79,15 +141,11 @@ public class UniversityMainMenu extends JPanel {
             );
 
             if (result == JOptionPane.YES_OPTION) {
-                if (parentFrame != null) {
-                    parentFrame.showRoleSelectionPanel();
-                }
+                dispose(); // Κλείσιμο αυτού του frame
+                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
             }
         });
+        setVisible(true);
     }
-    
-    public void setUniversityName(String name)
-    {uni_name.setText(name);}
-    
 }
 

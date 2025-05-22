@@ -5,7 +5,7 @@ import com.mycompany.baseClasses.User;
 import javax.swing.*;
 import java.awt.*;
 
-//Πάνελ Σύνδεσης Συμβούλου: Εμφανίζει πλαίσια για όνομα χρή-
+//Πάνελ Σύνδεσης Πανεπιστημίου: Εμφανίζει πλαίσια για όνομα χρή-
 //στη και κωδικό, καθώς και τα κουμπιά "Σύνδεση" και "Πίσω".
 
 public class UniversityLoginPanel extends JPanel {
@@ -70,8 +70,6 @@ public class UniversityLoginPanel extends JPanel {
         centerWrapper.add(loginPanel);
         add(centerWrapper, BorderLayout.CENTER);
 
-        //SwingUtilities.invokeLater(() -> usernameField.requestFocusInWindow());
-
         //Λειτουργικότητα κουμπιών
         loginButton.addActionListener(e -> {
             String username = usernameField.getText();
@@ -80,7 +78,9 @@ public class UniversityLoginPanel extends JPanel {
             User myUser = User.login(username,password);
             if (myUser != null && myUser.userType==1) {
                 Unipath.currentUser = myUser;
-                parentFrame.showMainMenu(username);
+                new UniversityMainMenu().setVisible(true);
+                SwingUtilities.getWindowAncestor(this).dispose();
+                //parentFrame.showMainMenu(username);
                 //parentFrame.showMainMenu(myUser.getUniversityName());
                 //SwingUtilities.getWindowAncestor(this).dispose();
                 
@@ -106,19 +106,3 @@ public class UniversityLoginPanel extends JPanel {
         SwingUtilities.invokeLater(() -> usernameField.requestFocusInWindow());
     }
 }
-
-/*
-
-loginButton.addActionListener(e -> {
-    loginButton.setEnabled(false);
-    loginButton.setText("Σύνδεση...");
-    
-    ...
-    
-    loginButton.setEnabled(true);
-    loginButton.setText("Σύνδεση");
-});
-
-usernameField.addActionListener(e -> passwordField.requestFocus());
-passwordField.addActionListener(e -> loginButton.doClick());
-*/

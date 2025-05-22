@@ -45,8 +45,6 @@ public class CounselorLoginPanel extends JPanel {
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));
 
-        //backButton.setBackground(Color.PINK);
-        
         //Μέγεθος και στοίχιση κουμπιών ρόλου
         Dimension buttonSize = new Dimension(200, 35);
         for (JButton btn : new JButton[]{loginButton, backButton}) {
@@ -63,6 +61,7 @@ public class CounselorLoginPanel extends JPanel {
         loginPanel.add(passwordField);
         loginPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
+        //Κουμπί Login
         loginPanel.add(loginButton);
         loginPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         loginPanel.add(backButton);
@@ -85,6 +84,7 @@ public class CounselorLoginPanel extends JPanel {
                 CounselorProfilePanel.CounselorToDisplay.email="SampleEmail";
                 CounselorProfilePanel.CounselorToDisplay.phoneNum="6900000000";
                 CounselorProfilePanel.CounselorToDisplay.bio="Samplebio";
+                CounselorProfilePanel.CounselorToDisplay.reviews=java.util.List.of(4, 3, 4, 5,1,1,2,3,4);
                 new CounselorMenuFrame().setVisible(true);
                 SwingUtilities.getWindowAncestor(this).dispose();
             }

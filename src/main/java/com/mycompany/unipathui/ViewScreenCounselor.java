@@ -62,8 +62,14 @@ public class ViewScreenCounselor extends JFrame {
 
             JButton submitReviewBtn = new JButton("Υποβολή");
             submitReviewBtn.addActionListener(e -> {
-                System.out.println("Review submitted for " + counselor.userName);
-            });
+    // Get the review score from the JSpinner
+    int reviewScore = (Integer) reviewSpinner.getValue();
+    
+    // Add the review score to the counselor's reviews list
+    System.out.println("Review submitted for " + counselor.userName + ": " + reviewScore);
+    //counselor.reviews.add(reviewScore);  // Add the review score to the counselor's reviews list
+});
+
 
             // Assign selected counselor before opening the profile
     profileBtn.addActionListener(e -> {
