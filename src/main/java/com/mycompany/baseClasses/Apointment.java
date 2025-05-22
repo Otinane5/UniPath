@@ -2,10 +2,10 @@ package com.mycompany.baseClasses;
 
 import java.util.List;
 
-public class Apointment extends Form{
+public class Apointment{
     
     
     public Apointment(int studentID, int receiverID, List<String> data){
-        super(studentID,receiverID,data);
+       
     }
 }
