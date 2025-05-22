@@ -106,7 +106,7 @@ public class ProfileFrame extends JFrame {
             homeButton.setBounds(170,330,150,30);
             add(homeButton);
             homeButton.addActionListener(e -> {
-                new MainMenu(parentFrame).setVisible(true); 
+                new UniversityMainMenu(parentFrame).setVisible(true); 
                 dispose(); 
             });
 
@@ -167,7 +167,7 @@ public class ProfileFrame extends JFrame {
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
 
-        MainMenu mainMenu = new MainMenu(null); // or pass LoginFrame if available
+        UniversityMainMenu mainMenu = new UniversityMainMenu(null); // or pass LoginFrame if available
         mainMenu.setUniversityName(uniName);
         frame.setContentPane(mainMenu);
         frame.setVisible(true);

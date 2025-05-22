@@ -107,7 +107,7 @@ public class DepartmentListFrame extends JFrame {
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
 
-        MainMenu mainMenu = new MainMenu(null);
+        UniversityMainMenu mainMenu = new UniversityMainMenu(null);
         mainMenu.setUniversityName(uni_name);
         frame.setContentPane(mainMenu);
         frame.setVisible(true);

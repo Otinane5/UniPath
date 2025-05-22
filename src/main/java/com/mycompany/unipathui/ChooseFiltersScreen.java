@@ -83,7 +83,7 @@ public class ChooseFiltersScreen extends JFrame {
         homeButton.setBounds(170,330,150,30);
         add(homeButton);
         homeButton.addActionListener(e -> {
-            new MainMenu(parentFrame).setVisible(true); 
+            new UniversityMainMenu(parentFrame).setVisible(true); 
             dispose(); 
         });
 

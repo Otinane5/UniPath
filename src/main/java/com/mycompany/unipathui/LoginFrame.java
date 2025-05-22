@@ -11,7 +11,7 @@ public class LoginFrame extends JFrame {
     //ATTRIBUTES
     private final CardLayout cardLayout;
     private final JPanel contentPanel;
-    private  MainMenu mainMenuPanel;
+    private  UniversityMainMenu mainMenuPanel;
     //CONSTRUCTOR
     public LoginFrame() {
         //Παραμετροποίηση Παραθύρου
@@ -50,7 +50,7 @@ public class LoginFrame extends JFrame {
         contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
         contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
 
-        mainMenuPanel= new MainMenu(this);
+        mainMenuPanel= new UniversityMainMenu(this);
         contentPanel.add(mainMenuPanel, "mainMenu");
         
         add(contentPanel, BorderLayout.CENTER);
@@ -133,7 +133,7 @@ public class LoginFrame extends JFrame {
     }
     
     //νέο MainMenu με τον τωρινό constructor
-    mainMenuPanel = new MainMenu(this); 
+    mainMenuPanel = new UniversityMainMenu(this); 
     mainMenuPanel.setUniversityName(universityName);  
     contentPanel.add(mainMenuPanel, "mainMenu");
     
