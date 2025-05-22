@@ -13,6 +13,8 @@ public class Unipath {
 
 public static void main (String[] args){
     Counselor.init();
+    Application.init();
+    System.out.println(Application.sample);
     }
 }
 

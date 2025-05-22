@@ -92,7 +92,7 @@ public class DepartmentListUI extends JPanel {
                 JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε ένα τμήμα πρώτα.");
             } else {
                 // Create an instance of Application_FormUI and show it
-                Application_FormUI applicationFormUI = new Application_FormUI();
+                Application_FormUI applicationFormUI = new Application_FormUI(selectedDepartment);
                 JFrame formFrame = new JFrame("Φόρμα Εγγραφής");
                 formFrame.setSize(600, 600);
                 formFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
