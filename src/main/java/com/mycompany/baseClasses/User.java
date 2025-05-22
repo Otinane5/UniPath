@@ -14,8 +14,8 @@ public class User {
     public String password;
     public int userType; // 1=πανεπιστήμιο, 2=σύμβουλος, 3=μαθητής
 
-    //private static final String SAVE_FILE = "C:/Users/User/Documents/NetBeansProjects/Unipath/src/main/java/com/mycompany/saveFiles/users.json"; // static και final thrasos' or georgia's path
-    private static final String SAVE_FILE = "C:/Users/zetpa/OneDrive/Έγγραφα/GitHub/Unipath/src/main/java/com/mycompany/saveFiles/users.json"; // static και final
+    private static final String SAVE_FILE = "C:/Users/User/Documents/NetBeansProjects/Unipath/src/main/java/com/mycompany/saveFiles/users.json"; // static και final thrasos' or georgia's path
+    //private static final String SAVE_FILE = "C:/Users/zetpa/OneDrive/Έγγραφα/GitHub/Unipath/src/main/java/com/mycompany/saveFiles/users.json"; // static και final
     //C:/Users/User/Documents/NetBeansProjects/Unipath/src/main/java/com/mycompany/saveFiles/users.json
     public User(String password, int userType, String userName) {
         this.password = password;
