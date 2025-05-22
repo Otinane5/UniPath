@@ -71,7 +71,7 @@ public class MessageBoxFrame extends JFrame {
         int index = messageList.getSelectedIndex();
         if (index != -1) {
         String selected = messageListModel.getElementAt(index);
-        String dummyContent = "Περιεχόμενο για: " + selected; // αντικατάστησέ το με πραγματικό περιεχόμενο αν έχεις
+        String dummyContent = "Περιεχόμενο για: " + selected; 
         new MessageViewFrame(selected, dummyContent).setVisible(true);
          }
            });
