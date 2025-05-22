@@ -12,7 +12,7 @@ public class Unipath {
     //+other data
 
 public static void main (String[] args){
-    
+    Counselor.init();
     }
 }
 

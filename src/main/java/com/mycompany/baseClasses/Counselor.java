@@ -10,9 +10,9 @@ public class Counselor extends User{
     public String email;
     public String phoneNum;
     public String bio;
+    public static List<Counselor> sample;
     
-    public static List<Counselor> getSampleCounselors() {
-        List<Counselor> counselors = new ArrayList<>();
+    public static void init() {
 
         Counselor c1 = new Counselor("pass1", 2, "mpapadopoulou");
         c1.name = "Μαρία";
@@ -42,12 +42,10 @@ public class Counselor extends User{
         c4.phoneNum = "2103332211";
         c4.bio = "Εξειδίκευση σε επιλογή σχολών.";
 
-        counselors.add(c1);
-        counselors.add(c2);
-        counselors.add(c3);
-        counselors.add(c4);
-
-        return counselors;
+        sample.add(c1);
+        sample.add(c2);
+        sample.add(c3);
+        sample.add(c4);
     }
 
     public Counselor(String password, int userType, String userName) {
