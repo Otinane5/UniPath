@@ -5,7 +5,7 @@ import java.awt.*;
 public class AddAnnouncementFrame extends JFrame {
     private LoginFrame parentFrame;
     public AddAnnouncementFrame(LoginFrame parentFrame,String uni_name, String department_name) {
-        this.parentFrame=parentFrame;
+    /*    this.parentFrame=parentFrame;
         //attributes
         //newAnnouncement
         
@@ -122,7 +122,7 @@ public class AddAnnouncementFrame extends JFrame {
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);
         back.addActionListener(e-> dispose());
-        add(back); 
+        add(back); */
     } 
     
     public void writeAnnouncement()

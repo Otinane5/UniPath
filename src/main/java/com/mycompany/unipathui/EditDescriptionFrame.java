@@ -3,11 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EditDescriptionFrame extends JFrame {
-    private final ProfileFrame parentFrame;
-    private final String uni_name;
-    private final String department_name;
-    public EditDescriptionFrame(ProfileFrame parentFrame, String uni_name, String department_name) {
-        
+
+    public EditDescriptionFrame(ProfilePanel parentFrame, String uni_name, String department_name) {
+        /*
         //attributes
         //currentDescription (string?)
         //newDescription
@@ -124,7 +122,7 @@ public class EditDescriptionFrame extends JFrame {
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);
         back.addActionListener(e-> dispose());
-        add(back);
+        add(back); */
     }
     
     public void openEditDescriptionWindow()

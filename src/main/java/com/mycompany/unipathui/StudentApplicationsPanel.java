@@ -7,39 +7,12 @@ import java.awt.*;
 import java.util.List;
 
 public class StudentApplicationsPanel extends JPanel {
+    
+    private final JPanel applicationListPanel = new JPanel();
 
-    private final LoginFrame parentFrame;
-
-    public StudentApplicationsPanel(cardLayout parentFrame, cardPanel universityName) {
-        this.parentFrame = parentFrame;
-
-        setTitle("Αιτήσεις Εγγραφής");
-        setSize(650, 520);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
+    public StudentApplicationsPanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
-
-        // Header Panel
-        JPanel headerPanel = new JPanel(new BorderLayout());
-        headerPanel.setBackground(Color.WHITE);
-        headerPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
-
-        JLabel title = new JLabel("UniPath", SwingConstants.LEFT);
-        title.setFont(new Font("Arial", Font.BOLD, 24));
-        headerPanel.add(title, BorderLayout.WEST);
-
-        JLabel uniLabel = new JLabel(universityName, SwingConstants.RIGHT);
-        uniLabel.setFont(new Font("Arial", Font.ITALIC, 14));
-        headerPanel.add(uniLabel, BorderLayout.CENTER);
-
-        JButton messagesButton = new JButton("Τα μηνύματά μου");
-        ImageIcon envelopeIcon = new ImageIcon(getClass().getResource("/icons/envelope.png"));
-        Image scaledImage = envelopeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-        messagesButton.setIcon(new ImageIcon(scaledImage));
-        headerPanel.add(messagesButton, BorderLayout.EAST);
-
-        add(headerPanel, BorderLayout.NORTH);
-
+        
         // Top Tools
         JPanel topTools = new JPanel(new FlowLayout(FlowLayout.LEFT));
         topTools.setBackground(Color.WHITE);
@@ -57,7 +30,6 @@ public class StudentApplicationsPanel extends JPanel {
         add(topTools, BorderLayout.BEFORE_FIRST_LINE);
 
         // Application Panel
-        JPanel applicationListPanel = new JPanel();
         applicationListPanel.setLayout(new BoxLayout(applicationListPanel, BoxLayout.Y_AXIS));
         applicationListPanel.setBackground(Color.WHITE);
         applicationListPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -77,15 +49,12 @@ public class StudentApplicationsPanel extends JPanel {
 
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
-        homeButton.addActionListener(e -> {
-            parentFrame.showMainMenu(universityName);
-            dispose();
-        });
+        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         bottomPanel.add(homeButton);
 
         JButton back = new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
-        back.addActionListener(e -> dispose());
+        back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         bottomPanel.add(back);
 
         add(bottomPanel, BorderLayout.SOUTH);
@@ -166,12 +135,13 @@ public class StudentApplicationsPanel extends JPanel {
         };
     }
 
-    private void refresh() {
-        getContentPane().removeAll();
-        new StudentApplicationsFrame(parentFrame, "Πανεπιστήμιο").setVisible(true); // Reload frame
-        dispose();
+    public void refresh() {
+        applicationListPanel.removeAll();       // καθάρισε τις προηγούμενες αιτήσεις
+        loadApplications(applicationListPanel); // φόρτωσε ξανά από τη λίστα Application.sample
+        applicationListPanel.revalidate();      // ενημέρωση layout
+        applicationListPanel.repaint();         // redraw UI
     }
-
+    
     public void viewApplications() {
         // For future use
     }
