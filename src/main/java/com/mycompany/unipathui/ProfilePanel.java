@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class ProfilePanel extends JPanel {
     
-    public ProfilePanel(LoginFrame parentFrame,String uni_name, String department_name) {
+    public ProfilePanel(CardLayout cardLayout, JPanel cardPanel, EditDescriptionFrame editDescription, AddAnnouncementFrame addAnnouncement) {
 /*        
             //profile: Department
             //description: String

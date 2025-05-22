@@ -43,10 +43,6 @@ public class StudentApplicationsPanel extends JPanel {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         bottomPanel.setBackground(Color.WHITE);
 
-        JButton logout = new JButton("Αποσύνδεση");
-        logout.setBackground(Color.decode("#FF6666"));
-        bottomPanel.add(logout);
-
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
@@ -59,7 +55,6 @@ public class StudentApplicationsPanel extends JPanel {
 
         add(bottomPanel, BorderLayout.SOUTH);
     }
-
     private void loadApplications(JPanel panel) {
         List<Application> applications = Application.sample;
 
@@ -126,7 +121,6 @@ public class StudentApplicationsPanel extends JPanel {
             panel.add(Box.createVerticalStrut(10)); // Space between applications
         }
     }
-
     private String translateState(String state) {
         return switch (state) {
             case "approved" -> "Εγκεκριμένη";
@@ -134,18 +128,15 @@ public class StudentApplicationsPanel extends JPanel {
             default -> "Υποβληθείσα";
         };
     }
-
     public void refresh() {
         applicationListPanel.removeAll();       // καθάρισε τις προηγούμενες αιτήσεις
         loadApplications(applicationListPanel); // φόρτωσε ξανά από τη λίστα Application.sample
         applicationListPanel.revalidate();      // ενημέρωση layout
         applicationListPanel.repaint();         // redraw UI
     }
-    
     public void viewApplications() {
         // For future use
     }
-
     public void applyFilters() {
         // For future use
     }
