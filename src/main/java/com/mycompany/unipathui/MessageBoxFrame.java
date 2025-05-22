@@ -68,12 +68,13 @@ public class MessageBoxFrame extends JFrame {
 
         // Λειτουργία: Προβολή Μηνύματος
         viewButton.addActionListener(e -> {
-            int index = messageList.getSelectedIndex();
-            if (index != -1) {
-                String selected = messageListModel.getElementAt(index);
-                messageContent.setText("Περιεχόμενο για: " + selected);
-            }
-        });
+        int index = messageList.getSelectedIndex();
+        if (index != -1) {
+        String selected = messageListModel.getElementAt(index);
+        String dummyContent = "Περιεχόμενο για: " + selected; // αντικατάστησέ το με πραγματικό περιεχόμενο αν έχεις
+        new MessageViewFrame(selected, dummyContent).setVisible(true);
+         }
+           });
 
         // Λειτουργία: Διαγραφή Μηνύματος
         deleteButton.addActionListener(e -> {
