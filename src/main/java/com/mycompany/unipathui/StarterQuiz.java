@@ -9,7 +9,7 @@ public class StarterQuiz extends JPanel {
         
         //Τίτλος
         JLabel titleLabel = new JLabel("Κανόνες Quiz Επαγγελματικού Προσανατολισμού", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 18));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         add(titleLabel, BorderLayout.NORTH);
         
         //Οδηγίες
