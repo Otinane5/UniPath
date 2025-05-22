@@ -13,12 +13,11 @@ public class QuizUI extends JPanel {
     private final List<String> questions;
     private int currentQuestionIndex=0;
     private final JButton nextButton;
-    private final Runnable onViewResults;
+    private final AnswerLog answerLog;
     
-    public QuizUI(Runnable onGoBack, Runnable onNextQuestion, Runnable onPreviousQuestion, 
-            Runnable onClearQuiz, Runnable onViewResults){
-        
-        this.onViewResults = onViewResults;
+    public QuizUI(Runnable onGoBack, Runnable onFinishQuiz, Runnable onPreviousQuestion, 
+            Runnable onClearQuiz, Runnable onViewResults, AnswerLog answerLog){
+        this.answerLog = answerLog;
         setLayout(new BorderLayout(10, 10));
         
         //Τίτλος
@@ -27,7 +26,8 @@ public class QuizUI extends JPanel {
         add(titleLabel, BorderLayout.NORTH);
               
         //Στατικές ερωτήσεις, file στο μέλλον;
-        questions = List.of(
+        
+           questions = List.of(
             "<html>Ερώτηση 1:<br>Καλείσαι να διαχειριστείς το budget μιας επιχείρησης "
             + "και να υπολογίσεις τα ετήσια έσοδα και έξοδά της.<br>Δέχεσαι την θέση;</html>",
                 
@@ -76,7 +76,24 @@ public class QuizUI extends JPanel {
             
             "<html>Ερώτηση 18:<br>Σε ενδιαφέρει η μελέτη της ανθρώπινης ψυχοσύνθεσης;</html>"       
         );
-     
+        
+        //Προσωρινά μικρότερος αριθμός ερωτήσεων για γρήγορα check 
+        /*questions = List.of(
+                "<html>Ερώτηση 1:<br>Καλείσαι να διαχειριστείς το budget μιας επιχείρησης "
+                + "και να υπολογίσεις τα ετήσια έσοδα και έξοδά της.<br>Δέχεσαι την θέση;</html>",
+                "<html>Ερώτηση 2:<br>Στις σχολικές παραστάσεις, "
+                + "πάντα ήθελες να έχεις πρωταγωνιστικό ρόλο;</html>",
+                "<html>Ερώτηση 3:<br>Τι θα έλεγες να ήσουν υπεύθυνος για την σχεδίαση "
+                + "και κατασκευή ενός μεγάλου έργου ή μιας αστικής υποδομής; </html>",
+                "<html>Ερώτηση 4:<br>Θα ήθελες να συμβάλλεις στην ανακάλυψη νέων φαρμάκων "
+                + "ή ιατρικών θεραπειών;</html>",
+                "<html>Ερώτηση 5:<br>Είναι συναρπαστικό να μαθαίνεις για τα φυσικά φαινόμενα "
+                + "και να κατανοείς το μαθηματικό τους υπόβαθρο, εκτελώντας παράλληλα πειράματα. ;</html>",
+                "<html>Ερώτηση 6:<br>Θα σου άρεσε βάσει των νόμων να αντιπαραθέτεις "
+                + "τα επιχειρήματά σου (πχ. σε ένα debate, σε ένα δικαστήριο);</html>"      
+        );*/
+
+        
         //Κεντρικό Panel ερωτήσεων και επιλογών
         JPanel centerPanel = new JPanel(new BorderLayout(10,10));
         questionLabel = new JLabel(questions.get(currentQuestionIndex), SwingConstants.CENTER);
@@ -130,11 +147,14 @@ public class QuizUI extends JPanel {
         nextButton = new JButton("Επόμενη ερώτηση");
         nextButton.setBackground(Color.GREEN);
         nextButton.addActionListener(e -> {
-            if(getSelectedOptionText()==-1){
+            int selectedOption = getSelectedOptionText();
+            
+            if(selectedOption==-1){
                 JOptionPane.showMessageDialog(this, "Παρακαλώ, επέλεξε μια απάντηση.");  
                 return;
             } 
-                    
+            answerLog.setAnswer(currentQuestionIndex, selectedOption);
+            
             if(currentQuestionIndex<questions.size()-1){
                 //Σε όλες τις ερωτήσεις πλην της τελευταίας
                 currentQuestionIndex++;
@@ -147,7 +167,7 @@ public class QuizUI extends JPanel {
                         "Επιβεβαίωση Υποβολής Quiz",
                         JOptionPane.YES_NO_OPTION);
                 if(result == JOptionPane.YES_OPTION){
-                    onViewResults.run();
+                    onFinishQuiz.run();
                 }
             }
             /*Αλλαγή του κουμπιού "Επόμενη ερώτηση" σε 
@@ -208,6 +228,7 @@ public class QuizUI extends JPanel {
     public void clearQuiz(){
         currentQuestionIndex=0;
         optionGroup.clearSelection();
+        answerLog.clearAnswers();
         updateQuestion();
     }
 }

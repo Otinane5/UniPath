@@ -8,6 +8,7 @@ public class StudentMenuFrame extends JFrame {
     private JPanel cardPanel;
     private CardLayout cardLayout;
     private ShowResultsUI resultsPanel;
+    private final AnswerLog answerLog = new AnswerLog();
     
     public StudentMenuFrame() {  
         setTitle("UniPath - Αρχικό Μενού μαθητή");
@@ -137,14 +138,21 @@ public class StudentMenuFrame extends JFrame {
         
         QuizUI quizPanel = new QuizUI(
             () -> cardLayout.show(cardPanel, "doQuiz"),
-            () -> System.out.println("Επόμενη ερώτηση"),  
+            () -> {
+                updateResultsPanel();
+                cardLayout.show(cardPanel,"quizResults"); 
+            },
             () -> System.out.println("Προηγούμενη ερώτηση"),
-            () -> System.out.println("Εκκαθάριση Quiz"),
-            () -> cardLayout.show(cardPanel,"quizResults")   
+            () -> {
+                answerLog.clearAnswers();
+                System.out.println("Εκκαθάριση Quiz");
+            },
+            () -> cardLayout.show(cardPanel, "quizResults"),
+            answerLog
         );
         
         //RESULTS (ON THE MAKING)
-        resultsPanel = new ShowResultsUI(() -> cardLayout.show(cardPanel, "menu"));
+        resultsPanel = new ShowResultsUI(() -> cardLayout.show(cardPanel, "menu"), answerLog);
         
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(deplistPanel, "seeListOfDepartments");
@@ -175,5 +183,11 @@ public class StudentMenuFrame extends JFrame {
         });
 
         setVisible(true);
+    }
+    
+    private void updateResultsPanel(){
+        cardPanel.remove(resultsPanel);
+        resultsPanel = new ShowResultsUI(() -> cardLayout.show(cardPanel, "menu"), answerLog);
+        cardPanel.add(resultsPanel, "quizResults");
     }
 }
