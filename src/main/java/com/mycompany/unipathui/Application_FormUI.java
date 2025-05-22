@@ -11,8 +11,10 @@ public class Application_FormUI extends JPanel {
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
     private JComboBox<String> jComboBox1;
     private JButton jButton1, jButton2;
+    private String uniName;
 
-    public Application_FormUI() {
+    public Application_FormUI(String name) {
+        uniName=name;
         initComponents();
     }
 
@@ -24,13 +26,13 @@ public class Application_FormUI extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
 
         // Labels
-        jLabel1 = new JLabel("Φόρμα Εγγραφής - <Όνομα Πανεπιστημίου>");
+        jLabel1 = new JLabel("Φόρμα Εγγραφής - "+uniName);
         jLabel1.setFont(new Font("SansSerif", Font.BOLD, 18));
         jLabel1.setForeground(new Color(0, 102, 204));
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2; gbc.anchor = GridBagConstraints.CENTER;
         add(jLabel1, gbc);
 
-        jLabel2 = new JLabel("Τμήμα: <Όνομα Τμήματος>");
+        jLabel2 = new JLabel("Τμήμα: "+uniName);
         jLabel2.setFont(new Font("SansSerif", Font.PLAIN, 14));
         jLabel2.setForeground(new Color(51, 51, 51));
         gbc.gridy = 1; gbc.anchor = GridBagConstraints.WEST;
@@ -51,7 +53,7 @@ public class Application_FormUI extends JPanel {
         jTextField5 = new JTextField(20);
         jComboBox1 = new JComboBox<>(new String[]{"Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Ηράκλειο"});
 
-        Color placeholderColor = new Color(153, 153, 153);
+        Color placeholderColor = new Color(163, 163, 163);
         jTextField1.setForeground(placeholderColor);
         jTextField1.setText("Πληκτρολογήστε το όνομα και το επώνυμο");
 
