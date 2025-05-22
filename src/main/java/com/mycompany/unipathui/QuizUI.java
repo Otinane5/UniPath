@@ -13,8 +13,12 @@ public class QuizUI extends JPanel {
     private final List<String> questions;
     private int currentQuestionIndex=0;
     private final JButton nextButton;
+    private final Runnable onViewResults;
     
-    public QuizUI(Runnable onGoBack, Runnable onNextQuestion, Runnable onPreviousQuestion, Runnable onClearQuiz){
+    public QuizUI(Runnable onGoBack, Runnable onNextQuestion, Runnable onPreviousQuestion, 
+            Runnable onClearQuiz, Runnable onViewResults){
+        
+        this.onViewResults = onViewResults;
         setLayout(new BorderLayout(10, 10));
         
         //Τίτλος
@@ -132,8 +136,19 @@ public class QuizUI extends JPanel {
             } 
                     
             if(currentQuestionIndex<questions.size()-1){
+                //Σε όλες τις ερωτήσεις πλην της τελευταίας
                 currentQuestionIndex++;
                 updateQuestion();
+            }
+            else{
+                //Στην τελευταία ερώτηση
+                int result = JOptionPane.showConfirmDialog(this,
+                        "Είσαι σίγουρος/η για τις απαντήσεις σου;",
+                        "Επιβεβαίωση Υποβολής Quiz",
+                        JOptionPane.YES_NO_OPTION);
+                if(result == JOptionPane.YES_OPTION){
+                    onViewResults.run();
+                }
             }
             /*Αλλαγή του κουμπιού "Επόμενη ερώτηση" σε 
             "Δες τα αποτελέσματα" στην τελευταία ερώτηση*/
@@ -144,7 +159,7 @@ public class QuizUI extends JPanel {
             //ΣΥΝΕΧΕΙΑ ΣΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ
         });
      
-        JButton backButton = new JButton("Επιστροφή στο μενού");
+        JButton backButton = new JButton("Επιστροφή στο μενού του Quiz");
         backButton.setBackground(Color.YELLOW);
         backButton.addActionListener(e -> onGoBack.run());
         
@@ -182,4 +197,5 @@ public class QuizUI extends JPanel {
         }
         return -1; //Καμία επιλογή
     }
+
 }
