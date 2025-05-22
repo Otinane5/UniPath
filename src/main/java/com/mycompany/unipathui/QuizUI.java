@@ -165,7 +165,14 @@ public class QuizUI extends JPanel {
         
         JButton clearButton = new JButton("Εκκαθάριση Quiz");
         clearButton.setBackground(Color.ORANGE);
-        clearButton.addActionListener(e -> onClearQuiz.run());
+        clearButton.addActionListener(e -> {
+        int confirm = JOptionPane.showConfirmDialog(this, "Επιθυμείς σίγουρα να καθαρίσεις το Quiz;", 
+                "Επιβεβαίωση Εκκαθάρισης", JOptionPane.YES_NO_OPTION);     
+        if(confirm == JOptionPane.YES_OPTION) {
+            clearQuiz();
+            onClearQuiz.run();
+        }
+        });
         
         navigationPanel.add(previousButton);
         navigationPanel.add(nextButton);
@@ -197,5 +204,10 @@ public class QuizUI extends JPanel {
         }
         return -1; //Καμία επιλογή
     }
-
+    
+    public void clearQuiz(){
+        currentQuestionIndex=0;
+        optionGroup.clearSelection();
+        updateQuestion();
+    }
 }
