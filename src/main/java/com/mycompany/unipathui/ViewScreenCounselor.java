@@ -37,7 +37,7 @@ public class ViewScreenCounselor extends JFrame {
         advisorsPanel.setLayout(new GridLayout(0, 1, 10, 10));
         advisorsPanel.setBackground(Color.LIGHT_GRAY);
 
-        List<Counselor> counselors = Counselor.getSampleCounselors(); // Your sample list
+        List<Counselor> counselors = Counselor.sample; 
 
         for (Counselor counselor : counselors) {
             JPanel row = new JPanel(new GridLayout(3, 2, 5, 5));
