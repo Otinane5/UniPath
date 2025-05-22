@@ -10,7 +10,7 @@ public class Counselor extends User{
     public String email;
     public String phoneNum;
     public String bio;
-    public static List<Counselor> sample;
+   public static List<Counselor> sample = new ArrayList<>();
     
     public static void init() {
 
