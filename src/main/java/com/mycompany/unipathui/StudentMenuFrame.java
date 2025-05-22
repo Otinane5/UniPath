@@ -7,8 +7,9 @@ import java.awt.*;
 public class StudentMenuFrame extends JFrame {
     private JPanel cardPanel;
     private CardLayout cardLayout;
-
-    public StudentMenuFrame() {
+    private ShowResultsUI resultsPanel;
+    
+    public StudentMenuFrame() {  
         setTitle("UniPath - Αρχικό Μενού μαθητή");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
@@ -56,9 +57,6 @@ public class StudentMenuFrame extends JFrame {
         messagesButton.setBounds(630, 10, 150, 30);
         add(messagesButton);
         messagesButton.addActionListener(e -> new MessageBoxFrame().setVisible(true));
-        
-        
-        
         
         //Τοποθέτηση κουμπιού δεξιά
         gbc.gridx = 2;
@@ -137,17 +135,23 @@ public class StudentMenuFrame extends JFrame {
                 () -> cardLayout.show(cardPanel, "startQuiz")
         );  
         
-         QuizUI quizPanel = new QuizUI(
+        QuizUI quizPanel = new QuizUI(
             () -> cardLayout.show(cardPanel, "doQuiz"),
             () -> System.out.println("Επόμενη ερώτηση"),  
             () -> System.out.println("Προηγούμενη ερώτηση"),
-            () -> System.out.println("Εκκαθάριση Quiz")   
+            () -> System.out.println("Εκκαθάριση Quiz"),
+            () -> cardLayout.show(cardPanel,"quizResults")   
         );
-         
+        
+        //RESULTS (ON THE MAKING)
+        resultsPanel = new ShowResultsUI(() -> cardLayout.show(cardPanel, "menu"));
+        
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(quizStarterPanel, "doQuiz");
         cardPanel.add(quizPanel, "startQuiz");
+        
+        cardPanel.add(resultsPanel, "quizResults");
 
        // Action Listeners
        quizButton.addActionListener(e -> cardLayout.show(cardPanel, "doQuiz"));
