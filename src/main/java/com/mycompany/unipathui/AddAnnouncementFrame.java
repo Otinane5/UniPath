@@ -80,9 +80,13 @@ public class AddAnnouncementFrame extends JFrame {
         
         JButton publish=new JButton("Δημοσίευση");
         publish.setBackground(Color.GREEN);
-        publish.setBounds(50,300,120,30);
+        //publish.setBounds(50,300,120,30);
+        //add(publish);
+        publish.setBounds(40, 25, 120, 30);
         add(publish);
-        
+
+
+
         //annPanel.add(publish);
         // add logic for saving the new announcement to the DB
         
