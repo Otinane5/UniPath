@@ -1,16 +1,15 @@
 package com.mycompany.unipathui;
+
 import javax.swing.*;
 import java.awt.*;
-/**
- *
- * @author HelenaSiskou
- */
+
 public class ChooseFiltersScreen extends JFrame {
-     private JTextField name,dept,city,min,max;
-     private LoginFrame parentFrame;
-   public ChooseFiltersScreen()
-   {
-       this.parentFrame=parentFrame;
+    
+    private JTextField name,dept,city,min,max;
+    private LoginFrame parentFrame;
+    
+    public ChooseFiltersScreen() {
+/*       this.parentFrame=parentFrame;
         setTitle("Ορισμός Φίλτρων");
         setSize(500,400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -92,7 +91,7 @@ public class ChooseFiltersScreen extends JFrame {
         back.setBounds(330,330,150,30);
         back.addActionListener(e-> dispose());
         add(back);
-
+*/
    }
    
     public void saveFilters()
