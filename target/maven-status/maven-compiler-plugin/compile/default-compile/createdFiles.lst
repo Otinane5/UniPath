@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 com\mycompany\unipathui\CounselorAcceptAppointmentPanel.class
 com\mycompany\baseClasses\Student.class
 com\mycompany\baseClasses\User.class
@@ -48,3 +50,4 @@ com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\StudentApplicationsPanel.class
 com\mycompany\unipathui\StudentLoginPanel.class
 com\mycompany\baseClasses\Application.class
+>>>>>>> 16444cad04232e13e3019ff48617766c241b750b
