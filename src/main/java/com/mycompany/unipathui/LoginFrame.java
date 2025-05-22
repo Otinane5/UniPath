@@ -12,6 +12,8 @@ public class LoginFrame extends JFrame {
     private final CardLayout cardLayout;
     private final JPanel contentPanel;
     private  UniversityMainMenu mainMenuPanel;
+    
+     private UniversityLoginPanel universityLoginPanel;
     //CONSTRUCTOR
     public LoginFrame() {
         //Παραμετροποίηση Παραθύρου
@@ -50,6 +52,9 @@ public class LoginFrame extends JFrame {
         contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
         contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
 
+         universityLoginPanel = new UniversityLoginPanel(this);
+        contentPanel.add(universityLoginPanel, "UniversityLogin");
+        
         mainMenuPanel= new UniversityMainMenu(this);
         contentPanel.add(mainMenuPanel, "mainMenu");
         
@@ -113,6 +118,7 @@ public class LoginFrame extends JFrame {
         universityButton.addActionListener(e -> {
             // TODO: Εμφάνιση του university login panel
             cardLayout.show(contentPanel, "UniversityLogin");
+            universityLoginPanel.requestFocusOnUsername();
         });
         exit.addActionListener(e -> System.exit(0));
 

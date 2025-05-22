@@ -61,6 +61,7 @@ public class UniversityLoginPanel extends JPanel {
         loginPanel.add(passwordField);
         loginPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
+        //Κουμπί Login
         loginPanel.add(loginButton);
         loginPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         loginPanel.add(backButton);
@@ -68,6 +69,8 @@ public class UniversityLoginPanel extends JPanel {
         // Βάλε το loginPanel μέσα στο wrapper και το wrapper στο Center
         centerWrapper.add(loginPanel);
         add(centerWrapper, BorderLayout.CENTER);
+
+        //SwingUtilities.invokeLater(() -> usernameField.requestFocusInWindow());
 
         //Λειτουργικότητα κουμπιών
         loginButton.addActionListener(e -> {
@@ -97,6 +100,10 @@ public class UniversityLoginPanel extends JPanel {
     public void clearFields() {
         usernameField.setText("");
         passwordField.setText("");
+    }
+    
+    public void requestFocusOnUsername() {
+        SwingUtilities.invokeLater(() -> usernameField.requestFocusInWindow());
     }
 }
 
