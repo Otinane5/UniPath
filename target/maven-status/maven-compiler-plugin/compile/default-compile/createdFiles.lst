@@ -47,6 +47,7 @@ Councelor_listUI$6.class
 com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\MessageBoxFrame.class
 Councelor_listUI$3.class
+com\mycompany\unipathui\DepartmentProfileUI.class
 com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\StudentApplicationsPanel.class
 com\mycompany\unipathui\StudentLoginPanel.class
