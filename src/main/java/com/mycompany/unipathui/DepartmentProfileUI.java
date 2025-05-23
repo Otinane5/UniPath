@@ -10,7 +10,7 @@ public class DepartmentProfileUI extends JPanel{
     //Στατική ανάθεση περιγραφών τμημάτων
     private static final Map<String, String> departmentDescriptions = new HashMap<>();
     static {
-        departmentDescriptions.put("Τμήμα Πληροφορικής", "Περιγραφή τμήματος πληροφορικής.");
+        departmentDescriptions.put("Τμήμα Πληροφορικής", "Περιγραφή τμήματος πληροφορικής.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\naaaaaaaaaaaaaaaaaaaaaaaaaaa");
         departmentDescriptions.put("Τμήμα Μηχανικών Υπολογιστών", "Περιγραφή τμήματος ceid.");
         departmentDescriptions.put("Τμήμα Νομικής", "Περιγραφή τμήματος νομικής.");
         departmentDescriptions.put("Τμήμα Ιατρικής", "Περιγραφή τμήματος ιατρικής.");
