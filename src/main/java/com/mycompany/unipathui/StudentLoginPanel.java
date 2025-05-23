@@ -37,6 +37,9 @@ public class StudentLoginPanel extends JPanel {
         passwordField.setMaximumSize(new Dimension(200, 35));
         passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+        // με το enter μεταβαίνει από το Username στο Password field
+        usernameField.addActionListener(e -> passwordField.requestFocusInWindow());
+
         //Κουμπιά
         JButton loginButton = new JButton("Σύνδεση");
         loginButton.setBackground(Color.CYAN);

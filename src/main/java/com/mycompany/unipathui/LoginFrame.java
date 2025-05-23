@@ -118,7 +118,7 @@ public class LoginFrame extends JFrame {
         //Λειτουργικότητα κουμπιών
         studentButton.addActionListener(e -> {
             // TODO: Εμφάνιση του student login panel
-            cardLayout.show(contentPanel, "studentLogin");
+            cardLayout.show(contentPanel, "StudentLogin");
             studentLoginPanel.requestFocusOnUsername();
         });
         counselorButton.addActionListener(e -> {
