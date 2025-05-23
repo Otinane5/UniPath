@@ -25,6 +25,7 @@ com\mycompany\unipathui\CounselorProfilePanel.class
 com\mycompany\baseClasses\Unipath.class
 com\mycompany\unipathui\QuizUI.class
 com\mycompany\unipathui\AnswerLog$DepartmentType.class
+com\mycompany\unipathui\AnnouncementView.class
 Councelor_listUI.class
 com\mycompany\unipathui\ProfilePanel.class
 Councelor_listUI$5.class

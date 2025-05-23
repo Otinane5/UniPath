@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.unipathui;
 
-/**
- *
- * @author Devil
- */
+
+
 public class AnnouncementView {
+    public final String title;
+    public final String body;
     
+    public AnnouncementView(String title, String body){
+        this.title = title;
+        this.body = body;
+    }
+    
+    @Override
+    public String toString() {
+        return title; //Στην λίστα ανακοινώσεων θα φαίνονται οι τίτλοι
+    }
 }

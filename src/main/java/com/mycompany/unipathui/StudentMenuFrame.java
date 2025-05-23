@@ -212,10 +212,10 @@ public class StudentMenuFrame extends JFrame {
     
     private void showDepartmentAnnouncements(String departmentName){
         //Στατικές ανακοινώσεις
-        List<String> announcements = List.of(
-            "Καλωσόρισμα μαθητών τρίτης λυκείου.",
-            "Πρόγραμμα μαθημάτων.",
-            "Αιτήσεις εγγραφής."     
+        List<AnnouncementView> announcements = List.of(
+            new AnnouncementView("Καλωσόρισμα φοιτητών","Καλως ορίσατε μάγκες..."),
+            new AnnouncementView("Πρόγραμμα μαθημάτων", "Δεν υπάρχει πρόγραμμα..."),
+            new AnnouncementView("Αιτήσεις εγγραφής", "Οι αιτήσεις εγγραφής είναι απενεργοποιημένες προς το παρόν...")     
         );
         
         if(announcementPanel!=null){
