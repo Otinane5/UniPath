@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class DepartmentListPanel extends JPanel {
     
-    public DepartmentListPanel(Runnable onBackToMainMenu, Runnable onDetailsPanel) {
+    public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
         setBackground(Color.WHITE);
 
@@ -46,7 +46,7 @@ public class DepartmentListPanel extends JPanel {
             
             JButton viewProfile= new JButton("Προβολή Προφίλ Τμήματος");
             viewProfile.setBackground(Color.CYAN);
-            viewProfile.addActionListener(e -> onDetailsPanel.run());
+            viewProfile.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
             departmentPanel.add(viewProfile, BorderLayout.EAST);
             
             listPanel.add(departmentPanel);
@@ -65,12 +65,12 @@ public class DepartmentListPanel extends JPanel {
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
-        homeButton.addActionListener(e -> onBackToMainMenu.run());
+        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         
         JButton back = new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);
-        back.addActionListener(e -> onBackToMainMenu.run());
+        back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
                 
         buttonPanel.add(homeButton);
         buttonPanel.add(back);

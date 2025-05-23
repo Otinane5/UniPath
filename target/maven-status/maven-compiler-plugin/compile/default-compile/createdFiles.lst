@@ -1,4 +1,5 @@
 com\mycompany\unipathui\CounselorAcceptAppointmentPanel.class
+com\mycompany\unipathui\EditDescriptionPanel.class
 com\mycompany\baseClasses\Student.class
 com\mycompany\baseClasses\User.class
 com\mycompany\unipathui\DepartmentListPanel.class
@@ -21,7 +22,6 @@ Councelor_listUI$1.class
 com\mycompany\unipathui\CounselorMenuFrame.class
 com\mycompany\unipathui\CounselorProfilePanel.class
 com\mycompany\baseClasses\Unipath.class
-com\mycompany\unipathui\EditDescriptionFrame.class
 com\mycompany\unipathui\QuizUI.class
 com\mycompany\unipathui\AnswerLog$DepartmentType.class
 Councelor_listUI.class
@@ -45,7 +45,6 @@ com\mycompany\unipathui\CounselorFormScreen.class
 Councelor_listUI$6.class
 com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\MessageBoxFrame.class
-com\mycompany\unipathui\TestAnswerLog.class
 Councelor_listUI$3.class
 com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\StudentApplicationsPanel.class

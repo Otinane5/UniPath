@@ -10,9 +10,7 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
     private JLabel emailLabel;
     private JTextArea interestsArea;
     
-    public CounselorAppointmentDetailsPanel(CardLayout cardLayout, JPanel cardPanel,
-                                    CounselorAcceptAppointmentPanel acceptPanel,
-                                    CounselorRejectAppointmentPanel rejectPanel) {
+    public CounselorAppointmentDetailsPanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel title = new JLabel("Λεπτομέρειες Αιτήματος", SwingConstants.CENTER);
@@ -44,7 +42,7 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         JButton acceptAppointment = new JButton("Αποδοχή");
         JButton rejectAppointment = new JButton("Απόρριψη");
-        JButton backToMain = new JButton("Πίσω Στο Αρχικό Μενού");
+        JButton backToMain = new JButton("Αρχική Σελίδα");
         backToMain.setBackground(Color.decode("#B3FF66"));
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));

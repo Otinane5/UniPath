@@ -7,7 +7,7 @@ public class CounselorEditProfilePanelUI extends JPanel {
     private JTextField nameField, surnameField, emailField, phoneField;
     private JTextArea bioArea;
 
-    public CounselorEditProfilePanelUI(Runnable onBackToMainMenu, Runnable onBack) {
+    public CounselorEditProfilePanelUI(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel titleLabel = new JLabel("Επεξεργασία Προφίλ", SwingConstants.CENTER);
@@ -40,7 +40,7 @@ public class CounselorEditProfilePanelUI extends JPanel {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         JButton previewButton = new JButton("Προεπισκόπηση");
         JButton cancelButton = new JButton("Ακύρωση");
-        JButton backToMain = new JButton("Πίσω Στο Αρχικό Μενού");
+        JButton backToMain = new JButton("Αρχική Σελίδα");
         backToMain.setBackground(Color.decode("#B3FF66"));
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));
@@ -81,7 +81,7 @@ public class CounselorEditProfilePanelUI extends JPanel {
             if (result == JOptionPane.OK_OPTION) {
                 if (validateFields()) {
                     JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
-                    onBack.run();
+                    cardLayout.show(cardPanel, "profile");
                     //onSave.run(); // ή αποθήκευση σε μεταβλητές ή ΒΔ
                 }
                 else {
@@ -94,16 +94,16 @@ public class CounselorEditProfilePanelUI extends JPanel {
         cancelButton.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(this, "Οι αλλαγές θα χαθούν. Θέλετε να συνεχίσετε;", "Ακύρωση", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
-                    onBack.run();
+                    cardLayout.show(cardPanel, "profile");
             }
         });
         
         // Αρχικό Μενού
-        backToMain.addActionListener(e -> onBackToMainMenu.run());
+        backToMain.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         
         // Πίσω
-        backButton.addActionListener(e -> onBack.run());
-
+        backButton.addActionListener(e -> cardLayout.show(cardPanel, "profile"));
+        
         buttonPanel.add(previewButton);
         buttonPanel.add(cancelButton);
         buttonPanel.add(backToMain);

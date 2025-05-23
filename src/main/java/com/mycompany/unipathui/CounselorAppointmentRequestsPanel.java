@@ -49,7 +49,7 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
         });
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        JButton backToMain = new JButton("Πίσω Στο Αρχικό Μενού");
+        JButton backToMain = new JButton("Αρχική Σελίδα");
         backToMain.setBackground(Color.decode("#B3FF66"));
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));

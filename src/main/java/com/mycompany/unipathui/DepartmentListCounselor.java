@@ -8,7 +8,7 @@ public class DepartmentListCounselor extends JPanel{
     //ATTRIBUTES
     private String selectedDepartment = null; //Αποθήκευση επιλεγμένου τμήματος
     private JButton currentlySelectedButton = null;
-    public DepartmentListCounselor(Runnable onBackToMainMenu, Runnable onShowDepartment, Runnable onApplicationForm){
+    public DepartmentListCounselor(CardLayout cardLayout, JPanel cardPanel){
         setLayout(new BorderLayout(10,10));
         JLabel label = new JLabel("Λίστα Τμημάτων", SwingConstants.CENTER);
         label.setFont(new Font("SansSerif", Font.BOLD,18));
@@ -56,9 +56,15 @@ public class DepartmentListCounselor extends JPanel{
         
         //Bottom Panel
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+        JButton homeButton = new JButton("Αρχική Σελίδα");
+        homeButton.setBackground(Color.decode("#B3FF66"));
+        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
+        bottomPanel.add(homeButton);
+        
         JButton backButton = new JButton("Πίσω");
-        backButton.setBackground(Color.YELLOW);
-        backButton.addActionListener(e->onBackToMainMenu.run());
+        backButton.setBackground(Color.decode("#FFCC66"));
+        backButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         
         JButton showButton = new JButton("Προβολή Τμήματος");
         showButton.setBackground(Color.CYAN);

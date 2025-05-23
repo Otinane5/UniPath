@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ProfilePanel extends JPanel {
         
-    public ProfilePanel(Runnable onBackToMainMenu, Runnable onDepartListPanel, Runnable onEditDescription, Runnable onAddAnnouncement) {
+    public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
         
         // Title label
@@ -34,7 +34,7 @@ public class ProfilePanel extends JPanel {
         descPanel.setMaximumSize(new Dimension(400, 70));
         descPanel.add(new JLabel("Περιγραφή Τμήματος"), BorderLayout.WEST);
         JButton edit = new JButton("Τροποποίηση");
-        edit.addActionListener(e -> onEditDescription.run());
+        edit.addActionListener(e -> cardLayout.show(cardPanel, "editUniDesc"));
         descPanel.add(edit, BorderLayout.EAST);
         contentPanel.add(descPanel);
         
@@ -53,7 +53,7 @@ public class ProfilePanel extends JPanel {
         annPanel.setMaximumSize(new Dimension(400, 35));
         annPanel.add(new JLabel("Ανακοινώσεις"), BorderLayout.WEST);
         JButton addAnnouncement = new JButton("Προσθήκη");
-        addAnnouncement.addActionListener(e -> onAddAnnouncement.run());
+        addAnnouncement.addActionListener(e -> cardLayout.show(cardPanel, "addAnnouncement"));
         annPanel.add(addAnnouncement, BorderLayout.EAST);
         contentPanel.add(annPanel);
         
@@ -81,12 +81,12 @@ public class ProfilePanel extends JPanel {
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
-        homeButton.addActionListener(e -> onBackToMainMenu.run());
+        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);
-        back.addActionListener(e -> onDepartListPanel.run());
+        back.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
         
         buttonPanel.add(homeButton);
         buttonPanel.add(back);

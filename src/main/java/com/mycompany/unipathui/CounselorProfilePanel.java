@@ -60,7 +60,7 @@ public class CounselorProfilePanel extends JPanel {
         // Button panel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
 
-        JButton backToMain = new JButton("Πίσω Στο Αρχικό Μενού");
+        JButton backToMain = new JButton("Αρχική Σελίδα");
         backToMain.setBackground(Color.decode("#B3FF66"));
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));
@@ -68,12 +68,11 @@ public class CounselorProfilePanel extends JPanel {
         // Back buttons
         backToMain.addActionListener(e -> onBackToMainMenu.run());
         backButton.addActionListener(e -> onBackToMainMenu.run());
-
+        
         buttonPanel.add(backToMain);
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
     }
-
     // Create a progress bar to show the average review score
     private JPanel createAverageRatingPanel(List<Integer> reviews) {
         JPanel panel = new JPanel();
@@ -98,7 +97,6 @@ public class CounselorProfilePanel extends JPanel {
 
         return panel;
     }
-
     // Create a panel to show individual reviews as stars or numbers
     private JPanel createIndividualReviewsPanel(List<Integer> reviews) {
         JPanel panel = new JPanel();
