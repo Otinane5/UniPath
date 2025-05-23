@@ -19,6 +19,8 @@ public class LoginFrame extends JFrame {
     //CONSTRUCTOR
     public LoginFrame() {
         //Παραμετροποίηση Παραθύρου
+        IconUtil.apply(this);
+
         setTitle("UniPath - Σύνδεση");
         setSize(500, 400); 
         setLocationRelativeTo(null);
@@ -50,10 +52,7 @@ public class LoginFrame extends JFrame {
 
         // Προσθήκη panels στο CardLayout
         contentPanel.add(createRoleSelectionPanel(), "roleSelection");
-        //contentPanel.add(new StudentLoginPanel(this), "studentLogin");
-        //contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
-        //contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
-
+        
         universityLoginPanel = new UniversityLoginPanel(this);
         contentPanel.add(universityLoginPanel, "UniversityLogin");
         

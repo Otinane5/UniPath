@@ -1,16 +1,16 @@
 package com.mycompany.unipathui;
 
-import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class DepartmentListUI extends JPanel {
     // ATTRIBUTES
     private String selectedDepartment = null; // Αποθήκευση επιλεγμένου τμήματος
     private JButton currentlySelectedButton = null;
 
-    public DepartmentListUI(Runnable onBackToMainMenu, Runnable onShowDepartment, Runnable onApplicationForm) {
+    public DepartmentListUI(Runnable onBackToMainMenu, Consumer<String> onShowDepartment, Runnable onApplicationForm) {
         setLayout(new BorderLayout(10, 10));
 
         // Header label
@@ -80,7 +80,7 @@ public class DepartmentListUI extends JPanel {
                 JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε ένα τμήμα πρώτα.");
             } else {
                 // Show the selected department details UI
-                onShowDepartment.run();
+                onShowDepartment.accept(selectedDepartment);
             }
         });
 
