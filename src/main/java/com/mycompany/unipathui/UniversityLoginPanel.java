@@ -41,9 +41,15 @@ public class UniversityLoginPanel extends JPanel {
         // με το enter μεταβαίνει από το Username στο Password field
         usernameField.addActionListener(e -> passwordField.requestFocusInWindow());
 
+        //αφου συμπληρωθεί και το Password με enter γίνεται η Σύνδεση
+        passwordField.addActionListener(e -> performLogin());
+        
         //Κουμπιά
         JButton loginButton = new JButton("Σύνδεση");
         loginButton.setBackground(Color.CYAN);
+        loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginButton.setMaximumSize(new Dimension(200, 35));
+        loginButton.addActionListener(e -> performLogin());
         
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));
@@ -74,31 +80,29 @@ public class UniversityLoginPanel extends JPanel {
         add(centerWrapper, BorderLayout.CENTER);
 
         //Λειτουργικότητα κουμπιών
-        loginButton.addActionListener(e -> {
-            String username = usernameField.getText();
-            String password = new String(passwordField.getPassword());
-
-            User myUser = User.login(username,password);
-            if (myUser != null && myUser.userType==1) {
-                Unipath.currentUser = myUser;
-                new UniversityMainMenu().setVisible(true);
-                SwingUtilities.getWindowAncestor(this).dispose();
-                //parentFrame.showMainMenu(username);
-                //parentFrame.showMainMenu(myUser.getUniversityName());
-                //SwingUtilities.getWindowAncestor(this).dispose();
-                
-            }
-            else {
-                JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
-            }
-        });
-
         backButton.addActionListener(e -> {
             clearFields();
             parentFrame.showRoleSelectionPanel();
         });
     }
+    
     //METHODS
+    private void performLogin(){
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+
+        User myUser = User.login(username,password);
+        if (myUser != null && myUser.userType==1) 
+        {
+            Unipath.currentUser = myUser;
+            new UniversityMainMenu().setVisible(true);
+            SwingUtilities.getWindowAncestor(this).dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
+        }
+    }
+    
     //Καθαρίζει τα πεδία και τα μηνύματα λάθους
     public void clearFields() {
         usernameField.setText("");
@@ -119,16 +123,6 @@ public class UniversityLoginPanel extends JPanel {
 
 
 /*
-
-loginButton.addActionListener(e -> {
-    loginButton.setEnabled(false);
-    loginButton.setText("Σύνδεση...");
-    
-    ...
-    
-    loginButton.setEnabled(true);
-    loginButton.setText("Σύνδεση");
-});
 
 usernameField.addActionListener(e -> passwordField.requestFocus());
 passwordField.addActionListener(e -> loginButton.doClick());

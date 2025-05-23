@@ -43,9 +43,15 @@ public class CounselorLoginPanel extends JPanel {
         // με το enter μεταβαίνει από το Username στο Password field
         usernameField.addActionListener(e -> passwordField.requestFocusInWindow());
 
+         //αφου συμπληρωθεί και το Password με enter γίνεται η Σύνδεση
+        passwordField.addActionListener(e -> performLogin());
+        
         //Κουμπιά
         JButton loginButton = new JButton("Σύνδεση");
         loginButton.setBackground(Color.CYAN);
+        loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginButton.setMaximumSize(new Dimension(200, 35));
+        loginButton.addActionListener(e -> performLogin());
         
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));
@@ -76,34 +82,34 @@ public class CounselorLoginPanel extends JPanel {
         add(centerWrapper, BorderLayout.CENTER);
 
         //Λειτουργικότητα κουμπιών
-        loginButton.addActionListener(e -> {
-            String username = usernameField.getText();
-            String password = new String(passwordField.getPassword());
-
-            User myUser = User.login(username,password);
-            if (myUser != null && myUser.userType==2) {
-                Unipath.currentUser = myUser;
-                CounselorProfilePanel.CounselorToDisplay.userName=Unipath.currentUser.userName;
-                CounselorProfilePanel.CounselorToDisplay.name="SampleName";
-                CounselorProfilePanel.CounselorToDisplay.lastName="SampleLastName";
-                CounselorProfilePanel.CounselorToDisplay.email="SampleEmail";
-                CounselorProfilePanel.CounselorToDisplay.phoneNum="6900000000";
-                CounselorProfilePanel.CounselorToDisplay.bio="Samplebio";
-                CounselorProfilePanel.CounselorToDisplay.reviews=java.util.List.of(4, 3, 4, 5,1,1,2,3,4);
-                new CounselorMenuFrame().setVisible(true);
-                SwingUtilities.getWindowAncestor(this).dispose();
-            }
-            else {
-                JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
-            }
-        });
-
         backButton.addActionListener(e -> {
             clearFields();
             parentFrame.showRoleSelectionPanel();
         });
     }
     //METHODS
+    private void performLogin(){
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+
+        User myUser = User.login(username,password);
+        if (myUser != null && myUser.userType==2) {
+            Unipath.currentUser = myUser;
+            CounselorProfilePanel.CounselorToDisplay.userName=Unipath.currentUser.userName;
+            CounselorProfilePanel.CounselorToDisplay.name="SampleName";
+            CounselorProfilePanel.CounselorToDisplay.lastName="SampleLastName";
+            CounselorProfilePanel.CounselorToDisplay.email="SampleEmail";
+            CounselorProfilePanel.CounselorToDisplay.phoneNum="6900000000";
+            CounselorProfilePanel.CounselorToDisplay.bio="Samplebio";
+            CounselorProfilePanel.CounselorToDisplay.reviews=java.util.List.of(4, 3, 4, 5,1,1,2,3,4);
+            new CounselorMenuFrame().setVisible(true);
+            SwingUtilities.getWindowAncestor(this).dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
+        }
+    }
+    
     //Καθαρίζει τα πεδία και τα μηνύματα λάθους
     public void clearFields() 
     {
@@ -113,10 +119,12 @@ public class CounselorLoginPanel extends JPanel {
     
     public void requestFocusOnUsername() 
     {
-        SwingUtilities.invokeLater(() -> {
-        if (usernameField.isShowing()) {
-            usernameField.requestFocusInWindow();
-        }
+        SwingUtilities.invokeLater(() -> 
+        {
+            if (usernameField.isShowing()) 
+                {
+                    usernameField.requestFocusInWindow();
+                }
         });    
     }
 }
