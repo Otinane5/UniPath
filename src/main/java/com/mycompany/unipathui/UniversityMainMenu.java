@@ -1,6 +1,8 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Unipath;
+//import com.mycompany.baseClasses.ChooseFiltersScreen;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -115,7 +117,9 @@ public class UniversityMainMenu extends JFrame {
         ProfilePanel profileDetailsPanel = new ProfilePanel(cardLayout, cardPanel);
         EditDescriptionPanel editDesc = new EditDescriptionPanel(cardLayout, cardPanel);
         AddAnnouncementPanel addAnnoun = new AddAnnouncementPanel(cardLayout, cardPanel);
-        ChooseFiltersScreen chooseFilt = new ChooseFiltersScreen(cardLayout, cardPanel);
+        FilteredListScreen filteredListScreen = new FilteredListScreen(cardLayout, cardPanel);
+
+        ChooseFiltersScreen chooseFilt = new ChooseFiltersScreen(cardLayout, cardPanel,filteredListScreen);
         
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(applicationsPanel, "applications");

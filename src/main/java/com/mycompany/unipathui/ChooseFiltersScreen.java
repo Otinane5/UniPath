@@ -6,8 +6,15 @@ import java.awt.*;
 public class ChooseFiltersScreen extends JPanel {
     
     private JTextField dept,city,min,max;
+    private final CardLayout cardLayout;
+private final JPanel cardPanel;
+private final FilteredListScreen filteredListScreen;
     
-    public ChooseFiltersScreen(CardLayout cardLayout, JPanel cardPanel) {
+    public ChooseFiltersScreen(CardLayout cardLayout, JPanel cardPanel, FilteredListScreen filteredListScreen) {
+        this.cardLayout = cardLayout;
+    this.cardPanel = cardPanel;
+    this.filteredListScreen = filteredListScreen;
+        
         setLayout(new BorderLayout(10, 10));
         
         // Title label
@@ -78,19 +85,31 @@ public class ChooseFiltersScreen extends JPanel {
         buttonPanel.add(back);
         add(buttonPanel, BorderLayout.SOUTH);
 }
+    
     public void saveFilters(){
         // Προαιρετικά: έλεγχος για αριθμούς
         try {
-            if (!min.getText().isEmpty()) Integer.parseInt(min.getText());
-            if (!max.getText().isEmpty()) Integer.parseInt(max.getText());
-            JOptionPane.showMessageDialog(this, "Τα φίλτρα αποθηκεύτηκαν!");
+            Integer minValue = min.getText().isEmpty() ? null : Integer.parseInt(min.getText());
+            Integer maxValue = max.getText().isEmpty() ? null : Integer.parseInt(max.getText());
+            JOptionPane.showMessageDialog(this, "Τα φίλτρα αποθηκεύτηκαν με επιτυχία!");
+            
+            if(filteredListScreen != null)
+            {
+                filteredListScreen.setFilters(dept.getText(), city.getText(), minValue, maxValue);
+                cardLayout.show(cardPanel, "filteredList");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this,"Σφάλμα!\n Η προβολή φιλτραρισμένων αιτήσεων δεν βρέθηκε.");
+            }
         }
         catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Παρακαλώ εισάγετε έγκυρα αριθμητικά όρια.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
         }
     }
-    public void returnFilteredApplicationList(){
-    }
+    
+    public void returnFilteredApplicationList()
+    {}
 }
 
 
