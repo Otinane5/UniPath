@@ -9,9 +9,11 @@ import java.awt.*;
 //στη και κωδικό, καθώς και τα κουμπιά "Σύνδεση" και "Πίσω".
 
 public class CounselorLoginPanel extends JPanel {
+    
     //ATTRIBUTES
     private JTextField usernameField;
     private JPasswordField passwordField;
+    
     //CONSTRUCTOR
     public CounselorLoginPanel(LoginFrame parentFrame) {
         setLayout(new BorderLayout());
@@ -100,8 +102,18 @@ public class CounselorLoginPanel extends JPanel {
     }
     //METHODS
     //Καθαρίζει τα πεδία και τα μηνύματα λάθους
-    public void clearFields() {
+    public void clearFields() 
+    {
         usernameField.setText("");
         passwordField.setText("");
+    }
+    
+    public void requestFocusOnUsername() 
+    {
+        SwingUtilities.invokeLater(() -> {
+        if (usernameField.isShowing()) {
+            usernameField.requestFocusInWindow();
+        }
+        });    
     }
 }

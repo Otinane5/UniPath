@@ -102,7 +102,31 @@ public class UniversityLoginPanel extends JPanel {
         passwordField.setText("");
     }
     
-    public void requestFocusOnUsername() {
-        SwingUtilities.invokeLater(() -> usernameField.requestFocusInWindow());
+    public void requestFocusOnUsername() 
+    {
+        SwingUtilities.invokeLater(() -> 
+        {
+            if (usernameField.isShowing()) 
+            {
+                usernameField.requestFocusInWindow();
+            }
+        });    
     }
 }
+
+
+/*
+
+loginButton.addActionListener(e -> {
+    loginButton.setEnabled(false);
+    loginButton.setText("Σύνδεση...");
+    
+    ...
+    
+    loginButton.setEnabled(true);
+    loginButton.setText("Σύνδεση");
+});
+
+usernameField.addActionListener(e -> passwordField.requestFocus());
+passwordField.addActionListener(e -> loginButton.doClick());
+*/

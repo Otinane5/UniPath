@@ -12,8 +12,10 @@ public class LoginFrame extends JFrame {
     private final CardLayout cardLayout;
     private final JPanel contentPanel;
     private  UniversityMainMenu mainMenuPanel;
-    
     private UniversityLoginPanel universityLoginPanel;
+    private StudentLoginPanel studentLoginPanel;
+    private CounselorLoginPanel counselorLoginPanel;
+    
     //CONSTRUCTOR
     public LoginFrame() {
         //Παραμετροποίηση Παραθύρου
@@ -48,12 +50,21 @@ public class LoginFrame extends JFrame {
 
         // Προσθήκη panels στο CardLayout
         contentPanel.add(createRoleSelectionPanel(), "roleSelection");
-        contentPanel.add(new StudentLoginPanel(this), "studentLogin");
-        contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
-        contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
+        //contentPanel.add(new StudentLoginPanel(this), "studentLogin");
+        //contentPanel.add(new CounselorLoginPanel(this), "counselorLogin");
+        //contentPanel.add(new UniversityLoginPanel(this), "UniversityLogin");
 
         universityLoginPanel = new UniversityLoginPanel(this);
         contentPanel.add(universityLoginPanel, "UniversityLogin");
+        
+         studentLoginPanel = new StudentLoginPanel(this);
+        contentPanel.add(studentLoginPanel, "StudentLogin");
+        
+        counselorLoginPanel= new CounselorLoginPanel(this);
+        contentPanel.add(counselorLoginPanel,"CounselorLogin");
+        
+        //mainMenuPanel= new UniversityMainMenu(this);
+        //contentPanel.add(mainMenuPanel, "mainMenu");
         
         add(contentPanel, BorderLayout.CENTER);
 
@@ -108,9 +119,11 @@ public class LoginFrame extends JFrame {
         studentButton.addActionListener(e -> {
             // TODO: Εμφάνιση του student login panel
             cardLayout.show(contentPanel, "studentLogin");
+            studentLoginPanel.requestFocusOnUsername();
         });
         counselorButton.addActionListener(e -> {
-            cardLayout.show(contentPanel, "counselorLogin");
+            cardLayout.show(contentPanel, "CounselorLogin");
+            counselorLoginPanel.requestFocusOnUsername();
         });
         universityButton.addActionListener(e -> {
             cardLayout.show(contentPanel, "UniversityLogin");

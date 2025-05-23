@@ -97,4 +97,15 @@ public class StudentLoginPanel extends JPanel {
         usernameField.setText("");
         passwordField.setText("");
     }
+    
+    public void requestFocusOnUsername() 
+    {
+        SwingUtilities.invokeLater(() -> 
+        {
+            if (usernameField.isShowing()) 
+            {
+                usernameField.requestFocusInWindow();
+            }
+        });    
+    }
 }
