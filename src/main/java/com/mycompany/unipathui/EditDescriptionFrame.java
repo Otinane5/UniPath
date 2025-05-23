@@ -1,10 +1,11 @@
 package com.mycompany.unipathui;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class EditDescriptionFrame extends JFrame {
+public class EditDescriptionFrame extends JPanel {
 
-    public EditDescriptionFrame(CardLayout cardLayout, JPanel cardPanel) {
+    public EditDescriptionFrame(Runnable onBackToMainMenu, Runnable onDepartListPanel, Runnable onDetailsPanel) {
         /*
         //attributes
         //currentDescription (string?)

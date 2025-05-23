@@ -5,8 +5,9 @@ import java.awt.*;
 
 public class DepartmentListPanel extends JPanel {
     
-    public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel, ProfilePanel detailsPanel) {
+    public DepartmentListPanel(Runnable onBackToMainMenu, Runnable onDetailsPanel) {
         setLayout(new BorderLayout(10, 10));
+        setBackground(Color.WHITE);
 
         JLabel listTitle = new JLabel("Λίστα Τμημάτων Πανεπιστημίου", SwingConstants.CENTER);
         listTitle.setFont(new Font("Arial", Font.BOLD, 20));
@@ -15,36 +16,62 @@ public class DepartmentListPanel extends JPanel {
         listTitle.setBounds(110,75,300,25);
         add(listTitle, BorderLayout.NORTH);
 
-        String[] departments={"Πληροφορικής","Μηχανικών Πληροφορικής","Ιατρικής","Οικονομικών","Πολιτικών Επιστημών","Εργοθεραπείας","Ηλεκτρολόγων Μηχανικών","Καλών Τεχνών"};
+        // Λίστα με τα panels για κάθε τμήμα
+        JPanel listPanel = new JPanel();
+        listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
+        listPanel.setBackground(Color.WHITE);
+        listPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        String[] departments = {
+            "Πληροφορικής",
+            "Μηχανικών Πληροφορικής",
+            "Ιατρικής",
+            "Οικονομικών",
+            "Πολιτικών Επιστημών",
+            "Εργοθεραπείας",
+            "Ηλεκτρολόγων Μηχανικών",
+            "Καλών Τεχνών"};
         
         for(String department : departments) {
             JPanel departmentPanel=new JPanel(new BorderLayout());
             departmentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+            departmentPanel.setBackground(Color.WHITE);
+            departmentPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
             
             JLabel departmentLabel= new JLabel(department, SwingConstants.CENTER);
+            //JLabel departmentLabel = new JLabel(department, SwingConstants.LEFT);
             departmentLabel.setFont(new Font("Arial", Font.PLAIN,14));
+            departmentLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
             departmentPanel.add(departmentLabel,BorderLayout.CENTER);
             
             JButton viewProfile= new JButton("Προβολή Προφίλ Τμήματος");
             viewProfile.setBackground(Color.CYAN);
-            viewProfile.addActionListener(e-> cardLayout.show(cardPanel, "profileDetails"));
+            viewProfile.addActionListener(e -> onDetailsPanel.run());
             departmentPanel.add(viewProfile, BorderLayout.EAST);
+            
+            listPanel.add(departmentPanel);
+            listPanel.add(Box.createVerticalStrut(10)); // Απόσταση μεταξύ τμημάτων
         }
-        
-        // BOTTOM OF THE PANEL
+
+        // Scroll pane για λίστα
+        JScrollPane scrollPane = new JScrollPane(listPanel);
+        scrollPane.setBorder(null);
+        add(scrollPane, BorderLayout.CENTER);
+
+        // BOTTOM BUTTONS
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        buttonPanel.setBackground(Color.WHITE);
         
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
         homeButton.setBounds(170,330,150,30);
+        homeButton.addActionListener(e -> onBackToMainMenu.run());
         
         JButton back = new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
         back.setBounds(330,330,150,30);
-        
-        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
-        back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
-
+        back.addActionListener(e -> onBackToMainMenu.run());
+                
         buttonPanel.add(homeButton);
         buttonPanel.add(back);
         add(buttonPanel, BorderLayout.SOUTH);

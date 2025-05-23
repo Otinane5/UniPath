@@ -10,7 +10,7 @@ public class StudentApplicationsPanel extends JPanel {
     
     private final JPanel applicationListPanel = new JPanel();
 
-    public StudentApplicationsPanel(CardLayout cardLayout, JPanel cardPanel) {
+    public StudentApplicationsPanel(Runnable onBackToMainMenu, Runnable onChooseFilters) {
         setLayout(new BorderLayout(10, 10));
         
         // Top Tools
@@ -24,7 +24,7 @@ public class StudentApplicationsPanel extends JPanel {
         JButton filt = new JButton("Ορισμός Φίλτρων");
         filt.setBackground(new Color(180, 210, 240));
         filt.setFocusPainted(false);
-        filt.addActionListener(e -> new ChooseFiltersScreen().setVisible(true));
+        filt.addActionListener(e -> onChooseFilters.run());
         topTools.add(filt);
 
         add(topTools, BorderLayout.BEFORE_FIRST_LINE);
@@ -45,12 +45,12 @@ public class StudentApplicationsPanel extends JPanel {
 
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
-        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
+        homeButton.addActionListener(e -> onBackToMainMenu.run());
         bottomPanel.add(homeButton);
 
         JButton back = new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
-        back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
+        back.addActionListener(e -> onBackToMainMenu.run());
         bottomPanel.add(back);
 
         add(bottomPanel, BorderLayout.SOUTH);

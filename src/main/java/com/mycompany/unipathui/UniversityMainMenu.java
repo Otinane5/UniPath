@@ -110,20 +110,35 @@ public class UniversityMainMenu extends JFrame {
         add(bottomPanel, BorderLayout.SOUTH);
 
         // --- Panels --- 
-        StudentApplicationsPanel applicationsPanel = new StudentApplicationsPanel(cardLayout, cardPanel);
-        EditDescriptionFrame editDesc = new EditDescriptionFrame(cardLayout, cardPanel);
+        StudentApplicationsPanel applicationsPanel = new StudentApplicationsPanel(
+                () -> cardLayout.show(cardPanel, "menu"),
+                () -> cardLayout.show(cardPanel, "chooseFilters")
+        );
+        DepartmentListPanel deplistPanel = new DepartmentListPanel(
+                () -> cardLayout.show(cardPanel, "menu"),
+                () -> cardLayout.show(cardPanel, "seeProfileDetails")
+        );
+        ProfilePanel profileDetailsPanel = new ProfilePanel(
+                () -> cardLayout.show(cardPanel, "menu"),
+                () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
+                () -> cardLayout.show(cardPanel, "editUniDesc"),
+                () -> cardLayout.show(cardPanel, "addAnnouncement")
+        );
+        EditDescriptionFrame editDesc = new EditDescriptionFrame(
+                () -> cardLayout.show(cardPanel, "menu"),
+                () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
+                () -> cardLayout.show(cardPanel, "seeProfileDetails")
+        );
         AddAnnouncementFrame addAnnoun = new AddAnnouncementFrame(cardLayout, cardPanel);
-        ProfilePanel profileDetailsPanel = new ProfilePanel(cardLayout, cardPanel, editDesc, addAnnoun);
-        DepartmentListPanel deplistPanel = new DepartmentListPanel(cardLayout, cardPanel, profileDetailsPanel);
-        //DepartmentListCounselor deplistPanel = new DepartmentListCounselor(
-        //        () -> cardLayout.show(cardPanel, "menu"),
-        //        () -> cardLayout.show(cardPanel, "showDepartment"),
-        //        () -> cardLayout.show(cardPanel, "applicationForm")
-        //); 
+        //ChooseFiltersScreen chooseFilt = new ChooseFiltersScreen();
         
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(applicationsPanel, "applications");
         cardPanel.add(deplistPanel, "seeListOfDepartments");
+        cardPanel.add(profileDetailsPanel, "seeProfileDetails");
+        //cardPanel.add(editDesc, "editUniDesc");
+        //cardPanel.add(addAnnoun, "addAnnouncement");
+        //cardPanel.add(chooseFilt, "chooseFilters");
 
         // Action Listeners
         viewApplicationsButton.addActionListener(e -> cardLayout.show(cardPanel, "applications"));

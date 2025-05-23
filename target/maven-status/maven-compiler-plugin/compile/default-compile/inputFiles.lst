@@ -1,49 +1,3 @@
-<<<<<<< HEAD
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\Announcement.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\Apointment.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\Application.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\Counselor.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\Department.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\MessageBox.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\Student.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\Unipath.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\University.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\baseClasses\User.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\AddAnnouncementFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\Application_FormUI.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\ChooseFiltersScreen.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\Councelor_listUI.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorAcceptAppointmentPanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorAppointmentDetailsPanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorAppointmentRequestsPanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorEditProfilePanelUI.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorFormScreen.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorLoginPanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorMenuFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorProfilePanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\CounselorRejectAppointmentPanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\DepartmentListCounselor.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\DepartmentListFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\DepartmentListUI.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\EditDescriptionFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\FilteredListScreen.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\LoginFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\ManageSearchClass.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\MessageBoxFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\MessageViewFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\NewMessageFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\ProfileFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\QuizUI.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\SearchResultScreen.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\ShowResultsUI.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\StarterQuiz.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\StudentApplicationsPanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\StudentLoginPanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\StudentMenuFrame.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\UniversityLoginPanel.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\UniversityMainMenu.java
-D:\Programming CEID\6o examino\TexnologiaLogismikou\UniPath\src\main\java\com\mycompany\unipathui\ViewScreenCounselor.java
-=======
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Announcement.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Apointment.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Application.java
@@ -88,4 +42,3 @@ C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompan
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\UniversityLoginPanel.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\UniversityMainMenu.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\ViewScreenCounselor.java
->>>>>>> 16444cad04232e13e3019ff48617766c241b750b
