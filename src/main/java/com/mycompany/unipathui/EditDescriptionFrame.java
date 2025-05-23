@@ -104,7 +104,8 @@ public class EditDescriptionFrame extends JFrame {
                     JOptionPane.YES_NO_OPTION
             );
 
-            if (result == JOptionPane.YES_OPTION) {
+            if (result == JOptionPane.YES_OPTION) 
+            {
                 dispose(); // Κλείσιμο αυτού του frame
                 new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
             }

@@ -40,7 +40,6 @@ public class StudentApplicationsFrame extends JFrame {
         sectionLabel.setBounds(190,90,200,20);
         add(sectionLabel);
         
-        
         JButton filt= new JButton("Ορισμός Φίλτρων");
         filt.setBackground(Color.decode("#ABCDDE")); //κολορ
         filt.setForeground(Color.BLACK);
@@ -99,8 +98,6 @@ public class StudentApplicationsFrame extends JFrame {
             //add(accept);
             //όταν υλοποιηθει το message box: connect για να στελνει μηνυμα αποδοχης
             
-            
-            
             JButton reject= new JButton("Απόρριψη");
             reject.setBackground(Color.decode("#FF0000"));
             reject.setForeground(Color.WHITE);
@@ -144,9 +141,6 @@ public class StudentApplicationsFrame extends JFrame {
         back.setBounds(330,330,150,30);
         back.addActionListener(e-> dispose());
         add(back);
-        
-        //logout.addActionListener(e -> System.exit(0));
-        //back.addActionListener(e -> dispose());
     } 
     
     public void viewApplications()

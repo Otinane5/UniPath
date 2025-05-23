@@ -106,9 +106,7 @@ public class ProfileFrame extends JFrame {
             homeButton.setBounds(170,330,150,30);
             add(homeButton);
             homeButton.addActionListener(e -> {
-                //new UniversityMainMenu(parentFrame).setVisible(true); 
                 new UniversityMainMenu().setVisible(true); 
-
                 dispose(); 
             });
 
@@ -179,5 +177,4 @@ public class ProfileFrame extends JFrame {
     }
 
 }
-
-//public,private...        
+       

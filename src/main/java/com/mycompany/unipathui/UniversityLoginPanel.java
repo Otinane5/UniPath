@@ -123,7 +123,6 @@ public class UniversityLoginPanel extends JPanel {
 
 
 /*
-
 usernameField.addActionListener(e -> passwordField.requestFocus());
 passwordField.addActionListener(e -> loginButton.doClick());
 */
