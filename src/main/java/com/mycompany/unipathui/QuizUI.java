@@ -29,7 +29,7 @@ public class QuizUI extends JPanel {
         
            questions = List.of(
             "<html>Ερώτηση 1:<br>Καλείσαι να διαχειριστείς το budget μιας επιχείρησης "
-            + "και να υπολογίσεις τα ετήσια έσοδα και έξοδά της.<br>Δέχεσαι την θέση;</html>",
+            + "και να υπολογίσεις τα ετήσια έσοδα και έξοδά της. Δέχεσαι την θέση;</html>",
                 
             "<html>Ερώτηση 2:<br>Στις σχολικές παραστάσεις, "
             + "πάντα ήθελες να έχεις πρωταγωνιστικό ρόλο;</html>",
@@ -78,15 +78,19 @@ public class QuizUI extends JPanel {
         );
          
         //Κεντρικό Panel ερωτήσεων και επιλογών
+        
+        //Ερωτήσεις
         JPanel centerPanel = new JPanel(new BorderLayout(10,10));
         questionLabel = new JLabel(questions.get(currentQuestionIndex), SwingConstants.CENTER);
         questionLabel.setFont(new Font("Arial", Font.PLAIN, 18));      
         questionLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         centerPanel.add(questionLabel, BorderLayout.NORTH);
+        centerPanel.setBackground(Color.WHITE);
         
         //Επιλογές
         JPanel optionsPanel = new JPanel();
         optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
+        optionsPanel.setBackground(Color.WHITE);
         optionButtons = new JRadioButton[5];
         optionGroup = new ButtonGroup();
         
@@ -101,6 +105,7 @@ public class QuizUI extends JPanel {
         for(int i=0; i<options.length; i++){
             optionButtons[i] = new JRadioButton(options[i]);
             optionButtons[i].setFont(new Font("Arial", Font.PLAIN,14));
+            optionButtons[i].setBackground(Color.WHITE);
             optionGroup.add(optionButtons[i]);
             optionsPanel.add(optionButtons[i]);
         }

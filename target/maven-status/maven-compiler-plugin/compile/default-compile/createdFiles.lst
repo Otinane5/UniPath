@@ -44,6 +44,7 @@ com\mycompany\baseClasses\MessageBox.class
 com\mycompany\unipathui\StudentMenuFrame.class
 com\mycompany\unipathui\CounselorFormScreen.class
 Councelor_listUI$6.class
+com\mycompany\unipathui\IconUtil.class
 com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\MessageBoxFrame.class
 Councelor_listUI$3.class
