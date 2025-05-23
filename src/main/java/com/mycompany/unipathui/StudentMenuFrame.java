@@ -9,6 +9,7 @@ public class StudentMenuFrame extends JFrame {
     private CardLayout cardLayout;
     private ShowResultsUI resultsPanel;
     private final AnswerLog answerLog = new AnswerLog();
+    private DepartmentProfileUI profilePanel;
     
     public StudentMenuFrame() {  
         setTitle("UniPath - Αρχικό Μενού μαθητή");
@@ -127,10 +128,10 @@ public class StudentMenuFrame extends JFrame {
         // --- Panels ---
         DepartmentListUI deplistPanel = new DepartmentListUI(
                 () -> cardLayout.show(cardPanel, "menu"),
-                () -> cardLayout.show(cardPanel, "showDepartment"),
+                (String departmentName) -> showDepartmentProfile(departmentName),
                 () -> cardLayout.show(cardPanel, "applicationForm")
         );        
-         
+                
         StarterQuiz quizStarterPanel = new StarterQuiz(
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "startQuiz")
@@ -189,5 +190,21 @@ public class StudentMenuFrame extends JFrame {
         cardPanel.remove(resultsPanel);
         resultsPanel = new ShowResultsUI(() -> cardLayout.show(cardPanel, "menu"), answerLog);
         cardPanel.add(resultsPanel, "quizResults");
+    }
+    
+    private void showDepartmentProfile(String departmentName) {
+        
+        if(profilePanel!=null){
+            cardPanel.remove(profilePanel); 
+        }
+        
+        profilePanel = new DepartmentProfileUI(
+        departmentName,
+        () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
+        () -> cardLayout.show(cardPanel, "menu"),
+        () -> JOptionPane.showMessageDialog(this, "Δεν υπάρχουν διαθέσιμες ανακοινώσεις.")        
+        );
+        cardPanel.add(profilePanel, "showProfile");
+        cardLayout.show(cardPanel, "showProfile");
     }
 }
