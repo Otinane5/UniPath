@@ -113,4 +113,3 @@ public class ProfilePanel extends JPanel {
     //public void pressBack()
     //{}
 }
-//public,private...
