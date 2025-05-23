@@ -27,7 +27,8 @@ public class EditDescriptionPanel extends JPanel {
         editPanel.add(departmentLabel);
         editPanel.add(Box.createVerticalStrut(10));
         
-        JLabel descriptionLabel= new JLabel("Περιγραφή Τμήματος:");
+        JLabel descriptionLabel= new JLabel("Περιγραφή Τμήματος:", SwingConstants.CENTER);
+        descriptionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         editPanel.add(descriptionLabel);
         
         JTextArea descriptionArea= new JTextArea("Περιγραφή...");

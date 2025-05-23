@@ -3,12 +3,19 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class ChooseFiltersScreen extends JFrame {
+public class ChooseFiltersScreen extends JPanel {
     
     private JTextField name,dept,city,min,max;
     private LoginFrame parentFrame;
     
     public ChooseFiltersScreen() {
+        setLayout(new BorderLayout(10, 10));
+        
+        // Title label
+        JLabel titleLabel = new JLabel("Ορισμός Φίλτρων", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        add(titleLabel, BorderLayout.NORTH);
+        
 /*       this.parentFrame=parentFrame;
         setTitle("Ορισμός Φίλτρων");
         setSize(500,400);
