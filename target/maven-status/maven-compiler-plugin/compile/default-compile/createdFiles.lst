@@ -37,6 +37,7 @@ com\mycompany\unipathui\LoginFrame.class
 com\mycompany\baseClasses\University.class
 com\mycompany\unipathui\SearchResultScreen.class
 com\mycompany\unipathui\CounselorEditProfilePanelUI.class
+com\mycompany\unipathui\ShowResultsUI$2.class
 com\mycompany\unipathui\DepartmentListUI.class
 com\mycompany\unipathui\AnswerLog.class
 com\mycompany\baseClasses\MessageBox.class
