@@ -48,6 +48,10 @@ public class EditDescriptionPanel extends JPanel {
         JButton accept=new JButton("Αποδοχή Αλλαγών");
         accept.setBackground(Color.GREEN);
         accept.setForeground(Color.WHITE);
+        accept.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
+            cardLayout.show(cardPanel, "seeProfileDetails");
+        });
         
         JPanel confirmPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         confirmPanel.add(cancel);
