@@ -23,6 +23,7 @@ com\mycompany\unipathui\CounselorProfilePanel.class
 com\mycompany\baseClasses\Unipath.class
 com\mycompany\unipathui\EditDescriptionFrame.class
 com\mycompany\unipathui\QuizUI.class
+com\mycompany\unipathui\AnswerLog$DepartmentType.class
 Councelor_listUI.class
 com\mycompany\unipathui\ProfilePanel.class
 Councelor_listUI$5.class
@@ -37,14 +38,17 @@ com\mycompany\baseClasses\University.class
 com\mycompany\unipathui\SearchResultScreen.class
 com\mycompany\unipathui\CounselorEditProfilePanelUI.class
 com\mycompany\unipathui\DepartmentListUI.class
+com\mycompany\unipathui\AnswerLog.class
 com\mycompany\baseClasses\MessageBox.class
 com\mycompany\unipathui\StudentMenuFrame.class
 com\mycompany\unipathui\CounselorFormScreen.class
 Councelor_listUI$6.class
 com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\MessageBoxFrame.class
+com\mycompany\unipathui\TestAnswerLog.class
 Councelor_listUI$3.class
 com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\StudentApplicationsPanel.class
 com\mycompany\unipathui\StudentLoginPanel.class
 com\mycompany\baseClasses\Application.class
+com\mycompany\unipathui\ShowResultsUI$1.class
