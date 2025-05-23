@@ -115,7 +115,7 @@ public class UniversityMainMenu extends JFrame {
         ProfilePanel profileDetailsPanel = new ProfilePanel(cardLayout, cardPanel);
         EditDescriptionPanel editDesc = new EditDescriptionPanel(cardLayout, cardPanel);
         AddAnnouncementPanel addAnnoun = new AddAnnouncementPanel(cardLayout, cardPanel);
-        ChooseFiltersScreen chooseFilt = new ChooseFiltersScreen();
+        ChooseFiltersScreen chooseFilt = new ChooseFiltersScreen(cardLayout, cardPanel);
         
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(applicationsPanel, "applications");
