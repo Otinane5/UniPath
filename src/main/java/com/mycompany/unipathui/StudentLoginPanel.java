@@ -40,14 +40,18 @@ public class StudentLoginPanel extends JPanel {
         // με το enter μεταβαίνει από το Username στο Password field
         usernameField.addActionListener(e -> passwordField.requestFocusInWindow());
 
+        //αφου συμπληρωθεί και το Password με enter γίνεται η Σύνδεση
+        passwordField.addActionListener(e -> performLogin());
+        
         //Κουμπιά
         JButton loginButton = new JButton("Σύνδεση");
         loginButton.setBackground(Color.CYAN);
+        loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginButton.setMaximumSize(new Dimension(200, 35));
+        loginButton.addActionListener(e -> performLogin());
         
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));
-
-        //backButton.setBackground(Color.PINK);
         
         //Μέγεθος και στοίχιση κουμπιών ρόλου
         Dimension buttonSize = new Dimension(200, 35);
@@ -74,8 +78,18 @@ public class StudentLoginPanel extends JPanel {
         add(centerWrapper, BorderLayout.CENTER);
 
         //Λειτουργικότητα κουμπιών
-        loginButton.addActionListener((var e) -> {
-            String username = usernameField.getText();
+        backButton.addActionListener(e -> {
+            clearFields();
+            parentFrame.showRoleSelectionPanel();
+        });
+    }
+    
+    
+    //METHODS
+    
+     private void performLogin() {
+         
+        String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
             //Αναζήτηση χρήστη:
             User myUser = User.login(username,password);
@@ -87,14 +101,8 @@ public class StudentLoginPanel extends JPanel {
             else {
                 JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
             }
-        });
-
-        backButton.addActionListener(e -> {
-            clearFields();
-            parentFrame.showRoleSelectionPanel();
-        });
     }
-    //METHODS
+     
     //Καθαρίζει τα πεδία και τα μηνύματα λάθους
     public void clearFields() {
         usernameField.setText("");

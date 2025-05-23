@@ -138,7 +138,5 @@ public class LoginFrame extends JFrame {
         //cardLayout.show(contentPanel, "roleSelection");
         setTitle("UniPath - Σύνδεση"); // Reset τον τίτλο όταν πάει πίσω
     cardLayout.show(contentPanel, "roleSelection");
-    }
-    
-    
+    }   
 }
