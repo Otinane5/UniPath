@@ -76,24 +76,7 @@ public class QuizUI extends JPanel {
             
             "<html>Ερώτηση 18:<br>Σε ενδιαφέρει η μελέτη της ανθρώπινης ψυχοσύνθεσης;</html>"       
         );
-        
-        //Προσωρινά μικρότερος αριθμός ερωτήσεων για γρήγορα check 
-        /*questions = List.of(
-                "<html>Ερώτηση 1:<br>Καλείσαι να διαχειριστείς το budget μιας επιχείρησης "
-                + "και να υπολογίσεις τα ετήσια έσοδα και έξοδά της.<br>Δέχεσαι την θέση;</html>",
-                "<html>Ερώτηση 2:<br>Στις σχολικές παραστάσεις, "
-                + "πάντα ήθελες να έχεις πρωταγωνιστικό ρόλο;</html>",
-                "<html>Ερώτηση 3:<br>Τι θα έλεγες να ήσουν υπεύθυνος για την σχεδίαση "
-                + "και κατασκευή ενός μεγάλου έργου ή μιας αστικής υποδομής; </html>",
-                "<html>Ερώτηση 4:<br>Θα ήθελες να συμβάλλεις στην ανακάλυψη νέων φαρμάκων "
-                + "ή ιατρικών θεραπειών;</html>",
-                "<html>Ερώτηση 5:<br>Είναι συναρπαστικό να μαθαίνεις για τα φυσικά φαινόμενα "
-                + "και να κατανοείς το μαθηματικό τους υπόβαθρο, εκτελώντας παράλληλα πειράματα. ;</html>",
-                "<html>Ερώτηση 6:<br>Θα σου άρεσε βάσει των νόμων να αντιπαραθέτεις "
-                + "τα επιχειρήματά σου (πχ. σε ένα debate, σε ένα δικαστήριο);</html>"      
-        );*/
-
-        
+         
         //Κεντρικό Panel ερωτήσεων και επιλογών
         JPanel centerPanel = new JPanel(new BorderLayout(10,10));
         questionLabel = new JLabel(questions.get(currentQuestionIndex), SwingConstants.CENTER);
@@ -161,7 +144,7 @@ public class QuizUI extends JPanel {
                 updateQuestion();
             }
             else{
-                //Στην τελευταία ερώτηση
+                //Επιβεβαιωτικό μήνυμα στην τελευταία ερώτηση
                 int result = JOptionPane.showConfirmDialog(this,
                         "Είσαι σίγουρος/η για τις απαντήσεις σου;",
                         "Επιβεβαίωση Υποβολής Quiz",
@@ -176,7 +159,6 @@ public class QuizUI extends JPanel {
                 nextButton.setText("Δες τα αποτελέσματά σου!");
                 nextButton.setBackground(Color.CYAN);
             }
-            //ΣΥΝΕΧΕΙΑ ΣΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ
         });
      
         JButton backButton = new JButton("Επιστροφή στο μενού του Quiz");
@@ -206,6 +188,7 @@ public class QuizUI extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
+    //Αλλαγή ερώτησης
     public void updateQuestion() {
         questionLabel.setText(questions.get(currentQuestionIndex));
         optionGroup.clearSelection(); //Καθαρισμός προηγούμενης επιλογής
@@ -216,6 +199,7 @@ public class QuizUI extends JPanel {
         }
     }
     
+    //Επιλογή απάντησης
     public int getSelectedOptionText() {
         for(int i=0; i<optionButtons.length; i++) {
             if(optionButtons[i].isSelected()){
@@ -225,6 +209,7 @@ public class QuizUI extends JPanel {
         return -1; //Καμία επιλογή
     }
     
+    //Εκκαθάριση Quiz
     public void clearQuiz(){
         currentQuestionIndex=0;
         optionGroup.clearSelection();
