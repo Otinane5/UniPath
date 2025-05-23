@@ -111,18 +111,13 @@ public class CounselorLoginPanel extends JPanel {
     }
     
     //Καθαρίζει τα πεδία και τα μηνύματα λάθους
-    public void clearFields() 
-    {
+    public void clearFields() {
         usernameField.setText("");
         passwordField.setText("");
     }
-    
-    public void requestFocusOnUsername() 
-    {
-        SwingUtilities.invokeLater(() -> 
-        {
-            if (usernameField.isShowing()) 
-                {
+    public void requestFocusOnUsername() {
+        SwingUtilities.invokeLater(() -> {
+            if (usernameField.isShowing()) {
                     usernameField.requestFocusInWindow();
                 }
         });    
