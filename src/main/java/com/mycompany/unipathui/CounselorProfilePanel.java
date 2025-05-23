@@ -16,43 +16,60 @@ public class CounselorProfilePanel extends JPanel {
         JLabel titleLabel = new JLabel("Προφίλ Συμβούλου", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         add(titleLabel, BorderLayout.NORTH);
-
-        // Form Panel to display counselor information
-        JPanel formPanel = new JPanel(new GridLayout(7, 2, 10, 10)); // Adjusted for 7 rows
-        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
-
-        formPanel.add(new JLabel("Όνομα:"));
-        formPanel.add(new JLabel(CounselorToDisplay.name));
-        formPanel.add(new JLabel("Επώνυμο:"));
-        formPanel.add(new JLabel(CounselorToDisplay.lastName));
-        formPanel.add(new JLabel("Email:"));
-        formPanel.add(new JLabel(CounselorToDisplay.email));
-        formPanel.add(new JLabel("Τηλέφωνο:"));
-        formPanel.add(new JLabel(CounselorToDisplay.phoneNum));
-        formPanel.add(new JLabel("Περιγραφή (Bio):"));
+        
+        // Central Panel with info
+        JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setOpaque(false);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 5, 10);
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        
+        // Helpful method for label and value
+        int row = 0;
+        formPanel.add(makeLabel("Όνομα:"), makeGbc(0, row));
+        formPanel.add(new JLabel(CounselorToDisplay.name), makeGbc(1, row++));
+        formPanel.add(makeLabel("Επώνυμο:"), makeGbc(0, row));
+        formPanel.add(new JLabel(CounselorToDisplay.lastName), makeGbc(1, row++));
+        formPanel.add(makeLabel("Email:"), makeGbc(0, row));
+        formPanel.add(new JLabel(CounselorToDisplay.email), makeGbc(1, row++));
+        formPanel.add(makeLabel("Τηλέφωνο:"), makeGbc(0, row));
+        formPanel.add(new JLabel(CounselorToDisplay.phoneNum), makeGbc(1, row++));
+        
+        // Bio
+        formPanel.add(makeLabel("Περιγραφή (Bio):"), makeGbc(0, row));
         JTextArea bio = new JTextArea(CounselorToDisplay.bio);
         bio.setLineWrap(true);
         bio.setWrapStyleWord(true);
         bio.setEditable(false);
-        formPanel.add(new JScrollPane(bio));
-
+        bio.setFont(new Font("Arial", Font.PLAIN, 13));
+        JScrollPane bioScroll = new JScrollPane(bio);
+        bioScroll.setPreferredSize(new Dimension(300, 80));
+        formPanel.add(bioScroll, makeGbc(1, row++));
+        
         // Add reviews section only if the logged-in user is the counselor
         if (Unipath.currentUser.userName.equals(CounselorToDisplay.userName)) {
             // Display average review rating
-            formPanel.add(new JLabel("Μέσος Όρος Αξιολόγησης:"));
-            formPanel.add(createAverageRatingPanel(CounselorToDisplay.reviews));
+            formPanel.add(new JLabel("Μέσος Όρος Αξιολόγησης:"), makeGbc(0, row));
+            formPanel.add(createAverageRatingPanel(CounselorToDisplay.reviews), makeGbc(1, row++));
 
             // Display individual reviews as a scrollable list
-            formPanel.add(new JLabel("Αξιολογήσεις:"));
+            formPanel.add(new JLabel("Αξιολογήσεις:"), makeGbc(0, row));
             JScrollPane reviewsScrollPane = new JScrollPane(createIndividualReviewsPanel(CounselorToDisplay.reviews));
             reviewsScrollPane.setPreferredSize(new Dimension(300, 150));  // Adjust the size as needed
-            formPanel.add(reviewsScrollPane);
+            formPanel.add(reviewsScrollPane, makeGbc(1, row++));
 
             // Add "Edit Profile" button if it's the counselor's profile
             JButton editButton = new JButton("Επεξεργασία Προφίλ");
             editButton.setBackground(new Color(173, 216, 230));
+            editButton.setFocusPainted(false);
+            editButton.setFont(new Font("Arial", Font.BOLD, 13));
             editButton.addActionListener(e -> onEditProfile.run());
-            formPanel.add(editButton);
+            gbc.gridwidth = 2;
+            gbc.gridx = 0;
+            gbc.gridy = row++;
+            
+            formPanel.add(editButton, gbc);
         }
 
         add(formPanel, BorderLayout.CENTER);
@@ -62,11 +79,10 @@ public class CounselorProfilePanel extends JPanel {
 
         JButton backToMain = new JButton("Αρχική Σελίδα");
         backToMain.setBackground(Color.decode("#B3FF66"));
+        backToMain.addActionListener(e -> onBackToMainMenu.run());
+        
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.decode("#FFCC66"));
-
-        // Back buttons
-        backToMain.addActionListener(e -> onBackToMainMenu.run());
         backButton.addActionListener(e -> onBackToMainMenu.run());
         
         buttonPanel.add(backToMain);
@@ -108,5 +124,19 @@ public class CounselorProfilePanel extends JPanel {
         }
 
         return panel;
+    }
+    private JLabel makeLabel(String text) {
+        JLabel label = new JLabel(text);
+        label.setFont(new Font("Arial", Font.BOLD, 13));
+        return label;
+    }
+    private GridBagConstraints makeGbc(int x, int y) {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = x;
+        gbc.gridy = y;
+        gbc.insets = new Insets(5, 10, 5, 10);
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        return gbc;
     }
 }

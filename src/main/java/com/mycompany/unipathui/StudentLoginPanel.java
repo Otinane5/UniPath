@@ -83,12 +83,8 @@ public class StudentLoginPanel extends JPanel {
             parentFrame.showRoleSelectionPanel();
         });
     }
-    
-    
     //METHODS
-    
-     private void performLogin() {
-         
+    private void performLogin() {
         String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
             //Αναζήτηση χρήστη:
@@ -102,21 +98,16 @@ public class StudentLoginPanel extends JPanel {
                 JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
             }
     }
-     
     //Καθαρίζει τα πεδία και τα μηνύματα λάθους
     public void clearFields() {
         usernameField.setText("");
         passwordField.setText("");
     }
-    
-    public void requestFocusOnUsername() 
-    {
-        SwingUtilities.invokeLater(() -> 
-        {
-            if (usernameField.isShowing()) 
-            {
+    public void requestFocusOnUsername() {
+        SwingUtilities.invokeLater(() -> {
+            if (usernameField.isShowing()) {
                 usernameField.requestFocusInWindow();
             }
-        });    
+        });
     }
 }
