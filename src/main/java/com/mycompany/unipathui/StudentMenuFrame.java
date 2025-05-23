@@ -3,6 +3,7 @@ package com.mycompany.unipathui;
 import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class StudentMenuFrame extends JFrame {
     private JPanel cardPanel;
@@ -10,6 +11,7 @@ public class StudentMenuFrame extends JFrame {
     private ShowResultsUI resultsPanel;
     private final AnswerLog answerLog = new AnswerLog();
     private DepartmentProfileUI profilePanel;
+    private AnnouncementUI announcementPanel;
     
     public StudentMenuFrame() {  
         setTitle("UniPath - Αρχικό Μενού μαθητή");
@@ -202,9 +204,32 @@ public class StudentMenuFrame extends JFrame {
         departmentName,
         () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
         () -> cardLayout.show(cardPanel, "menu"),
-        () -> JOptionPane.showMessageDialog(this, "Δεν υπάρχουν διαθέσιμες ανακοινώσεις.")        
+        () -> showDepartmentAnnouncements(departmentName)        
         );
         cardPanel.add(profilePanel, "showProfile");
         cardLayout.show(cardPanel, "showProfile");
+    }
+    
+    private void showDepartmentAnnouncements(String departmentName){
+        //Στατικές ανακοινώσεις
+        List<String> announcements = List.of(
+            "Καλωσόρισμα μαθητών τρίτης λυκείου.",
+            "Πρόγραμμα μαθημάτων.",
+            "Αιτήσεις εγγραφής."     
+        );
+        
+        if(announcementPanel!=null){
+            cardPanel.remove(announcementPanel);    
+        }
+        
+        announcementPanel = new AnnouncementUI(
+            departmentName,
+            announcements,
+            () -> cardLayout.show(cardPanel, "showProfile"), //πίσω
+            () -> cardLayout.show(cardPanel, "menu") //πίσω στο μενού  
+        );
+        
+        cardPanel.add(announcementPanel, "showAnnouncements");
+        cardLayout.show(cardPanel, "showAnnouncements");
     }
 }
