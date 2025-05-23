@@ -12,6 +12,7 @@ public class StudentApplicationsPanel extends JPanel {
 
     public StudentApplicationsPanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
+        setBackground(Color.WHITE);
         
         // Top Tools
         JPanel topTools = new JPanel(new FlowLayout(FlowLayout.LEFT));

@@ -17,9 +17,9 @@ com\mycompany\unipathui\UniversityLoginPanel.class
 com\mycompany\unipathui\StarterQuiz.class
 com\mycompany\unipathui\UniversityMainMenu.class
 com\mycompany\baseClasses\Counselor.class
-com\mycompany\unipathui\AddAnnouncementFrame.class
 Councelor_listUI$1.class
 com\mycompany\unipathui\CounselorMenuFrame.class
+com\mycompany\unipathui\AddAnnouncementPanel.class
 com\mycompany\unipathui\CounselorProfilePanel.class
 com\mycompany\baseClasses\Unipath.class
 com\mycompany\unipathui\QuizUI.class
