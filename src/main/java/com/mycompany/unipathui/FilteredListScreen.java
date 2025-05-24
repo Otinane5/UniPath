@@ -1,6 +1,10 @@
 package com.mycompany.unipathui;
 import com.mycompany.baseClasses.Application;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -66,21 +70,16 @@ public class FilteredListScreen extends JPanel
 
     //new
     public void setFilters(String department, String city, Integer min, Integer max, String status)
-    {
-        if(department==null)
-            {this.departmentFilter="";}
-        else
-            {this.departmentFilter=department.trim().toLowerCase();}
-        this.cityFilter = city == null ? "" : city.trim().toLowerCase(); //if else
+    {        
+        this.departmentFilter=GreekNormalizer.normalize(department);
+        this.cityFilter = GreekNormalizer.normalize(city);
         this.minGrade = min;
         this.maxGrade = max;
-        this.statusFilter=status.trim();
-        // this.statusFilter = (status == null) ? "" : status.trim().toLowerCase();
-
+        this.statusFilter=GreekNormalizer.normalize(status);
+        
         returnResults(); 
         //filterApplications();
     }
-    
     
     public void requestFullList()
     {returnResults();}
@@ -88,11 +87,9 @@ public class FilteredListScreen extends JPanel
     public void returnResults()
     {
         List<Application> filtered = Application.sample.stream()
-        .filter(app -> cityFilter.isEmpty() || app.residence.toLowerCase().contains(cityFilter))
-        .filter(app -> departmentFilter.isEmpty() || app.department.toLowerCase().contains(departmentFilter))
-        .filter(app -> statusFilter.isEmpty() || app.state.equalsIgnoreCase(statusFilter))
-
-        //To do: department
+        .filter(app -> cityFilter.isEmpty() || GreekNormalizer.normalize(app.residence).contains(cityFilter))
+        .filter(app -> departmentFilter.isEmpty() || GreekNormalizer.normalize(app.department).contains(departmentFilter))
+        .filter(app -> statusFilter.isEmpty() || GreekNormalizer.normalize(app.state).contains(statusFilter))
         .filter(app -> 
         {
             try 
@@ -102,7 +99,7 @@ public class FilteredListScreen extends JPanel
             } 
             catch (NumberFormatException e) 
             {
-                return false; // Exclude entries with invalid gradePoints
+                return false; //invalid
                 //message
             }
         })
@@ -119,7 +116,6 @@ public class FilteredListScreen extends JPanel
             JLabel noResults=new JLabel("Δεν υπάρχουν αποτελέσματα που να πληρούν τα φίλτρα που διαλέξατε.\n\n Πατήστε 'Πίσω' και προσπαθήστε ξανά");
             noResults.setFont(new Font("Arial", Font.BOLD, 14));
             noResults.setForeground(new Color(255,0,0));
-            //μηνυμα νεςλινε και φοντο γκρι γενιακ
             noResults.setAlignmentX(Component.CENTER_ALIGNMENT);
             resultsPanel.add(Box.createVerticalGlue());
             resultsPanel.add(noResults);
@@ -178,4 +174,16 @@ public class FilteredListScreen extends JPanel
         };
     }
     
+    //greek language
+    public class GreekNormalizer {
+    private static final Pattern DIACRITICS = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+
+    public static String normalize(String input) {
+        if (input == null) return "";
+        // Κανονικοποίηση σε πεζά και αφαίρεση τόνων
+        String lower = input.toLowerCase();
+        String normalized = Normalizer.normalize(lower, Normalizer.Form.NFD);
+        return DIACRITICS.matcher(normalized).replaceAll("");
+    }
+    }
 }

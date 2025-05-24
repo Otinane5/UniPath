@@ -24,14 +24,25 @@ public class DepartmentListPanel extends JPanel {
         
         String[] departments = {
             "Πληροφορικής",
-            "Μηχανικών Πληροφορικής",
+            "Μηχανικών Υπολογιστών",
+            "Νομικής",
             "Ιατρικής",
+            "Ψυχολογίας",
+            "Καλών Τεχνών",
+            "Φιλοσοφίας",
+            "Φιλολογίας", 
+            "Διοίκησης Επιχειρήσεων",
             "Οικονομικών",
+            "Φαρμακευτικής",
+            "Μαθηματικών",
+            "Χημικών Μηχανικών",
+            "Λογοθεραπείας",
             "Πολιτικών Επιστημών",
             "Εργοθεραπείας",
             "Ηλεκτρολόγων Μηχανικών",
-            "Καλών Τεχνών"};
-        
+            };
+                
+            
         for(String department : departments) {
             JPanel departmentPanel=new JPanel(new BorderLayout());
             departmentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));

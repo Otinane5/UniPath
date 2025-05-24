@@ -62,7 +62,6 @@ public class ChooseFiltersScreen extends JPanel {
         status=new JTextField(20);
         centerPanel.add(status,gbc);
         
-        //+πχ εγκριθείσα=ΕΓΚΡΙΘΕΙΣΑ...
         //+περιορισμός για τα ακέραια min+max (Να μην μπορει σε εκείνα τα πεδία να γράψει αλφαριθμητικό)
         
         // Save Button
@@ -108,7 +107,8 @@ public class ChooseFiltersScreen extends JPanel {
     
     public void saveFilters(){
         // έλεγχος για τα μόρια
-        try {
+        try 
+        {
             Integer minValue = min.getText().isEmpty() ? null : Integer.parseInt(min.getText());
             Integer maxValue = max.getText().isEmpty() ? null : Integer.parseInt(max.getText());
             String statusFilter = status.getText().trim();
@@ -125,7 +125,8 @@ public class ChooseFiltersScreen extends JPanel {
                 JOptionPane.showMessageDialog(this,"Σφάλμα!\n Η προβολή φιλτραρισμένων αιτήσεων δεν βρέθηκε.");
             }
         }
-        catch (NumberFormatException ex) {
+        catch (NumberFormatException ex) 
+        {
             JOptionPane.showMessageDialog(this, "Παρακαλώ εισάγετε έγκυρα αριθμητικά όρια.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
         }
     }
