@@ -7,8 +7,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.List;
 
-public class DepartmentProfileUI extends JPanel{
-    
+public class DepartmentProfileUI extends JPanel{   
     //Στατική ανάθεση περιγραφών τμημάτων
     private static final Map<String, String> departmentDescriptions = new HashMap<>();
     static {

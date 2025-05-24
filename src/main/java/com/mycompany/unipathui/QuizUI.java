@@ -81,7 +81,7 @@ public class QuizUI extends JPanel {
         
         //Ερωτήσεις
         JPanel centerPanel = new JPanel(new BorderLayout(10,10));
-        questionLabel = new JLabel(questions.get(currentQuestionIndex), SwingConstants.CENTER);
+        questionLabel = new JLabel(questions.get(currentQuestionIndex), SwingConstants.LEFT);
         questionLabel.setFont(new Font("Arial", Font.PLAIN, 18));      
         questionLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         centerPanel.add(questionLabel, BorderLayout.NORTH);

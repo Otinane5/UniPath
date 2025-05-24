@@ -131,9 +131,20 @@ public class StudentMenuFrame extends JFrame {
         DepartmentListUI deplistPanel = new DepartmentListUI(
                 () -> cardLayout.show(cardPanel, "menu"),
                 (String departmentName) -> showDepartmentProfile(departmentName),
-                () -> cardLayout.show(cardPanel, "applicationForm")
+                () -> cardLayout.show(cardPanel, "applicationForm"),
+                () -> cardLayout.show(cardPanel, "setFilters")
         );        
-                
+         
+        SearchFiltersUI filterPanel = new SearchFiltersUI(
+                () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
+                criteria -> {
+                    deplistPanel.applyFilters(
+                    criteria.type, criteria.minFee, criteria.maxFee, criteria.minPoints
+                    );
+                    cardLayout.show(cardPanel, "seeListOfDepartments");
+                }
+        );
+        
         StarterQuiz quizStarterPanel = new StarterQuiz(
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "startQuiz")
@@ -158,10 +169,12 @@ public class StudentMenuFrame extends JFrame {
         resultsPanel = new ShowResultsUI(() -> cardLayout.show(cardPanel, "menu"), answerLog);
         
         cardPanel.add(menuPanel, "menu");
+        
         cardPanel.add(deplistPanel, "seeListOfDepartments");
+        cardPanel.add(filterPanel, "setFilters");
+        
         cardPanel.add(quizStarterPanel, "doQuiz");
         cardPanel.add(quizPanel, "startQuiz");
-        
         cardPanel.add(resultsPanel, "quizResults");
 
        // Action Listeners

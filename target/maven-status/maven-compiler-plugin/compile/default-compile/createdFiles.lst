@@ -13,6 +13,7 @@ com\mycompany\unipathui\NewMessageFrame.class
 com\mycompany\unipathui\CounselorAppointmentDetailsPanel.class
 com\mycompany\unipathui\MessageViewFrame.class
 Councelor_listUI$4.class
+com\mycompany\unipathui\SearchFiltersUI.class
 com\mycompany\unipathui\UniversityLoginPanel.class
 com\mycompany\unipathui\StarterQuiz.class
 com\mycompany\unipathui\UniversityMainMenu.class
@@ -27,6 +28,7 @@ com\mycompany\unipathui\QuizUI.class
 com\mycompany\unipathui\AnswerLog$DepartmentType.class
 com\mycompany\unipathui\AnnouncementView.class
 Councelor_listUI.class
+com\mycompany\unipathui\DepartmentInfo.class
 com\mycompany\unipathui\ProfilePanel.class
 Councelor_listUI$5.class
 com\mycompany\baseClasses\Announcement.class
@@ -54,6 +56,7 @@ Councelor_listUI$3.class
 com\mycompany\unipathui\DepartmentProfileUI.class
 com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\AnnouncementRepository.class
+com\mycompany\unipathui\SearchFiltersUI$FilterCriteria.class
 com\mycompany\unipathui\FilteredListScreen$GreekNormalizer.class
 com\mycompany\unipathui\StudentApplicationsPanel.class
 com\mycompany\unipathui\StudentLoginPanel.class
