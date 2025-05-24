@@ -54,8 +54,9 @@ public class Application_FormUI extends JPanel {
         jTextField3 = new JTextField(20);
         jTextField4 = new JTextField(20);
         jTextField5 = new JTextField(20);
-        jComboBox1 = new JComboBox<>(new String[]{"Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Ηράκλειο"});
+        jComboBox1 = new JComboBox<>(new String[]{"Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Ηράκλειο", "Άλλη","Εξωτερικό"});
 
+        //πρέπει να σβήνει ο χρήστης καθε φορά από το πλαίσιο το πληκτρολογήστε... 
         Color placeholderColor = new Color(163, 163, 163);
         jTextField1.setForeground(placeholderColor);
         jTextField1.setText("Πληκτρολογήστε το όνομα και το επώνυμο");
@@ -87,6 +88,8 @@ public class Application_FormUI extends JPanel {
         jButton2.setPreferredSize(new Dimension(120, 40));
         jButton2.addActionListener(this::submitForm);
 
+        //+ κουμπί "πίσω" και "Αρχική σελίδα"
+        
         // Layout
         gbc.gridwidth = 1; gbc.anchor = GridBagConstraints.WEST;
 

@@ -174,16 +174,17 @@ public class FilteredListScreen extends JPanel
         };
     }
     
-    //greek language
-    public class GreekNormalizer {
-    private static final Pattern DIACRITICS = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+    //Με την παρακάτω κλάση κανονικοποιούμε τους ελληνικούς χαρακτήρες (μη διάκριση πεζών-κεφαλαίων, τόνοι...)
+    public class GreekNormalizer 
+    {
+        private static final Pattern DIACRITICS = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 
-    public static String normalize(String input) {
-        if (input == null) return "";
-        // Κανονικοποίηση σε πεζά και αφαίρεση τόνων
-        String lower = input.toLowerCase();
-        String normalized = Normalizer.normalize(lower, Normalizer.Form.NFD);
-        return DIACRITICS.matcher(normalized).replaceAll("");
-    }
+        public static String normalize(String input) 
+        {
+            if (input == null) return "";
+            String lower = input.toLowerCase();
+            String normalized = Normalizer.normalize(lower, Normalizer.Form.NFD);
+            return DIACRITICS.matcher(normalized).replaceAll("");
+        }
     }
 }

@@ -106,13 +106,49 @@ public class ChooseFiltersScreen extends JPanel {
 }
     
     public void saveFilters(){
-        // έλεγχος για τα μόρια
         try 
         {
+            //if else
             Integer minValue = min.getText().isEmpty() ? null : Integer.parseInt(min.getText());
             Integer maxValue = max.getText().isEmpty() ? null : Integer.parseInt(max.getText());
+            if((minValue!=null&& minValue<0)|| (maxValue!=null&& maxValue<0))
+            {
+                JOptionPane.showMessageDialog(this,"Οι βαθμοί του μαθητή πρέπει να είναι θετικοί αριθμοί!", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            if(minValue!=null && maxValue !=null && minValue>maxValue)
+            {
+                JOptionPane.showMessageDialog(this, "Τα ελάχιστα μόρια δεν μπορούν να ξεπερνούν τα μέγιστα. \n Εισάγετε ένα νέο, έγκυρο διάστημα", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            String deptInput=dept.getText().trim();
+            String cityInput=city.getText().trim();
             String statusFilter = status.getText().trim();
-
+            
+            //το \\p{L} κάνει match σε όλα τα γράμματα (δηλ. δεν δέχεται πχ αριθμητικά)+το κενό
+            if(!deptInput.matches("[\\p{L} ]*"))
+            {
+                JOptionPane.showMessageDialog(this, "Το πεδίο \"Τμήμα\" πρέπει να περιέχει μόνο γράμματα.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+             if(!cityInput.matches("[\\p{L} ]*"))
+            {
+                JOptionPane.showMessageDialog(this, "Το πεδίο \"Τόπος Διαμονής\" πρέπει να περιέχει μόνο γράμματα.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+             
+            if(!statusFilter.isEmpty() && 
+               !statusFilter.equals("Υποβληθείσα") &&
+               !statusFilter.equals("Εγκεκριμένη") &&
+               !statusFilter.equals("Απορριφθείσα"))
+            {
+                JOptionPane.showMessageDialog(this, "Το πεδίο\"Κατάσταση\" πρέπει να είναι κάποιο από τα παρακάτω: Υποβληθείσα,Εγκεκριμένη,Απορριφθείσα.","Σφάλμα", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
             JOptionPane.showMessageDialog(this, "Τα φίλτρα αποθηκεύτηκαν με επιτυχία!");
             
             if(filteredListScreen != null)
@@ -122,7 +158,7 @@ public class ChooseFiltersScreen extends JPanel {
             }
             else
             {
-                JOptionPane.showMessageDialog(this,"Σφάλμα!\n Η προβολή φιλτραρισμένων αιτήσεων δεν βρέθηκε.");
+                JOptionPane.showMessageDialog(this,"Σφάλμα!\n Δεν βρέθηκε η φιλτραρισμένη λίστα των αιτήσεων.");
             }
         }
         catch (NumberFormatException ex) 
