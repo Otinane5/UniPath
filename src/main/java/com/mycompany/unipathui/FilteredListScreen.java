@@ -27,7 +27,10 @@ public class FilteredListScreen extends JPanel
 
         resultsPanel.setLayout(new BoxLayout(resultsPanel, BoxLayout.Y_AXIS));
         resultsPanel.setBackground(Color.WHITE);
+        //resultsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
         JScrollPane scrollPane= new JScrollPane(resultsPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scrollPane, BorderLayout.CENTER);
 
         JPanel bottomPanel= new JPanel(new FlowLayout(FlowLayout.CENTER,20,10));
@@ -57,7 +60,7 @@ public class FilteredListScreen extends JPanel
             {this.departmentFilter="";}
         else
             {this.departmentFilter=department.trim().toLowerCase();}
-        this.cityFilter = city == null ? "" : city.trim().toLowerCase();
+        this.cityFilter = city == null ? "" : city.trim().toLowerCase(); //if else
         this.minGrade = min;
         this.maxGrade = max;
 
@@ -71,7 +74,9 @@ public class FilteredListScreen extends JPanel
     public void returnResults()
     {
         List<Application> filtered = Application.sample.stream()
-        //.filter(app -> departmentFilter.isEmpty() || app.department.toLowerCase().contains(departmentFilter))
+        .filter(app -> cityFilter.isEmpty() || app.residence.toLowerCase().contains(cityFilter))
+
+        .filter(app -> departmentFilter.isEmpty() || app.department.toLowerCase().contains(departmentFilter))
         //To do: department
         .filter(app -> 
         {
@@ -102,6 +107,12 @@ public class FilteredListScreen extends JPanel
         }
         else
         {
+            JLabel countLabel = new JLabel("Βρέθηκαν " + list.size() + " αιτήσεις");
+            countLabel.setFont(new Font("Arial", Font.BOLD, 12));
+            countLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            countLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+            resultsPanel.add(countLabel);
+            
             int i = 1;
             for (Application app : list) 
             {
@@ -117,15 +128,13 @@ public class FilteredListScreen extends JPanel
                 appPanel.add(applicationLabel);
 
                 appPanel.add(new JLabel("Ονοματεπώνυμο: " + app.fullName));
-                //appPanel.add(new JLabel("Τμήμα: " + app.department));
+                appPanel.add(new JLabel("Τμήμα: " + app.department));
                 appPanel.add(new JLabel("Τόπος Διαμονής: " + app.residence));
                 appPanel.add(new JLabel("Μόρια: " + app.gradePoints));
                 appPanel.add(new JLabel("Κατάσταση: " + translateState(app.state)));
 
                 resultsPanel.add(appPanel);
                 resultsPanel.add(Box.createVerticalStrut(10));
-                
-                
             }
         }
         resultsPanel.revalidate();

@@ -12,9 +12,11 @@ public class Application_FormUI extends JPanel {
     private JComboBox<String> jComboBox1;
     private JButton jButton1, jButton2;
     private String uniName;
-
+    private String department;
+    
     public Application_FormUI(String name) {
         uniName=name;
+        this.department=department;
         initComponents();
     }
 
@@ -32,7 +34,8 @@ public class Application_FormUI extends JPanel {
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2; gbc.anchor = GridBagConstraints.CENTER;
         add(jLabel1, gbc);
 
-        jLabel2 = new JLabel("Τμήμα: "+uniName);
+        jLabel2 = new JLabel("Τμήμα: "+department);
+        //jLabel2 = new JLabel("Τμήμα: "+uniName);
         jLabel2.setFont(new Font("SansSerif", Font.PLAIN, 14));
         jLabel2.setForeground(new Color(51, 51, 51));
         gbc.gridy = 1; gbc.anchor = GridBagConstraints.WEST;
@@ -124,7 +127,7 @@ public class Application_FormUI extends JPanel {
         int response = JOptionPane.showConfirmDialog(this, "Είστε σίγουροι ότι θέλετε να υποβάλετε την αίτηση;", 
                                                      "Επιβεβαίωση Υποβολής", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
-            Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints);
+            Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints,department);
             Application.sample.add(newApp);
             JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!");
             resetForm(null);

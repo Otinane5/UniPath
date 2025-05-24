@@ -9,8 +9,13 @@ import java.util.List;
 public class StudentApplicationsPanel extends JPanel {
     
     private final JPanel applicationListPanel = new JPanel();
-
+    //private final CardLayout cardLayout;
+    //private final JPanel cardPanel;
+    
     public StudentApplicationsPanel(CardLayout cardLayout, JPanel cardPanel) {
+        //this.cardLayout = cardLayout;
+        //this.cardPanel = cardPanel;
+        
         setLayout(new BorderLayout(10, 10));
         setBackground(Color.WHITE);
         
@@ -38,6 +43,8 @@ public class StudentApplicationsPanel extends JPanel {
         loadApplications(applicationListPanel);
 
         JScrollPane scrollPane = new JScrollPane(applicationListPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         add(scrollPane, BorderLayout.CENTER);
 
         // Footer Buttons
@@ -73,6 +80,7 @@ public class StudentApplicationsPanel extends JPanel {
             appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.Y_AXIS));
             appPanel.setPreferredSize(new Dimension(600, 130));
             appPanel.setMaximumSize(new Dimension(600, 130));
+            //appPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130)); 
             appPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
             appPanel.setBackground(Color.WHITE);
 
@@ -92,26 +100,48 @@ public class StudentApplicationsPanel extends JPanel {
             JLabel stateLabel = new JLabel("Κατάσταση: " + translateState(app.state));
             stateLabel.setFont(new Font("Arial", Font.ITALIC, 12));
             appPanel.add(stateLabel);
-
-            // Only show buttons if the state is "sent"
+            
+            JLabel departmentLabel = new JLabel("Τμήμα Ενδιαφέροντος: " + app.department);
+            departmentLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+            appPanel.add(departmentLabel);
+            
             if ("sent".equals(app.state)) {
                 JPanel buttonPanel = new JPanel();
                 buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 0)); // Layout to make buttons visible
 
                 JButton accept = new JButton("Αποδοχή");
                 accept.setBackground(new Color(0, 200, 100));
+                accept.setForeground(Color.WHITE); 
+                //accept.setFocusPainted(false);
                 accept.addActionListener(e -> {
-                    app.state = "approved";
-                    refresh();
+                    //app.state = "approved";
+                    //refresh();
+                    int result = JOptionPane.showConfirmDialog(this,
+                        "Είστε σίγουροι ότι θέλετε να εγκρίνετε την αίτηση του/της " + app.fullName + ";",
+                        "Επιβεβαίωση", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.YES_OPTION) {
+                        app.state = "approved";
+                        refresh();
+                        JOptionPane.showMessageDialog(this, "Η αίτηση εγκρίθηκε επιτυχώς!");
+                    }
                 });
                 buttonPanel.add(accept);
 
                 JButton reject = new JButton("Απόρριψη");
                 reject.setBackground(new Color(200, 0, 0));
                 reject.setForeground(Color.WHITE);
+                //reject.setFocusPainted(false);
                 reject.addActionListener(e -> {
-                    app.state = "rejected";
-                    refresh();
+                    //app.state = "rejected";
+                    //refresh();
+                    int result = JOptionPane.showConfirmDialog(this,
+                        "Είστε σίγουροι ότι θέλετε να απορρίψετε την αίτηση του/της " + app.fullName + ";",
+                        "Επιβεβαίωση", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.YES_OPTION) {
+                        app.state = "rejected";
+                        refresh();
+                        JOptionPane.showMessageDialog(this, "Η αίτηση απορρίφθηκε επιτυχώς!");
+                    }
                 });
                 buttonPanel.add(reject);
 

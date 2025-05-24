@@ -87,7 +87,7 @@ private final FilteredListScreen filteredListScreen;
 }
     
     public void saveFilters(){
-        // Προαιρετικά: έλεγχος για αριθμούς
+        // έλεγχος για τα μόρια
         try {
             Integer minValue = min.getText().isEmpty() ? null : Integer.parseInt(min.getText());
             Integer maxValue = max.getText().isEmpty() ? null : Integer.parseInt(max.getText());
@@ -111,6 +111,3 @@ private final FilteredListScreen filteredListScreen;
     public void returnFilteredApplicationList()
     {}
 }
-
-
-
