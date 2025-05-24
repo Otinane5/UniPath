@@ -14,6 +14,7 @@ public class FilteredListScreen extends JPanel
     private String cityFilter = "";
     private Integer minGrade = null;
     private Integer maxGrade = null;
+    private String statusFilter="";
 
     public FilteredListScreen(CardLayout cardLayout, JPanel cardPanel)
     {
@@ -54,7 +55,7 @@ public class FilteredListScreen extends JPanel
     //όπως ειναι το Ui απλά παταει αποδοχή/απορριψη και φαίνονται επι τοπου ολα τα στοιχεια  
 
     //new
-    public void setFilters(String department, String city, Integer min, Integer max)
+    public void setFilters(String department, String city, Integer min, Integer max, String status)
     {
         if(department==null)
             {this.departmentFilter="";}
@@ -63,8 +64,10 @@ public class FilteredListScreen extends JPanel
         this.cityFilter = city == null ? "" : city.trim().toLowerCase(); //if else
         this.minGrade = min;
         this.maxGrade = max;
+        this.statusFilter=status.trim();
 
         returnResults(); 
+        //filterApplications();
     }
     
     

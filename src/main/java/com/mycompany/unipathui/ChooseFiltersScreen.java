@@ -5,15 +5,15 @@ import java.awt.*;
 
 public class ChooseFiltersScreen extends JPanel {
     
-    private JTextField dept,city,min,max;
+    private JTextField dept,city,min,max,status;
     private final CardLayout cardLayout;
-private final JPanel cardPanel;
-private final FilteredListScreen filteredListScreen;
+    private final JPanel cardPanel;
+    private final FilteredListScreen filteredListScreen;
     
     public ChooseFiltersScreen(CardLayout cardLayout, JPanel cardPanel, FilteredListScreen filteredListScreen) {
         this.cardLayout = cardLayout;
-    this.cardPanel = cardPanel;
-    this.filteredListScreen = filteredListScreen;
+        this.cardPanel = cardPanel;
+        this.filteredListScreen = filteredListScreen;
         
         setLayout(new BorderLayout(10, 10));
         
@@ -55,6 +55,15 @@ private final FilteredListScreen filteredListScreen;
         max = new JTextField(20);
         centerPanel.add(max, gbc);
         
+        
+        gbc.gridx = 0; gbc.gridy++;
+        centerPanel.add(new JLabel("Κατάσταση:"), gbc);
+        gbc.gridx = 1;
+        status=new JTextField(20);
+        centerPanel.add(status,gbc);
+        
+        
+        //+πχ εγκριθείσα=ΕΓΚΡΙΘΕΙΣΑ...
         //+περιορισμός για τα ακέραια min+max (Να μην μπορει σε εκείνα τα πεδία να γράψει αλφαριθμητικό)
         
         // Save Button
@@ -91,11 +100,13 @@ private final FilteredListScreen filteredListScreen;
         try {
             Integer minValue = min.getText().isEmpty() ? null : Integer.parseInt(min.getText());
             Integer maxValue = max.getText().isEmpty() ? null : Integer.parseInt(max.getText());
+            String statusFilter = status.getText().trim();
+
             JOptionPane.showMessageDialog(this, "Τα φίλτρα αποθηκεύτηκαν με επιτυχία!");
             
             if(filteredListScreen != null)
             {
-                filteredListScreen.setFilters(dept.getText(), city.getText(), minValue, maxValue);
+                filteredListScreen.setFilters(dept.getText(), city.getText(), minValue, maxValue,statusFilter);
                 cardLayout.show(cardPanel, "filteredList");
             }
             else
