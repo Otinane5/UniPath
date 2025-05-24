@@ -1,7 +1,5 @@
 package com.mycompany.unipathui;
 
-
-
 public class AnnouncementView {
     public final String title;
     public final String body;

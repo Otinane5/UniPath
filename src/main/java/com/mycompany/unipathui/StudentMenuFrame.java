@@ -195,7 +195,6 @@ public class StudentMenuFrame extends JFrame {
     }
     
     private void showDepartmentProfile(String departmentName) {
-        
         if(profilePanel!=null){
             cardPanel.remove(profilePanel); 
         }
@@ -204,20 +203,13 @@ public class StudentMenuFrame extends JFrame {
         departmentName,
         () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
         () -> cardLayout.show(cardPanel, "menu"),
-        () -> showDepartmentAnnouncements(departmentName)        
+        (deptName, announcements) -> showDepartmentAnnouncements(deptName, announcements)        
         );
         cardPanel.add(profilePanel, "showProfile");
         cardLayout.show(cardPanel, "showProfile");
     }
     
-    private void showDepartmentAnnouncements(String departmentName){
-        //Στατικές ανακοινώσεις
-        List<AnnouncementView> announcements = List.of(
-            new AnnouncementView("Καλωσόρισμα φοιτητών","Καλως ορίσατε μάγκες..."),
-            new AnnouncementView("Πρόγραμμα μαθημάτων", "Δεν υπάρχει πρόγραμμα..."),
-            new AnnouncementView("Αιτήσεις εγγραφής", "Οι αιτήσεις εγγραφής είναι απενεργοποιημένες προς το παρόν...")     
-        );
-        
+    private void showDepartmentAnnouncements(String departmentName, List<AnnouncementView> announcements){
         if(announcementPanel!=null){
             cardPanel.remove(announcementPanel);    
         }

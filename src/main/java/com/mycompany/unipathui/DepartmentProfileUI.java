@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.List;
 
 public class DepartmentProfileUI extends JPanel{
     
@@ -27,7 +29,7 @@ public class DepartmentProfileUI extends JPanel{
     }
     
     public DepartmentProfileUI(String departmentName, Runnable onGoBack, 
-        Runnable onBackToMenu, Runnable onViewAnnouncement){
+        Runnable onBackToMenu, BiConsumer<String, List<AnnouncementView>> onViewAnnouncement){
         setLayout(new BorderLayout(10, 10));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
@@ -56,7 +58,10 @@ public class DepartmentProfileUI extends JPanel{
         JButton announcementButton = new JButton("Ανακοινώσεις");
         announcementButton.setBackground(Color.CYAN);
         announcementButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        announcementButton.addActionListener(e -> onViewAnnouncement.run());
+        announcementButton.addActionListener(e -> {
+            List<AnnouncementView> departmentAnnouncements = AnnouncementRepository.getAnnouncements(departmentName);
+            onViewAnnouncement.accept(departmentName, departmentAnnouncements);
+        });
         
         centerPanel.add(scrollPane);
         centerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
