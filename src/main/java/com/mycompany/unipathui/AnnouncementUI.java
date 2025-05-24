@@ -8,6 +8,37 @@ public class AnnouncementUI extends JPanel{
     public AnnouncementUI(String departmentName, List<AnnouncementView> announcements, 
         Runnable onGoBack, Runnable onBackToMenu){
         
+        if(announcements.isEmpty()){
+            removeAll();
+            setLayout(new BorderLayout(10, 10));
+            setBackground(Color.WHITE);
+            
+            JLabel titleLabel = new JLabel("Ανακοινώσεις - " + departmentName, SwingConstants.CENTER);
+            titleLabel.setFont(new Font("Arial", Font.BOLD, 18)); 
+            add(titleLabel, BorderLayout.NORTH);
+            
+            JLabel noAnnouncementsLabel = new JLabel("Δεν υπάρχουν ανακοινώσεις για αυτό το τμήμα.", SwingConstants.CENTER);
+            noAnnouncementsLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+            add(noAnnouncementsLabel, BorderLayout.CENTER);
+            
+            JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        
+            JButton backButton = new JButton("Πίσω");
+            backButton.setBackground(Color.YELLOW);
+            backButton.addActionListener(e -> onGoBack.run());
+        
+            JButton menuButton = new JButton("Επιστροφή στο μενού");
+            menuButton.setBackground(Color.ORANGE);
+            menuButton.addActionListener(e -> onBackToMenu.run());
+           
+            navPanel.add(backButton);
+            navPanel.add(menuButton);
+            add(navPanel, BorderLayout.SOUTH);
+            revalidate();
+            repaint();
+            return;
+        }
+        
         setLayout(new BorderLayout(10, 10));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
