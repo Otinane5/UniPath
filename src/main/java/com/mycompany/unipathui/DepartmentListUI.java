@@ -13,20 +13,20 @@ public class DepartmentListUI extends JPanel {
     private JPanel departmentPanel;
     // Λίστα τμημάτων
     private List<DepartmentInfo> allDepartments = List.of(
-        new DepartmentInfo("Τμήμα Πληροφορικής", "Science", 5000, 12250),
-        new DepartmentInfo("Τμήμα Μηχανικών Υπολογιστών", "Engineering", 10000, 16561),
-        new DepartmentInfo("Τμήμα Νομικής", "Social", 12000, 18921),
-        new DepartmentInfo("Τμήμα Ιατρικής", "Medicine", 16000, 19231),
-        new DepartmentInfo("Τμήμα Ψυχολογίας", "Social", 8000, 13211),
-        new DepartmentInfo("Τμήμα Καλών Τεχνών", "Art", 14500, 8023),
-        new DepartmentInfo("Τμήμα Φιλοσοφίας", "Social", 6000, 10189),
-        new DepartmentInfo("Τμήμα Φιλολογίας", "Social", 5500, 16328),
-        new DepartmentInfo("Τμήμα Διοίκησης Επιχειρήσεων", "Economics", 5000, 9823),
-        new DepartmentInfo("Τμήμα Οικονομικών", "Economics", 6500, 11345),
-        new DepartmentInfo("Τμήμα Φαρμακευτικής", "Medicine", 12500, 18357),
-        new DepartmentInfo("Τμήμα Μαθηματικών", "Science", 8000, 13456),
-        new DepartmentInfo("Τμήμα Χημικών Μηχανικών", "Engineering", 10500, 15672),
-        new DepartmentInfo("Τμήμα Λογοθεραπείας", "Medicine", 12000, 14860)
+        new DepartmentInfo("Τμήμα Πληροφορικής", "Θετικών Σπουδών", 5000, 12250),
+        new DepartmentInfo("Τμήμα Μηχανικών Υπολογιστών", "Πολυτεχνικών Σπουδών", 10000, 16561),
+        new DepartmentInfo("Τμήμα Νομικής", "Ανθρωπιστικών Σπουδών", 12000, 18921),
+        new DepartmentInfo("Τμήμα Ιατρικής", "Σπουδών Υγείας", 16000, 19231),
+        new DepartmentInfo("Τμήμα Ψυχολογίας", "Ανθρωπιστικών Σπουδών", 8000, 13211),
+        new DepartmentInfo("Τμήμα Καλών Τεχνών", "Καλών Τεχνών", 14500, 8023),
+        new DepartmentInfo("Τμήμα Φιλοσοφίας", "Ανθρωπιστικών Σπουδών", 6000, 10189),
+        new DepartmentInfo("Τμήμα Φιλολογίας", "Ανθρωπιστικών Σπουδών", 5500, 16328),
+        new DepartmentInfo("Τμήμα Διοίκησης Επιχειρήσεων", "Οικονομικών Σπουδών", 5000, 9823),
+        new DepartmentInfo("Τμήμα Οικονομικών", "Οικονομικών Σπουδών", 6500, 11345),
+        new DepartmentInfo("Τμήμα Φαρμακευτικής", "Σπουδών Υγείας", 12500, 18357),
+        new DepartmentInfo("Τμήμα Μαθηματικών", "Θετικών Σπουδών", 8000, 13456),
+        new DepartmentInfo("Τμήμα Χημικών Μηχανικών", "Πολυτεχνικών Σπουδών", 10500, 15672),
+        new DepartmentInfo("Τμήμα Λογοθεραπείας", "Σπουδών Υγείας", 12000, 14860)
     );
         private List<DepartmentInfo> filteredDepartments = new ArrayList<>(allDepartments);
         
