@@ -38,7 +38,7 @@ public class ChooseFiltersScreen extends JPanel {
         centerPanel.add(dept, gbc);
         
         gbc.gridx = 0; gbc.gridy++;
-        centerPanel.add(new JLabel("Πόλη:"), gbc);
+        centerPanel.add(new JLabel("Τόπος Διαμονής:"), gbc);
         gbc.gridx = 1;
         city = new JTextField(20);
         centerPanel.add(city, gbc);
@@ -55,13 +55,11 @@ public class ChooseFiltersScreen extends JPanel {
         max = new JTextField(20);
         centerPanel.add(max, gbc);
         
-        
         gbc.gridx = 0; gbc.gridy++;
         centerPanel.add(new JLabel("Κατάσταση:"), gbc);
         gbc.gridx = 1;
         status=new JTextField(20);
         centerPanel.add(status,gbc);
-        
         
         //+πχ εγκριθείσα=ΕΓΚΡΙΘΕΙΣΑ...
         //+περιορισμός για τα ακέραια min+max (Να μην μπορει σε εκείνα τα πεδία να γράψει αλφαριθμητικό)

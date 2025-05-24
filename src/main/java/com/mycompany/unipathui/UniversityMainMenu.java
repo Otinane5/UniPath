@@ -118,7 +118,6 @@ public class UniversityMainMenu extends JFrame {
         EditDescriptionPanel editDesc = new EditDescriptionPanel(cardLayout, cardPanel);
         AddAnnouncementPanel addAnnoun = new AddAnnouncementPanel(cardLayout, cardPanel);
         FilteredListScreen filteredListScreen = new FilteredListScreen(cardLayout, cardPanel);
-
         ChooseFiltersScreen chooseFilt = new ChooseFiltersScreen(cardLayout, cardPanel,filteredListScreen);
         
         cardPanel.add(menuPanel, "menu");
@@ -128,6 +127,7 @@ public class UniversityMainMenu extends JFrame {
         cardPanel.add(editDesc, "editUniDesc");
         cardPanel.add(addAnnoun, "addAnnouncement");
         cardPanel.add(chooseFilt, "chooseFilters");
+        cardPanel.add(filteredListScreen, "filteredList");
 
         // Action Listeners
         viewApplicationsButton.addActionListener(e -> cardLayout.show(cardPanel, "applications"));
