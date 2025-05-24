@@ -19,15 +19,16 @@ public class FilteredListScreen extends JPanel
     public FilteredListScreen(CardLayout cardLayout, JPanel cardPanel)
     {
         setLayout(new BorderLayout(10,10));
-        setBackground(Color.WHITE);
+        //setBackground(Color.LIGHT_GRAY);
 
+        setBackground(new Color(245, 245, 245));
         JLabel titleLabel= new JLabel("Φιλτραρισμένη Λίστα Αιτήσεων", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD,20));
         titleLabel.setBorder(BorderFactory.createEmptyBorder(15,0,15,0));
         add(titleLabel, BorderLayout.NORTH);
 
         resultsPanel.setLayout(new BoxLayout(resultsPanel, BoxLayout.Y_AXIS));
-        resultsPanel.setBackground(Color.WHITE);
+        resultsPanel.setBackground(new Color(245,245,245));
         resultsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
         JScrollPane scrollPane= new JScrollPane(resultsPanel);
@@ -115,17 +116,20 @@ public class FilteredListScreen extends JPanel
         resultsPanel.removeAll();
         if(list.isEmpty())
         {
-            JLabel noResults=new JLabel("Δεν υπάρχουν αποτελέσματα που να πληρούν τα φίλτρα που διαλέξατε.\n Προσπαθήστε ξανά");
-            noResults.setFont(new Font("Arial", Font.ITALIC, 14));
-            noResults.setForeground(Color.DARK_GRAY);
+            JLabel noResults=new JLabel("Δεν υπάρχουν αποτελέσματα που να πληρούν τα φίλτρα που διαλέξατε.\n\n Πατήστε 'Πίσω' και προσπαθήστε ξανά");
+            noResults.setFont(new Font("Arial", Font.BOLD, 14));
+            noResults.setForeground(new Color(255,0,0));
+            //μηνυμα νεςλινε και φοντο γκρι γενιακ
             noResults.setAlignmentX(Component.CENTER_ALIGNMENT);
             resultsPanel.add(Box.createVerticalGlue());
             resultsPanel.add(noResults);
-            resultsPanel.add(Box.createVerticalGlue());        }
+            resultsPanel.add(Box.createVerticalGlue());        
+        }
         else
         {
             JLabel countLabel = new JLabel("Βρέθηκαν " + list.size() + " αιτήσεις!");
-            countLabel.setFont(new Font("Arial", Font.BOLD, 12));
+            countLabel.setFont(new Font("Arial", Font.BOLD, 14));
+            countLabel.setForeground(new Color(34, 139, 34)); //πράσινα γράμματα
             countLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             countLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
             resultsPanel.add(countLabel);
@@ -135,13 +139,17 @@ public class FilteredListScreen extends JPanel
             {
                 JPanel appPanel = new JPanel();
                 appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.Y_AXIS));
-                appPanel.setPreferredSize(new Dimension(600, 130));
-                appPanel.setMaximumSize(new Dimension(600, 130));
-                appPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-                appPanel.setBackground(Color.WHITE);
-
+                appPanel.setPreferredSize(new Dimension(600, 140));
+                appPanel.setMaximumSize(new Dimension(600, 140));
+                appPanel.setBorder(BorderFactory.createCompoundBorder(
+                        BorderFactory.createLineBorder(Color.LIGHT_GRAY),
+                        BorderFactory.createEmptyBorder(10, 10, 10, 10)
+                ));
+                appPanel.setBackground(new Color(245, 245, 245));
+                
                 JLabel applicationLabel = new JLabel("Αίτηση " + i++);
                 applicationLabel.setFont(new Font("Arial", Font.BOLD, 14));
+                applicationLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
                 appPanel.add(applicationLabel);
 
                 appPanel.add(new JLabel("Ονοματεπώνυμο: " + app.fullName));

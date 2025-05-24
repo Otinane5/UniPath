@@ -26,6 +26,7 @@ public class ChooseFiltersScreen extends JPanel {
         // Central Panel with Fields
         JPanel centerPanel = new JPanel(new GridBagLayout());
         centerPanel.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 30));
+        centerPanel.setBackground(new Color(245,245,245));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -69,10 +70,19 @@ public class ChooseFiltersScreen extends JPanel {
         gbc.gridy++;
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
+        
         JButton saveButton=new JButton("Αποθήκευση Φίλτρων");
         saveButton.setBackground(Color.decode("#66FF66"));
         saveButton.setFont(new Font("Arial", Font.BOLD, 14));
+        
+        //αποθήκευση και με enter
         saveButton.addActionListener(e->saveFilters());
+        dept.addActionListener(e -> saveFilters());
+        city.addActionListener(e -> saveFilters());
+        min.addActionListener(e -> saveFilters());
+        max.addActionListener(e -> saveFilters());
+        status.addActionListener(e -> saveFilters());
+
         centerPanel.add(saveButton, gbc);
         
         add(centerPanel, BorderLayout.CENTER);
@@ -87,6 +97,9 @@ public class ChooseFiltersScreen extends JPanel {
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
         back.addActionListener(e -> cardLayout.show(cardPanel, "applications"));
+        
+        buttonPanel.setBackground(new Color(245,245,245)); 
+        //todo: γκρι και εκει που ειναι τα κουμπιά πισω αποθηκευση
         
         buttonPanel.add(homeButton);
         buttonPanel.add(back);
