@@ -65,6 +65,9 @@ public class SearchFiltersUI extends JPanel {
         applyFiltersButton.setBackground(Color.GREEN);
         applyFiltersButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         applyFiltersButton.addActionListener(e -> {
+            if(!validateInputs()){
+                return; // Έλεγχος αν τα inputs είναι έγκυρα
+            }
             lastAppliedFilters = getCriteria(); // Αποθήκευση των τρεχόντων φίλτρων
             onApplyFilters.accept(lastAppliedFilters);
         });
@@ -83,7 +86,7 @@ public class SearchFiltersUI extends JPanel {
         innerPanel.add(clearFiltersButton);
         
         // Ακύρωση φίλτρων
-        JButton cancelFiltersButton = new JButton("Ακύρωση Φίλτρων");
+        JButton cancelFiltersButton = new JButton("Ακύρωση Αλλαγών");
         cancelFiltersButton.setBackground(Color.RED);
         cancelFiltersButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         cancelFiltersButton.addActionListener(e -> {
@@ -146,5 +149,30 @@ public class SearchFiltersUI extends JPanel {
         minFeeField.setText(filters.minFee != null ? filters.minFee : "");
         maxFeeField.setText(filters.maxFee != null ? filters.maxFee : "");
         minPointsField.setText(filters.minPoints != null ? filters.minPoints : "");
+    }
+    
+    private boolean validateInputs() {
+        try{
+            if (!minFeeField.getText().isEmpty()){
+                int minFee = Integer.parseInt(minFeeField.getText());
+                if(minFee < 0) throw new NumberFormatException();
+            }
+            if (!maxFeeField.getText().isEmpty()){
+                int maxFee = Integer.parseInt(maxFeeField.getText());
+                if(maxFee < 0) throw new NumberFormatException();
+            }
+            if (!minPointsField.getText().isEmpty()){
+                int minPoints = Integer.parseInt(minPointsField.getText());
+                if(minPoints < 0) throw new NumberFormatException();
+            }
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, 
+                 "Παρακαλώ, εισάγετε μόνο μη αρνητικούς ακεραίους στα πεδία.",
+                 "Μη έγκυρη/ες είσοδος/οι",
+                 JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 }

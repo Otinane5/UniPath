@@ -8,7 +8,9 @@ public class CounselorMenuFrame extends JFrame {
 
     private JPanel cardPanel;
     private CardLayout cardLayout;
-
+    private DepartmentProfileUI depProfilePanel;
+    private AnnouncementUI announcementPanel;
+    
     public CounselorMenuFrame() {
         setTitle("UniPath - Σύμβουλος");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,22 +127,39 @@ public class CounselorMenuFrame extends JFrame {
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "editProfile")
         );
+        
+        DepartmentListCounselor deplistPanel = new DepartmentListCounselor(
+                () -> cardLayout.show(cardPanel, "menu"),
+                (String departmentName) -> showDepartmentProfile(departmentName),
+                () -> cardLayout.show(cardPanel, "setFilters")
+        ); 
+        
+        SearchFiltersUI filterPanel = new SearchFiltersUI(
+                () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
+                criteria -> {
+                    deplistPanel.applyFilters(
+                    criteria.type, criteria.minFee, criteria.maxFee, criteria.minPoints
+                    );
+                    cardLayout.show(cardPanel, "seeListOfDepartments");
+                }
+        );
+        
         CounselorAcceptAppointmentPanel acceptPanel = new CounselorAcceptAppointmentPanel(cardLayout, cardPanel);
         CounselorRejectAppointmentPanel rejectPanel = new CounselorRejectAppointmentPanel(cardLayout, cardPanel);
         CounselorAppointmentDetailsPanel detailsPanel = new CounselorAppointmentDetailsPanel(cardLayout, cardPanel);
         CounselorAppointmentRequestsPanel appointmentPanel = new CounselorAppointmentRequestsPanel(cardLayout, cardPanel, detailsPanel);
         CounselorEditProfilePanelUI editPanel = new CounselorEditProfilePanelUI(cardLayout, cardPanel);
-        DepartmentListCounselor deplistPanel = new DepartmentListCounselor(cardLayout, cardPanel);
         
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(appointmentPanel, "appointments");
         cardPanel.add(detailsPanel, "appointmentDetails");
         cardPanel.add(acceptPanel, "acceptAppointment");
         cardPanel.add(rejectPanel, "rejectAppointment");
-        cardPanel.add(profilePanel, "profile");
         cardPanel.add(editPanel, "editProfile");
+        cardPanel.add(profilePanel, "profile");
+        
         cardPanel.add(deplistPanel, "seeListOfDepartments");
-
+        cardPanel.add(filterPanel, "setFilters");
         // Action Listeners
         appointmentButton.addActionListener(e -> cardLayout.show(cardPanel, "appointments"));
         profileButton.addActionListener(e -> cardLayout.show(cardPanel, "profile"));
@@ -159,5 +178,36 @@ public class CounselorMenuFrame extends JFrame {
             }
         });
         setVisible(true);
+    }
+    
+    private void showDepartmentProfile(String departmentName) {
+        if(depProfilePanel!=null){
+            cardPanel.remove(depProfilePanel); 
+        }
+        
+        depProfilePanel = new DepartmentProfileUI(
+        departmentName,
+        () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
+        () -> cardLayout.show(cardPanel, "menu"),
+        (deptName, announcements) -> showDepartmentAnnouncements(deptName, announcements)        
+        );
+        cardPanel.add(depProfilePanel, "showProfile");
+        cardLayout.show(cardPanel, "showProfile");
+    }
+    
+    private void showDepartmentAnnouncements(String departmentName, java.util.List<AnnouncementView> announcements){
+        if(announcementPanel!=null){
+            cardPanel.remove(announcementPanel);    
+        }
+        
+        announcementPanel = new AnnouncementUI(
+            departmentName,
+            announcements,
+            () -> cardLayout.show(cardPanel, "showProfile"), //πίσω
+            () -> cardLayout.show(cardPanel, "menu") //πίσω στο μενού  
+        );
+        
+        cardPanel.add(announcementPanel, "showAnnouncements");
+        cardLayout.show(cardPanel, "showAnnouncements");
     }
 }

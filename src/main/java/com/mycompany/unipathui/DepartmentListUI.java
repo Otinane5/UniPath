@@ -42,6 +42,7 @@ public class DepartmentListUI extends JPanel {
         // Panel για τα κουμπιά της λίστας τμημάτων
         departmentPanel = new JPanel();
         departmentPanel.setLayout(new BoxLayout(departmentPanel, BoxLayout.Y_AXIS));
+        departmentPanel.setBackground(Color.WHITE);
         refreshDepartmentList();
         
         // Panel για θέση του κουμπιού φίλτρων (πάνω αριστερά)
@@ -131,6 +132,7 @@ public class DepartmentListUI extends JPanel {
     //Προσθήκη κουμπιών κάθε τμήματος και ανάλογα με τα φίλτρα
     private void refreshDepartmentList(){
          departmentPanel.removeAll();
+         currentlySelectedButton = null;
          for(DepartmentInfo dept : filteredDepartments){
             JButton deptButton = new JButton(dept.name);
             deptButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -138,7 +140,7 @@ public class DepartmentListUI extends JPanel {
             deptButton.addActionListener(e -> {
                  selectedDepartment = dept.name;
                  if(currentlySelectedButton != null){
-                     currentlySelectedButton.setBackground(null);
+                     currentlySelectedButton.setBackground(UIManager.getColor("Button.background"));
                  }
                  deptButton.setBackground(Color.LIGHT_GRAY);
                  currentlySelectedButton = deptButton;
