@@ -41,7 +41,7 @@ public class ProfilePanel extends JPanel {
         JTextArea descriptionArea = new JTextArea("Περιγραφή...");
         descriptionArea.setLineWrap(true);
         descriptionArea.setWrapStyleWord(true);
-        descriptionArea.setEditable(true);
+        descriptionArea.setEditable(false);
         JScrollPane descScroll = new JScrollPane(descriptionArea);
         descScroll.setPreferredSize(new Dimension(380, 60));
         descScroll.setMaximumSize(new Dimension(400, 60));
