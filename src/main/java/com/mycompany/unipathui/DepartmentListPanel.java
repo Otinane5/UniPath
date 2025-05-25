@@ -5,7 +5,15 @@ import java.awt.*;
 
 public class DepartmentListPanel extends JPanel {
     
+    private CardLayout cardLayout;
+private JPanel cardPanel;
+
+
     public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel) {
+        this.cardLayout = cardLayout;
+    this.cardPanel = cardPanel;
+    
+    
         setLayout(new BorderLayout(10, 10));
         setBackground(Color.WHITE);
 

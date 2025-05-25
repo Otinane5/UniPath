@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AddAnnouncementPanel extends JPanel {
+    private String departmentName;
     
-    public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel) {
+    public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel, String departmentName) {
+        this.departmentName=departmentName;
         setLayout(new BorderLayout(10, 10));
         
         // Title label
@@ -65,12 +67,46 @@ public class AddAnnouncementPanel extends JPanel {
         cancel.setForeground(Color.WHITE);
         cancel.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
         
+        /* cancel.addActionListener(e -> {
+            // Clear fields when canceling
+            titleField.setText("");
+            bodyArea.setText("");
+            cardLayout.show(cardPanel, "seeProfileDetails");
+        });
+        maybe
+        */
+        
         JButton publish = new JButton("Δημοσίευση");
         publish.setBackground(Color.GREEN);
         publish.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Η ανακοίνωση προστέθηκε με επιτυχία.");
+            String title = titleField.getText().trim();
+            String bodyText = bodyArea.getText().trim();
+            
+            // Validate input
+            if (title.isEmpty() || bodyText.isEmpty()) {
+                JOptionPane.showMessageDialog(this, 
+                    "Παρακαλώ συμπληρώστε όλα τα πεδία.", 
+                    "Σφάλμα", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            // Create and save the announcement for this department
+            AnnouncementView newAnnouncement = new AnnouncementView(title, bodyText);
+            AnnouncementRepository.addAnnouncement(departmentName, newAnnouncement);
+            
+            // Clear fields after successful save
+            titleField.setText("");
+            bodyArea.setText("");
+            
+            JOptionPane.showMessageDialog(this, 
+                "Η ανακοίνωση προστέθηκε με επιτυχία στο " + departmentName + ".");
             cardLayout.show(cardPanel, "seeProfileDetails");
         });
+        
+        /*publish.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this, "Η ανακοίνωση προστέθηκε με επιτυχία.");
+            cardLayout.show(cardPanel, "seeProfileDetails");
+        });*/
         
         btnPanel.add(cancel);
         btnPanel.add(publish);
