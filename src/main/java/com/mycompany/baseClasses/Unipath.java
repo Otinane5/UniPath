@@ -12,9 +12,9 @@ public class Unipath {
     //+other data
 
 public static void main (String[] args){
+    User.init();
     Counselor.init();
     Application.init();
-    System.out.println(Application.sample);
     }
 }
 

@@ -59,6 +59,7 @@ com\mycompany\unipathui\AnnouncementRepository.class
 com\mycompany\unipathui\SearchFiltersUI$FilterCriteria.class
 com\mycompany\unipathui\FilteredListScreen$GreekNormalizer.class
 com\mycompany\unipathui\StudentApplicationsPanel.class
+com\mycompany\unipathui\NewInterface.class
 com\mycompany\unipathui\StudentLoginPanel.class
 com\mycompany\baseClasses\Application.class
 com\mycompany\unipathui\ShowResultsUI$1.class

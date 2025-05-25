@@ -101,7 +101,7 @@ public class CounselorLoginPanel extends JPanel {
             CounselorProfilePanel.CounselorToDisplay.email="SampleEmail";
             CounselorProfilePanel.CounselorToDisplay.phoneNum="6900000000";
             CounselorProfilePanel.CounselorToDisplay.bio="Samplebio";
-            CounselorProfilePanel.CounselorToDisplay.reviews=java.util.List.of(4, 3, 4, 5,1,1,2,3,4);
+            CounselorProfilePanel.CounselorToDisplay.reviews=java.util.List.of(4, 3, 4, 5,1,1,2,3,4,4);
             new CounselorMenuFrame().setVisible(true);
             SwingUtilities.getWindowAncestor(this).dispose();
         }
