@@ -50,12 +50,15 @@ public class CounselorMenuFrame extends JFrame {
         topPanel.add(titleBox, gbc);
         
         //Κουμπί Μηνυμάτων (δεξιά)
-        JButton messagesButton = new JButton("Τα μηνύματά μου");
+       JButton messagesButton = new JButton("Τα μηνύματά μου");
         messagesButton.setPreferredSize(new Dimension(160, 30)); //Σταθερό μέγεθος
         
         ImageIcon envelopeIcon = new ImageIcon(getClass().getResource("/icons/envelope.png"));
         Image envelopeImage = envelopeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         messagesButton.setIcon(new ImageIcon(envelopeImage));
+        messagesButton.setBounds(630, 10, 150, 30);
+        add(messagesButton);
+        messagesButton.addActionListener(e -> new MessageBoxFrame().setVisible(true));
         
         //Τοποθέτηση κουμπιού δεξιά
         gbc.gridx = 2;
