@@ -7,7 +7,7 @@ public class EditDescriptionPanel extends JPanel {
 
     private JTextArea descriptionArea;
     private String originalDescription= "Περιγραφή...";
-private JLabel seeProfileLabel;
+    private JLabel seeProfileLabel;
 
     public EditDescriptionPanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
@@ -49,19 +49,22 @@ private JLabel seeProfileLabel;
         JButton cancel=new JButton("Ακύρωση");
         cancel.setBackground(Color.RED);
         cancel.setForeground(Color.WHITE);
-        
-        
-        
-        cancel.addActionListener(e -> {
+                
+        cancel.addActionListener(e -> 
+        {
             int confirm =JOptionPane.showConfirmDialog(this, "Με αυτή την επιλογή οι αλλαγές θα χαθούν!", "Ακύρωση", JOptionPane.YES_NO_OPTION);
-            if(confirm==JOptionPane.YES_OPTION){cardLayout.show(cardPanel, "seeProfileDetails"); }});
+            if(confirm==JOptionPane.YES_OPTION)
+            {
+                cardLayout.show(cardPanel, "seeProfileDetails"); 
+            }
+        });
         
         JButton accept=new JButton("Αποδοχή Αλλαγών");
         accept.setBackground(Color.GREEN);
         accept.setForeground(Color.WHITE);
         
-        
-        accept.addActionListener(e -> {
+        accept.addActionListener(e -> 
+        {
             String newDescription=descriptionArea.getText().trim();
             
             JTextArea preview = new JTextArea("Από:\n" + originalDescription + "\n\n➔ Σε:\n" + newDescription);
@@ -71,22 +74,30 @@ private JLabel seeProfileLabel;
 
             int result = JOptionPane.showConfirmDialog(this, new JScrollPane(preview), "Προεπισκόπηση Αλλαγών", JOptionPane.OK_CANCEL_OPTION);
 
-            if (result == JOptionPane.OK_OPTION) {
+            if (result == JOptionPane.OK_OPTION) 
+            {
                 originalDescription = newDescription;
-                updatedDescription(newDescription);
+                ProfilePanel.currentDescription = newDescription;          
+                
+                Component profileComp = null;
+                for (Component comp : cardPanel.getComponents()) 
+                {
+                    if (comp instanceof ProfilePanel) 
+                    {
+                        profileComp = comp;
+                        break;
+                    }
+                }
+
+                if (profileComp != null) 
+                {
+                    ((ProfilePanel) profileComp).updateDescription(newDescription);
+                }
 
                 JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
-                cardLayout.show(cardPanel, "seeProfileDetails");
-                
-            }
-           
+                cardLayout.show(cardPanel, "seeProfileDetails");    
+            } 
         });
-        
-        
-        /*accept.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
-            cardLayout.show(cardPanel, "seeProfileDetails");
-        });*/
         
         JPanel confirmPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         confirmPanel.add(cancel);
@@ -111,7 +122,6 @@ private JLabel seeProfileLabel;
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
-    
     public void openEditDescriptionWindow(){
     }
     public void acceptChanges(){
@@ -119,14 +129,14 @@ private JLabel seeProfileLabel;
     public void pressCancelEdit(){
     }
     
-    
+    /*
     public void setSeeProfileDescriptionComponent(JLabel label) {
         this.seeProfileLabel = label;
-    }
+    }*/
 
-    public void updatedDescription(String newDescription) {
+    /*public void updatedDescription(String newDescription) {
         if (seeProfileLabel != null) {
             seeProfileLabel.setText("<html><body style='width: 300px'>" + newDescription + "</body></html>");
         }
-    }
+    }*/
 }

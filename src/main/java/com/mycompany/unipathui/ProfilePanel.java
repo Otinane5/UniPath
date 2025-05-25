@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ProfilePanel extends JPanel {
-        
+    public static String currentDescription = "Περιγραφή...";
+    private JTextArea descriptionArea;
+
     public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
         
@@ -38,7 +40,8 @@ public class ProfilePanel extends JPanel {
         descPanel.add(edit, BorderLayout.EAST);
         contentPanel.add(descPanel);
         
-        JTextArea descriptionArea = new JTextArea("Περιγραφή...");
+        //Department's description
+        descriptionArea = new JTextArea(currentDescription);
         descriptionArea.setLineWrap(true);
         descriptionArea.setWrapStyleWord(true);
         descriptionArea.setEditable(false);
@@ -91,6 +94,9 @@ public class ProfilePanel extends JPanel {
         buttonPanel.add(homeButton);
         buttonPanel.add(back);
         add(buttonPanel, BorderLayout.SOUTH);
+        
+        descriptionArea.setText(currentDescription);
+
     }
     public void openDepartmentProfile() //departmentID:int
     {}
@@ -112,4 +118,13 @@ public class ProfilePanel extends JPanel {
     {}
     //public void pressBack()
     //{}
+    
+    /*public void refreshDescription() {
+    descriptionArea.setText(currentDescription);
+}*/
+
+    public void updateDescription(String newDesc) {
+        currentDescription = newDesc;
+        descriptionArea.setText(newDesc);
+    }
 }
