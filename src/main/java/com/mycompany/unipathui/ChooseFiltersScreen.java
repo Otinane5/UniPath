@@ -74,8 +74,6 @@ public class ChooseFiltersScreen extends JPanel {
         saveButton.setBackground(Color.decode("#66FF66"));
         saveButton.setFont(new Font("Arial", Font.BOLD, 14));
         
-        //εκκαθάριση Button
-        
         //αποθήκευση και με enter
         saveButton.addActionListener(e->saveFilters());
         dept.addActionListener(e -> saveFilters());
@@ -83,9 +81,18 @@ public class ChooseFiltersScreen extends JPanel {
         min.addActionListener(e -> saveFilters());
         max.addActionListener(e -> saveFilters());
         status.addActionListener(e -> saveFilters());
-
-        centerPanel.add(saveButton, gbc);
         
+        JButton clearButton=new JButton("Εκκαθάριση Φίλτρων");
+        clearButton.setBackground(Color.decode("#FF9999"));
+        clearButton.setFont(new Font("Arial", Font.BOLD, 14));
+        clearButton.addActionListener(e -> clearFilters());   
+        
+        JPanel actionButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        actionButtonPanel.setBackground(new Color(245,245,245));
+        actionButtonPanel.add(saveButton);
+        actionButtonPanel.add(clearButton);
+        
+        centerPanel.add(actionButtonPanel,gbc);
         add(centerPanel, BorderLayout.CENTER);
         
         // BOTTOM BUTTONS
@@ -130,7 +137,6 @@ public class ChooseFiltersScreen extends JPanel {
             String cityInput=city.getText().trim();
 
             String statusFilter = (String) status.getSelectedItem();
-
             
             //το \\p{L} κάνει match σε όλα τα γράμματα (δηλ. δεν δέχεται πχ αριθμητικά)+το κενό
             if(!deptInput.matches("[\\p{L} ]*"))
@@ -144,15 +150,6 @@ public class ChooseFiltersScreen extends JPanel {
                 JOptionPane.showMessageDialog(this, "Το πεδίο \"Τόπος Διαμονής\" πρέπει να περιέχει μόνο γράμματα.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-             
-            /*if(!statusFilter.isEmpty() && 
-               !statusFilter.equals("Υποβληθείσα") &&
-               !statusFilter.equals("Εγκεκριμένη") &&
-               !statusFilter.equals("Απορριφθείσα"))
-            {
-                JOptionPane.showMessageDialog(this, "Το πεδίο\"Κατάσταση\" πρέπει να είναι κάποιο από τα παρακάτω: Υποβληθείσα,Εγκεκριμένη,Απορριφθείσα.","Σφάλμα", JOptionPane.ERROR_MESSAGE);
-                return;
-            }*/
             
             JOptionPane.showMessageDialog(this, "Τα φίλτρα αποθηκεύτηκαν με επιτυχία!");
             
@@ -174,4 +171,16 @@ public class ChooseFiltersScreen extends JPanel {
     
     public void returnFilteredApplicationList()
     {}
+    
+    private void clearFilters()
+    {
+        dept.setText("");
+        city.setText("");
+        min.setText("");
+        max.setText("");
+        status.setSelectedIndex(0);  
+        
+        //επιστροφή για εισαγωγή νέων φίλτρων
+        cardLayout.show(cardPanel, "chooseFilters");
+    }
 }
