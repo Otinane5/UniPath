@@ -88,6 +88,17 @@ public class AnnouncementRepository {
      }
      
      public static List<AnnouncementView> getAnnouncements(String departmentName){
-         return departmentAnnouncements.getOrDefault(departmentName, List.of());
+         //return departmentAnnouncements.getOrDefault(departmentName, List.of());
+         return departmentAnnouncements.getOrDefault(departmentName, new ArrayList<>());
+     }
+     
+     public static void addAnnouncement(String departmentName, AnnouncementView announcement)
+     {
+         departmentAnnouncements.computeIfAbsent(departmentName, k-> new ArrayList<>()).add(announcement);
+     }
+     
+     public static List<String> getAllDepartmentNames()
+     {
+         return new ArrayList<>(departmentAnnouncements.keySet());
      }
 }
