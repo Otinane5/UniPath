@@ -5,7 +5,8 @@ import java.awt.*;
 
 public class ChooseFiltersScreen extends JPanel {
     
-    private JTextField dept,city,min,max,status;
+    private JTextField dept,city,min,max;
+    private JComboBox<String> status;
     private final CardLayout cardLayout;
     private final JPanel cardPanel;
     private final FilteredListScreen filteredListScreen;
@@ -59,11 +60,10 @@ public class ChooseFiltersScreen extends JPanel {
         gbc.gridx = 0; gbc.gridy++;
         centerPanel.add(new JLabel("Κατάσταση:"), gbc);
         gbc.gridx = 1;
-        status=new JTextField(20);
-        centerPanel.add(status,gbc);
-        
-        //+περιορισμός για τα ακέραια min+max (Να μην μπορει σε εκείνα τα πεδία να γράψει αλφαριθμητικό)
-        
+        status = new JComboBox<>(new String[] {"", "Υποβληθείσα", "Εγκεκριμένη", "Απορριφθείσα"});
+        status.setPreferredSize(new Dimension(200, 25));
+        centerPanel.add(status, gbc);
+                
         // Save Button
         gbc.gridx = 0;
         gbc.gridy++;
@@ -73,6 +73,8 @@ public class ChooseFiltersScreen extends JPanel {
         JButton saveButton=new JButton("Αποθήκευση Φίλτρων");
         saveButton.setBackground(Color.decode("#66FF66"));
         saveButton.setFont(new Font("Arial", Font.BOLD, 14));
+        
+        //εκκαθάριση Button
         
         //αποθήκευση και με enter
         saveButton.addActionListener(e->saveFilters());
@@ -98,6 +100,7 @@ public class ChooseFiltersScreen extends JPanel {
         back.addActionListener(e -> cardLayout.show(cardPanel, "applications"));
         
         buttonPanel.setBackground(new Color(245,245,245)); 
+        
         //todo: γκρι και εκει που ειναι τα κουμπιά πισω αποθηκευση
         
         buttonPanel.add(homeButton);
@@ -119,13 +122,15 @@ public class ChooseFiltersScreen extends JPanel {
             
             if(minValue!=null && maxValue !=null && minValue>maxValue)
             {
-                JOptionPane.showMessageDialog(this, "Τα ελάχιστα μόρια δεν μπορούν να ξεπερνούν τα μέγιστα. \n Εισάγετε ένα νέο, έγκυρο διάστημα", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Τα ελάχιστα μόρια δεν μπορούν να ξεπερνούν τα μέγιστα. \n    Εισάγετε ένα νέο, έγκυρο διάστημα", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
             String deptInput=dept.getText().trim();
             String cityInput=city.getText().trim();
-            String statusFilter = status.getText().trim();
+
+            String statusFilter = (String) status.getSelectedItem();
+
             
             //το \\p{L} κάνει match σε όλα τα γράμματα (δηλ. δεν δέχεται πχ αριθμητικά)+το κενό
             if(!deptInput.matches("[\\p{L} ]*"))
@@ -140,14 +145,14 @@ public class ChooseFiltersScreen extends JPanel {
                 return;
             }
              
-            if(!statusFilter.isEmpty() && 
+            /*if(!statusFilter.isEmpty() && 
                !statusFilter.equals("Υποβληθείσα") &&
                !statusFilter.equals("Εγκεκριμένη") &&
                !statusFilter.equals("Απορριφθείσα"))
             {
                 JOptionPane.showMessageDialog(this, "Το πεδίο\"Κατάσταση\" πρέπει να είναι κάποιο από τα παρακάτω: Υποβληθείσα,Εγκεκριμένη,Απορριφθείσα.","Σφάλμα", JOptionPane.ERROR_MESSAGE);
                 return;
-            }
+            }*/
             
             JOptionPane.showMessageDialog(this, "Τα φίλτρα αποθηκεύτηκαν με επιτυχία!");
             

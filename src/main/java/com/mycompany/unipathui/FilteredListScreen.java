@@ -66,7 +66,7 @@ public class FilteredListScreen extends JPanel
     
     //public void selectApplication()
     //{} Δεν θα χρειαστεί αφου η αίτηση δεν "ανοίγει". 
-    //όπως ειναι το Ui απλά παταει αποδοχή/απορριψη και φαίνονται επι τοπου ολα τα στοιχεια  
+    //όπως ειναι το UI απλά παταει αποδοχή/απορριψη και φαίνονται επι τοπου ολα τα στοιχεια  
 
     //new
     public void setFilters(String department, String city, Integer min, Integer max, String status)
@@ -75,8 +75,15 @@ public class FilteredListScreen extends JPanel
         this.cityFilter = GreekNormalizer.normalize(city);
         this.minGrade = min;
         this.maxGrade = max;
-        this.statusFilter=GreekNormalizer.normalize(status);
         
+        this.statusFilter = switch (status) 
+        {
+        case "Εγκεκριμένη" -> "approved";
+        case "Απορριφθείσα" -> "rejected";
+        case "Υποβληθείσα" -> "sent";
+        default -> "";
+        };
+
         returnResults(); 
         //filterApplications();
     }
@@ -89,7 +96,8 @@ public class FilteredListScreen extends JPanel
         List<Application> filtered = Application.sample.stream()
         .filter(app -> cityFilter.isEmpty() || GreekNormalizer.normalize(app.residence).contains(cityFilter))
         .filter(app -> departmentFilter.isEmpty() || GreekNormalizer.normalize(app.department).contains(departmentFilter))
-        .filter(app -> statusFilter.isEmpty() || GreekNormalizer.normalize(app.state).contains(statusFilter))
+        .filter(app -> statusFilter.isEmpty() || app.state.equalsIgnoreCase(statusFilter))
+
         .filter(app -> 
         {
             try 
