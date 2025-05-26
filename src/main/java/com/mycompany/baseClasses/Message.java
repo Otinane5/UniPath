@@ -2,6 +2,8 @@ package com.mycompany.baseClasses;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Message {
     private static int nextId = 1;
@@ -16,6 +18,26 @@ public class Message {
     private boolean isRead;
     private String senderType; // "STUDENT", "COUNSELOR", "UNIVERSITY"
     private String recipientType;
+
+    // ✅ In-memory storage
+    public static List<Message> sample = new ArrayList<>();
+
+    // ✅ Store a new message
+    public static void sendMessage(Message message) {
+        sample.add(message);
+        System.out.println("📩 Μήνυμα αποθηκεύτηκε: " + message.getDisplayTitle());
+    }
+
+    // ✅ Get inbox for a user
+    public static List<Message> getMessagesForUser(String userId) {
+        List<Message> result = new ArrayList<>();
+        for (Message msg : sample) {
+            if (msg.getRecipientId().equals(userId)) {
+                result.add(msg);
+            }
+        }
+        return result;
+    }
 
     public Message(String senderId, String senderName, String senderType,
                    String recipientId, String recipientName, String recipientType,
@@ -33,7 +55,6 @@ public class Message {
         this.isRead = false;
     }
 
-    // Constructor with custom date/time (for your UI that allows setting date/time)
     public Message(String senderId, String senderName, String senderType,
                    String recipientId, String recipientName, String recipientType,
                    String subject, String content, String dateTime) {
@@ -47,13 +68,12 @@ public class Message {
         this.subject = subject;
         this.content = content;
         this.isRead = false;
-        
-        // Parse custom date/time
+
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
             this.timestamp = LocalDateTime.parse(dateTime, formatter);
         } catch (Exception e) {
-            this.timestamp = LocalDateTime.now(); // Fallback to current time
+            this.timestamp = LocalDateTime.now();
         }
     }
 
