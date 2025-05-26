@@ -9,6 +9,10 @@ public class DepartmentListPanel extends JPanel {
 private JPanel cardPanel;
 
 
+private String selectedDepartment = null;
+    private JButton viewProfileButton;
+
+
     public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel) {
         this.cardLayout = cardLayout;
     this.cardPanel = cardPanel;
@@ -50,7 +54,6 @@ private JPanel cardPanel;
             "Ηλεκτρολόγων Μηχανικών",
             };
                 
-            
         for(String department : departments) {
             JPanel departmentPanel=new JPanel(new BorderLayout());
             departmentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
@@ -58,15 +61,24 @@ private JPanel cardPanel;
             departmentPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
             
             JLabel departmentLabel= new JLabel(department, SwingConstants.CENTER);
-            //JLabel departmentLabel = new JLabel(department, SwingConstants.LEFT);
             departmentLabel.setFont(new Font("Arial", Font.PLAIN,14));
             departmentLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
             departmentPanel.add(departmentLabel,BorderLayout.CENTER);
             
-            JButton viewProfile= new JButton("Προβολή Προφίλ Τμήματος");
-            viewProfile.setBackground(Color.CYAN);
-            viewProfile.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
-            departmentPanel.add(viewProfile, BorderLayout.EAST);
+            
+            departmentPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            departmentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    selectedDepartment = department;
+                    viewProfileButton.setEnabled(true);
+                    highlightSelectedPanel(listPanel, departmentPanel);
+                }
+            });
+
+            //JButton viewProfile= new JButton("Προβολή Προφίλ Τμήματος");
+            //viewProfile.setBackground(Color.CYAN);
+            //viewProfile.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
+            //departmentPanel.add(viewProfile, BorderLayout.EAST);
             
             listPanel.add(departmentPanel);
             listPanel.add(Box.createVerticalStrut(10)); // Απόσταση μεταξύ τμημάτων
@@ -91,8 +103,28 @@ private JPanel cardPanel;
         back.setBounds(330,330,150,30);
         back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
                 
+        
+        
+        
+        viewProfileButton = new JButton("Προβολή Προφίλ Τμήματος");
+        viewProfileButton.setBackground(Color.CYAN);
+        viewProfileButton.setEnabled(false); // Αρχικά απενεργοποιημένο
+        viewProfileButton.addActionListener(e -> {
+            if (selectedDepartment != null) {
+                ProfilePanel.currentDepartment = selectedDepartment;
+                ProfilePanel.currentDescription = "Περιγραφή για το τμήμα " + selectedDepartment;
+                cardLayout.show(cardPanel, "seeProfileDetails");
+            }
+        });
+        
+        
+        
         buttonPanel.add(homeButton);
         buttonPanel.add(back);
+        
+                buttonPanel.add(viewProfileButton);
+
+                
         add(buttonPanel, BorderLayout.SOUTH);
     }
     public void getDepartments() {
@@ -107,5 +139,16 @@ private JPanel cardPanel;
     }
     public void requestDepartmentList() {
         // For future use
+    }
+    
+    
+    
+    private void highlightSelectedPanel(JPanel listPanel, JPanel selected) {
+        for (Component comp : listPanel.getComponents()) {
+            if (comp instanceof JPanel) {
+                comp.setBackground(Color.WHITE);
+            }
+        }
+        selected.setBackground(Color.LIGHT_GRAY);
     }
 }

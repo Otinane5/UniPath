@@ -14,13 +14,13 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
         add(title, BorderLayout.NORTH);
 
         // Δεδομένα για τώρα μόνο (από Βάση Δεδομένων κανονικά)
-        String[] columns = {"Όνομα Μαθητή", "Πεδία Ενδιαφέροντος"};
+        String[] columns = {"Όνομα Μαθητή", "Πεδία Ενδιαφέροντος", "Κατάσταση"};
         Object[][] data = {
-            {"Μαρία Ιωάννου", "Πληροφορική, Μαθηματικά", "6941234567", "maria@example.com", },
-            {"Γιάννης Παπαδόπουλος", "Μηχανολογία, Φυσική", "6971111111", "giannis@example.com", },
-            {"Άννα Λεωνίδα", "Ιατρική, Βιολογία", "6987654321", "anna@example.com", }
+            {"Μαρία Ιωάννου", "Πληροφορική, Μαθηματικά", "Εκκρεμές", "6941234567", "maria@example.com", },
+            {"Γιάννης Παπαδόπουλος", "Μηχανολογία, Φυσική", "Ακυρωμένο", "6971111111", "giannis@example.com", },
+            {"Άννα Λεωνίδα", "Ιατρική, Βιολογία", "Εγκεκριμένο", "6987654321", "anna@example.com", }
         };
-
+        
         DefaultTableModel model = new DefaultTableModel(data, columns);
         JTable table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
@@ -30,7 +30,14 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
         viewDetailsButton.setEnabled(false); // ενεργοποιείται μόνο όταν επιλεγεί γραμμή
 
         table.getSelectionModel().addListSelectionListener(e -> {
-            viewDetailsButton.setEnabled(table.getSelectedRow() != -1);
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow != -1) {
+                String status = table.getValueAt(selectedRow, 2).toString();
+                viewDetailsButton.setEnabled("Εκκρεμές".equals(status));
+            }
+            else {
+                viewDetailsButton.setEnabled(false);
+            }
         });
 
         viewDetailsButton.addActionListener(e -> {
@@ -40,8 +47,8 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
                 String interests = model.getValueAt(selectedRow, 1).toString();
                 
                 // τα έξτρα πεδία (μόνο από το original data array)
-                String phone = data[selectedRow][2].toString();
-                String email = data[selectedRow][3].toString();
+                String phone = data[selectedRow][3].toString();
+                String email = data[selectedRow][4].toString();
                 
                 detailsPanel.showDetails(name, phone, email, interests);
                 cardLayout.show(cardPanel, "appointmentDetails");
