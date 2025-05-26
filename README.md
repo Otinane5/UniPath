@@ -24,3 +24,23 @@
 2)Apache NetBeans IDE
 
 3)Windows/Linux/macOS
+
+**Credentials χρηστών κατά την είσοδο της εφαρμογής**
+
+*Πανεπιστήμιο*
+
+Όνομα χρήστη: sampleUniversity
+
+Kωδικός:s1
+
+*Σύμβουλος*
+
+Όνομα χρήστη: sampleCounselor
+
+Kωδικός:s2 
+
+*Μαθητής*
+
+Όνομα χρήστη: sampleStudent
+
+Kωδικός:s3
