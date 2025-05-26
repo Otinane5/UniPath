@@ -46,6 +46,9 @@ public class EditDescriptionPanel extends JPanel {
         editPanel.add(scrollPane);
         editPanel.add(Box.createVerticalStrut(10));
         
+        JButton cancel = pressCancelEdit(cardLayout, cardPanel);
+
+        /*transfered
         JButton cancel=new JButton("Ακύρωση");
         cancel.setBackground(Color.RED);
         cancel.setForeground(Color.WHITE);
@@ -57,7 +60,37 @@ public class EditDescriptionPanel extends JPanel {
             {
                 cardLayout.show(cardPanel, "seeProfileDetails"); 
             }
-        });
+        });*/
+        
+        JButton accept = acceptChanges(cardLayout, cardPanel);
+        
+        JPanel confirmPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        confirmPanel.add(cancel);
+        confirmPanel.add(accept);
+        editPanel.add(confirmPanel);
+
+        // BOTTOM BUTTONS
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        
+        JButton homeButton = new JButton("Αρχική Σελίδα");
+        homeButton.setBackground(Color.decode("#B3FF66"));
+        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
+        
+        JButton back= new JButton("Πίσω");
+        back.setBackground(Color.decode("#FFCC66"));
+        back.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
+        
+        buttonPanel.add(homeButton);
+        buttonPanel.add(back);
+        
+        add(editPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+    
+    //public void openEditDescriptionWindow(){}
+    //δεν χρειάζεται εδώ αφού το edit description είναι ηδη ανοιχτό, έτσι οπως φτιαξαμε το ui
+    
+    public JButton acceptChanges(CardLayout cardLayout, JPanel cardPanel){
         
         JButton accept=new JButton("Αποδοχή Αλλαγών");
         accept.setBackground(Color.GREEN);
@@ -98,35 +131,24 @@ public class EditDescriptionPanel extends JPanel {
                 cardLayout.show(cardPanel, "seeProfileDetails");    
             } 
         });
-        
-        JPanel confirmPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        confirmPanel.add(cancel);
-        confirmPanel.add(accept);
-        editPanel.add(confirmPanel);
-
-        // BOTTOM BUTTONS
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        
-        JButton homeButton = new JButton("Αρχική Σελίδα");
-        homeButton.setBackground(Color.decode("#B3FF66"));
-        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
-        
-        JButton back= new JButton("Πίσω");
-        back.setBackground(Color.decode("#FFCC66"));
-        back.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
-        
-        buttonPanel.add(homeButton);
-        buttonPanel.add(back);
-        
-        add(editPanel, BorderLayout.CENTER);
-        add(buttonPanel, BorderLayout.SOUTH);
+        return accept;
     }
     
-    public void openEditDescriptionWindow(){
-    }
-    public void acceptChanges(){
-    }
-    public void pressCancelEdit(){
+    public JButton pressCancelEdit(CardLayout cardLayout, JPanel cardPanel){
+        
+        JButton cancel=new JButton("Ακύρωση");
+        cancel.setBackground(Color.RED);
+        cancel.setForeground(Color.WHITE);
+                
+        cancel.addActionListener(e -> 
+        {
+            int confirm =JOptionPane.showConfirmDialog(this, "Με αυτή την επιλογή οι αλλαγές θα χαθούν!", "Ακύρωση", JOptionPane.YES_NO_OPTION);
+            if(confirm==JOptionPane.YES_OPTION)
+            {
+                cardLayout.show(cardPanel, "seeProfileDetails"); 
+            }
+        });
+        return cancel;
     }
     
     /*

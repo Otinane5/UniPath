@@ -8,6 +8,11 @@ public class ProfilePanel extends JPanel {
     private JScrollPane scroll;
     public static String currentDescription = "Περιγραφή...";
     private JTextArea descriptionArea;
+    
+    private JPanel contentPanel;
+    private JPanel descPanel;
+    
+    
     public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
 
     public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
@@ -19,12 +24,13 @@ public class ProfilePanel extends JPanel {
         add(titleLabel, BorderLayout.NORTH);
         
         // Main content panel
-        JPanel contentPanel = new JPanel();
+        //JPanel 
+        contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // padding
         
         // Department
-        JLabel departmentLabel= new JLabel("Τμήμα", SwingConstants.CENTER);
+        JLabel departmentLabel= new JLabel("Τμήμα ...", SwingConstants.CENTER); //+department name
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
@@ -35,19 +41,26 @@ public class ProfilePanel extends JPanel {
         contentPanel.add(Box.createVerticalStrut(10));
         
         // Description and Edit
-        JPanel descPanel = new JPanel(new BorderLayout(10, 0));
+        //JPanel 
+        descPanel = new JPanel(new BorderLayout(10, 0));
         descPanel.setMaximumSize(new Dimension(400, 70));
         descPanel.add(new JLabel("Περιγραφή Τμήματος"), BorderLayout.WEST);
-        JButton edit = new JButton("Τροποποίηση");
+        
+         editDescription(cardLayout, cardPanel);
+        contentPanel.add(descPanel);
+
+         
+        /*JButton edit = new JButton("Τροποποίηση");
         edit.addActionListener(e -> cardLayout.show(cardPanel, "editUniDesc"));
         descPanel.add(edit, BorderLayout.EAST);
-        contentPanel.add(descPanel);
+        contentPanel.add(descPanel);*/
         
         //Department's description
         descriptionArea = new JTextArea(currentDescription);
         descriptionArea.setLineWrap(true);
         descriptionArea.setWrapStyleWord(true);
         descriptionArea.setEditable(false);
+        
         JScrollPane descScroll = new JScrollPane(descriptionArea);
         descScroll.setPreferredSize(new Dimension(380, 60));
         descScroll.setMaximumSize(new Dimension(400, 60));
@@ -63,23 +76,14 @@ public class ProfilePanel extends JPanel {
         annPanel.add(addAnnouncement, BorderLayout.EAST);
         contentPanel.add(annPanel);
         
+        
+
         //Announcement List
         //JPanel announcementPanel = new JPanel();
         announcementPanel=new JPanel();
         announcementPanel.setLayout(new BoxLayout(announcementPanel, BoxLayout.Y_AXIS));
-        announcementPanel.setBackground(Color.WHITE);
+        announcementPanel.setBackground(Color.WHITE);      
         
-        /* φευγει το στατικό
-        for (int i = 1; i <= 4; i++) {
-            JLabel announcementLabel = new JLabel("~ Ανακοίνωση_" + i);
-            announcementLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-            announcementPanel.add(announcementLabel);
-        }*/       
-        
-        announcementPanel = new JPanel();
-        announcementPanel.setLayout(new BoxLayout(announcementPanel, BoxLayout.Y_AXIS));
-        announcementPanel.setBackground(Color.WHITE);
-
         refreshAnnouncements();
 
         //scrolling enabled
@@ -110,8 +114,11 @@ public class ProfilePanel extends JPanel {
         descriptionArea.setText(currentDescription);
 
     }
-    public void openDepartmentProfile() //departmentID:int
-    {}
+    
+    //public void openDepartmentProfile() //departmentID:int
+    //{} to profil έχει ήδη ανοίξει. ίσως παει σαν μεθοδοσ στο προηγούμενο frame
+    
+    /* ϊσως να μεταφερθουν στο προηγούμενο panel
     public void getDepartmentProfile() //departmentID:int
     {}
     public void getDescription() //departmentID: int
@@ -121,9 +128,15 @@ public class ProfilePanel extends JPanel {
     public void displayProfile()
     {}
     public void displayFullProfile()
-    {}
-    public void editDescription()
-    {}
+    {}*/
+    
+    public void editDescription(CardLayout cardLayout, JPanel cardPanel)
+    {
+        JButton edit = new JButton("Τροποποίηση");
+        edit.addActionListener(e -> cardLayout.show(cardPanel, "editUniDesc"));
+        descPanel.add(edit, BorderLayout.EAST);
+        //contentPanel.add(descPanel);
+    }
     public void addAnnouncement()
     {}
     public void publishAnnouncement()
@@ -131,12 +144,14 @@ public class ProfilePanel extends JPanel {
     //public void pressBack()
     //{}
     
+    //new method
     public void updateDescription(String newDesc) 
     {
         currentDescription = newDesc;
         descriptionArea.setText(newDesc);
     }
     
+    //new method
     public void refreshAnnouncements() 
     {
         announcementPanel.removeAll();
