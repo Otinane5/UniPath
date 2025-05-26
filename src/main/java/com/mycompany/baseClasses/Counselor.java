@@ -15,7 +15,7 @@ public class Counselor extends User {
     public static List<Counselor> sample = new ArrayList<>();
 
     public static void init() {
-
+        
         // Counselor 1
         Counselor c1 = new Counselor("pass1", 2, "mpapadopoulou");
         c1.name = "Μαρία";
