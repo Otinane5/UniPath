@@ -1,5 +1,6 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Counselor;
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,12 +17,20 @@ public class CounselorEditProfilePanelUI extends JPanel {
 
         JPanel formPanel = new JPanel(new GridLayout(6, 2, 10, 10));
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
+        
+        Counselor counselor = CounselorProfilePanel.CounselorToDisplay;
 
-        nameField = new JTextField("Κώστας");
-        surnameField = new JTextField("Παπαδόπουλος");
-        emailField = new JTextField("kostas@email.com");
-        phoneField = new JTextField("6900000000");
-        bioArea = new JTextArea("Εδώ είναι η περιγραφή του συμβούλου.", 3, 20);
+        nameField = new JTextField(counselor.name);
+        surnameField = new JTextField(counselor.lastName);
+        emailField = new JTextField(counselor.email);
+        phoneField = new JTextField(counselor.phoneNum);
+        bioArea = new JTextArea(counselor.bio, 3, 20);
+        
+        //nameField = new JTextField("Κώστας");
+        //surnameField = new JTextField("Παπαδόπουλος");
+        //emailField = new JTextField("kostas@email.com");
+        //phoneField = new JTextField("6900000000");
+        //bioArea = new JTextArea("Εδώ είναι η περιγραφή του συμβούλου.", 3, 20);
         bioArea.setLineWrap(true);
 
         formPanel.add(new JLabel("Όνομα:"));
@@ -50,11 +59,18 @@ public class CounselorEditProfilePanelUI extends JPanel {
         
         // Προεπισκόπηση
         previewButton.addActionListener(e -> {
-            String oldName = "Κώστας";
-            String oldSurname = "Παπαδόπουλος";
-            String oldEmail = "kostas@email.com";
-            String oldPhone = "6900000000";
-            String oldBio = "Εδώ είναι η περιγραφή του συμβούλου.";
+            //String oldName = "Κώστας";
+            //String oldSurname = "Παπαδόπουλος";
+            //String oldEmail = "kostas@email.com";
+            //String oldPhone = "6900000000";
+            //String oldBio = "Εδώ είναι η περιγραφή του συμβούλου.";
+            
+            String oldName = counselor.name;
+            String oldSurname = counselor.lastName;
+            String oldEmail = counselor.email;
+            String oldPhone = counselor.phoneNum;
+            String oldBio = counselor.bio;
+
 
             String newName = nameField.getText();
             String newSurname = surnameField.getText();
@@ -80,13 +96,17 @@ public class CounselorEditProfilePanelUI extends JPanel {
             int result = JOptionPane.showConfirmDialog(this, previewPanel, "Προεπισκόπηση Αλλαγών", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 if (validateFields()) {
+                    // Αποθήκευση αλλαγών στον CounselorToDisplay
+                    counselor.name = newName;
+                    counselor.lastName = newSurname;
+                    counselor.email = newEmail;
+                    counselor.phoneNum = newPhone;
+                    counselor.bio = newBio;
+
                     JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                     cardLayout.show(cardPanel, "profile");
                     //onSave.run(); // ή αποθήκευση σε μεταβλητές ή ΒΔ
-                }
-                else {
-                    JOptionPane.showMessageDialog(this, "Συμπληρώστε όλα τα πεδία σωστά.");
-                }
+                }                
             }
         });
         
@@ -113,9 +133,24 @@ public class CounselorEditProfilePanelUI extends JPanel {
     }
 
     private boolean validateFields() {
-        return !nameField.getText().trim().isEmpty()
-            && !surnameField.getText().trim().isEmpty()
-            && !emailField.getText().trim().isEmpty()
-            && !phoneField.getText().trim().isEmpty();
+        String emailRegex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+        String phoneRegex = "^\\d{10}$"; // δέχεται μόνο 10ψήφιο αριθμό
+        
+        if (nameField.getText().trim().isEmpty() ||
+            surnameField.getText().trim().isEmpty() ||
+            emailField.getText().trim().isEmpty() ||
+            phoneField.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Συμπληρώστε όλα τα πεδία.");
+            return false;
+        }
+        if (!emailField.getText().matches(emailRegex)) {
+            JOptionPane.showMessageDialog(this, "Εισάγετε έγκυρο email.");
+            return false;
+        }
+        if (!phoneField.getText().matches(phoneRegex)) {
+            JOptionPane.showMessageDialog(this, "Εισάγετε έγκυρο αριθμό τηλεφώνου (10 ψηφία).");
+            return false;
+        }
+        return true;
     }
 }
