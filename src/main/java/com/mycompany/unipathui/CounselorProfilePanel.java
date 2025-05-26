@@ -9,6 +9,11 @@ import java.util.List;
 public class CounselorProfilePanel extends JPanel {
     //ATTRIBUTES
     public static Counselor CounselorToDisplay = new Counselor(); // This needs to be set before use
+    private JLabel nameValueLabel;
+    private JLabel lastNameValueLabel;
+    private JLabel emailValueLabel;
+    private JLabel phoneValueLabel;
+    private JTextArea bioTextArea;
     //CONSTRUCTOR
     public CounselorProfilePanel(Runnable onBackToMainMenu, Runnable onEditProfile) {
         setLayout(new BorderLayout(10, 10));
@@ -29,22 +34,34 @@ public class CounselorProfilePanel extends JPanel {
         // Helpful method for label and value
         int row = 0;
         formPanel.add(makeLabel("Όνομα:"), makeGbc(0, row));
-        formPanel.add(makeValueLabel(CounselorToDisplay.name), makeGbc(1, row++));
-        formPanel.add(makeLabel("Επώνυμο:"), makeGbc(0, row));
-        formPanel.add(makeValueLabel(CounselorToDisplay.lastName), makeGbc(1, row++));
-        formPanel.add(makeLabel("Email:"), makeGbc(0, row));
-        formPanel.add(makeValueLabel(CounselorToDisplay.email), makeGbc(1, row++));
-        formPanel.add(makeLabel("Τηλέφωνο:"), makeGbc(0, row));
-        formPanel.add(makeValueLabel(CounselorToDisplay.phoneNum), makeGbc(1, row++));
+        //formPanel.add(makeValueLabel(CounselorToDisplay.name), makeGbc(1, row++));
+        nameValueLabel = makeValueLabel(CounselorToDisplay.name);
+        formPanel.add(nameValueLabel, makeGbc(1, row++));
         
+        formPanel.add(makeLabel("Επώνυμο:"), makeGbc(0, row));
+        //formPanel.add(makeValueLabel(CounselorToDisplay.lastName), makeGbc(1, row++));
+        lastNameValueLabel = makeValueLabel(CounselorToDisplay.lastName);
+        formPanel.add(lastNameValueLabel, makeGbc(1, row++));
+        
+        formPanel.add(makeLabel("Email:"), makeGbc(0, row));
+        //formPanel.add(makeValueLabel(CounselorToDisplay.email), makeGbc(1, row++));
+        emailValueLabel = makeValueLabel(CounselorToDisplay.email);
+        formPanel.add(emailValueLabel, makeGbc(1, row++));
+
+        formPanel.add(makeLabel("Τηλέφωνο:"), makeGbc(0, row));
+        //formPanel.add(makeValueLabel(CounselorToDisplay.phoneNum), makeGbc(1, row++));
+        phoneValueLabel = makeValueLabel(CounselorToDisplay.phoneNum);
+        formPanel.add(phoneValueLabel, makeGbc(1, row++));
+
         // Bio
         formPanel.add(makeLabel("Περιγραφή (Bio):"), makeGbc(0, row));
-        JTextArea bio = new JTextArea(CounselorToDisplay.bio);
-        bio.setLineWrap(true);
-        bio.setWrapStyleWord(true);
-        bio.setEditable(false);
-        bio.setFont(new Font("Arial", Font.PLAIN, 13));
-        JScrollPane bioScroll = new JScrollPane(bio);
+        bioTextArea = new JTextArea(CounselorToDisplay.bio);
+        bioTextArea.setLineWrap(true);
+        bioTextArea.setWrapStyleWord(true);
+        bioTextArea.setEditable(false);
+        bioTextArea.setFont(new Font("Arial", Font.PLAIN, 13));
+        
+        JScrollPane bioScroll = new JScrollPane(bioTextArea);
         bioScroll.setPreferredSize(new Dimension(300, 80));
         formPanel.add(bioScroll, makeGbc(1, row++));
         
@@ -144,5 +161,19 @@ public class CounselorProfilePanel extends JPanel {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         return gbc;
+    }
+    public void refresh() {
+        // Απλά ενημερώνουμε τα labels με τα νέα δεδομένα
+        nameValueLabel.setText(CounselorToDisplay.name);
+        lastNameValueLabel.setText(CounselorToDisplay.lastName);
+        emailValueLabel.setText(CounselorToDisplay.email);
+        phoneValueLabel.setText(CounselorToDisplay.phoneNum);
+        bioTextArea.setText(CounselorToDisplay.bio);
+
+        // Αν έχεις δυναμικά στοιχεία (π.χ. reviews), θα πρέπει να τα ανανεώσεις επίσης εδώ
+        // Π.χ. αν τα reviews είναι σε ξεχωριστό panel, καθάρισε και ξαναπρόσθεσε τα components.
+
+        revalidate();
+        repaint();
     }
 }

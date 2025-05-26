@@ -15,7 +15,7 @@ com\mycompany\unipathui\CounselorRejectAppointmentPanel.class
 com\mycompany\unipathui\NewMessageFrame.class
 com\mycompany\unipathui\CounselorAppointmentDetailsPanel.class
 com\mycompany\unipathui\MessageViewFrame.class
-com\mycompany\baseClasses\MessageService$UserInfo.class
+com\mycompany\unipathui\MessageService.class
 Councelor_listUI$4.class
 com\mycompany\unipathui\CounselorFormScreen$2.class
 com\mycompany\unipathui\SearchFiltersUI.class
@@ -64,7 +64,6 @@ com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\MessageBoxFrame.class
 Councelor_listUI$3.class
 com\mycompany\unipathui\DepartmentProfileUI.class
-com\mycompany\baseClasses\MessageService.class
 com\mycompany\unipathui\MessageViewFrame$1.class
 com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\AnnouncementRepository.class

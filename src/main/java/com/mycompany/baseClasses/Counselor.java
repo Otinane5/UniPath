@@ -34,7 +34,6 @@ public class Counselor extends User {
         c2.bio = "Σύμβουλος με εμπειρία σε πανεπιστημιακές σπουδές.";
         c2.reviews = List.of(4, 3, 4, 5);
 
-
         // Counselor 3
         Counselor c3 = new Counselor("pass3", 2, "akaragianni");
         c3.name = "Άννα";
@@ -43,6 +42,7 @@ public class Counselor extends User {
         c3.phoneNum = "2109988776";
         c3.bio = "Βοηθώ μαθητές να βρουν το σωστό μονοπάτι.";
         c3.reviews = List.of(5, 4, 5);
+
         // Counselor 4
         Counselor c4 = new Counselor("pass4", 2, "nvasileiou");
         c4.name = "Νίκος";

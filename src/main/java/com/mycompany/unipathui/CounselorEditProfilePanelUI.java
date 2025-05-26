@@ -9,41 +9,47 @@ public class CounselorEditProfilePanelUI extends JPanel {
     private JTextField nameField, surnameField, emailField, phoneField;
     private JTextArea bioArea;
     //CONSTRUCTOR
-    public CounselorEditProfilePanelUI(CardLayout cardLayout, JPanel cardPanel) {
+    public CounselorEditProfilePanelUI(CardLayout cardLayout, JPanel cardPanel, CounselorProfilePanel profilePanel) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel titleLabel = new JLabel("Επεξεργασία Προφίλ", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         add(titleLabel, BorderLayout.NORTH);
 
-        JPanel formPanel = new JPanel(new GridLayout(6, 2, 10, 10));
-        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
+        //JPanel formPanel = new JPanel(new GridLayout(6, 2, 10, 10));
+        JPanel formPanel = new JPanel();
+        formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
+        formPanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 20, 60));
+        //formPanel.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
+        
+        Font labelFont = new Font("Arial", Font.BOLD, 14);
+        Font fieldFont = new Font("Arial", Font.PLAIN, 14);
         
         Counselor counselor = CounselorProfilePanel.CounselorToDisplay;
 
-        nameField = new JTextField(counselor.name);
-        surnameField = new JTextField(counselor.lastName);
-        emailField = new JTextField(counselor.email);
-        phoneField = new JTextField(counselor.phoneNum);
-        bioArea = new JTextArea(counselor.bio, 3, 20);
+        //nameField = new JTextField(counselor.name);
+        //surnameField = new JTextField(counselor.lastName);
+        //emailField = new JTextField(counselor.email);
+        //phoneField = new JTextField(counselor.phoneNum);
         
-        //nameField = new JTextField("Κώστας");
-        //surnameField = new JTextField("Παπαδόπουλος");
-        //emailField = new JTextField("kostas@email.com");
-        //phoneField = new JTextField("6900000000");
-        //bioArea = new JTextArea("Εδώ είναι η περιγραφή του συμβούλου.", 3, 20);
+        //formPanel.add(new JLabel("Όνομα:"));
+        //formPanel.add(nameField);
+        formPanel.add(makeLabeledField("Όνομα:", nameField = new JTextField(counselor.name), labelFont, fieldFont));
+        //formPanel.add(new JLabel("Επώνυμο:"));
+        //formPanel.add(surnameField);
+        formPanel.add(makeLabeledField("Επώνυμο:", surnameField = new JTextField(counselor.lastName), labelFont, fieldFont));
+        //formPanel.add(new JLabel("Email:"));
+        //formPanel.add(emailField);
+        formPanel.add(makeLabeledField("Email:", emailField = new JTextField(counselor.email), labelFont, fieldFont));
+        //formPanel.add(new JLabel("Τηλέφωνο:"));
+        //formPanel.add(phoneField);
+        formPanel.add(makeLabeledField("Τηλέφωνο:", phoneField = new JTextField(counselor.phoneNum), labelFont, fieldFont));
+        bioArea = new JTextArea(counselor.bio, 4, 20);
+        bioArea.setFont(fieldFont);
         bioArea.setLineWrap(true);
-
-        formPanel.add(new JLabel("Όνομα:"));
-        formPanel.add(nameField);
-        formPanel.add(new JLabel("Επώνυμο:"));
-        formPanel.add(surnameField);
-        formPanel.add(new JLabel("Email:"));
-        formPanel.add(emailField);
-        formPanel.add(new JLabel("Τηλέφωνο:"));
-        formPanel.add(phoneField);
-        formPanel.add(new JLabel("Περιγραφή (Bio):"));
-        formPanel.add(new JScrollPane(bioArea));
+        bioArea.setWrapStyleWord(true);
+        JScrollPane bioScrollPane = new JScrollPane(bioArea);
+        formPanel.add(makeLabeledField("Περιγραφή (Bio):", bioScrollPane, labelFont, fieldFont));
 
         add(formPanel, BorderLayout.CENTER);
 
@@ -60,18 +66,11 @@ public class CounselorEditProfilePanelUI extends JPanel {
         
         // Προεπισκόπηση
         previewButton.addActionListener(e -> {
-            //String oldName = "Κώστας";
-            //String oldSurname = "Παπαδόπουλος";
-            //String oldEmail = "kostas@email.com";
-            //String oldPhone = "6900000000";
-            //String oldBio = "Εδώ είναι η περιγραφή του συμβούλου.";
-            
             String oldName = counselor.name;
             String oldSurname = counselor.lastName;
             String oldEmail = counselor.email;
             String oldPhone = counselor.phoneNum;
             String oldBio = counselor.bio;
-
 
             String newName = nameField.getText();
             String newSurname = surnameField.getText();
@@ -80,19 +79,23 @@ public class CounselorEditProfilePanelUI extends JPanel {
             String newBio = bioArea.getText();
 
             // Δημιουργία panel για προεπισκόπηση
-            JPanel previewPanel = new JPanel(new GridLayout(6, 2, 10, 10));
+            JPanel previewPanel = new JPanel();
+            previewPanel.setLayout(new BoxLayout(previewPanel, BoxLayout.Y_AXIS));
             previewPanel.setPreferredSize(new Dimension(500, 300));
-
-            previewPanel.add(new JLabel("Όνομα:"));
-            previewPanel.add(new JLabel(oldName + "  ➔  " + newName));
-            previewPanel.add(new JLabel("Επώνυμο:"));
-            previewPanel.add(new JLabel(oldSurname + "  ➔  " + newSurname));
-            previewPanel.add(new JLabel("Email:"));
-            previewPanel.add(new JLabel(oldEmail + "  ➔  " + newEmail));
-            previewPanel.add(new JLabel("Τηλέφωνο:"));
-            previewPanel.add(new JLabel(oldPhone + "  ➔  " + newPhone));
-            previewPanel.add(new JLabel("Bio:"));
-            previewPanel.add(new JLabel("<html>" + oldBio + "<br><b>➔</b><br>" + newBio + "</html>"));
+            
+            Font previewFont = new Font("Arial", Font.PLAIN, 14);
+            String[] fields = { "Όνομα", "Επώνυμο", "Email", "Τηλέφωνο", "Bio" };
+            String[] oldValues = { oldName, oldSurname, oldEmail, oldPhone, oldBio };
+            String[] newValues = { newName, newSurname, newEmail, newPhone, newBio };
+            
+            for (int i = 0; i < fields.length; i++) {
+                JLabel label = new JLabel("<html><b>" + fields[i] + ":</b><br>" +
+                        "<span style='color:gray'>" + oldValues[i] + "</span>  ->  " +
+                        "<span style='color:green'>" + newValues[i] + "</span></html>");
+                label.setFont(previewFont);
+                label.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                previewPanel.add(label);
+            }
 
             int result = JOptionPane.showConfirmDialog(this, previewPanel, "Προεπισκόπηση Αλλαγών", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
@@ -103,7 +106,8 @@ public class CounselorEditProfilePanelUI extends JPanel {
                     counselor.email = newEmail;
                     counselor.phoneNum = newPhone;
                     counselor.bio = newBio;
-
+                    
+                    profilePanel.refresh(); // <--- Εδώ ανανεώνεται το πάνελ!
                     JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                     cardLayout.show(cardPanel, "profile");
                     //onSave.run(); // ή αποθήκευση σε μεταβλητές ή ΒΔ
@@ -153,5 +157,17 @@ public class CounselorEditProfilePanelUI extends JPanel {
             return false;
         }
         return true;
+    }
+    private JPanel makeLabeledField(String labelText, JComponent field, Font labelFont, Font fieldFont) {
+        JPanel panel = new JPanel(new BorderLayout(5, 5));
+        panel.setOpaque(false);
+
+        JLabel label = new JLabel(labelText);
+        label.setFont(labelFont);
+        field.setFont(fieldFont);
+        panel.add(label, BorderLayout.NORTH);
+        panel.add(field, BorderLayout.CENTER);
+        panel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
+        return panel;
     }
 }
