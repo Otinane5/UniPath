@@ -3,23 +3,16 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class ProfilePanel extends JPanel {
     private JPanel announcementPanel;
     private JTextArea descriptionArea;
     
-    private JScrollPane scroll;
     public static String currentDescription = "Περιγραφή...";
-    
+    public static String currentDepartment = "Τμήμα ...";
     
     private JPanel contentPanel;
     private JPanel descPanel;
-    public static String currentDepartment = "Τμήμα ...";
-private JLabel departmentLabel;
+    private JLabel departmentLabel;
     
     public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
 
@@ -32,14 +25,13 @@ private JLabel departmentLabel;
         add(titleLabel, BorderLayout.NORTH);
         
         // Main content panel
-        //JPanel 
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // padding
         
         // Department
         //JLabel departmentLabel= new JLabel("Τμήμα ...", SwingConstants.CENTER); //+department name
-                departmentLabel = new JLabel(currentDepartment, SwingConstants.CENTER);
+        departmentLabel = new JLabel(currentDepartment, SwingConstants.CENTER);
 
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
@@ -58,12 +50,6 @@ private JLabel departmentLabel;
          editDescription(cardLayout, cardPanel);
         contentPanel.add(descPanel);
 
-         
-        /*JButton edit = new JButton("Τροποποίηση");
-        edit.addActionListener(e -> cardLayout.show(cardPanel, "editUniDesc"));
-        descPanel.add(edit, BorderLayout.EAST);
-        contentPanel.add(descPanel);*/
-        
         //Department's description
         descriptionArea = new JTextArea(currentDescription);
         descriptionArea.setLineWrap(true);
@@ -85,10 +71,7 @@ private JLabel departmentLabel;
         annPanel.add(addAnnouncement, BorderLayout.EAST);
         contentPanel.add(annPanel);
         
-        
-
         //Announcement List
-        //JPanel announcementPanel = new JPanel();
         announcementPanel=new JPanel();
         announcementPanel.setLayout(new BoxLayout(announcementPanel, BoxLayout.Y_AXIS));
         announcementPanel.setBackground(Color.WHITE);      
@@ -119,13 +102,10 @@ private JLabel departmentLabel;
         buttonPanel.add(homeButton);
         buttonPanel.add(back);
         add(buttonPanel, BorderLayout.SOUTH);
-        
-        //descriptionArea.setText(currentDescription);
-
     }
     
     //public void openDepartmentProfile() //departmentID:int
-    //{} to profil έχει ήδη ανοίξει. ίσως παει σαν μεθοδοσ στο προηγούμενο frame
+    //{} to profile έχει ήδη ανοίξει. ίσως παει σαν μεθοδοσ στο προηγούμενο frame
     
     /* ϊσως να μεταφερθουν στο προηγούμενο panel
     public void getDepartmentProfile() //departmentID:int
@@ -146,10 +126,13 @@ private JLabel departmentLabel;
         descPanel.add(edit, BorderLayout.EAST);
         //contentPanel.add(descPanel);
     }
+    
     public void addAnnouncement()
     {}
+    
     public void publishAnnouncement()
     {}
+    
     //public void pressBack()
     //{}
     
@@ -175,12 +158,10 @@ private JLabel departmentLabel;
         announcementPanel.revalidate();
         announcementPanel.repaint();
     }
-    
 
     public void refreshProfile() {
         departmentLabel.setText(currentDepartment);
         descriptionArea.setText(currentDescription);
         refreshAnnouncements();
     }
-
 }

@@ -1,5 +1,4 @@
 package com.mycompany.unipathui;
-
 import com.mycompany.baseClasses.Application;
 
 import javax.swing.*;
@@ -8,14 +7,9 @@ import java.util.List;
 
 public class StudentApplicationsPanel extends JPanel {
     
-    private final JPanel applicationListPanel = new JPanel();
-    //private final CardLayout cardLayout;
-    //private final JPanel cardPanel;
+    private final JPanel applicationListPanel = new JPanel();  
     
     public StudentApplicationsPanel(CardLayout cardLayout, JPanel cardPanel) {
-        //this.cardLayout = cardLayout;
-        //this.cardPanel = cardPanel;
-        
         setLayout(new BorderLayout(10, 10));
         setBackground(Color.WHITE);
         
@@ -63,10 +57,13 @@ public class StudentApplicationsPanel extends JPanel {
 
         add(bottomPanel, BorderLayout.SOUTH);
     }
-    private void loadApplications(JPanel panel) {
+    
+    private void loadApplications(JPanel panel) 
+    {
         List<Application> applications = Application.sample;
 
-        if (applications.isEmpty()) {
+        if (applications.isEmpty()) 
+        {
             JLabel emptyLabel = new JLabel("Δεν υπάρχουν διαθέσιμες αιτήσεις.");
             emptyLabel.setFont(new Font("Arial", Font.ITALIC, 14));
             emptyLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -80,7 +77,6 @@ public class StudentApplicationsPanel extends JPanel {
             appPanel.setLayout(new BoxLayout(appPanel, BoxLayout.Y_AXIS));
             appPanel.setPreferredSize(new Dimension(600, 130));
             appPanel.setMaximumSize(new Dimension(600, 130));
-            //appPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 130)); 
             appPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
             appPanel.setBackground(Color.WHITE);
 
@@ -105,44 +101,41 @@ public class StudentApplicationsPanel extends JPanel {
             departmentLabel.setFont(new Font("Arial", Font.ITALIC, 12));
             appPanel.add(departmentLabel);
             
-            if ("sent".equals(app.state)) {
+            if ("sent".equals(app.state)) 
+            {
                 JPanel buttonPanel = new JPanel();
-                buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 0)); // Layout to make buttons visible
+                buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 0)); 
 
                 JButton accept = new JButton("Αποδοχή");
                 accept.setBackground(new Color(0, 200, 100));
                 accept.setForeground(Color.WHITE); 
-                //accept.setFocusPainted(false);
-                accept.addActionListener(e -> {
-                    //app.state = "approved";
-                    //refresh();
-                    int result = JOptionPane.showConfirmDialog(this,
-                        "Είστε σίγουροι ότι θέλετε να εγκρίνετε την αίτηση του/της " + app.fullName + ";",
-                        "Επιβεβαίωση", JOptionPane.YES_NO_OPTION);
-                    if (result == JOptionPane.YES_OPTION) {
-                        app.state = "approved";
-                        refresh();
-                        JOptionPane.showMessageDialog(this, "Η αίτηση εγκρίθηκε επιτυχώς!");
-                    }
-                });
+                accept.addActionListener(e -> 
+                    {
+                        int result = JOptionPane.showConfirmDialog(this,
+                            "Είστε σίγουροι ότι θέλετε να εγκρίνετε την αίτηση του/της " + app.fullName + ";",
+                            "Επιβεβαίωση", JOptionPane.YES_NO_OPTION);
+                        if (result == JOptionPane.YES_OPTION) {
+                            app.state = "approved";
+                            refresh();
+                            JOptionPane.showMessageDialog(this, "Η αίτηση εγκρίθηκε επιτυχώς!");
+                        }
+                    });
                 buttonPanel.add(accept);
 
                 JButton reject = new JButton("Απόρριψη");
                 reject.setBackground(new Color(200, 0, 0));
                 reject.setForeground(Color.WHITE);
-                //reject.setFocusPainted(false);
-                reject.addActionListener(e -> {
-                    //app.state = "rejected";
-                    //refresh();
-                    int result = JOptionPane.showConfirmDialog(this,
-                        "Είστε σίγουροι ότι θέλετε να απορρίψετε την αίτηση του/της " + app.fullName + ";",
-                        "Επιβεβαίωση", JOptionPane.YES_NO_OPTION);
-                    if (result == JOptionPane.YES_OPTION) {
-                        app.state = "rejected";
-                        refresh();
-                        JOptionPane.showMessageDialog(this, "Η αίτηση απορρίφθηκε επιτυχώς!");
-                    }
-                });
+                reject.addActionListener(e -> 
+                    {
+                        int result = JOptionPane.showConfirmDialog(this,
+                            "Είστε σίγουροι ότι θέλετε να απορρίψετε την αίτηση του/της " + app.fullName + ";",
+                            "Επιβεβαίωση", JOptionPane.YES_NO_OPTION);
+                        if (result == JOptionPane.YES_OPTION) {
+                            app.state = "rejected";
+                            refresh();
+                            JOptionPane.showMessageDialog(this, "Η αίτηση απορρίφθηκε επιτυχώς!");
+                        }
+                    });
                 buttonPanel.add(reject);
 
                 appPanel.add(buttonPanel); // Add buttons to the panel
@@ -152,23 +145,30 @@ public class StudentApplicationsPanel extends JPanel {
             panel.add(Box.createVerticalStrut(10)); // Space between applications
         }
     }
-    private String translateState(String state) {
+    
+    private String translateState(String state) 
+    {
         return switch (state) {
             case "approved" -> "Εγκεκριμένη";
             case "rejected" -> "Απορριφθείσα";
             default -> "Υποβληθείσα";
         };
     }
+    
     public void refresh() {
         applicationListPanel.removeAll();       // καθάρισε τις προηγούμενες αιτήσεις
         loadApplications(applicationListPanel); // φόρτωσε ξανά από τη λίστα Application.sample
         applicationListPanel.revalidate();      // ενημέρωση layout
         applicationListPanel.repaint();         // redraw UI
     }
-    public void viewApplications() {
+    
+    //δεν εχει νόημα εδώ
+    //public void viewApplications() {
         // For future use
-    }
-    public void applyFilters() {
+    //}
+    
+    public void applyFilters() 
+    {
         // For future use
     }
 }
