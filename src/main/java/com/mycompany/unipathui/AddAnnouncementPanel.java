@@ -6,9 +6,17 @@ import java.awt.*;
 public class AddAnnouncementPanel extends JPanel {
     private String departmentName;
     
-    //arg , String departmentName ?
+    private JTextField titleField;
+    private JTextArea bodyArea;
+    private CardLayout cardLayout;
+    private JPanel cardPanel;
+    private JButton publish;
+
     public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel) {
-        //this.departmentName=departmentName;
+        
+        this.cardLayout = cardLayout;
+        this.cardPanel = cardPanel;
+
         setLayout(new BorderLayout(10, 10));
         
         // Title label
@@ -40,7 +48,8 @@ public class AddAnnouncementPanel extends JPanel {
         annPanel.add(announcementTitle, gbc);
                 
         gbc.gridx = 1;
-        JTextField titleField = new JTextField(25);
+        //JTextField titleField = new JTextField(25);
+        titleField = new JTextField(25);
         annPanel.add(titleField, gbc);
         
         gbc.gridx = 0;
@@ -49,7 +58,8 @@ public class AddAnnouncementPanel extends JPanel {
         annPanel.add(body, gbc);
         
         gbc.gridx = 1;
-        JTextArea bodyArea = new JTextArea(6, 25);
+        //JTextArea bodyArea = new JTextArea(6, 25);
+        bodyArea = new JTextArea(6, 25);
         bodyArea.setLineWrap(true);
         bodyArea.setWrapStyleWord(true);
         JScrollPane scrollPane = new JScrollPane(bodyArea);
@@ -77,51 +87,16 @@ public class AddAnnouncementPanel extends JPanel {
         maybe
         */
         
-        JButton publish = new JButton("Δημοσίευση");
+        publish = new JButton("Δημοσίευση");
         publish.setBackground(Color.GREEN);
-                
-        publish.addActionListener(e -> 
-        {
-            String title = titleField.getText().trim();
-            String bodyText = bodyArea.getText().trim();
-            
-            if (title.isEmpty() || bodyText.isEmpty()) 
-            {
-                JOptionPane.showMessageDialog(this, 
-                    "Παρακαλώ συμπληρώστε όλα τα πεδία.", 
-                    "Σφάλμα!", 
-                    JOptionPane.ERROR_MESSAGE);
-                    return;
-            }
-
-           // AnnouncementView newAnnouncement = new AnnouncementView(title, bodyText);
-           // AnnouncementRepository.addAnnouncement(departmentName, newAnnouncement);
-
-            ProfilePanel.announcements.add(new String[]{title, bodyText});
-
-            // clear
-            titleField.setText("");
-            bodyArea.setText("");
-
-            JOptionPane.showMessageDialog(this,
-                "Η ανακοίνωση προστέθηκε με επιτυχία στο "+departmentName+".");
-                cardLayout.show(cardPanel, "seeProfileDetails");
-
-                // refresh
-                for (Component comp : cardPanel.getComponents()) 
-                {
-                    if (comp instanceof ProfilePanel) 
-                    {
-                        ((ProfilePanel) comp).refreshAnnouncements();
-                    }
-                }
-        });
+        
+        //calling the method to post the announcement
+        postAnnouncement();
         
         btnPanel.add(cancel);
         btnPanel.add(publish);
         
         annPanel.add(btnPanel, gbc);
-        
         add(annPanel, BorderLayout.CENTER);
         
         // BOTTOM BUTTONS
@@ -142,8 +117,41 @@ public class AddAnnouncementPanel extends JPanel {
 }
     public void writeAnnouncement(){
     }
-    public void postAnnouncement() //arg departmentID : int
-    {}
-    public void pressCancelNewAnnouncement(){
+    public void postAnnouncement() 
+    {
+        publish.addActionListener(e -> 
+        {
+            String title = titleField.getText().trim();
+            String bodyText = bodyArea.getText().trim();
+            
+            if (title.isEmpty() || bodyText.isEmpty()) 
+            {
+                JOptionPane.showMessageDialog(this, 
+                    "Παρακαλώ συμπληρώστε όλα τα πεδία.", 
+                    "Σφάλμα!", 
+                    JOptionPane.ERROR_MESSAGE);
+                    return;
+            }
+
+            ProfilePanel.announcements.add(new String[]{title, bodyText});
+
+            // clear
+            titleField.setText("");
+            bodyArea.setText("");
+
+            JOptionPane.showMessageDialog(this,
+                "Η ανακοίνωση προστέθηκε με επιτυχία στο "+departmentName+".");
+                cardLayout.show(cardPanel, "seeProfileDetails");
+
+                // refresh
+                for (Component comp : cardPanel.getComponents()) 
+                {
+                    if (comp instanceof ProfilePanel) 
+                    {
+                        ((ProfilePanel) comp).refreshAnnouncements();
+                    }
+                }
+        });
     }
+   // public void pressCancelNewAnnouncement(){}
 }

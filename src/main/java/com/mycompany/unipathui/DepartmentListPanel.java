@@ -6,17 +6,13 @@ import java.awt.*;
 public class DepartmentListPanel extends JPanel {
     
     private CardLayout cardLayout;
-private JPanel cardPanel;
-
-
-private String selectedDepartment = null;
+    private JPanel cardPanel;
+    private String selectedDepartment = null;
     private JButton viewProfileButton;
-
 
     public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel) {
         this.cardLayout = cardLayout;
-    this.cardPanel = cardPanel;
-    
+        this.cardPanel = cardPanel;
     
         setLayout(new BorderLayout(10, 10));
         setBackground(Color.WHITE);
@@ -65,21 +61,8 @@ private String selectedDepartment = null;
             departmentLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
             departmentPanel.add(departmentLabel,BorderLayout.CENTER);
             
-            
-            departmentPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            departmentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    selectedDepartment = department;
-                    viewProfileButton.setEnabled(true);
-                    highlightSelectedPanel(listPanel, departmentPanel);
-                }
-            });
+            selectDepartment(departmentPanel, department, listPanel);
 
-            //JButton viewProfile= new JButton("Προβολή Προφίλ Τμήματος");
-            //viewProfile.setBackground(Color.CYAN);
-            //viewProfile.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
-            //departmentPanel.add(viewProfile, BorderLayout.EAST);
-            
             listPanel.add(departmentPanel);
             listPanel.add(Box.createVerticalStrut(10)); // Απόσταση μεταξύ τμημάτων
         }
@@ -103,9 +86,6 @@ private String selectedDepartment = null;
         back.setBounds(330,330,150,30);
         back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
                 
-        
-        
-        
         viewProfileButton = new JButton("Προβολή Προφίλ Τμήματος");
         viewProfileButton.setBackground(Color.CYAN);
         viewProfileButton.setEnabled(false); // Αρχικά απενεργοποιημένο
@@ -117,13 +97,9 @@ private String selectedDepartment = null;
             }
         });
         
-        
-        
         buttonPanel.add(homeButton);
         buttonPanel.add(back);
-        
-                buttonPanel.add(viewProfileButton);
-
+        buttonPanel.add(viewProfileButton);
                 
         add(buttonPanel, BorderLayout.SOUTH);
     }
@@ -133,17 +109,25 @@ private String selectedDepartment = null;
     public void getDepartmentList() {
         // For future use
     }
-    //argument departmentID int
-    public void selectDepartment() {
-        // For future use
+
+    public void selectDepartment(JPanel departmentPanel, String department, JPanel listPanel) 
+    {
+        departmentPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        departmentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                selectedDepartment = department;
+                viewProfileButton.setEnabled(true);
+                highlightSelectedPanel(listPanel, departmentPanel);
+            }
+        });
     }
+    
     public void requestDepartmentList() {
         // For future use
     }
     
-    
-    
-    private void highlightSelectedPanel(JPanel listPanel, JPanel selected) {
+    private void highlightSelectedPanel(JPanel listPanel, JPanel selected) 
+    {
         for (Component comp : listPanel.getComponents()) {
             if (comp instanceof JPanel) {
                 comp.setBackground(Color.WHITE);

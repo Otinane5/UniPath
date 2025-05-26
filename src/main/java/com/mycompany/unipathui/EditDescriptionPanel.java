@@ -46,22 +46,7 @@ public class EditDescriptionPanel extends JPanel {
         editPanel.add(scrollPane);
         editPanel.add(Box.createVerticalStrut(10));
         
-        JButton cancel = pressCancelEdit(cardLayout, cardPanel);
-
-        /*transfered
-        JButton cancel=new JButton("Ακύρωση");
-        cancel.setBackground(Color.RED);
-        cancel.setForeground(Color.WHITE);
-                
-        cancel.addActionListener(e -> 
-        {
-            int confirm =JOptionPane.showConfirmDialog(this, "Με αυτή την επιλογή οι αλλαγές θα χαθούν!", "Ακύρωση", JOptionPane.YES_NO_OPTION);
-            if(confirm==JOptionPane.YES_OPTION)
-            {
-                cardLayout.show(cardPanel, "seeProfileDetails"); 
-            }
-        });*/
-        
+        JButton cancel = pressCancelEdit(cardLayout, cardPanel);       
         JButton accept = acceptChanges(cardLayout, cardPanel);
         
         JPanel confirmPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
@@ -150,15 +135,4 @@ public class EditDescriptionPanel extends JPanel {
         });
         return cancel;
     }
-    
-    /*
-    public void setSeeProfileDescriptionComponent(JLabel label) {
-        this.seeProfileLabel = label;
-    }*/
-
-    /*public void updatedDescription(String newDescription) {
-        if (seeProfileLabel != null) {
-            seeProfileLabel.setText("<html><body style='width: 300px'>" + newDescription + "</body></html>");
-        }
-    }*/
 }
