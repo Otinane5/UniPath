@@ -19,8 +19,7 @@ public class User {
     public static List<User> sample = new ArrayList<>();
 
     public static void init() {
-        sample.add(new User("s1", 1, "sampleUniversity")); 
-        sample.add(new User("s2", 2, "sampleCounselor"));    
+        sample.add(new User("s1", 1, "sampleUniversity"));     
         sample.add(new User("s3", 3, "sampleStudent"));   
         sample.add(new User("pass4", 3, "nvasileiou"));    
     }

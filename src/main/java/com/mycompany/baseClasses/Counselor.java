@@ -17,7 +17,7 @@ public class Counselor extends User {
     public static void init() {
         
         // Counselor 1
-        Counselor c1 = new Counselor("pass1", 2, "mpapadopoulou");
+        Counselor c1 = new Counselor("s2", 2, "sampleCounselor");
         c1.name = "Μαρία";
         c1.lastName = "Παπαδοπούλου";
         c1.email = "maria.pap@example.com";
@@ -57,6 +57,10 @@ public class Counselor extends User {
         sample.add(c2);
         sample.add(c3);
         sample.add(c4);
+        User.sample.add(c1);
+        User.sample.add(c2);
+        User.sample.add(c3);
+        User.sample.add(c4);
     }
 
     public Counselor(String password, int userType, String userName) {
