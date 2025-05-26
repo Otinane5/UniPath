@@ -1,9 +1,11 @@
 com\mycompany\unipathui\CounselorAcceptAppointmentPanel.class
 com\mycompany\unipathui\EditDescriptionPanel.class
 com\mycompany\baseClasses\Student.class
+com\mycompany\unipathui\DepartmentListPanel$1.class
 com\mycompany\baseClasses\User.class
 com\mycompany\unipathui\DepartmentListPanel.class
 com\mycompany\unipathui\FilteredListScreen.class
+com\mycompany\baseClasses\Appointment.class
 com\mycompany\baseClasses\Message.class
 com\mycompany\unipathui\DepartmentListCounselor.class
 com\mycompany\unipathui\Application_FormUI.class
@@ -40,7 +42,6 @@ com\mycompany\unipathui\ProfilePanel.class
 Councelor_listUI$5.class
 com\mycompany\baseClasses\Announcement.class
 com\mycompany\unipathui\ShowResultsUI.class
-com\mycompany\baseClasses\Apointment.class
 com\mycompany\baseClasses\Department.class
 com\mycompany\unipathui\ManageSearchClass.class
 Councelor_listUI$2.class
@@ -51,6 +52,7 @@ com\mycompany\unipathui\CounselorEditProfilePanelUI.class
 com\mycompany\unipathui\ShowResultsUI$2.class
 com\mycompany\unipathui\AnnouncementUI.class
 com\mycompany\unipathui\MessageViewFrame$2.class
+com\mycompany\unipathui\CounselorAppointmentRequestsPanel$1.class
 com\mycompany\unipathui\DepartmentListUI.class
 com\mycompany\unipathui\AnswerLog.class
 com\mycompany\baseClasses\MessageBox.class

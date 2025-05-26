@@ -1,10 +1,15 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Appointment;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class CounselorAcceptAppointmentPanel extends JPanel {
-
+    //ATTRIBUTES
+    private final JTextField dateField, timeField, methodField;
+    private Appointment selectedAppointment;
+    //CONSTRUCTOR
     public CounselorAcceptAppointmentPanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
 
@@ -16,9 +21,9 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
         formPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        JTextField dateField = new JTextField();
-        JTextField timeField = new JTextField();
-        JTextField methodField = new JTextField();
+        dateField = new JTextField();
+        timeField = new JTextField();
+        methodField = new JTextField();
         JTextArea messageArea = new JTextArea(5, 30);
         messageArea.setLineWrap(true);
         messageArea.setWrapStyleWord(true);
@@ -35,7 +40,7 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
         formPanel.add(methodField);
         formPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-        formPanel.add(new JLabel("Μήνυμα προς Μαθητή:"));
+        formPanel.add(new JLabel("(Προαιρετικό) Μήνυμα προς Μαθητή:"));
         formPanel.add(new JScrollPane(messageArea));
 
         add(formPanel, BorderLayout.CENTER);
@@ -52,8 +57,22 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
         cancelButton.setBackground(new Color(255, 102, 102));
                
         sendButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Το μήνυμα αποδοχής στάλθηκε με επιτυχία!");
-            cardLayout.show(cardPanel, "appointments");
+            if (validateFields()) {
+                if (selectedAppointment != null) {
+                    selectedAppointment.setStatus("Εγκεκριμένο");
+                }
+                JOptionPane.showMessageDialog(this, "Το μήνυμα αποδοχής στάλθηκε με επιτυχία!");
+                // Βρες το panel και κάνε refresh
+                if (cardPanel instanceof JPanel) {
+                    for (Component comp : cardPanel.getComponents()) {
+                        if (comp instanceof CounselorAppointmentRequestsPanel) {
+                            ((CounselorAppointmentRequestsPanel) comp).refresh();
+                        break;
+                        }
+                    }
+                }
+                cardLayout.show(cardPanel, "appointments");
+            }
         });
         cancelButton.addActionListener(e -> cardLayout.show(cardPanel, "appointments"));
         backToMain.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
@@ -64,5 +83,29 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
         buttonPanel.add(backToMain);
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
+    }
+    
+    private boolean validateFields() {
+        String date = dateField.getText().trim();
+        String time = timeField.getText().trim();
+        String method = methodField.getText().trim();
+        
+        if (date.isEmpty() || time.trim().isEmpty() || method.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Συμπληρώστε όλα τα υποχρεωτικά πεδία.");
+            return false;
+        }
+        if (!date.matches("\\d{2}/\\d{2}/\\d{4}")) {
+            JOptionPane.showMessageDialog(this, "Η ημερομηνία πρέπει να είναι σε μορφή dd/MM/yyyy.", "Μη έγκυρη ημερομηνία", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!time.matches("\\d{2}:\\d{2}")) {
+            JOptionPane.showMessageDialog(this, "Η ώρα πρέπει να είναι σε μορφή HH:mm.", "Μη έγκυρη ώρα", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    //To specify which Appointment is getting "approved"
+    public void setSelectedAppointment(Appointment appointment) {
+        this.selectedAppointment = appointment;
     }
 }

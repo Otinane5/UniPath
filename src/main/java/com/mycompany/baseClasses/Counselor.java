@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Counselor extends User {
-    public List<Apointment> appointments;
+    public List<Appointment> appointments;
     public String name;
     public String lastName;
     public String email;

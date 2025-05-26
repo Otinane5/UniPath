@@ -149,7 +149,7 @@ public class CounselorMenuFrame extends JFrame {
         
         CounselorAcceptAppointmentPanel acceptPanel = new CounselorAcceptAppointmentPanel(cardLayout, cardPanel);
         CounselorRejectAppointmentPanel rejectPanel = new CounselorRejectAppointmentPanel(cardLayout, cardPanel);
-        CounselorAppointmentDetailsPanel detailsPanel = new CounselorAppointmentDetailsPanel(cardLayout, cardPanel);
+        CounselorAppointmentDetailsPanel detailsPanel = new CounselorAppointmentDetailsPanel(cardLayout, cardPanel, acceptPanel, rejectPanel);
         CounselorAppointmentRequestsPanel appointmentPanel = new CounselorAppointmentRequestsPanel(cardLayout, cardPanel, detailsPanel);
         CounselorEditProfilePanelUI editPanel = new CounselorEditProfilePanelUI(cardLayout, cardPanel);
         
