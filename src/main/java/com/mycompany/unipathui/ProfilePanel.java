@@ -3,15 +3,23 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class ProfilePanel extends JPanel {
     private JPanel announcementPanel;
+    private JTextArea descriptionArea;
+    
     private JScrollPane scroll;
     public static String currentDescription = "Περιγραφή...";
-    private JTextArea descriptionArea;
+    
     
     private JPanel contentPanel;
     private JPanel descPanel;
-    
+    public static String currentDepartment = "Τμήμα ...";
+private JLabel departmentLabel;
     
     public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
 
@@ -30,7 +38,9 @@ public class ProfilePanel extends JPanel {
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // padding
         
         // Department
-        JLabel departmentLabel= new JLabel("Τμήμα ...", SwingConstants.CENTER); //+department name
+        //JLabel departmentLabel= new JLabel("Τμήμα ...", SwingConstants.CENTER); //+department name
+                departmentLabel = new JLabel(currentDepartment, SwingConstants.CENTER);
+
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
@@ -45,7 +55,6 @@ public class ProfilePanel extends JPanel {
         descPanel = new JPanel(new BorderLayout(10, 0));
         descPanel.setMaximumSize(new Dimension(400, 70));
         descPanel.add(new JLabel("Περιγραφή Τμήματος"), BorderLayout.WEST);
-        
          editDescription(cardLayout, cardPanel);
         contentPanel.add(descPanel);
 
@@ -111,7 +120,7 @@ public class ProfilePanel extends JPanel {
         buttonPanel.add(back);
         add(buttonPanel, BorderLayout.SOUTH);
         
-        descriptionArea.setText(currentDescription);
+        //descriptionArea.setText(currentDescription);
 
     }
     
@@ -165,6 +174,15 @@ public class ProfilePanel extends JPanel {
 
         announcementPanel.revalidate();
         announcementPanel.repaint();
+    }
+    
+    
+    
+    
+    public void refreshProfile() {
+        departmentLabel.setText(currentDepartment);
+        descriptionArea.setText(currentDescription);
+        refreshAnnouncements();
     }
 
 }
