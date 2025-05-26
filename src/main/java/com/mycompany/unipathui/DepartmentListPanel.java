@@ -104,8 +104,6 @@ private String selectedDepartment = null;
         back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
                 
         
-        
-        
         viewProfileButton = new JButton("Προβολή Προφίλ Τμήματος");
         viewProfileButton.setBackground(Color.CYAN);
         viewProfileButton.setEnabled(false); // Αρχικά απενεργοποιημένο
@@ -140,8 +138,6 @@ private String selectedDepartment = null;
     public void requestDepartmentList() {
         // For future use
     }
-    
-    
     
     private void highlightSelectedPanel(JPanel listPanel, JPanel selected) {
         for (Component comp : listPanel.getComponents()) {

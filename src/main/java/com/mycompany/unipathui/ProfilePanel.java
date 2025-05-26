@@ -176,9 +176,7 @@ private JLabel departmentLabel;
         announcementPanel.repaint();
     }
     
-    
-    
-    
+
     public void refreshProfile() {
         departmentLabel.setText(currentDepartment);
         descriptionArea.setText(currentDescription);
