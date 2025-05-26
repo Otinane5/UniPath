@@ -13,8 +13,12 @@ public class ProfilePanel extends JPanel {
     private JPanel contentPanel;
     private JPanel descPanel;
     private JLabel departmentLabel;
+    private ProfilePanel profilePanel;
+    private AddAnnouncementPanel addAnnouncementPanel;
+
     
-    public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
+   // public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
+public static java.util.Map<String, java.util.List<String[]>> announcementsByDepartment = new java.util.HashMap<>();
 
     public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
@@ -67,7 +71,11 @@ public class ProfilePanel extends JPanel {
         annPanel.setMaximumSize(new Dimension(400, 35));
         annPanel.add(new JLabel("Ανακοινώσεις"), BorderLayout.WEST);
         JButton addAnnouncement = new JButton("Προσθήκη");
-        addAnnouncement.addActionListener(e -> cardLayout.show(cardPanel, "addAnnouncement"));
+        addAnnouncement.addActionListener(e -> 
+        {addAnnouncementPanel.setDepartmentName(ProfilePanel.currentDepartment);
+
+                cardLayout.show(cardPanel, "addAnnouncement");}
+        );
         annPanel.add(addAnnouncement, BorderLayout.EAST);
         contentPanel.add(annPanel);
         
@@ -147,13 +155,14 @@ public class ProfilePanel extends JPanel {
     public void refreshAnnouncements() 
     {
         announcementPanel.removeAll();
+        
+        java.util.List<String[]> anns = announcementsByDepartment.getOrDefault(currentDepartment, new java.util.ArrayList<>());
 
-        for (String[] ann : announcements) 
-        {
-            JLabel annLabel = new JLabel(" 📢 " + ann[0] + ": " + ann[1]);
-            annLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-            announcementPanel.add(annLabel);
-        }
+    for (String[] ann : anns) {
+        JLabel annLabel = new JLabel(" 📢 " + ann[0] + ": " + ann[1]);
+        annLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        announcementPanel.add(annLabel);
+    }
 
         announcementPanel.revalidate();
         announcementPanel.repaint();
@@ -164,4 +173,13 @@ public class ProfilePanel extends JPanel {
         descriptionArea.setText(currentDescription);
         refreshAnnouncements();
     }
+    
+    
+    public void setProfileData(String department, String description) 
+    {
+        currentDepartment = department;
+        currentDescription = description;
+        refreshProfile();
+    }
+
 }

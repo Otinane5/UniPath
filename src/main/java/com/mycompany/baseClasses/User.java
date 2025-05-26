@@ -69,4 +69,7 @@ public class User {
         System.out.println("Not-Found");
         return null; // Επιστρέφουμε null αν δεν βρεθεί ο χρήστης
     }
+ public String getUserName() {
+    return this.userName;
+}   
 }

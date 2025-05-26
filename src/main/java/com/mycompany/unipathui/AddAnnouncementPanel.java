@@ -132,8 +132,15 @@ public class AddAnnouncementPanel extends JPanel {
                     JOptionPane.ERROR_MESSAGE);
                     return;
             }
-
-            ProfilePanel.announcements.add(new String[]{title, bodyText});
+            
+            //!!!
+            // Αποθήκευση της ανακοίνωσης στο map
+            java.util.List<String[]> anns = ProfilePanel.announcementsByDepartment.get(departmentName);
+            if (anns == null) {
+                anns = new java.util.ArrayList<>();
+                ProfilePanel.announcementsByDepartment.put(departmentName, anns);
+            }
+            anns.add(new String[]{title, bodyText});
 
             // clear
             titleField.setText("");
@@ -154,4 +161,11 @@ public class AddAnnouncementPanel extends JPanel {
         });
     }
    // public void pressCancelNewAnnouncement(){}
+    
+    
+    public void setDepartmentName(String departmentName) 
+    {
+        this.departmentName = departmentName;
+    }
+
 }
