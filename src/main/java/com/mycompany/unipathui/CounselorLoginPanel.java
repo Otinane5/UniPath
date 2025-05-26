@@ -1,5 +1,6 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Counselor;
 import com.mycompany.baseClasses.Unipath;
 import com.mycompany.baseClasses.User;
 import javax.swing.*;
@@ -95,6 +96,10 @@ public class CounselorLoginPanel extends JPanel {
         User myUser = User.login(username,password);
         if (myUser != null && myUser.userType==2) {
             Unipath.currentUser = myUser;
+
+            //if (myUser instanceof Counselor counselor) {
+            //    CounselorProfilePanel.CounselorToDisplay = counselor;
+            //}
             CounselorProfilePanel.CounselorToDisplay.userName=Unipath.currentUser.userName;
             CounselorProfilePanel.CounselorToDisplay.name="SampleName";
             CounselorProfilePanel.CounselorToDisplay.lastName="SampleLastName";
