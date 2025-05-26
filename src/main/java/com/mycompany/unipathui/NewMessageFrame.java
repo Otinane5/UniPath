@@ -1,6 +1,5 @@
 package com.mycompany.unipathui;
 
-import com.mycompany.baseClasses.MessageService;
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDateTime;
@@ -96,29 +95,57 @@ public class NewMessageFrame extends JFrame {
         cancelButton.setBounds(240, 420, 100, 30);
         add(cancelButton);
 
-        searchButton.addActionListener(e -> {
-            String searchTerm = toField.getText().trim();
-            if (!searchTerm.isEmpty()) {
-                recipientListModel.clear();
+    searchButton.addActionListener(e -> {
+    String searchTerm = toField.getText().trim().toLowerCase();
+    recipientListModel.clear();
 
-                if (currentUserType.equals("STUDENT")) {
-                    recipientListModel.addElement("counselor1 - Σύμβουλος Παπαδόπουλος (counselor)");
-                    recipientListModel.addElement("university1 - Πανεπιστήμιο Αθηνών (university)");
-                    recipientListModel.addElement("university2 - ΤΕΙ Θεσσαλονίκης (university)");
-                } else if (currentUserType.equals("COUNSELOR")) {
-                    recipientListModel.addElement("student1 - Μαρία Ιωάννου (student)");
-                    recipientListModel.addElement("student2 - Γιάννης Παπαδόπουλος (student)");
-                    recipientListModel.addElement("university1 - Πανεπιστήμιο Αθηνών (university)");
-                } else if (currentUserType.equals("UNIVERSITY")) {
-                    recipientListModel.addElement("student1 - Μαρία Ιωάννου (student)");
-                    recipientListModel.addElement("student2 - Γιάννης Παπαδόπουλος (student)");
-                    recipientListModel.addElement("counselor1 - Σύμβουλος Παπαδόπουλος (counselor)");
-                }
-
-                recipientScrollPane.setVisible(true);
-                repaint();
+    if (currentUserType.equals("STUDENT")) {
+        for (com.mycompany.baseClasses.Counselor c : com.mycompany.baseClasses.Counselor.sample) {
+            String fullName = c.name + " " + c.lastName;
+            if (fullName.toLowerCase().contains(searchTerm) || c.getUserName().toLowerCase().contains(searchTerm)) {
+                recipientListModel.addElement(c.getUserName() + " - " + fullName + " (counselor)");
             }
-        });
+        }
+        for (com.mycompany.baseClasses.University u : com.mycompany.baseClasses.University.sample) {
+            String fullName = u.name;
+            if (fullName.toLowerCase().contains(searchTerm) || u.getUserName().toLowerCase().contains(searchTerm)) {
+                recipientListModel.addElement(u.getUserName() + " - " + fullName + " (university)");
+            }
+        }
+    } else if (currentUserType.equals("COUNSELOR")) {
+        for (com.mycompany.baseClasses.Student s : com.mycompany.baseClasses.Student.sample) {
+            String fullName = s.name + " " + s.lastName;
+            if (fullName.toLowerCase().contains(searchTerm) || s.getUserName().toLowerCase().contains(searchTerm)) {
+                recipientListModel.addElement(s.getUserName() + " - " + fullName + " (student)");
+            }
+        }
+        for (com.mycompany.baseClasses.University u : com.mycompany.baseClasses.University.sample) {
+            String fullName = u.name;
+            if (fullName.toLowerCase().contains(searchTerm) || u.getUserName().toLowerCase().contains(searchTerm)) {
+                recipientListModel.addElement(u.getUserName() + " - " + fullName + " (university)");
+            }
+        }
+    } else if (currentUserType.equals("UNIVERSITY")) {
+        for (com.mycompany.baseClasses.Student s : com.mycompany.baseClasses.Student.sample) {
+            String fullName = s.name + " " + s.lastName;
+            if (fullName.toLowerCase().contains(searchTerm) || s.getUserName().toLowerCase().contains(searchTerm)) {
+                recipientListModel.addElement(s.getUserName() + " - " + fullName + " (student)");
+            }
+        }
+        for (com.mycompany.baseClasses.Counselor c : com.mycompany.baseClasses.Counselor.sample) {
+            String fullName = c.name + " " + c.lastName;
+            if (fullName.toLowerCase().contains(searchTerm) || c.getUserName().toLowerCase().contains(searchTerm)) {
+                recipientListModel.addElement(c.getUserName() + " - " + fullName + " (counselor)");
+            }
+        }
+    }
+
+    recipientScrollPane.setVisible(true);
+    repaint();
+});
+    recipientScrollPane.setVisible(true);
+    repaint();
+
 
         recipientList.addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
