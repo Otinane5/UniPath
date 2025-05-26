@@ -1,7 +1,6 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Appointment;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -62,7 +61,7 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
                     selectedAppointment.setStatus("Εγκεκριμένο");
                 }
                 JOptionPane.showMessageDialog(this, "Το μήνυμα αποδοχής στάλθηκε με επιτυχία!");
-                // Βρες το panel και κάνε refresh
+                // Find the panel and make the refresh
                 if (cardPanel instanceof JPanel) {
                     for (Component comp : cardPanel.getComponents()) {
                         if (comp instanceof CounselorAppointmentRequestsPanel) {

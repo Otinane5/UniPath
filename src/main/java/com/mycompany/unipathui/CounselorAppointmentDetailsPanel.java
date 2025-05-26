@@ -1,22 +1,21 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Appointment;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class CounselorAppointmentDetailsPanel extends JPanel {
+//Panel for Counselor watching the details of an appointment: shows
+//the specific appointment a student wants to make with the counselor.
 
+public class CounselorAppointmentDetailsPanel extends JPanel {
+    //ATTRIBUTES
     private final JLabel nameLabel;
     private final JLabel phoneLabel;
     private final JLabel emailLabel;
     private final JTextArea interestsArea;
     private Appointment appointment;
-    private final CounselorAcceptAppointmentPanel acceptPanel;
-    
+    //CONSTRUCTOR
     public CounselorAppointmentDetailsPanel(CardLayout cardLayout, JPanel cardPanel, CounselorAcceptAppointmentPanel acceptPanel, CounselorRejectAppointmentPanel rejectPanel) {
-        this.acceptPanel = acceptPanel;
-        
         setLayout(new BorderLayout(10, 10));
 
         JLabel title = new JLabel("Λεπτομέρειες Αιτήματος", SwingConstants.CENTER);
@@ -79,7 +78,7 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
     }
-
+    //Method to show the details of an appointment
     public void showDetails(String name, String phone, String email, String interests) {
         nameLabel.setText("Όνομα Μαθητή: " + name);
         phoneLabel.setText("Τηλέφωνο: " + phone);

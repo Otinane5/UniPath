@@ -1,32 +1,35 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Appointment;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+//Panel for Counselor watching the appointments: shows all the available
+//appointments student want to make with the counselor.
+
 public class CounselorAppointmentRequestsPanel extends JPanel {
-    
+    //ATTRIBUTES
     private final JPanel appointmentsListPanel = new JPanel();
     private final JButton viewDetailsButton = new JButton("Προβολή Λεπτομερειών");
     private Appointment selectedAppointment = null;
-    
+    //CONSTRUCTOR
     public CounselorAppointmentRequestsPanel(CardLayout cardLayout, JPanel cardPanel, CounselorAppointmentDetailsPanel detailsPanel) {
         setLayout(new BorderLayout(10, 10));
-
+        
+        // --- TOP OF THE PANEL ---
         JLabel title = new JLabel("Εκκρεμή Αιτήματα Ραντεβού", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 20));
         add(title, BorderLayout.NORTH);
 
-        //CENTER PANEL
+        // --- CENTER PANEL ---
         appointmentsListPanel.setLayout(new BoxLayout(appointmentsListPanel, BoxLayout.Y_AXIS));
         appointmentsListPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JScrollPane scrollPane = new JScrollPane(appointmentsListPanel);
         add(scrollPane, BorderLayout.CENTER);
         
-        // Λογική κουμπιού προβολής λεπτομερειών
+        // Making of the view Details Button
         viewDetailsButton.addActionListener(e -> {
             if (selectedAppointment != null && "Εκκρεμές".equals(selectedAppointment.status)) {
                 detailsPanel.setAppointment(selectedAppointment);
@@ -37,8 +40,8 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
                 JOptionPane.showMessageDialog(this, "Το ραντεβού δεν είναι πλέον εκκρεμές.", "Μη διαθέσιμη ενέργεια", JOptionPane.WARNING_MESSAGE);
             }
         });
-        //BOTTOM PANEL
-        viewDetailsButton.setEnabled(false); // ενεργοποιείται μόνο όταν επιλεγεί γραμμή
+        // --- BOTTOM PANEL ---
+        viewDetailsButton.setEnabled(false); // enabled only when a line is chosen
         loadAppointments(appointmentsListPanel);        
         
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
@@ -55,6 +58,9 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
     }
+    //Method to load the appointments on screen: it takes the list from the "Appointment" class
+    //and shows in a list the name, the status and the field of interest os students who want to
+    //communicate with a counselor (if there are no appointments, it shows nothing).
     private void loadAppointments(JPanel panel) {
         List<Appointment> appointments = Appointment.appointmentsForCounselor;
 
@@ -113,11 +119,13 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
             }
         });
     }
+    //Method to refresh the panel when a counselor approves or declines an appointment
+    //in order to show the new status of the appointment
     public void refresh() {
-        appointmentsListPanel.removeAll(); // Καθαρίζει προηγούμενο πίνακα
+        appointmentsListPanel.removeAll(); // Clears previous table
         viewDetailsButton.setEnabled(false);
         loadAppointments(appointmentsListPanel);
-        appointmentsListPanel.revalidate(); // Ενημέρωση layout
-        appointmentsListPanel.repaint();    // Ενημέρωση εμφάνισης
+        appointmentsListPanel.revalidate(); // Update layout
+        appointmentsListPanel.repaint();    // Update view
     }
 }
