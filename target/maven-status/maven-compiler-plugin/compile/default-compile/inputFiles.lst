@@ -3,7 +3,9 @@ C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompan
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Application.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Counselor.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Department.java
+C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Description.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Form.java
+C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Message.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\MessageBox.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Student.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\baseClasses\Unipath.java
@@ -37,6 +39,7 @@ C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompan
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\LoginFrame.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\ManageSearchClass.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\MessageBoxFrame.java
+C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\MessageService.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\MessageViewFrame.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\NewInterface.java
 C:\Users\zetpa\OneDrive\Έγγραφα\GitHub\UniPath\src\main\java\com\mycompany\unipathui\NewMessageFrame.java

@@ -4,6 +4,7 @@ com\mycompany\baseClasses\Student.class
 com\mycompany\baseClasses\User.class
 com\mycompany\unipathui\DepartmentListPanel.class
 com\mycompany\unipathui\FilteredListScreen.class
+com\mycompany\baseClasses\Message.class
 com\mycompany\unipathui\DepartmentListCounselor.class
 com\mycompany\unipathui\Application_FormUI.class
 com\mycompany\unipathui\CounselorAppointmentRequestsPanel.class
@@ -12,18 +13,24 @@ com\mycompany\unipathui\CounselorRejectAppointmentPanel.class
 com\mycompany\unipathui\NewMessageFrame.class
 com\mycompany\unipathui\CounselorAppointmentDetailsPanel.class
 com\mycompany\unipathui\MessageViewFrame.class
+com\mycompany\baseClasses\MessageService$UserInfo.class
 Councelor_listUI$4.class
+com\mycompany\unipathui\CounselorFormScreen$2.class
 com\mycompany\unipathui\SearchFiltersUI.class
 com\mycompany\unipathui\UniversityLoginPanel.class
 com\mycompany\unipathui\StarterQuiz.class
 com\mycompany\unipathui\UniversityMainMenu.class
 com\mycompany\baseClasses\Counselor.class
+com\mycompany\unipathui\MessageViewFrame$3.class
+com\mycompany\baseClasses\Description.class
 com\mycompany\baseClasses\Form.class
 Councelor_listUI$1.class
 com\mycompany\unipathui\CounselorMenuFrame.class
 com\mycompany\unipathui\AddAnnouncementPanel.class
+com\mycompany\unipathui\MessageBoxFrame$1.class
 com\mycompany\unipathui\CounselorProfilePanel.class
 com\mycompany\baseClasses\Unipath.class
+com\mycompany\unipathui\CounselorFormScreen$1.class
 com\mycompany\unipathui\QuizUI.class
 com\mycompany\unipathui\AnswerLog$DepartmentType.class
 com\mycompany\unipathui\AnnouncementView.class
@@ -43,6 +50,7 @@ com\mycompany\unipathui\SearchResultScreen.class
 com\mycompany\unipathui\CounselorEditProfilePanelUI.class
 com\mycompany\unipathui\ShowResultsUI$2.class
 com\mycompany\unipathui\AnnouncementUI.class
+com\mycompany\unipathui\MessageViewFrame$2.class
 com\mycompany\unipathui\DepartmentListUI.class
 com\mycompany\unipathui\AnswerLog.class
 com\mycompany\baseClasses\MessageBox.class
@@ -54,6 +62,8 @@ com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\MessageBoxFrame.class
 Councelor_listUI$3.class
 com\mycompany\unipathui\DepartmentProfileUI.class
+com\mycompany\baseClasses\MessageService.class
+com\mycompany\unipathui\MessageViewFrame$1.class
 com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\AnnouncementRepository.class
 com\mycompany\unipathui\SearchFiltersUI$FilterCriteria.class
@@ -62,4 +72,5 @@ com\mycompany\unipathui\StudentApplicationsPanel.class
 com\mycompany\unipathui\NewInterface.class
 com\mycompany\unipathui\StudentLoginPanel.class
 com\mycompany\baseClasses\Application.class
+com\mycompany\unipathui\CounselorFormScreen$BookingData.class
 com\mycompany\unipathui\ShowResultsUI$1.class

@@ -28,13 +28,13 @@ public class CounselorProfilePanel extends JPanel {
         // Helpful method for label and value
         int row = 0;
         formPanel.add(makeLabel("Όνομα:"), makeGbc(0, row));
-        formPanel.add(new JLabel(CounselorToDisplay.name), makeGbc(1, row++));
+        formPanel.add(makeValueLabel(CounselorToDisplay.name), makeGbc(1, row++));
         formPanel.add(makeLabel("Επώνυμο:"), makeGbc(0, row));
-        formPanel.add(new JLabel(CounselorToDisplay.lastName), makeGbc(1, row++));
+        formPanel.add(makeValueLabel(CounselorToDisplay.lastName), makeGbc(1, row++));
         formPanel.add(makeLabel("Email:"), makeGbc(0, row));
-        formPanel.add(new JLabel(CounselorToDisplay.email), makeGbc(1, row++));
+        formPanel.add(makeValueLabel(CounselorToDisplay.email), makeGbc(1, row++));
         formPanel.add(makeLabel("Τηλέφωνο:"), makeGbc(0, row));
-        formPanel.add(new JLabel(CounselorToDisplay.phoneNum), makeGbc(1, row++));
+        formPanel.add(makeValueLabel(CounselorToDisplay.phoneNum), makeGbc(1, row++));
         
         // Bio
         formPanel.add(makeLabel("Περιγραφή (Bio):"), makeGbc(0, row));
@@ -128,6 +128,11 @@ public class CounselorProfilePanel extends JPanel {
     private JLabel makeLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Arial", Font.BOLD, 13));
+        return label;
+    }
+    private JLabel makeValueLabel(String text) {
+        JLabel label = new JLabel(text);
+        label.setFont(new Font("Arial", Font.PLAIN, 14));
         return label;
     }
     private GridBagConstraints makeGbc(int x, int y) {
