@@ -5,9 +5,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CounselorEditProfilePanelUI extends JPanel {
+    //ATTRIBUTES
     private JTextField nameField, surnameField, emailField, phoneField;
     private JTextArea bioArea;
-
+    //CONSTRUCTOR
     public CounselorEditProfilePanelUI(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
 
@@ -131,7 +132,7 @@ public class CounselorEditProfilePanelUI extends JPanel {
         
         add(buttonPanel, BorderLayout.SOUTH);
     }
-
+    //When the counselor is updating, they should be writing valid data in the fields
     private boolean validateFields() {
         String emailRegex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
         String phoneRegex = "^\\d{10}$"; // δέχεται μόνο 10ψήφιο αριθμό

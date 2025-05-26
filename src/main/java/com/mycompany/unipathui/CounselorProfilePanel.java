@@ -7,8 +7,9 @@ import java.awt.*;
 import java.util.List;
 
 public class CounselorProfilePanel extends JPanel {
+    //ATTRIBUTES
     public static Counselor CounselorToDisplay = new Counselor(); // This needs to be set before use
-
+    //CONSTRUCTOR
     public CounselorProfilePanel(Runnable onBackToMainMenu, Runnable onEditProfile) {
         setLayout(new BorderLayout(10, 10));
 
