@@ -115,8 +115,9 @@ public class UniversityMainMenu extends JFrame {
 
         // --- Panels --- 
         StudentApplicationsPanel applicationsPanel = new StudentApplicationsPanel(cardLayout, cardPanel);
-        DepartmentListPanel deplistPanel = new DepartmentListPanel(cardLayout, cardPanel);
-        ProfilePanel profileDetailsPanel = new ProfilePanel(cardLayout, cardPanel);
+        ProfilePanel profilePanel = new ProfilePanel(cardLayout, cardPanel);
+                DepartmentListPanel deplistPanel = new DepartmentListPanel(cardLayout, cardPanel,profilePanel);
+
         EditDescriptionPanel editDesc = new EditDescriptionPanel(cardLayout, cardPanel);
         AddAnnouncementPanel addAnnoun = new AddAnnouncementPanel(cardLayout, cardPanel); //,departmentName
         FilteredListScreen filteredListScreen = new FilteredListScreen(cardLayout, cardPanel);
@@ -125,7 +126,7 @@ public class UniversityMainMenu extends JFrame {
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(applicationsPanel, "applications");
         cardPanel.add(deplistPanel, "seeListOfDepartments");
-        cardPanel.add(profileDetailsPanel, "seeProfileDetails");
+        cardPanel.add(profilePanel, "seeProfileDetails");
         cardPanel.add(editDesc, "editUniDesc");
         cardPanel.add(addAnnoun, "addAnnouncement");
         cardPanel.add(chooseFilt, "chooseFilters");

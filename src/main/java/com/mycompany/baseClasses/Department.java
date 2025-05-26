@@ -5,11 +5,14 @@ import java.util.ArrayList;
 
 
 public class Department {
+    private int id;
+    
     public String name;
     public String description;
     public List<Announcement> announcements;
 
-    public Department(String name) {
+    public Department(int id) {
+        this.id=id;
         this.name = name;
         this.description = "Περιγραφή για το τμήμα " + name;
         this.announcements = new ArrayList<>();
@@ -39,5 +42,9 @@ public class Department {
         return announcements;
     }
     
+    public int getId() {
+        return id;
+    }
+
 }
 
