@@ -1,16 +1,21 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Appointment;
 import javax.swing.*;
 import java.awt.*;
 
-public class CounselorAppointmentDetailsPanel extends JPanel {
+//Panel for Counselor watching the details of an appointment: shows
+//the specific appointment a student wants to make with the counselor.
 
-    private JLabel nameLabel;
-    private JLabel phoneLabel;
-    private JLabel emailLabel;
-    private JTextArea interestsArea;
-    
-    public CounselorAppointmentDetailsPanel(CardLayout cardLayout, JPanel cardPanel) {
+public class CounselorAppointmentDetailsPanel extends JPanel {
+    //ATTRIBUTES
+    private final JLabel nameLabel;
+    private final JLabel phoneLabel;
+    private final JLabel emailLabel;
+    private final JTextArea interestsArea;
+    private Appointment appointment;
+    //CONSTRUCTOR
+    public CounselorAppointmentDetailsPanel(CardLayout cardLayout, JPanel cardPanel, CounselorAcceptAppointmentPanel acceptPanel, CounselorRejectAppointmentPanel rejectPanel) {
         setLayout(new BorderLayout(10, 10));
 
         JLabel title = new JLabel("Λεπτομέρειες Αιτήματος", SwingConstants.CENTER);
@@ -29,6 +34,12 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
         interestsArea.setLineWrap(true);
         interestsArea.setWrapStyleWord(true);
         interestsArea.setBorder(BorderFactory.createTitledBorder("Πεδία Ενδιαφέροντος"));
+        
+        // Center align the labels for it to be "prettier"
+        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        phoneLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        emailLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        interestsArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         detailsPanel.add(nameLabel);
         detailsPanel.add(phoneLabel);
@@ -49,9 +60,15 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
         
         acceptAppointment.setBackground(new Color(102, 255, 102));
         rejectAppointment.setBackground(new Color(255, 102, 102));
-               
-        acceptAppointment.addActionListener(e -> cardLayout.show(cardPanel, "acceptAppointment"));
-        rejectAppointment.addActionListener(e -> cardLayout.show(cardPanel, "rejectAppointment"));
+        
+        acceptAppointment.addActionListener(e -> {
+            acceptPanel.setSelectedAppointment(appointment);
+            cardLayout.show(cardPanel, "acceptAppointment");
+        });
+        rejectAppointment.addActionListener(e -> {
+            rejectPanel.setSelectedAppointment(appointment);
+            cardLayout.show(cardPanel, "rejectAppointment");
+                });
         backToMain.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         backButton.addActionListener(e -> cardLayout.show(cardPanel, "appointments"));
         
@@ -61,11 +78,15 @@ public class CounselorAppointmentDetailsPanel extends JPanel {
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
     }
-
+    //Method to show the details of an appointment
     public void showDetails(String name, String phone, String email, String interests) {
         nameLabel.setText("Όνομα Μαθητή: " + name);
         phoneLabel.setText("Τηλέφωνο: " + phone);
         emailLabel.setText("Email: " + email);
         interestsArea.setText(interests);
+    }
+    //To show which is the appointment the Councelor is wathing the details of
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
     }
 }

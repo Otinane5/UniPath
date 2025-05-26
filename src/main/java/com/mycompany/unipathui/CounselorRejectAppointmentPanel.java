@@ -1,10 +1,13 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Appointment;
 import javax.swing.*;
 import java.awt.*;
 
 public class CounselorRejectAppointmentPanel extends JPanel {
-
+    //ATTRIBUTES
+    private Appointment selectedAppointment;
+    //CONSTRUCTOR
     public CounselorRejectAppointmentPanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
 
@@ -32,7 +35,19 @@ public class CounselorRejectAppointmentPanel extends JPanel {
         cancelButton.setBackground(new Color(255, 102, 102));
                 
         sendButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Το μήνυμα απόρριψης στάλθηκε!");
+            if (selectedAppointment != null) {
+                selectedAppointment.setStatus("Ακυρωμένο");
+            }
+            JOptionPane.showMessageDialog(this, "Το μήνυμα αποδοχής στάλθηκε με επιτυχία!");
+            // Find the panel and make the refresh
+            if (cardPanel instanceof JPanel) {
+                for (Component comp : cardPanel.getComponents()) {
+                    if (comp instanceof CounselorAppointmentRequestsPanel) {
+                        ((CounselorAppointmentRequestsPanel) comp).refresh();
+                        break;
+                    }
+                }
+            }
             cardLayout.show(cardPanel, "appointments");
         });
         cancelButton.addActionListener(e -> cardLayout.show(cardPanel, "appointments"));
@@ -44,5 +59,9 @@ public class CounselorRejectAppointmentPanel extends JPanel {
         buttonPanel.add(backToMain);
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
+    }
+    //To specify which Appointment is getting "approved"
+    public void setSelectedAppointment(Appointment appointment) {
+        this.selectedAppointment = appointment;
     }
 }

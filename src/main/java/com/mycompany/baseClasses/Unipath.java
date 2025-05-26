@@ -15,6 +15,7 @@ public static void main (String[] args){
     User.init();
     Counselor.init();
     Application.init();
+    Appointment.init();
     }
 }
 

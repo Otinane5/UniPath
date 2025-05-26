@@ -10,11 +10,9 @@ import java.awt.*;
 //στη και κωδικό, καθώς και τα κουμπιά "Σύνδεση" και "Πίσω".
 
 public class CounselorLoginPanel extends JPanel {
-    
     //ATTRIBUTES
     private JTextField usernameField;
     private JPasswordField passwordField;
-    
     //CONSTRUCTOR
     public CounselorLoginPanel(LoginFrame parentFrame) {
         setLayout(new BorderLayout());
