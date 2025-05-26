@@ -4,8 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ProfilePanel extends JPanel {
+    private JPanel announcementPanel;
+    private JScrollPane scroll;
     public static String currentDescription = "Περιγραφή...";
     private JTextArea descriptionArea;
+    public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
 
     public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
@@ -60,17 +63,26 @@ public class ProfilePanel extends JPanel {
         annPanel.add(addAnnouncement, BorderLayout.EAST);
         contentPanel.add(annPanel);
         
-        // Λίστα ανακοινώσεων
-        JPanel announcementPanel = new JPanel();
+        //Announcement List
+        //JPanel announcementPanel = new JPanel();
+        announcementPanel=new JPanel();
         announcementPanel.setLayout(new BoxLayout(announcementPanel, BoxLayout.Y_AXIS));
         announcementPanel.setBackground(Color.WHITE);
         
-        for (int i = 1; i <= 8; i++) {
+        /* φευγει το στατικό
+        for (int i = 1; i <= 4; i++) {
             JLabel announcementLabel = new JLabel("~ Ανακοίνωση_" + i);
             announcementLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
             announcementPanel.add(announcementLabel);
-        }
+        }*/       
         
+        announcementPanel = new JPanel();
+        announcementPanel.setLayout(new BoxLayout(announcementPanel, BoxLayout.Y_AXIS));
+        announcementPanel.setBackground(Color.WHITE);
+
+        refreshAnnouncements();
+
+        //scrolling enabled
         JScrollPane scroll = new JScrollPane(announcementPanel);
         scroll.setPreferredSize(new Dimension(380, 100));
         scroll.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -119,12 +131,25 @@ public class ProfilePanel extends JPanel {
     //public void pressBack()
     //{}
     
-    /*public void refreshDescription() {
-    descriptionArea.setText(currentDescription);
-}*/
-
-    public void updateDescription(String newDesc) {
+    public void updateDescription(String newDesc) 
+    {
         currentDescription = newDesc;
         descriptionArea.setText(newDesc);
     }
+    
+    public void refreshAnnouncements() 
+    {
+        announcementPanel.removeAll();
+
+        for (String[] ann : announcements) 
+        {
+            JLabel annLabel = new JLabel(" 📢 " + ann[0] + ": " + ann[1]);
+            annLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            announcementPanel.add(annLabel);
+        }
+
+        announcementPanel.revalidate();
+        announcementPanel.repaint();
+    }
+
 }

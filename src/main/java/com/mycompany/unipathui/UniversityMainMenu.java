@@ -1,7 +1,6 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Unipath;
-//import com.mycompany.baseClasses.ChooseFiltersScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +9,6 @@ public class UniversityMainMenu extends JFrame {
     
     private JPanel cardPanel;
     private CardLayout cardLayout;
-    
     
     public UniversityMainMenu() { 
         setTitle("UniPath - Πανεπιστήμιο");
@@ -120,7 +118,7 @@ public class UniversityMainMenu extends JFrame {
         DepartmentListPanel deplistPanel = new DepartmentListPanel(cardLayout, cardPanel);
         ProfilePanel profileDetailsPanel = new ProfilePanel(cardLayout, cardPanel);
         EditDescriptionPanel editDesc = new EditDescriptionPanel(cardLayout, cardPanel);
-        //AddAnnouncementPanel addAnnoun = new AddAnnouncementPanel(cardLayout, cardPanel,departmentName);
+        AddAnnouncementPanel addAnnoun = new AddAnnouncementPanel(cardLayout, cardPanel); //,departmentName
         FilteredListScreen filteredListScreen = new FilteredListScreen(cardLayout, cardPanel);
         ChooseFiltersScreen chooseFilt = new ChooseFiltersScreen(cardLayout, cardPanel,filteredListScreen);
         
@@ -129,7 +127,7 @@ public class UniversityMainMenu extends JFrame {
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(profileDetailsPanel, "seeProfileDetails");
         cardPanel.add(editDesc, "editUniDesc");
-        //cardPanel.add(addAnnoun, "addAnnouncement");
+        cardPanel.add(addAnnoun, "addAnnouncement");
         cardPanel.add(chooseFilt, "chooseFilters");
         cardPanel.add(filteredListScreen, "filteredList");
 
