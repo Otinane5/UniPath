@@ -11,7 +11,7 @@ public class Application_FormUI extends JPanel {
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
     private JComboBox<String> jComboBox1;
     private JButton jButton1, jButton2;
-    private static String uniName;
+    public static String uniName;
     private String department; //unusable
     
     public Application_FormUI() {
