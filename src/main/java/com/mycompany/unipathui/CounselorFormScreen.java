@@ -78,21 +78,33 @@ public class CounselorFormScreen extends JFrame {
         emailField.setBounds(250, 270, 300, 25);
         add(emailField);
 
-        JLabel interestLabel = new JLabel("Πεδίο ενδιαφέροντος:");
-        interestLabel.setBounds(120, 310, 150, 25);
-        add(interestLabel);
+      JLabel interestLabel = new JLabel("Πεδίο ενδιαφέροντος:");
+interestLabel.setBounds(120, 295, 200, 25); // moved up by 15px and widened
+add(interestLabel);
 
         JPanel radioPanel = new JPanel();
-        radioPanel.setLayout(new GridLayout(2, 3));
-        radioPanel.setBounds(250, 310, 300, 50);
+radioPanel.setLayout(new GridLayout(2, 3, 5, 5)); 
+ 
+radioPanel.setBounds(200, 310, 360, 60); 
 
-        interestGroup = new ButtonGroup();
-        for (int i = 1; i <= 6; i++) {
-            JRadioButton btn = new JRadioButton("Πεδίο " + i);
-            interestGroup.add(btn);
-            radioPanel.add(btn);
-        }
-        add(radioPanel);
+interestGroup = new ButtonGroup();
+String[] interestLabels = {
+    "Πληροφορική", 
+    "Μαθηματικά", 
+    "Μηχανολογία", 
+    "Φυσική", 
+    "Ιατρική", 
+    "Βιολογία"
+};
+
+for (String label : interestLabels) {
+    JRadioButton btn = new JRadioButton(label);
+    interestGroup.add(btn);
+    radioPanel.add(btn);
+}
+
+add(radioPanel);
+
 
         JButton cancelBtn = new JButton("Ακύρωση");
         cancelBtn.setBackground(Color.RED);
