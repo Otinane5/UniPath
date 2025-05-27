@@ -11,12 +11,10 @@ public class Application_FormUI extends JPanel {
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
     private JComboBox<String> jComboBox1;
     private JButton jButton1, jButton2;
-    private String uniName;
-    private String department;
+    public static String uniName;
+    private String department; //unusable
     
-    public Application_FormUI(String name) {
-        uniName=name;
-        this.department=department;
+    public Application_FormUI() {
         initComponents();
     }
 
@@ -28,13 +26,13 @@ public class Application_FormUI extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
 
         // Labels
-        jLabel1 = new JLabel("Φόρμα Εγγραφής - "+uniName);
+        jLabel1 = new JLabel("Φόρμα Εγγραφής");
         jLabel1.setFont(new Font("SansSerif", Font.BOLD, 18));
         jLabel1.setForeground(new Color(0, 102, 204));
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2; gbc.anchor = GridBagConstraints.CENTER;
         add(jLabel1, gbc);
 
-        jLabel2 = new JLabel("Τμήμα: "+department);
+        jLabel2 = new JLabel("*");
         //jLabel2 = new JLabel("Τμήμα: "+uniName);
         jLabel2.setFont(new Font("SansSerif", Font.PLAIN, 14));
         jLabel2.setForeground(new Color(51, 51, 51));
