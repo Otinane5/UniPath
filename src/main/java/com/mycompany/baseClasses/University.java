@@ -22,7 +22,10 @@ public class University extends User {
         u1.name = "Πανεπιστήμιο Αθηνών";
 
         University u2 = new University("uni2", 1, "university2");
-        u2.name = "ΤΕΙ Θεσσαλονίκης";
+        u2.name = "Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης";
+        
+        University u3 = new University("uni3", 1, "university3");
+        u3.name = "Πανεπιστήμιο Πατρών";
 
         sample.add(u1);
         sample.add(u2);

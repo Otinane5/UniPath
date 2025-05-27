@@ -11,20 +11,20 @@ public class DepartmentProfileUI extends JPanel{
     //Στατική ανάθεση περιγραφών τμημάτων
     private static final Map<String, String> departmentDescriptions = new HashMap<>();
     static {
-        departmentDescriptions.put("Τμήμα Πληροφορικής", "Περιγραφή τμήματος πληροφορικής.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\naaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        departmentDescriptions.put("Τμήμα Μηχανικών Υπολογιστών", "Περιγραφή τμήματος ceid.");
-        departmentDescriptions.put("Τμήμα Νομικής", "Περιγραφή τμήματος νομικής.");
-        departmentDescriptions.put("Τμήμα Ιατρικής", "Περιγραφή τμήματος ιατρικής.");
-        departmentDescriptions.put("Τμήμα Ψυχολογίας", "Περιγραφή τμήματος ψυχολογίας.");
-        departmentDescriptions.put("Τμήμα Καλών Τεχνών", "Περιγραφή τμήματος καλών τεχνών.");
-        departmentDescriptions.put("Τμήμα Φιλοσοφίας", "Περιγραφή τμήματος φιλοσοφίας.");
-        departmentDescriptions.put("Τμήμα Φιλολογίας", "Περιγραφή τμήματος φιλολογίας.");
-        departmentDescriptions.put("Τμήμα Διοίκησης Επιχειρήσεων", "Περιγραφή τμήματος διοίκησης επιχειρήσεων.");
-        departmentDescriptions.put("Τμήμα Οικονομικών", "Περιγραφή τμήματος οικονομικών.");
-        departmentDescriptions.put("Τμήμα Φαρμακευτικής", "Περιγραφή τμήματος φαρμακευτικής.");
-        departmentDescriptions.put("Τμήμα Μαθηματικών", "Περιγραφή τμήματος μαθηματικών.");
-        departmentDescriptions.put("Τμήμα Χημικών Μηχανικών", "Περιγραφή τμήματος χημικών μηχανικών.");
-        departmentDescriptions.put("Τμήμα Λογοθεραπείας", "Περιγραφή τμήματος λογοθεραπείας.");       
+        departmentDescriptions.put("Τμήμα Πληροφορικής", "Το τμήμα πληροφορικής ιδρύθηκε το...");
+        departmentDescriptions.put("Τμήμα Μηχανικών Υπολογιστών", "Το τμήμα Μηχανικών Υπολογιστών ιδρύθηκε το...");
+        departmentDescriptions.put("Τμήμα Νομικής", "Η Νομική ιδρύθηκε...");
+        departmentDescriptions.put("Τμήμα Ιατρικής", "Η Ιατρική ιδρύθηκε..");
+        departmentDescriptions.put("Τμήμα Ψυχολογίας", "Η Ψυχολογία είναι ένα νέο τμήμα...");
+        departmentDescriptions.put("Τμήμα Καλών Τεχνών", "Οι Καλές Τέχνες...");
+        departmentDescriptions.put("Τμήμα Φιλοσοφίας", "Το τμήμα Φιλοσοφίας προσφέρει στους αποφοίτους του...");
+        departmentDescriptions.put("Τμήμα Φιλολογίας", "Το τμήμα Φιλολογίας ιδρύθηκε..");
+        departmentDescriptions.put("Τμήμα Διοίκησης Επιχειρήσεων", "Το τμήμα Διοίκησης επιχειρήσεων προσφέρει στους αποφοίτους του....");
+        departmentDescriptions.put("Τμήμα Οικονομικών", "Το τμήμα Οικονομικών προσφέρει στους αποφοίτους του...");
+        departmentDescriptions.put("Τμήμα Φαρμακευτικής", "Η Φαρμακευτική προσφέρει στους αποφοίτους του...");
+        departmentDescriptions.put("Τμήμα Μαθηματικών", "Το τμήμα Μαθηματικών προσφέρει στους αποφοίτους του...");
+        departmentDescriptions.put("Τμήμα Χημικών Μηχανικών", "Το τμήμα Χημικών Μηχανικών προσφέρει στους αποφοίτους του...");
+        departmentDescriptions.put("Τμήμα Λογοθεραπείας", "Το νεοσύστατο τμήμα Λογοθεραπείας..");       
     }
     
     public DepartmentProfileUI(String departmentName, Runnable onGoBack, 
