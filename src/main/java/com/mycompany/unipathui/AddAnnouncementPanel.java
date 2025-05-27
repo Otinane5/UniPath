@@ -12,6 +12,7 @@ public class AddAnnouncementPanel extends JPanel {
     private JPanel cardPanel;
     private JButton publish;
 private ProfilePanel profilePanel;
+private JButton cancel;
 
     
     private JLabel departmentLabel;
@@ -79,17 +80,11 @@ private ProfilePanel profilePanel;
         
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 0));
        
-        JButton cancel = new JButton("Ακύρωση");
+        cancel = new JButton("Ακύρωση");
         cancel.setBackground(Color.RED);
         cancel.setForeground(Color.WHITE);
-        cancel.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
-        
-        cancel.addActionListener(e -> {
-            // Clear fields when canceling
-            titleField.setText("");
-            bodyArea.setText("");
-            cardLayout.show(cardPanel, "seeProfileDetails");
-        });
+        //cancel.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
+        pressCancelNewAnnouncement(); 
        
         publish = new JButton("Δημοσίευση");
         publish.setBackground(Color.GREEN);
@@ -166,16 +161,35 @@ private ProfilePanel profilePanel;
             });
         }
         
-    // public void pressCancelNewAnnouncement(){}
+     
+        public void pressCancelNewAnnouncement()
+        {
+            cancel.addActionListener(e -> 
+            {
+                int result = JOptionPane.showConfirmDialog
+                (
+                    this,
+                    "Η ανακοίνωση δεν θα αποθηκευτεί.\n Συμφωνείτε;",
+                    "Επιβεβαίωση Ακύρωσης",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+                );
 
+                if (result == JOptionPane.YES_OPTION) 
+                {
+                    titleField.setText("");
+                    bodyArea.setText("");
+                    cardLayout.show(cardPanel, "seeProfileDetails");
+                }
+            });
+        }
     
-    public void setDepartmentName(String departmentName) 
-    {
-        this.departmentName = departmentName;
-    departmentLabel.setText(departmentName); 
-        
-        //this.originalDescription = Description.getDepartmentDescription(departmentName);
-    //descriptionArea.setText(originalDescription);
-    }
+        public void setDepartmentName(String departmentName) 
+        {
+            this.departmentName = departmentName;
+        departmentLabel.setText(departmentName); 
 
+            //this.originalDescription = Description.getDepartmentDescription(departmentName);
+        //descriptionArea.setText(originalDescription);
+        }
 }
