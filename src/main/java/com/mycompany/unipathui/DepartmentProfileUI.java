@@ -9,28 +9,7 @@ import java.util.List;
 import com.mycompany.baseClasses.Description; 
 
 public class DepartmentProfileUI extends JPanel
-{   
-    //private static final Map<String, String> departmentDescriptions = new HashMap<>();
-        
-    //Στατική ανάθεση περιγραφών τμημάτων
-    /*static {
-        //ΟΛΑ ΑΥΤΑ ΕΜΦΑΝΙΖΟΝΤΑΙ ΣΤΟ ΠΕΡΙΒΑΛΛΟΝ ΤΟΥ ΜΑΘΗΤΗ
-        departmentDescriptions.put("Τμήμα Πληροφορικής", "Το τμήμα πληροφορικής ιδρύθηκε το...");
-        departmentDescriptions.put("Τμήμα Μηχανικών Υπολογιστών", "Το τμήμα Μηχανικών Υπολογιστών ιδρύθηκε το...");
-        departmentDescriptions.put("Τμήμα Νομικής", "Η Νομική ιδρύθηκε...");
-        departmentDescriptions.put("Τμήμα Ιατρικής", "Η Ιατρική ιδρύθηκε..");
-        departmentDescriptions.put("Τμήμα Ψυχολογίας", "Η Ψυχολογία είναι ένα νέο τμήμα...");
-        departmentDescriptions.put("Τμήμα Καλών Τεχνών", "Οι Καλές Τέχνες...");
-        departmentDescriptions.put("Τμήμα Φιλοσοφίας", "Το τμήμα Φιλοσοφίας προσφέρει στους αποφοίτους του...");
-        departmentDescriptions.put("Τμήμα Φιλολογίας", "Το τμήμα Φιλολογίας ιδρύθηκε..");
-        departmentDescriptions.put("Τμήμα Διοίκησης Επιχειρήσεων", "Το τμήμα Διοίκησης επιχειρήσεων προσφέρει στους αποφοίτους του....");
-        departmentDescriptions.put("Τμήμα Οικονομικών", "Το τμήμα Οικονομικών προσφέρει στους αποφοίτους του...");
-        departmentDescriptions.put("Τμήμα Φαρμακευτικής", "Η Φαρμακευτική προσφέρει στους αποφοίτους του...");
-        departmentDescriptions.put("Τμήμα Μαθηματικών", "Το τμήμα Μαθηματικών προσφέρει στους αποφοίτους του...");
-        departmentDescriptions.put("Τμήμα Χημικών Μηχανικών", "Το τμήμα Χημικών Μηχανικών προσφέρει στους αποφοίτους του...");
-        departmentDescriptions.put("Τμήμα Λογοθεραπείας", "Το νεοσύστατο τμήμα Λογοθεραπείας..");       
-    }*/
-    
+{      
     public DepartmentProfileUI(String departmentName, Runnable onGoBack, 
         Runnable onBackToMenu, BiConsumer<String, List<AnnouncementView>> onViewAnnouncement){
        

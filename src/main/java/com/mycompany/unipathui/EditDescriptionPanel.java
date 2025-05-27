@@ -148,10 +148,11 @@ private String departmentName;
     }
     
     
-    public void setDepartmentName(String departmentName) {
-    this.departmentName = departmentName;
-    originalDescription = Description.getDepartmentDescription(departmentName);
-    descriptionArea.setText(originalDescription);
-}
+    public void setDepartmentName(String departmentName) 
+    {
+        this.departmentName = departmentName;
+        originalDescription = Description.getDepartmentDescription(departmentName);
+        descriptionArea.setText(originalDescription);
+    }
 
 }

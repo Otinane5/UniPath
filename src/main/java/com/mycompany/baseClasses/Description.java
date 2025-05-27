@@ -6,15 +6,9 @@ import java.util.Map;
 public class Description 
 {
     private static final Map<String, String> departmentDescriptions = new HashMap<>();
-
-    /*static {
-        departmentDescriptions.put("Τμήμα Πληροφορικής", "Περιγραφή τμήματος Πληροφορικής...");
-        departmentDescriptions.put("Τμήμα Μηχανικών Υπολογιστών", "Περιγραφή τμήματος CEID...");
-        // ...
-    }*/
     
     static {
-        //ΟΛΑ ΑΥΤΑ ΕΜΦΑΝΙΖΟΝΤΑΙ ΣΤΟ ΠΕΡΙΒΑΛΛΟΝ ΤΟΥ ΜΑΘΗΤΗ
+        //ΟΛΑ ΑΥΤΑ ΕΜΦΑΝΙΖΟΝΤΑΙ ΣΤΟ ΠΕΡΙΒΑΛΛΟΝ ΤΟΥ ΜΑΘΗΤΗ. πρέπει να εμφανιζονται και στο πανεπιστημιο
         departmentDescriptions.put("Τμήμα Πληροφορικής", "Το τμήμα πληροφορικής ιδρύθηκε το...");
         departmentDescriptions.put("Τμήμα Μηχανικών Υπολογιστών", "Το τμήμα Μηχανικών Υπολογιστών ιδρύθηκε το...");
         departmentDescriptions.put("Τμήμα Νομικής", "Η Νομική ιδρύθηκε...");
