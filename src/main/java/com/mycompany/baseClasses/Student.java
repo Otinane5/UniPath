@@ -1,12 +1,13 @@
 package com.mycompany.baseClasses;
-
+import com.mycompany.unipathui.AnswerLog;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends User {
     public String name;
     public String lastName;
-    public int[] quizAnswers = new int[18];
+    public static AnswerLog answerLog = new AnswerLog();
+    public static boolean hasAnswerLog = false;
 
     
     public static List<Student> sample = new ArrayList<>();

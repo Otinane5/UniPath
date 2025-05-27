@@ -9,7 +9,7 @@ public class StudentMenuFrame extends JFrame {
     private JPanel cardPanel;
     private CardLayout cardLayout;
     private ShowResultsUI resultsPanel;
-    private final AnswerLog answerLog = new AnswerLog();
+    private AnswerLog answerLog = new AnswerLog();
     private DepartmentProfileUI profilePanel;
     private AnnouncementUI announcementPanel;
     

@@ -1,17 +1,21 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Student;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 public class DepartmentListUI extends JPanel {
     // ATTRIBUTES
-    private String selectedDepartment = null; // Αποθήκευση επιλεγμένου τμήματος
+    private String selectedDepartment = null;
     private JButton currentlySelectedButton = null;
     private JPanel departmentPanel;
-    // Λίστα τμημάτων
+    private boolean quizTaken = false;
+
     private List<DepartmentInfo> allDepartments = List.of(
         new DepartmentInfo("Τμήμα Πληροφορικής", "Θετικών Σπουδών", 5000, 12250),
         new DepartmentInfo("Τμήμα Μηχανικών Υπολογιστών", "Πολυτεχνικών Σπουδών", 10000, 16561),
@@ -28,10 +32,10 @@ public class DepartmentListUI extends JPanel {
         new DepartmentInfo("Τμήμα Χημικών Μηχανικών", "Πολυτεχνικών Σπουδών", 10500, 15672),
         new DepartmentInfo("Τμήμα Λογοθεραπείας", "Σπουδών Υγείας", 12000, 14860)
     );
-        private List<DepartmentInfo> filteredDepartments = new ArrayList<>(allDepartments);
-        
-    public DepartmentListUI(Runnable onBackToMainMenu, Consumer<String> onShowDepartment, 
-            Runnable onApplicationForm, Runnable onShowFilters) {
+    private List<DepartmentInfo> filteredDepartments = new ArrayList<>(allDepartments);
+
+    public DepartmentListUI(Runnable onBackToMainMenu, Consumer<String> onShowDepartment,
+                            Runnable onApplicationForm, Runnable onShowFilters) {
         setLayout(new BorderLayout(10, 10));
 
         // Τίτλος
@@ -43,112 +47,152 @@ public class DepartmentListUI extends JPanel {
         departmentPanel = new JPanel();
         departmentPanel.setLayout(new BoxLayout(departmentPanel, BoxLayout.Y_AXIS));
         departmentPanel.setBackground(Color.WHITE);
+
+        // Αρχική φόρτωση χωρίς ποσοστά/χρώματα
         refreshDepartmentList();
-        
-        // Panel για θέση του κουμπιού φίλτρων (πάνω αριστερά)
-        
+
+        // Panel για φίλτρα
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        
-        // Κουμπί φίλτρων
+
         JButton filterButton = new JButton("Φίλτρα");
         filterButton.setBackground(Color.PINK);
         filterButton.setPreferredSize(new Dimension(80, 30));
         filterButton.setMaximumSize(new Dimension(80, 30));
         filterButton.addActionListener(e -> onShowFilters.run());
-        
+
         topPanel.add(filterButton, BorderLayout.WEST);
 
         JScrollPane scrollPane = new JScrollPane(departmentPanel);
-        
-        JPanel listContainer = new JPanel();
-        listContainer.setLayout( new BorderLayout());
+
+        JPanel listContainer = new JPanel(new BorderLayout());
         listContainer.add(topPanel, BorderLayout.NORTH);
         listContainer.add(scrollPane, BorderLayout.CENTER);
-        
-        add(listContainer, BorderLayout.CENTER);
-             
-        // Bottom Panel
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        // Πίσω στο μενού κουμπί
+        add(listContainer, BorderLayout.CENTER);
+
+        // Bottom Panel με κουμπιά ενέργειας
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
+
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.YELLOW);
-        backButton.addActionListener(e -> {
-            onBackToMainMenu.run(); 
-        });
+        backButton.addActionListener(e -> onBackToMainMenu.run());
 
-        // Κουμπί προβολής τμήματος
         JButton showButton = new JButton("Προβολή Τμήματος");
         showButton.setBackground(Color.CYAN);
         showButton.addActionListener(e -> {
             if (selectedDepartment == null) {
                 JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε ένα τμήμα πρώτα.");
             } else {
-                // Εμφάνιση του επιλεγμένου τμήματος
                 onShowDepartment.accept(selectedDepartment);
             }
         });
-           
-        // Application Form button
+
         JButton applicationButton = new JButton("Αίτηση Εγγραφής");
         applicationButton.setBackground(Color.GREEN);
         applicationButton.addActionListener(e -> {
             if (selectedDepartment == null) {
                 JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε ένα τμήμα πρώτα.");
             } else {
-                // Create an instance of Application_FormUI and show it
-                Application_FormUI applicationFormUI = new Application_FormUI(selectedDepartment);
-                JFrame formFrame = new JFrame("Φόρμα Εγγραφής");
-                formFrame.setSize(600, 600);
-                formFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                formFrame.add(applicationFormUI);
-                formFrame.setVisible(true);
+                onApplicationForm.run();
             }
         });
 
-        // Προσθήκη Κουμπιών στο bottom panel
+        JButton suggestionsButton = new JButton("Προτάσεις για Εσένα");
+        suggestionsButton.setBackground(Color.ORANGE);
+        suggestionsButton.addActionListener(e -> {
+            Map<AnswerLog.DepartmentType, Integer> percentages = Student.answerLog.getSortedPercentages();
+            if (!Student.hasAnswerLog) {
+                JOptionPane.showMessageDialog(this, "Παρακαλώ συμπληρώστε πρώτα το quiz για να δείτε προτάσεις.");
+                return;
+            }else{
+            quizTaken = true;}
+            refreshDepartmentList();
+        });
+
         bottomPanel.add(backButton);
         bottomPanel.add(showButton);
         bottomPanel.add(applicationButton);
+        bottomPanel.add(suggestionsButton);
 
-        // Τοποθέτηση του bottom panel στο κεντρικό
         add(bottomPanel, BorderLayout.SOUTH);
     }
 
-    public void applyFilters(String type, String minFeeStr, String maxFeeStr, String minPointsStr){
-         int minFee = minFeeStr.isEmpty() ? Integer.MIN_VALUE : Integer.parseInt(minFeeStr);
-         int maxFee = maxFeeStr.isEmpty() ? Integer.MAX_VALUE : Integer.parseInt(maxFeeStr);
-         int minPoints = minPointsStr.isEmpty() ? Integer.MIN_VALUE : Integer.parseInt(minPointsStr);
+    public void applyFilters(String type, String minFeeStr, String maxFeeStr, String minPointsStr) {
+        int minFee = minFeeStr.isEmpty() ? Integer.MIN_VALUE : Integer.parseInt(minFeeStr);
+        int maxFee = maxFeeStr.isEmpty() ? Integer.MAX_VALUE : Integer.parseInt(maxFeeStr);
+        int minPoints = minPointsStr.isEmpty() ? Integer.MIN_VALUE : Integer.parseInt(minPointsStr);
 
-         filteredDepartments = allDepartments.stream()
-              .filter(dept -> (type.equals("Όλα")|| dept.type.equals(type)))
-              .filter(dept -> dept.tuitionFee >= minFee && dept.tuitionFee <= maxFee)
-              .filter(dept -> dept.academicPoints >= minPoints)
-              .toList();
-         refreshDepartmentList();
+        filteredDepartments = allDepartments.stream()
+            .filter(dept -> ("Όλα".equals(type) || dept.type.equals(type)))
+            .filter(dept -> dept.tuitionFee >= minFee && dept.tuitionFee <= maxFee)
+            .filter(dept -> dept.academicPoints >= minPoints)
+            .toList();
+
+        refreshDepartmentList();
     }
-    
-    //Προσθήκη κουμπιών κάθε τμήματος και ανάλογα με τα φίλτρα
-    private void refreshDepartmentList(){
-         departmentPanel.removeAll();
-         currentlySelectedButton = null;
-         for(DepartmentInfo dept : filteredDepartments){
-            JButton deptButton = new JButton(dept.name);
+
+    private void refreshDepartmentList() {
+        departmentPanel.removeAll();
+        currentlySelectedButton = null;
+
+        Map<AnswerLog.DepartmentType, Integer> percentages = quizTaken ? Student.answerLog.getSortedPercentages() : Map.of();
+
+        if (quizTaken) {
+            filteredDepartments.sort(Comparator.comparing(
+                (DepartmentInfo dept) -> percentages.getOrDefault(mapType(dept.type), 0)
+            ).reversed());
+        }
+
+        for (DepartmentInfo dept : filteredDepartments) {
+            int pct = percentages.getOrDefault(mapType(dept.type), -1);
+            String btnText = quizTaken ? String.format("%s - %d%%", dept.name, pct) : dept.name;
+            JButton deptButton = new JButton(btnText);
             deptButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            deptButton.setMaximumSize(new Dimension(400, 40));
+            deptButton.setMaximumSize(new Dimension(400, 50));
+            deptButton.setPreferredSize(new Dimension(400, 50));
+            deptButton.setFont(new Font("Arial", Font.PLAIN, 14));
+            deptButton.setBackground(quizTaken ? getColorByPercentage(pct) : Color.WHITE);
+            deptButton.setOpaque(true);
             deptButton.addActionListener(e -> {
-                 selectedDepartment = dept.name;
-                 if(currentlySelectedButton != null){
-                     currentlySelectedButton.setBackground(UIManager.getColor("Button.background"));
-                 }
-                 deptButton.setBackground(Color.LIGHT_GRAY);
-                 currentlySelectedButton = deptButton;
+                selectedDepartment = dept.name;
+                if (currentlySelectedButton != null) {
+                    if (quizTaken) {
+                        String prevText = currentlySelectedButton.getText();
+                        int prevPct = Integer.parseInt(prevText.replaceAll(".*-(\\d+)%", "$1"));
+                        currentlySelectedButton.setBackground(getColorByPercentage(prevPct));
+                    } else {
+                        currentlySelectedButton.setBackground(Color.WHITE);
+                    }
+                }
+                deptButton.setBackground(Color.LIGHT_GRAY);
+                currentlySelectedButton = deptButton;
             });
-            departmentPanel.add(Box.createVerticalStrut(10));
+            departmentPanel.add(Box.createVerticalStrut(8));
             departmentPanel.add(deptButton);
-         }
-         departmentPanel.revalidate();
-         departmentPanel.repaint();
+        }
+
+        departmentPanel.revalidate();
+        departmentPanel.repaint();
+    }
+
+    private AnswerLog.DepartmentType mapType(String greekType) {
+        return switch (greekType) {
+            case "Καλών Τεχνών" -> AnswerLog.DepartmentType.ART;
+            case "Σπουδών Υγείας" -> AnswerLog.DepartmentType.MEDICINE;
+            case "Οικονομικών Σπουδών" -> AnswerLog.DepartmentType.ECONOMICS;
+            case "Πολυτεχνικών Σπουδών" -> AnswerLog.DepartmentType.ENGINEERING;
+            case "Ανθρωπιστικών Σπουδών" -> AnswerLog.DepartmentType.SOCIAL;
+            case "Θετικών Σπουδών" -> AnswerLog.DepartmentType.SCIENCE;
+            default -> null;
+        };
+    }
+
+    private Color getColorByPercentage(int percent) {
+        if (percent >= 81) return new Color(0, 153, 0);
+        if (percent >= 61) return new Color(102, 204, 0);
+        if (percent >= 41) return new Color(255, 255, 102);
+        if (percent >= 21) return new Color(255, 153, 153);
+        return new Color(255, 51, 51);
     }
 }
