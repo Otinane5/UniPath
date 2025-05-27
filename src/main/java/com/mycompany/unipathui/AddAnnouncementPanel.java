@@ -11,21 +11,20 @@ public class AddAnnouncementPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel cardPanel;
     private JButton publish;
-private ProfilePanel profilePanel;
-private JButton cancel;
+    private ProfilePanel profilePanel;
+    private JButton cancel;
     private JLabel departmentLabel;
     
     public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) {
         
         this.cardLayout = cardLayout;
         this.cardPanel = cardPanel;
-    this.profilePanel = profilePanel;
+        this.profilePanel = profilePanel;
 
-    
         setLayout(new BorderLayout(10, 10));
         
         // Title label
-        JLabel titleLabel = new JLabel("Προσθήκη Νέας Ανακοίνωσης Τμήματος", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("Προσθήκη Νέας Ανακοίνωσης Τμήματος", SwingConstants.CENTER); //onoma tmhmatos
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         add(titleLabel, BorderLayout.NORTH);
         
@@ -42,8 +41,7 @@ private JButton cancel;
         gbc.gridy = 0;
         
         // Department
-        //JLabel 
-            departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER);
+        departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER); //na deixnei poio tmhma einai
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);

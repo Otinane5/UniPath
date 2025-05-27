@@ -8,80 +8,110 @@ public class AnnouncementRepository {
      private static final Map<String, List<AnnouncementView>> departmentAnnouncements = new HashMap<>();
      
      static {
-         
-          departmentAnnouncements.put("Τμήμα Πληροφορικής", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Καλωσόρισμα φοιτητών","Καλως ορίσατε στο τμήμα πληροφορικής..."),
-            new AnnouncementView("Πρόγραμμα μαθημάτων", "Δεν υπάρχει πρόγραμμα..."),
-            new AnnouncementView("Αιτήσεις εγγραφής", "Οι αιτήσεις εγγραφής είναι απενεργοποιημένες προς το παρόν...")
+           departmentAnnouncements.put("Τμήμα Πληροφορικής", new ArrayList<>(Arrays.asList(
+            new AnnouncementView("Καλωσόρισμα φοιτητών","Καλως ορίσατε στο τμήμα Πληροφορικής!"),
+            new AnnouncementView("Πρόγραμμα μαθημάτων", "Το πρόγραμμα μαθημάτων του Προπτυχιακού θα ανακοινωθεί σύντομα."),
+            new AnnouncementView("Αιτήσεις εγγραφής", "Οι αιτήσεις εγγραφής είναι απενεργοποιημένες προς το παρόν.Αναμένετε νέα ανακοίνωση.")
           )));
           
            departmentAnnouncements.put("Τμήμα Μηχανικών Υπολογιστών", new ArrayList<>(Arrays.asList(
             new AnnouncementView("Γειά σας νέοι ceidάδες", "Συγγνώμη..."),
-            new AnnouncementView("Ανακοίνωση σειντ 2", "Περιεχόμενο σειντ 2"),
-            new AnnouncementView("Ανακοίνωση σειντ 3", "Περιεχόμενο σειντ 3"),
-            new AnnouncementView("Ανακοίνωση σειντ 4", "Περιεχόμενο σειντ 4"),
-            new AnnouncementView("Ανακοίνωση σειντ 5", "Περιεχόμενο σειντ 5")
-            
+            new AnnouncementView("CEID Seminar","Social Hour την Παρασκευή στις 15.00. Stay Tuned!"),
+            new AnnouncementView("Έναρξη Εργαστηρίων", "Τα εργαστήρια ξεκινάνε την 2η εβδομάδα του τρέχοντος εξαμήνου."),
+            new AnnouncementView("Αποτελέσματα Εξέτασης Τεχνολογίας Λογισμικού", "Τα αποτελέσματα της εξέτασης και του Project έχουν ανακοινωθεί!"),
+            new AnnouncementView("Υποτροφίες", "Νέα προθεσμία υποβολής δηλώσεων: 30-05-2025 23.59μμ.")
           ))); 
            
            departmentAnnouncements.put("Τμήμα Νομικής", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση νομικής 1", "Περιεχόμενο νομικής 1"),
-            new AnnouncementView("Ανακοίνωση νομικής 2", "Περιεχόμενο νομικής 2"),
-            new AnnouncementView("Ανακοίνωση νομικής 3", "Περιεχόμενο νομικής 3"),
-            new AnnouncementView("Ανακοίνωση νομικής 4", "Περιεχόμενο νομικής 4")
+            new AnnouncementView("Έναρξη Μαθημάτων Αστικού Δικαίου", "Τα μαθήματα ξεκινάνε την Τετάρτη στις 15.00."),
+            new AnnouncementView("Μετεγγραφές 2025", "Οι επιτυχόντες των μετεγγραφών έχουν ανακοινωθεί από το Υπουργείο Παιδείας"),
+            new AnnouncementView("Υποτροφίες", "Νέα προθεσμία υποβολής δηλώσεων: 30-05-2025 23.59μμ.")
          ))); 
            
            departmentAnnouncements.put("Τμήμα Ιατρικής", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση ιατρικής 1", "Περιεχόμενο ιατρικής 1"),
-            new AnnouncementView("Ανακοίνωση ιατρικής 2", "Περιεχόμενο ιατρικής 2")
+            new AnnouncementView("Πρόγραμμα Εξεταστικής", "Το πρόγραμμα της εξεταστικής έχει ανακοινωθεί.Καλή Επιτυχία!"),
+            new AnnouncementView("Erasmus", "Οι αιτήσεις για το πρόγραμμα Erasmus της επόμενης Ακαδημαϊκής χρονιάς έχουν αρχίσει.Δηλώστε τώρα το ενδιαφέρον σας!"),
+            new AnnouncementView("Έναρξη Κλινικών Ασκήσεων", "Οι κλινικές ξεκινάνε από Δευτέρα 03/03.")            
          ))); 
            
            departmentAnnouncements.put("Τμήμα Ψυχολογίας", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση ψυχολογίας 1", "Περιεχόμενο ψυχολογίας 1")
+            new AnnouncementView("Πρόγραμμα μαθημάτων", "Το πρόγραμμα θα ανακοινωθεί σύντομα."),
+            new AnnouncementView("Ομάδες","Οι ομάδες έχουν ανοίξει στο Eclass. Παρακαλούμε να εγγραφείτε"),
+            new AnnouncementView("Ακαδημαϊκή Ταυτότητα", "Παρακαλούμε τους νέους φοιτητές να προσκομίσουν τα απαραίτητα έγγραφα τους για την δημιουργία του πάσου τους.")
          )));
           
-
-         
          departmentAnnouncements.put("Τμήμα Καλών Τεχνών", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Καλών Τεχνών 1", "Περιεχόμενο Καλών Τεχνών 1")
+            new AnnouncementView("Έκθεση Ζωγραφικής", "Σας προσκαλούμε στην έκθεση των έργων τέχνης των φοιτητών μας στο Αμφιθέατρο αύριο όλη την ημέρα."),
+            new AnnouncementView("Αιτήσεις εγγραφής", "Οι αιτήσεις εγγραφής είναι απενεργοποιημένες προς το παρόν.Αναμένετε νέα ανακοίνωση."),
+            new AnnouncementView("Ακαδημαϊκή Ταυτότητα", "Παρακαλούμε τους νέους φοιτητές μας να προσκομίσουν τα απαραίτητα έγγραφα τους για την δημιουργία του πάσου τους.")
            ))); 
          
          departmentAnnouncements.put("Τμήμα Φιλοσοφίας",new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Φιλοσοφίας 1", "Περιεχόμενο Φιλοσοφίας 1")
+            new AnnouncementView("Δήλωση Μαθημάτων", "Μπορείτε πλέον να δηλώσετε τα μαθήματά σας για το τρέχον εξάμηνο."),
+            new AnnouncementView("Πρόγραμμα Εξεταστικής", "Το πρόγραμμα της εξεταστικής έχει ανακοινωθεί.Καλή Επιτυχία!"),
+            new AnnouncementView("Ακαδημαϊκή Ταυτότητα", "Παρακαλούμε τους νέους φοιτητές μας να προσκομίσουν τα απαραίτητα έγγραφα τους για την δημιουργία του πάσου τους.")
            ))); 
          
          departmentAnnouncements.put("Τμήμα Φιλολογίας",new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Φιλολογίας 1", "Περιεχόμενο Φιλολογίας 1")
+            new AnnouncementView("Σύμβουλος Καθηγητής", "Έχουν ανατεθεί οι σύμβουλοι καθηγητές για τα νέα μέλη της πανεπιστημιακής κοινότητας."),
+            new AnnouncementView("Αιτήσεις εγγραφής", "Οι αιτήσεις εγγραφής είναι απενεργοποιημένες προς το παρόν.Αναμένετε νέα ανακοίνωση."),
+            new AnnouncementView("Ακαδημαϊκή Ταυτότητα", "Παρακαλούμε τους νέους φοιτητές μας να προσκομίσουν τα απαραίτητα έγγραφα τους για την δημιουργία του πάσου τους.")
          ))); 
            
          departmentAnnouncements.put("Τμήμα Διοίκησης Επιχειρήσεων", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Διοίκησης Επιχειρήσεων 1", "Περιεχόμενο Διοίκησης Επιχειρήσεων 1")
+            new AnnouncementView("Workshop: Soft Skills", "Παρασκευή στις 14.00, Αίθουσα Α"),
+            new AnnouncementView("Erasmus", "Οι αιτήσεις για το πρόγραμμα Erasmus έχουν αρχίσει.Δηλώστε τώρα το ενδιαφέρον σας!"),
+            new AnnouncementView("Πρακτική Άσκηση", "Δηλώστε το ενδιαφέρον σας για την πρακτική άσκηση του εξαμήνου για να σας συνδέσουμε με τον φορέα που επιθυμείτε.")
          ))); 
          
          departmentAnnouncements.put("Τμήμα Οικονομικών", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Οικονομικών 1", "Περιεχόμενο Οικονομικών 1")
+           new AnnouncementView("Δήλωση Μαθημάτων", "Μπορείτε πλέον να δηλώσετε τα μαθήματά σας για το τρέχον εξάμηνο."),
+           new AnnouncementView("Ομάδες","Οι ομάδες για την εργασία στην Μακροοικονομία Ι έχουν ανοίξει στο Eclass.Παρακαλούμε να εγγραφείτε"),
+           new AnnouncementView("Ακαδημαϊκή Ταυτότητα", "Παρακαλούμε τους νέους φοιτητές μας να προσκομίσουν τα απαραίτητα έγγραφα τους για την δημιουργία του πάσου τους.")
          ))); 
          
          departmentAnnouncements.put("Τμήμα Φαρμακευτικής",new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Φαρμακευτικής 1", "Περιεχόμενο Φαρμακευτικής 1")
+            new AnnouncementView("Πρόγραμμα Εξεταστικής", "Το πρόγραμμα της εξεταστικής έχει ανακοινωθεί.Καλή Επιτυχία!"),
+            new AnnouncementView("Έναρξη Εργαστηρίων", "Τα εργαστήρια ξεκινάνε την 2η εβδομάδα του τρέχοντος εξαμήνου."),
+            new AnnouncementView("Έναρξη Εργαστηρίων Βιοχημείας", "Τα εργαστήρια ξεκινάνε την Τετάρτη στις 15.00.")
            ))); 
          
          departmentAnnouncements.put("Τμήμα Μαθηματικών", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Μαθηματικών 1", "Περιεχόμενο Μαθηματικών 1")
+            new AnnouncementView("Μετεγγραφές 2025", "Οι επιτυχόντες των μετεγγραφών έχουν ανακοινωθεί από το Υπουργείο Παιδείας."),
+            new AnnouncementView("Σύμβουλος Καθηγητής", "Έχουν ανατεθεί οι σύμβουλοι καθηγητές για τα νέα μέλη της πανεπιστημιακής κοινότητας"),
+            new AnnouncementView("Ομάδες","Οι ομάδες έχουν ανοίξει στο Eclass.Παρακαλούμε να εγγραφείτε")
          ))); 
          
          departmentAnnouncements.put("Τμήμα Χημικών Μηχανικών", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Χημικών Μηχανικών 1", "Περιεχόμενο Χημικών Μηχανικών 1")
+            new AnnouncementView("Πρόγραμμα μαθημάτων", "Το πρόγραμμα θα ανακοινωθεί σύντομα."),
+            new AnnouncementView("Πρόγραμμα Εξεταστικής", "Το πρόγραμμα της εξεταστικής έχει ανακοινωθεί.Καλή Επιτυχία!"),
+            new AnnouncementView("Έναρξη Μαθημάτων Θερμοδυναμικής Ι", "Τα μαθήματα ξεκινάνε την Τετάρτη στις 11.00.")
          ))); 
          
         departmentAnnouncements.put("Τμήμα Λογοθεραπείας", new ArrayList<>(Arrays.asList(
-            new AnnouncementView("Ανακοίνωση Λογοθεραπείας 1", "Περιεχόμενο Λογοθεραπείας 1")
+            new AnnouncementView("Erasmus", "Οι αιτήσεις για το πρόγραμμα Erasmus έχουν αρχίσει. Δηλώστε τώρα το ενδιαφέρον σας!"),
+            new AnnouncementView("Πρακτική Άσκηση", "Δηλώστε το ενδιαφέρον σας για την πρακτική άσκηση του εξαμήνου για να σας συνδέσουμε με τον φορέα που επιθυμείτε.")
          ))); 
         
-        //ola ta tmhmata!!
+        departmentAnnouncements.put("Τμήμα Πολιτικών Επιστημών", new ArrayList<>(Arrays.asList(
+            new AnnouncementView("Πρόγραμμα Εξεταστικής", "Το πρόγραμμα της εξεταστικής έχει ανακοινωθεί.Καλή Επιτυχία!"),
+            new AnnouncementView("Ακαδημαϊκή Ταυτότητα", "Παρακαλούμε τους νέους φοιτητές μας να προσκομίσουν τα απαραίτητα έγγραφα τους για την δημιουργία του πάσου τους."),
+            new AnnouncementView("Έναρξη Μαθήματος Ευρωπαική και Πολιτική Οικονομία", "Τα μαθήματα ξεκινάνε την Παρασκευή στις 09.00.")
+         ))); 
+        
+        departmentAnnouncements.put("Τμήμα Εργοθεραπείας", new ArrayList<>(Arrays.asList(
+            new AnnouncementView("Πρόγραμμα μαθημάτων", "Το πρόγραμμα ανακοινώθηκε"),
+            new AnnouncementView("Αιτήσεις εγγραφής", "Οι αιτήσεις εγγραφής είναι απενεργοποιημένες προς το παρόν.Αναμένετε νέα ανακοίνωση.")
+         ))); 
+        
+        departmentAnnouncements.put("Τμήμα Ηλεκτρολόγων Μηχανικών", new ArrayList<>(Arrays.asList(
+            new AnnouncementView("Πρακτική Άσκηση", "Δηλώστε το ενδιαφέρον σας για την πρακτική άσκηση."),
+            new AnnouncementView("Έξέταση Εργαστηρίου Ηλεκτρικών Μηχανών", "Τρίτη στις 10.00!"),
+            new AnnouncementView("Έναρξη Μαθήματος Συστήματα Αυτόματου Ελέγχου", "Τα μαθήματα ξεκινάνε την Τετάρτη στις 15.00.")
+         ))); 
+        
         //na phgainei pisw otan dhmosieysh->ok
         
-         
      }
      
      public static List<AnnouncementView> getAnnouncements(String departmentName){
