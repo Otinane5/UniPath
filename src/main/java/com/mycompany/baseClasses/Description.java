@@ -27,7 +27,6 @@ public class Description
         departmentDescriptions.put("Τμήμα Πολιτικών Επιστημών", "Οι Πολιτικές Επιστήμες σήμερα...");       
         departmentDescriptions.put("Τμήμα Εργοθεραπείας", "Το νεοσύστατο τμήμα Εργοθεραπείας...");       
         departmentDescriptions.put("Τμήμα Ηλεκτρολόγων Μηχανικών", "Το τμήμα Ηλεκτρολόγων Μηχανικών ανήκει στο Πολυτεχνείο...");       
-
     }    
     
     public static String getDepartmentDescription(String departmentName) 

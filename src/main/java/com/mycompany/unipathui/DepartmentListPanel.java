@@ -3,6 +3,7 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Map;
+import com.mycompany.baseClasses.Description;
 
 import static java.util.Map.entry;
 
@@ -99,7 +100,10 @@ public class DepartmentListPanel extends JPanel {
         viewProfileButton.addActionListener(e -> 
         {
             if (selectedDepartment != null) {
-                profilePanel.setProfileData(selectedDepartment, "Περιγραφή για το τμήμα " + selectedDepartment);
+                //profilePanel.setProfileData(selectedDepartment, "Περιγραφή για το τμήμα " + selectedDepartment);
+                String description = Description.getDepartmentDescription(selectedDepartment);
+profilePanel.setProfileData(selectedDepartment, description);
+
                 cardLayout.show(cardPanel, "seeProfileDetails");
             }
         });

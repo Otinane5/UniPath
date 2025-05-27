@@ -108,10 +108,7 @@ public class AnnouncementRepository {
             new AnnouncementView("Πρακτική Άσκηση", "Δηλώστε το ενδιαφέρον σας για την πρακτική άσκηση."),
             new AnnouncementView("Έξέταση Εργαστηρίου Ηλεκτρικών Μηχανών", "Τρίτη στις 10.00!"),
             new AnnouncementView("Έναρξη Μαθήματος Συστήματα Αυτόματου Ελέγχου", "Τα μαθήματα ξεκινάνε την Τετάρτη στις 15.00.")
-         ))); 
-        
-        //na phgainei pisw otan dhmosieysh->ok
-        
+         )));         
      }
      
      public static List<AnnouncementView> getAnnouncements(String departmentName)

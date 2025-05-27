@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
+
 public class Department {
     private int id;
     
@@ -11,11 +12,13 @@ public class Department {
     public String description;
     public List<Announcement> announcements;
 
-    public Department(int id) 
+    public Department(int id, String name) 
     {
         this.id=id;
         this.name = name;
-        this.description = "Περιγραφή για το τμήμα " + name;
+        //this.description = "Περιγραφή για το τμήμα " + name;
+           this.description = Description.getDepartmentDescription(name);
+
         this.announcements = new ArrayList<>();
     }
 
