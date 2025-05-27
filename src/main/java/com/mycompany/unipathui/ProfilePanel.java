@@ -16,10 +16,6 @@ public class ProfilePanel extends JPanel {
     private ProfilePanel profilePanel;
     public AddAnnouncementPanel addAnnouncementPanel;
 
-    
-   // public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
-    //public static java.util.Map<String, java.util.List<String[]>> announcementsByDepartment = new java.util.HashMap<>();
-
     public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
         
@@ -47,11 +43,11 @@ public class ProfilePanel extends JPanel {
         contentPanel.add(Box.createVerticalStrut(10));
         
         // Description and Edit
-        //JPanel 
+        //JPanel
         descPanel = new JPanel(new BorderLayout(10, 0));
         descPanel.setMaximumSize(new Dimension(400, 70));
         descPanel.add(new JLabel("Περιγραφή Τμήματος"), BorderLayout.WEST);
-         editDescription(cardLayout, cardPanel);
+        editDescription(cardLayout, cardPanel);
         contentPanel.add(descPanel);
 
         //Department's description
@@ -73,15 +69,11 @@ public class ProfilePanel extends JPanel {
         JButton addAnnouncement = new JButton("Προσθήκη");
         addAnnouncement.addActionListener(e -> 
             {
-                //addAnnouncementPanel.setDepartmentName(ProfilePanel.currentDepartment);
-                //cardLayout.show(cardPanel, "addAnnouncement");
-                
                  if (addAnnouncementPanel != null) 
                 {
                     addAnnouncementPanel.setDepartmentName(ProfilePanel.currentDepartment);
                 }
                 cardLayout.show(cardPanel, "addAnnouncement");
-            
             });
         
         annPanel.add(addAnnouncement, BorderLayout.EAST);
@@ -140,7 +132,6 @@ public class ProfilePanel extends JPanel {
         JButton edit = new JButton("Τροποποίηση");
         edit.addActionListener(e -> cardLayout.show(cardPanel, "editUniDesc"));
         descPanel.add(edit, BorderLayout.EAST);
-        //contentPanel.add(descPanel);
     }
     
     public void addAnnouncement()
@@ -163,23 +154,18 @@ public class ProfilePanel extends JPanel {
     public void refreshAnnouncements() 
     {
         announcementPanel.removeAll();
-        
-        //java.util.List<String[]> anns = announcementsByDepartment.getOrDefault(currentDepartment, new java.util.ArrayList<>());
-       // List<AnnouncementView> announcements = AnnouncementRepository.getAnnouncements(currentDepartment);
-java.util.List<AnnouncementView> announcements = AnnouncementRepository.getAnnouncements(currentDepartment);
+        java.util.List<AnnouncementView> announcements = AnnouncementRepository.getAnnouncements(currentDepartment);
 
-         for (AnnouncementView announcement : announcements) {
-            // Create a panel for each announcement to show title and body
+        for (AnnouncementView announcement : announcements) 
+        {
             JPanel annPanel = new JPanel(new BorderLayout());
             annPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
             annPanel.setBackground(Color.WHITE);
             
-            // Title label with icon
             JLabel titleLabel = new JLabel("📢 " + announcement.title);
             titleLabel.setFont(new Font("Arial", Font.BOLD, 12));
             annPanel.add(titleLabel, BorderLayout.NORTH);
             
-            // Body text area
             JTextArea bodyArea = new JTextArea(announcement.body);
             bodyArea.setLineWrap(true);
             bodyArea.setWrapStyleWord(true);
@@ -189,7 +175,6 @@ java.util.List<AnnouncementView> announcements = AnnouncementRepository.getAnnou
             bodyArea.setBorder(BorderFactory.createEmptyBorder(2, 15, 5, 5));
             annPanel.add(bodyArea, BorderLayout.CENTER);
             
-            // Add separator line
             JSeparator separator = new JSeparator();
             separator.setForeground(Color.LIGHT_GRAY);
             annPanel.add(separator, BorderLayout.SOUTH);
@@ -197,32 +182,26 @@ java.util.List<AnnouncementView> announcements = AnnouncementRepository.getAnnou
             announcementPanel.add(annPanel);
         }
         
-        // If no announcements, show a message
-        if (announcements.isEmpty()) {
+        //Αν δεν υπάρχουν ανακοινώσεις:
+        if (announcements.isEmpty()) 
+        {
             JLabel noAnnouncementsLabel = new JLabel("Δεν υπάρχουν ανακοινώσεις για αυτό το τμήμα.");
             noAnnouncementsLabel.setFont(new Font("Arial", Font.ITALIC, 12));
             noAnnouncementsLabel.setForeground(Color.GRAY);
             noAnnouncementsLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             announcementPanel.add(noAnnouncementsLabel);
         }
-    /*for (String[] ann : anns) {
-        JLabel annLabel = new JLabel(" 📢 " + ann[0] + ": " + ann[1]);
-        annLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        announcementPanel.add(annLabel);
-    }*/
-    
-    
-
+           
         announcementPanel.revalidate();
         announcementPanel.repaint();
     }
 
-    public void refreshProfile() {
+    public void refreshProfile() 
+    {
         departmentLabel.setText(currentDepartment);
         descriptionArea.setText(currentDescription);
         refreshAnnouncements();
     }
-    
     
     public void setProfileData(String department, String description) 
     {
@@ -231,15 +210,15 @@ java.util.List<AnnouncementView> announcements = AnnouncementRepository.getAnnou
         refreshProfile();
     }
 
-    
-    public void setAddAnnouncementPanel(AddAnnouncementPanel addAnnouncementPanel) {
-    this.addAnnouncementPanel = addAnnouncementPanel;
+    public void setAddAnnouncementPanel(AddAnnouncementPanel addAnnouncementPanel) 
+    {
+        this.addAnnouncementPanel = addAnnouncementPanel;
     }
     
-    public void addAnnouncementToRepository(String title, String body) {
+    public void addAnnouncementToRepository(String title, String body) 
+    {
         AnnouncementView newAnnouncement = new AnnouncementView(title, body);
         AnnouncementRepository.addAnnouncement(currentDepartment, newAnnouncement);
-        refreshAnnouncements(); // Refresh the display
+        refreshAnnouncements(); 
     }
-
 }

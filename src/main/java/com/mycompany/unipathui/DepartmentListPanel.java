@@ -33,7 +33,6 @@ public class DepartmentListPanel extends JPanel {
     entry(16, "Τμήμα Εργοθεραπείας"),
     entry(17, "Τμήμα Ηλεκτρολόγων Μηχανικών")
     );
-    //τμημα?
     
     public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) {
         this.cardLayout = cardLayout;

@@ -32,7 +32,6 @@ public class AddAnnouncementPanel extends JPanel {
         JPanel annPanel= new JPanel(new GridBagLayout());
         annPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.anchor = GridBagConstraints.WEST;
@@ -81,7 +80,6 @@ public class AddAnnouncementPanel extends JPanel {
         cancel = new JButton("Ακύρωση");
         cancel.setBackground(Color.RED);
         cancel.setForeground(Color.WHITE);
-        //cancel.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
         pressCancelNewAnnouncement(); 
        
         publish = new JButton("Δημοσίευση");
@@ -112,8 +110,9 @@ public class AddAnnouncementPanel extends JPanel {
         
         add(buttonPanel, BorderLayout.SOUTH);
 }
-        public void writeAnnouncement(){
-        }
+        public void writeAnnouncement()
+        {}
+        
         public void postAnnouncement() 
         {
             publish.addActionListener(e -> 
@@ -129,39 +128,23 @@ public class AddAnnouncementPanel extends JPanel {
                         JOptionPane.ERROR_MESSAGE);
                         return;
                 }
-
-                /*// Αποθήκευση της ανακοίνωσης στο map
-                java.util.List<String[]> anns = ProfilePanel.announcementsByDepartment.get(departmentName);
-                if (anns == null) {
-                    anns = new java.util.ArrayList<>();
-                    ProfilePanel.announcementsByDepartment.put(departmentName, anns);
-                }
-                anns.add(new String[]{title, bodyText});*/
-                
-                 AnnouncementView newAnnouncement = new AnnouncementView(title, bodyText);
-            AnnouncementRepository.addAnnouncement(departmentName, newAnnouncement);
+              
+                AnnouncementView newAnnouncement = new AnnouncementView(title, bodyText);
+                AnnouncementRepository.addAnnouncement(departmentName, newAnnouncement);
             
-
                 // clear
                 titleField.setText("");
                 bodyArea.setText("");
 
                 JOptionPane.showMessageDialog(this,
                     "Η ανακοίνωση προστέθηκε με επιτυχία στο "+departmentName+".");
-                   // cardLayout.show(cardPanel, "seeProfileDetails");
-
-                    // refresh
-                    //profilePanel.refreshAnnouncements();
-                    
-                     if (profilePanel != null) {
-                profilePanel.refreshAnnouncements();
-            }
-            cardLayout.show(cardPanel, "profile");
-
-                   
+                    if (profilePanel != null) 
+                    {
+                         profilePanel.refreshAnnouncements();
+                    }
+            cardLayout.show(cardPanel, "profile");      
             });
         }
-        
      
         public void pressCancelNewAnnouncement()
         {
@@ -185,16 +168,18 @@ public class AddAnnouncementPanel extends JPanel {
             });
         }
     
-       public void setDepartmentName(String departmentName) {
-    this.departmentName = departmentName;
-    // Update the department label
-    JPanel contentPanel = (JPanel) getComponent(1);
-    Component[] components = contentPanel.getComponents();
-    for (Component comp : components) {
-        if (comp instanceof JLabel && ((JLabel) comp).getText().startsWith("Τμήμα:")) {
-            ((JLabel) comp).setText("Τμήμα: " + departmentName);
-            break;
+       public void setDepartmentName(String departmentName) 
+       {
+            this.departmentName = departmentName;
+            JPanel contentPanel = (JPanel) getComponent(1);
+            Component[] components = contentPanel.getComponents();
+                for (Component comp : components) 
+                {
+                    if (comp instanceof JLabel && ((JLabel) comp).getText().startsWith("Τμήμα:")) 
+                    {
+                        ((JLabel) comp).setText("Τμήμα: " + departmentName);
+                        break;
+                    }
+                }
         }
-    }
-}
 }

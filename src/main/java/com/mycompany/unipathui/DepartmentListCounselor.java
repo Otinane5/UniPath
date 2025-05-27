@@ -11,6 +11,7 @@ public class DepartmentListCounselor extends JPanel {
     private String selectedDepartment = null; // Αποθήκευση επιλεγμένου τμήματος
     private JButton currentlySelectedButton = null;
     private JPanel departmentPanel;
+    
     // Λίστα τμημάτων
     private List<DepartmentInfo> allDepartments = List.of(
         new DepartmentInfo("Τμήμα Πληροφορικής", "Θετικών Σπουδών", 5000, 12250),
@@ -30,10 +31,12 @@ public class DepartmentListCounselor extends JPanel {
             //leipoun 3 tmhmata
             //"Τμήμα Πολιτικών Επιστημών,"Τμήμα Εργοθεραπείας", "Τμήμα Ηλεκτρολόγων Μηχανικών"
     );
-        private List<DepartmentInfo> filteredDepartments = new ArrayList<>(allDepartments);
+    
+    private List<DepartmentInfo> filteredDepartments = new ArrayList<>(allDepartments);
         
     public DepartmentListCounselor(Runnable onBackToMainMenu, Consumer<String> onShowDepartment, 
-            Runnable onShowFilters) {
+            Runnable onShowFilters) 
+    {
         setLayout(new BorderLayout(10, 10));
 
         // Τίτλος
@@ -48,7 +51,6 @@ public class DepartmentListCounselor extends JPanel {
         refreshDepartmentList();
         
         // Panel για θέση του κουμπιού φίλτρων (πάνω αριστερά)
-        
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         
@@ -76,9 +78,8 @@ public class DepartmentListCounselor extends JPanel {
         // Πίσω στο μενού κουμπί
         JButton backButton = new JButton("Πίσω");
         backButton.setBackground(Color.YELLOW);
-        backButton.addActionListener(e -> {
-            onBackToMainMenu.run(); 
-        });
+        backButton.addActionListener(e -> 
+        { onBackToMainMenu.run(); });
 
         // Κουμπί προβολής τμήματος
         JButton showButton = new JButton("Προβολή Τμήματος");
@@ -91,6 +92,7 @@ public class DepartmentListCounselor extends JPanel {
                 onShowDepartment.accept(selectedDepartment);
             }
         });         
+        
         // Προσθήκη Κουμπιών στο bottom panel
         bottomPanel.add(backButton);
         bottomPanel.add(showButton);
@@ -100,33 +102,37 @@ public class DepartmentListCounselor extends JPanel {
     }
 
     public void applyFilters(String type, String minFeeStr, String maxFeeStr, String minPointsStr){
-         int minFee = minFeeStr.isEmpty() ? Integer.MIN_VALUE : Integer.parseInt(minFeeStr);
-         int maxFee = maxFeeStr.isEmpty() ? Integer.MAX_VALUE : Integer.parseInt(maxFeeStr);
-         int minPoints = minPointsStr.isEmpty() ? Integer.MIN_VALUE : Integer.parseInt(minPointsStr);
+        int minFee = minFeeStr.isEmpty() ? Integer.MIN_VALUE : Integer.parseInt(minFeeStr);
+        int maxFee = maxFeeStr.isEmpty() ? Integer.MAX_VALUE : Integer.parseInt(maxFeeStr);
+        int minPoints = minPointsStr.isEmpty() ? Integer.MIN_VALUE : Integer.parseInt(minPointsStr);
 
-         filteredDepartments = allDepartments.stream()
-              .filter(dept -> (type.equals("Όλα")|| dept.type.equals(type)))
-              .filter(dept -> dept.tuitionFee >= minFee && dept.tuitionFee <= maxFee)
-              .filter(dept -> dept.academicPoints >= minPoints)
-              .toList();
-         refreshDepartmentList();
+        filteredDepartments = allDepartments.stream()
+            .filter(dept -> (type.equals("Όλα")|| dept.type.equals(type)))
+            .filter(dept -> dept.tuitionFee >= minFee && dept.tuitionFee <= maxFee)
+            .filter(dept -> dept.academicPoints >= minPoints)
+            .toList();
+        refreshDepartmentList();
     }
     
     //Προσθήκη κουμπιών κάθε τμήματος και ανάλογα με τα φίλτρα
-    private void refreshDepartmentList(){
+    private void refreshDepartmentList()
+    {
          departmentPanel.removeAll();
          currentlySelectedButton = null;
-         for(DepartmentInfo dept : filteredDepartments){
+         for(DepartmentInfo dept : filteredDepartments)
+         {
             JButton deptButton = new JButton(dept.name);
             deptButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             deptButton.setMaximumSize(new Dimension(400, 40));
-            deptButton.addActionListener(e -> {
-                 selectedDepartment = dept.name;
-                 if(currentlySelectedButton != null){
-                     currentlySelectedButton.setBackground(UIManager.getColor("Button.background"));
-                 }
-                 deptButton.setBackground(Color.LIGHT_GRAY);
-                 currentlySelectedButton = deptButton;
+            deptButton.addActionListener(e -> 
+            {
+                selectedDepartment = dept.name;
+                if(currentlySelectedButton != null)
+                {
+                    currentlySelectedButton.setBackground(UIManager.getColor("Button.background"));
+                }
+                deptButton.setBackground(Color.LIGHT_GRAY);
+                currentlySelectedButton = deptButton;
             });
             departmentPanel.add(Box.createVerticalStrut(10));
             departmentPanel.add(deptButton);
