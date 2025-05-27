@@ -18,7 +18,7 @@ public class ProfilePanel extends JPanel {
 
     
    // public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
-    public static java.util.Map<String, java.util.List<String[]>> announcementsByDepartment = new java.util.HashMap<>();
+    //public static java.util.Map<String, java.util.List<String[]>> announcementsByDepartment = new java.util.HashMap<>();
 
     public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));
@@ -72,10 +72,18 @@ public class ProfilePanel extends JPanel {
         annPanel.add(new JLabel("Ανακοινώσεις"), BorderLayout.WEST);
         JButton addAnnouncement = new JButton("Προσθήκη");
         addAnnouncement.addActionListener(e -> 
-        {addAnnouncementPanel.setDepartmentName(ProfilePanel.currentDepartment);
-
-                cardLayout.show(cardPanel, "addAnnouncement");}
-        );
+            {
+                //addAnnouncementPanel.setDepartmentName(ProfilePanel.currentDepartment);
+                //cardLayout.show(cardPanel, "addAnnouncement");
+                
+                 if (addAnnouncementPanel != null) 
+                {
+                    addAnnouncementPanel.setDepartmentName(ProfilePanel.currentDepartment);
+                }
+                cardLayout.show(cardPanel, "addAnnouncement");
+            
+            });
+        
         annPanel.add(addAnnouncement, BorderLayout.EAST);
         contentPanel.add(annPanel);
         
@@ -156,13 +164,54 @@ public class ProfilePanel extends JPanel {
     {
         announcementPanel.removeAll();
         
-        java.util.List<String[]> anns = announcementsByDepartment.getOrDefault(currentDepartment, new java.util.ArrayList<>());
+        //java.util.List<String[]> anns = announcementsByDepartment.getOrDefault(currentDepartment, new java.util.ArrayList<>());
+       // List<AnnouncementView> announcements = AnnouncementRepository.getAnnouncements(currentDepartment);
+java.util.List<AnnouncementView> announcements = AnnouncementRepository.getAnnouncements(currentDepartment);
 
-    for (String[] ann : anns) {
+         for (AnnouncementView announcement : announcements) {
+            // Create a panel for each announcement to show title and body
+            JPanel annPanel = new JPanel(new BorderLayout());
+            annPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            annPanel.setBackground(Color.WHITE);
+            
+            // Title label with icon
+            JLabel titleLabel = new JLabel("📢 " + announcement.title);
+            titleLabel.setFont(new Font("Arial", Font.BOLD, 12));
+            annPanel.add(titleLabel, BorderLayout.NORTH);
+            
+            // Body text area
+            JTextArea bodyArea = new JTextArea(announcement.body);
+            bodyArea.setLineWrap(true);
+            bodyArea.setWrapStyleWord(true);
+            bodyArea.setEditable(false);
+            bodyArea.setBackground(Color.WHITE);
+            bodyArea.setFont(new Font("Arial", Font.PLAIN, 11));
+            bodyArea.setBorder(BorderFactory.createEmptyBorder(2, 15, 5, 5));
+            annPanel.add(bodyArea, BorderLayout.CENTER);
+            
+            // Add separator line
+            JSeparator separator = new JSeparator();
+            separator.setForeground(Color.LIGHT_GRAY);
+            annPanel.add(separator, BorderLayout.SOUTH);
+            
+            announcementPanel.add(annPanel);
+        }
+        
+        // If no announcements, show a message
+        if (announcements.isEmpty()) {
+            JLabel noAnnouncementsLabel = new JLabel("Δεν υπάρχουν ανακοινώσεις για αυτό το τμήμα.");
+            noAnnouncementsLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+            noAnnouncementsLabel.setForeground(Color.GRAY);
+            noAnnouncementsLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            announcementPanel.add(noAnnouncementsLabel);
+        }
+    /*for (String[] ann : anns) {
         JLabel annLabel = new JLabel(" 📢 " + ann[0] + ": " + ann[1]);
         annLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         announcementPanel.add(annLabel);
-    }
+    }*/
+    
+    
 
         announcementPanel.revalidate();
         announcementPanel.repaint();
@@ -185,6 +234,12 @@ public class ProfilePanel extends JPanel {
     
     public void setAddAnnouncementPanel(AddAnnouncementPanel addAnnouncementPanel) {
     this.addAnnouncementPanel = addAnnouncementPanel;
-}
+    }
+    
+    public void addAnnouncementToRepository(String title, String body) {
+        AnnouncementView newAnnouncement = new AnnouncementView(title, body);
+        AnnouncementRepository.addAnnouncement(currentDepartment, newAnnouncement);
+        refreshAnnouncements(); // Refresh the display
+    }
 
 }

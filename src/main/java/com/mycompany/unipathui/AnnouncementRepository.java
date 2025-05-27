@@ -84,6 +84,8 @@ public class AnnouncementRepository {
         /* departmentAnnouncements.put("Τμήμα Λογοθεραπείας", List.of(
             new AnnouncementView("Ανακοίνωση Λογοθεραπείας 1", "Περιεχόμενο Λογοθεραπείας 1")
          )); */
+        
+        //ola ta tmhmata
          
      }
      

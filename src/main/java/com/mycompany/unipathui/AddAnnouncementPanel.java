@@ -13,9 +13,8 @@ public class AddAnnouncementPanel extends JPanel {
     private JButton publish;
 private ProfilePanel profilePanel;
 private JButton cancel;
-
-    
     private JLabel departmentLabel;
+    
     public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) {
         
         this.cardLayout = cardLayout;
@@ -33,6 +32,7 @@ private JButton cancel;
         // Main announcement panel
         JPanel annPanel= new JPanel(new GridBagLayout());
         annPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -132,13 +132,17 @@ private JButton cancel;
                         return;
                 }
 
-                // Αποθήκευση της ανακοίνωσης στο map
+                /*// Αποθήκευση της ανακοίνωσης στο map
                 java.util.List<String[]> anns = ProfilePanel.announcementsByDepartment.get(departmentName);
                 if (anns == null) {
                     anns = new java.util.ArrayList<>();
                     ProfilePanel.announcementsByDepartment.put(departmentName, anns);
                 }
-                anns.add(new String[]{title, bodyText});
+                anns.add(new String[]{title, bodyText});*/
+                
+                 AnnouncementView newAnnouncement = new AnnouncementView(title, bodyText);
+            AnnouncementRepository.addAnnouncement(departmentName, newAnnouncement);
+            
 
                 // clear
                 titleField.setText("");
@@ -146,18 +150,17 @@ private JButton cancel;
 
                 JOptionPane.showMessageDialog(this,
                     "Η ανακοίνωση προστέθηκε με επιτυχία στο "+departmentName+".");
-                    cardLayout.show(cardPanel, "seeProfileDetails");
+                   // cardLayout.show(cardPanel, "seeProfileDetails");
 
                     // refresh
-                    profilePanel.refreshAnnouncements();
+                    //profilePanel.refreshAnnouncements();
+                    
+                     if (profilePanel != null) {
+                profilePanel.refreshAnnouncements();
+            }
+            cardLayout.show(cardPanel, "profile");
 
-                    /*for (Component comp : cardPanel.getComponents()) 
-                    {
-                        if (comp instanceof ProfilePanel) 
-                        {
-                            ((ProfilePanel) comp).refreshAnnouncements();
-                        }
-                    }*/
+                   
             });
         }
         
@@ -184,12 +187,16 @@ private JButton cancel;
             });
         }
     
-        public void setDepartmentName(String departmentName) 
-        {
-            this.departmentName = departmentName;
-        departmentLabel.setText(departmentName); 
-
-            //this.originalDescription = Description.getDepartmentDescription(departmentName);
-        //descriptionArea.setText(originalDescription);
+       public void setDepartmentName(String departmentName) {
+    this.departmentName = departmentName;
+    // Update the department label
+    JPanel contentPanel = (JPanel) getComponent(1);
+    Component[] components = contentPanel.getComponents();
+    for (Component comp : components) {
+        if (comp instanceof JLabel && ((JLabel) comp).getText().startsWith("Τμήμα:")) {
+            ((JLabel) comp).setText("Τμήμα: " + departmentName);
+            break;
         }
+    }
+}
 }
