@@ -109,7 +109,12 @@ public class Message {
                "Ημερομηνία: " + getFormattedTimestamp() + "\n\n" +
                content;
     }
-
+    
+    //Method to send Accepting Message to Student
+    public void sendAcceptingMessageToStudent(){}
+    //Method to send Rejecting Message to Student
+    public void sendRejectingMessageToStudent(){}
+    
     @Override
     public String toString() {
         return getDisplayTitle();

@@ -14,7 +14,6 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
     private final JPanel appointmentsListPanel = new JPanel();
     private final JButton viewDetailsButton = new JButton("Προβολή Λεπτομερειών");
     private Appointment selectedAppointment = null;
-    //private final Counselor currentCounselor= new Counselor();
     private final Counselor currentCounselor;
     //CONSTRUCTOR
     public CounselorAppointmentRequestsPanel(CardLayout cardLayout, JPanel cardPanel, CounselorAppointmentDetailsPanel detailsPanel, Counselor loggedInCounselor) {
@@ -32,6 +31,7 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
 
         JScrollPane scrollPane = new JScrollPane(appointmentsListPanel);
         add(scrollPane, BorderLayout.CENTER);
+        loadAppointments(appointmentsListPanel);        
         
         // Making of the view Details Button
         viewDetailsButton.addActionListener(e -> {
@@ -44,9 +44,9 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
                 JOptionPane.showMessageDialog(this, "Το ραντεβού δεν είναι πλέον εκκρεμές.", "Μη διαθέσιμη ενέργεια", JOptionPane.WARNING_MESSAGE);
             }
         });
+        
         // --- BOTTOM PANEL ---
         viewDetailsButton.setEnabled(false); // enabled only when a line is chosen
-        loadAppointments(appointmentsListPanel);        
         
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         JButton backToMain = new JButton("Αρχική Σελίδα");

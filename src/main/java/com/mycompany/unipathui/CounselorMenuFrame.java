@@ -5,7 +5,7 @@ import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
 
-//Frame of Counselor's Menu: shows the menu with the
+//Frame for Counselor's Menu: shows the menu with the
 //choices a counselor can make in our application.
 
 public class CounselorMenuFrame extends JFrame {
@@ -134,11 +134,14 @@ public class CounselorMenuFrame extends JFrame {
         add(bottomPanel, BorderLayout.SOUTH);
 
         // --- PANELS --- 
+        //Panels for the Profile
         CounselorProfilePanel profilePanel = new CounselorProfilePanel(
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "editProfile")
         );
+        CounselorEditProfilePanelUI editPanel = new CounselorEditProfilePanelUI(cardLayout, cardPanel, profilePanel);
         
+        //Panels for the Department
         DepartmentListCounselor deplistPanel = new DepartmentListCounselor(
                 () -> cardLayout.show(cardPanel, "menu"),
                 (String departmentName) -> showDepartmentProfile(departmentName),
@@ -155,12 +158,13 @@ public class CounselorMenuFrame extends JFrame {
                 }
         );
         
+        //Panels for the Appointments
         CounselorAcceptAppointmentPanel acceptPanel = new CounselorAcceptAppointmentPanel(cardLayout, cardPanel);
         CounselorRejectAppointmentPanel rejectPanel = new CounselorRejectAppointmentPanel(cardLayout, cardPanel);
         CounselorAppointmentDetailsPanel detailsPanel = new CounselorAppointmentDetailsPanel(cardLayout, cardPanel, acceptPanel, rejectPanel);
         CounselorAppointmentRequestsPanel appointmentPanel = new CounselorAppointmentRequestsPanel(cardLayout, cardPanel, detailsPanel, loggedInCounselor);
-        CounselorEditProfilePanelUI editPanel = new CounselorEditProfilePanelUI(cardLayout, cardPanel, profilePanel);
         
+        //Add all the panels
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(appointmentPanel, "appointments");
         cardPanel.add(detailsPanel, "appointmentDetails");
@@ -168,7 +172,6 @@ public class CounselorMenuFrame extends JFrame {
         cardPanel.add(rejectPanel, "rejectAppointment");
         cardPanel.add(editPanel, "editProfile");
         cardPanel.add(profilePanel, "profile");
-        
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(filterPanel, "setFilters");
         
