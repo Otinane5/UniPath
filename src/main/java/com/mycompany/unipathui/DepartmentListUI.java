@@ -94,7 +94,6 @@ public class DepartmentListUI extends JPanel {
             if (selectedDepartment == null) {
                 JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε ένα τμήμα πρώτα.");
             } else {
-                Application_FormUI.uniName = selectedDepartment;
                 onApplicationForm.run();
             }
         });
