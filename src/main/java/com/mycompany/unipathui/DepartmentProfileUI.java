@@ -6,11 +6,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.List;
+import com.mycompany.baseClasses.Description; 
 
-public class DepartmentProfileUI extends JPanel{   
+public class DepartmentProfileUI extends JPanel
+{   
+    //private static final Map<String, String> departmentDescriptions = new HashMap<>();
+        
     //Στατική ανάθεση περιγραφών τμημάτων
-    private static final Map<String, String> departmentDescriptions = new HashMap<>();
-    static {
+    /*static {
+        //ΟΛΑ ΑΥΤΑ ΕΜΦΑΝΙΖΟΝΤΑΙ ΣΤΟ ΠΕΡΙΒΑΛΛΟΝ ΤΟΥ ΜΑΘΗΤΗ
         departmentDescriptions.put("Τμήμα Πληροφορικής", "Το τμήμα πληροφορικής ιδρύθηκε το...");
         departmentDescriptions.put("Τμήμα Μηχανικών Υπολογιστών", "Το τμήμα Μηχανικών Υπολογιστών ιδρύθηκε το...");
         departmentDescriptions.put("Τμήμα Νομικής", "Η Νομική ιδρύθηκε...");
@@ -25,10 +29,11 @@ public class DepartmentProfileUI extends JPanel{
         departmentDescriptions.put("Τμήμα Μαθηματικών", "Το τμήμα Μαθηματικών προσφέρει στους αποφοίτους του...");
         departmentDescriptions.put("Τμήμα Χημικών Μηχανικών", "Το τμήμα Χημικών Μηχανικών προσφέρει στους αποφοίτους του...");
         departmentDescriptions.put("Τμήμα Λογοθεραπείας", "Το νεοσύστατο τμήμα Λογοθεραπείας..");       
-    }
+    }*/
     
     public DepartmentProfileUI(String departmentName, Runnable onGoBack, 
         Runnable onBackToMenu, BiConsumer<String, List<AnnouncementView>> onViewAnnouncement){
+       
         setLayout(new BorderLayout(10, 10));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
@@ -40,9 +45,11 @@ public class DepartmentProfileUI extends JPanel{
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
  
-        String description = departmentDescriptions.getOrDefault(departmentName,
-            "Δεν υπάρχουν διαθέσιμες πληροφορίες για αυτό το τμήμα.");
+        //String description = departmentDescriptions.getOrDefault(departmentName,
+          //  "Δεν υπάρχουν διαθέσιμες πληροφορίες για αυτό το τμήμα.");
         
+        String description = Description.getDepartmentDescription(departmentName);
+
         JTextArea infoArea = new JTextArea(description);
         infoArea.setLineWrap(true);
         infoArea.setWrapStyleWord(true);
