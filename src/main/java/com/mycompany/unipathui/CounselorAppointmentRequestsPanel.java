@@ -1,6 +1,7 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Appointment;
+import com.mycompany.baseClasses.Counselor;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -13,8 +14,11 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
     private final JPanel appointmentsListPanel = new JPanel();
     private final JButton viewDetailsButton = new JButton("Προβολή Λεπτομερειών");
     private Appointment selectedAppointment = null;
+    //private final Counselor currentCounselor= new Counselor();
+    private final Counselor currentCounselor;
     //CONSTRUCTOR
-    public CounselorAppointmentRequestsPanel(CardLayout cardLayout, JPanel cardPanel, CounselorAppointmentDetailsPanel detailsPanel) {
+    public CounselorAppointmentRequestsPanel(CardLayout cardLayout, JPanel cardPanel, CounselorAppointmentDetailsPanel detailsPanel, Counselor loggedInCounselor) {
+        this.currentCounselor = loggedInCounselor;
         setLayout(new BorderLayout(10, 10));
         
         // --- TOP OF THE PANEL ---
@@ -62,7 +66,7 @@ public class CounselorAppointmentRequestsPanel extends JPanel {
     //and shows in a list the name, the status and the field of interest os students who want to
     //communicate with a counselor (if there are no appointments, it shows nothing).
     private void loadAppointments(JPanel panel) {
-        List<Appointment> appointments = Appointment.appointmentsForCounselor;
+        List<Appointment> appointments = Appointment.appointmentsForCounselor.stream().filter(app -> app.counselorUsername.equals(currentCounselor.userName)).toList();
 
         if (appointments.isEmpty()) {
             JLabel emptyLabel = new JLabel("Δεν υπάρχουν διαθέσιμα ραντεβού.");

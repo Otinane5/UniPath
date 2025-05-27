@@ -9,11 +9,8 @@ import java.util.List;
 public class CounselorProfilePanel extends JPanel {
     //ATTRIBUTES
     public static Counselor CounselorToDisplay = new Counselor(); // This needs to be set before use
-    private JLabel nameValueLabel;
-    private JLabel lastNameValueLabel;
-    private JLabel emailValueLabel;
-    private JLabel phoneValueLabel;
-    private JTextArea bioTextArea;
+    private final JLabel nameValueLabel, lastNameValueLabel, emailValueLabel, phoneValueLabel;
+    private final JTextArea bioTextArea;
     //CONSTRUCTOR
     public CounselorProfilePanel(Runnable onBackToMainMenu, Runnable onEditProfile) {
         setLayout(new BorderLayout(10, 10));

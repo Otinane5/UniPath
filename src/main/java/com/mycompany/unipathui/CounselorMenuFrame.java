@@ -1,5 +1,6 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Counselor;
 import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
@@ -13,8 +14,11 @@ public class CounselorMenuFrame extends JFrame {
     private CardLayout cardLayout;
     private DepartmentProfileUI depProfilePanel;
     private AnnouncementUI announcementPanel;
+    private Counselor loggedInCounselor;
     //CONSTRUCTOR
-    public CounselorMenuFrame() {
+    public CounselorMenuFrame(Counselor counselor) {
+        this.loggedInCounselor = counselor;
+        
         setTitle("UniPath - Σύμβουλος");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
@@ -154,7 +158,7 @@ public class CounselorMenuFrame extends JFrame {
         CounselorAcceptAppointmentPanel acceptPanel = new CounselorAcceptAppointmentPanel(cardLayout, cardPanel);
         CounselorRejectAppointmentPanel rejectPanel = new CounselorRejectAppointmentPanel(cardLayout, cardPanel);
         CounselorAppointmentDetailsPanel detailsPanel = new CounselorAppointmentDetailsPanel(cardLayout, cardPanel, acceptPanel, rejectPanel);
-        CounselorAppointmentRequestsPanel appointmentPanel = new CounselorAppointmentRequestsPanel(cardLayout, cardPanel, detailsPanel);
+        CounselorAppointmentRequestsPanel appointmentPanel = new CounselorAppointmentRequestsPanel(cardLayout, cardPanel, detailsPanel, loggedInCounselor);
         CounselorEditProfilePanelUI editPanel = new CounselorEditProfilePanelUI(cardLayout, cardPanel, profilePanel);
         
         cardPanel.add(menuPanel, "menu");

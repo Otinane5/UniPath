@@ -95,7 +95,7 @@ public class CounselorLoginPanel extends JPanel {
         if (myUser != null && myUser.userType==2) {
             Unipath.currentUser = myUser;
             CounselorProfilePanel.CounselorToDisplay = (Counselor) myUser;
-            new CounselorMenuFrame().setVisible(true);
+            new CounselorMenuFrame((Counselor) myUser).setVisible(true);
             SwingUtilities.getWindowAncestor(this).dispose();
         }
         else {

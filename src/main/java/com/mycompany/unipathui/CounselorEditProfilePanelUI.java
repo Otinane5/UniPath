@@ -107,7 +107,7 @@ public class CounselorEditProfilePanelUI extends JPanel {
                     counselor.phoneNum = newPhone;
                     counselor.bio = newBio;
                     
-                    profilePanel.refresh(); // <--- Εδώ ανανεώνεται το πάνελ!
+                    profilePanel.refresh(); // Update the panel to show the new info
                     JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                     cardLayout.show(cardPanel, "profile");
                     //onSave.run(); // ή αποθήκευση σε μεταβλητές ή ΒΔ

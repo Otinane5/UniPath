@@ -21,7 +21,10 @@ public class User {
     public static void init() {
         sample.add(new User("s1", 1, "sampleUniversity"));     
         sample.add(new User("s3", 3, "sampleStudent"));   
-        sample.add(new User("pass4", 3, "nvasileiou"));    
+        //sample.add(new User("pass4", 3, "nvasileiou"));
+        //ο λόγος που το έβαλα σε σχόλια είναι επειδή εδώ
+        //είναι 3, δηλαδή μαθητής, αλλά στον κώδικα και στην
+        //κλάση για τον σύμβουλο, τον έχουμε ως σύμβουλο
     }
     
     
