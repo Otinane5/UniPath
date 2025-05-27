@@ -11,14 +11,17 @@ public class AddAnnouncementPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel cardPanel;
     private JButton publish;
+private ProfilePanel profilePanel;
 
     
     private JLabel departmentLabel;
-    public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel) {
+    public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) {
         
         this.cardLayout = cardLayout;
         this.cardPanel = cardPanel;
+    this.profilePanel = profilePanel;
 
+    
         setLayout(new BorderLayout(10, 10));
         
         // Title label
@@ -38,7 +41,8 @@ public class AddAnnouncementPanel extends JPanel {
         gbc.gridy = 0;
         
         // Department
-        JLabel departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER);
+        //JLabel 
+            departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER);
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
@@ -80,15 +84,13 @@ public class AddAnnouncementPanel extends JPanel {
         cancel.setForeground(Color.WHITE);
         cancel.addActionListener(e -> cardLayout.show(cardPanel, "seeProfileDetails"));
         
-        /* cancel.addActionListener(e -> {
+        cancel.addActionListener(e -> {
             // Clear fields when canceling
             titleField.setText("");
             bodyArea.setText("");
             cardLayout.show(cardPanel, "seeProfileDetails");
         });
-        maybe
-        */
-        
+       
         publish = new JButton("Δημοσίευση");
         publish.setBackground(Color.GREEN);
         
@@ -152,13 +154,15 @@ public class AddAnnouncementPanel extends JPanel {
                     cardLayout.show(cardPanel, "seeProfileDetails");
 
                     // refresh
-                    for (Component comp : cardPanel.getComponents()) 
+                    profilePanel.refreshAnnouncements();
+
+                    /*for (Component comp : cardPanel.getComponents()) 
                     {
                         if (comp instanceof ProfilePanel) 
                         {
                             ((ProfilePanel) comp).refreshAnnouncements();
                         }
-                    }
+                    }*/
             });
         }
         
@@ -168,7 +172,7 @@ public class AddAnnouncementPanel extends JPanel {
     public void setDepartmentName(String departmentName) 
     {
         this.departmentName = departmentName;
-        departmentLabel.setText(departmentName); 
+    departmentLabel.setText(departmentName); 
         
         //this.originalDescription = Description.getDepartmentDescription(departmentName);
     //descriptionArea.setText(originalDescription);

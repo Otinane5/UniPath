@@ -15,25 +15,26 @@ public class DepartmentListPanel extends JPanel {
     private ProfilePanel profilePanel;
     
     public static final Map<Integer, String> departments = Map.ofEntries(
-    entry(1, "Πληροφορικής"),
-    entry(2, "Μηχανικών Υπολογιστών"),
-    entry(3, "Νομικής"),
-    entry(4, "Ιατρικής"),
-    entry(5, "Ψυχολογίας"),
-    entry(6, "Καλών Τεχνών"),
-    entry(7, "Φιλοσοφίας"),
-    entry(8, "Φιλολογίας"),
-    entry(9, "Διοίκησης Επιχειρήσεων"),
-    entry(10, "Οικονομικών"),
-    entry(11, "Φαρμακευτικής"),
-    entry(12, "Μαθηματικών"),
-    entry(13, "Χημικών Μηχανικών"),
-    entry(14, "Λογοθεραπείας"),
-    entry(15, "Πολιτικών Επιστημών"),
-    entry(16, "Εργοθεραπείας"),
-    entry(17, "Ηλεκτρολόγων Μηχανικών")
+    entry(1, "Τμήμα Πληροφορικής"),
+    entry(2, "Τμήμα Μηχανικών Υπολογιστών"),
+    entry(3, "Τμήμα Νομικής"),
+    entry(4, "Τμήμα Ιατρικής"),
+    entry(5, "Τμήμα Ψυχολογίας"),
+    entry(6, "Τμήμα Καλών Τεχνών"),
+    entry(7, "Τμήμα Φιλοσοφίας"),
+    entry(8, "Τμήμα Φιλολογίας"),
+    entry(9, "Τμήμα Διοίκησης Επιχειρήσεων"),
+    entry(10, "Τμήμα Οικονομικών"),
+    entry(11, "Τμήμα Φαρμακευτικής"),
+    entry(12, "Τμήμα Μαθηματικών"),
+    entry(13, "Τμήμα Χημικών Μηχανικών"),
+    entry(14, "Τμήμα Λογοθεραπείας"),
+    entry(15, "Τμήμα Πολιτικών Επιστημών"),
+    entry(16, "Τμήμα Εργοθεραπείας"),
+    entry(17, "Τμήμα Ηλεκτρολόγων Μηχανικών")
     );
-
+    //τμημα?
+    
     public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) {
         this.cardLayout = cardLayout;
         this.cardPanel = cardPanel;
@@ -120,8 +121,10 @@ public class DepartmentListPanel extends JPanel {
     public void selectDepartment(JPanel departmentPanel, String department, JPanel listPanel) 
     {
         departmentPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        departmentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        departmentPanel.addMouseListener(new java.awt.event.MouseAdapter() 
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt) 
+            {
                 selectedDepartment = department;
                 viewProfileButton.setEnabled(true);
                 highlightSelectedPanel(listPanel, departmentPanel);

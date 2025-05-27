@@ -14,7 +14,7 @@ public class ProfilePanel extends JPanel {
     private JPanel descPanel;
     private JLabel departmentLabel;
     private ProfilePanel profilePanel;
-    private AddAnnouncementPanel addAnnouncementPanel;
+    public AddAnnouncementPanel addAnnouncementPanel;
 
     
    // public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
@@ -181,5 +181,10 @@ public class ProfilePanel extends JPanel {
         currentDescription = description;
         refreshProfile();
     }
+
+    
+    public void setAddAnnouncementPanel(AddAnnouncementPanel addAnnouncementPanel) {
+    this.addAnnouncementPanel = addAnnouncementPanel;
+}
 
 }

@@ -116,10 +116,12 @@ public class UniversityMainMenu extends JFrame {
         // --- Panels --- 
         StudentApplicationsPanel applicationsPanel = new StudentApplicationsPanel(cardLayout, cardPanel);
         ProfilePanel profilePanel = new ProfilePanel(cardLayout, cardPanel);
-                DepartmentListPanel deplistPanel = new DepartmentListPanel(cardLayout, cardPanel,profilePanel);
-
+        DepartmentListPanel deplistPanel = new DepartmentListPanel(cardLayout, cardPanel,profilePanel);
         EditDescriptionPanel editDesc = new EditDescriptionPanel(cardLayout, cardPanel,ProfilePanel.currentDepartment);
-        AddAnnouncementPanel addAnnoun = new AddAnnouncementPanel(cardLayout, cardPanel); //,departmentName
+        AddAnnouncementPanel addAnnouncementPanel = new AddAnnouncementPanel(cardLayout, cardPanel, profilePanel);
+
+        profilePanel.setAddAnnouncementPanel(addAnnouncementPanel);
+
         FilteredListScreen filteredListScreen = new FilteredListScreen(cardLayout, cardPanel);
         ChooseFiltersScreen chooseFilt = new ChooseFiltersScreen(cardLayout, cardPanel,filteredListScreen);
         
@@ -128,7 +130,9 @@ public class UniversityMainMenu extends JFrame {
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(profilePanel, "seeProfileDetails");
         cardPanel.add(editDesc, "editUniDesc");
-        cardPanel.add(addAnnoun, "addAnnouncement");
+        //cardPanel.add(addAnnoun, "addAnnouncement");
+        cardPanel.add(addAnnouncementPanel, "addAnnouncement");
+
         cardPanel.add(chooseFilt, "chooseFilters");
         cardPanel.add(filteredListScreen, "filteredList");
 

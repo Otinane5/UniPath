@@ -7,7 +7,8 @@ public class Description
 {
     private static final Map<String, String> departmentDescriptions = new HashMap<>();
     
-    static {
+    static 
+    {
         //ΟΛΑ ΑΥΤΑ ΕΜΦΑΝΙΖΟΝΤΑΙ ΣΤΟ ΠΕΡΙΒΑΛΛΟΝ ΤΟΥ ΜΑΘΗΤΗ. πρέπει να εμφανιζονται και στο πανεπιστημιο
         departmentDescriptions.put("Τμήμα Πληροφορικής", "Το τμήμα πληροφορικής ιδρύθηκε το...");
         departmentDescriptions.put("Τμήμα Μηχανικών Υπολογιστών", "Το τμήμα Μηχανικών Υπολογιστών ιδρύθηκε το...");
@@ -22,20 +23,25 @@ public class Description
         departmentDescriptions.put("Τμήμα Φαρμακευτικής", "Η Φαρμακευτική προσφέρει στους αποφοίτους του...");
         departmentDescriptions.put("Τμήμα Μαθηματικών", "Το τμήμα Μαθηματικών προσφέρει στους αποφοίτους του...");
         departmentDescriptions.put("Τμήμα Χημικών Μηχανικών", "Το τμήμα Χημικών Μηχανικών προσφέρει στους αποφοίτους του...");
-        departmentDescriptions.put("Τμήμα Λογοθεραπείας", "Το νεοσύστατο τμήμα Λογοθεραπείας..");       
-    }
+        departmentDescriptions.put("Τμήμα Λογοθεραπείας", "Το νεοσύστατο τμήμα Λογοθεραπείας...");
+        departmentDescriptions.put("Τμήμα Πολιτικών Επιστημών", "Οι Πολιτικές Επιστήμες σήμερα...");       
+        departmentDescriptions.put("Τμήμα Εργοθεραπείας", "Το νεοσύστατο τμήμα Εργοθεραπείας...");       
+        departmentDescriptions.put("Τμήμα Ηλεκτρολόγων Μηχανικών", "Το τμήμα Ηλεκτρολόγων Μηχανικών ανήκει στο Πολυτεχνείο...");       
 
-    public static String getDepartmentDescription(String departmentName) {
+    }    
+    
+    public static String getDepartmentDescription(String departmentName) 
+    {
         return departmentDescriptions.getOrDefault(departmentName, "Δεν υπάρχει περιγραφή για το τμήμα.");
     }
 
-    public static void setDepartmentDescription(String departmentName, String newDescription) {
+    public static void setDepartmentDescription(String departmentName, String newDescription)
+    {
         departmentDescriptions.put(departmentName, newDescription);
     }
 
-    public static Map<String, String> getAllDescriptions() {
+    public static Map<String, String> getAllDescriptions() 
+    {
         return departmentDescriptions;
-    }
-
-    
+    } 
 }
