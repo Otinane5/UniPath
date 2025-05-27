@@ -31,6 +31,8 @@ public class DepartmentListUI extends JPanel {
         new DepartmentInfo("Τμήμα Μαθηματικών", "Θετικών Σπουδών", 8000, 13456),
         new DepartmentInfo("Τμήμα Χημικών Μηχανικών", "Πολυτεχνικών Σπουδών", 10500, 15672),
         new DepartmentInfo("Τμήμα Λογοθεραπείας", "Σπουδών Υγείας", 12000, 14860)
+        //leipoun 3 tmhmata sto telos
+        // "Τμήμα Πολιτικών Επιστημών,"Τμήμα Εργοθεραπείας", "Τμήμα Ηλεκτρολόγων Μηχανικών"
     );
     private List<DepartmentInfo> filteredDepartments = new ArrayList<>(allDepartments);
 
