@@ -8,7 +8,7 @@ public class ProfilePanel extends JPanel {
     private JTextArea descriptionArea;
     
     public static String currentDescription = "Περιγραφή...";
-    public static String currentDepartment = "Τμήμα ...";
+    public static String currentDepartment = "Τμήμα ..."; //!!!!!!!!
     
     private JPanel contentPanel;
     private JPanel descPanel;
@@ -151,6 +151,7 @@ public class ProfilePanel extends JPanel {
     }
     
     //new method
+    //is it used? μετά τον συγχρονισμό ανακοινώσεων?
     public void refreshAnnouncements() 
     {
         announcementPanel.removeAll();

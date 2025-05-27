@@ -8,10 +8,10 @@ import java.awt.*;
 public class EditDescriptionPanel extends JPanel {
 
     private JTextArea descriptionArea;
-    //private String originalDescription= "Περιγραφή...";
     private String originalDescription;
     private JLabel seeProfileLabel;
 private String departmentName;
+private JLabel departmentLabel;
 
     public EditDescriptionPanel(CardLayout cardLayout, JPanel cardPanel,String departmentName) {
         setLayout(new BorderLayout(10, 10));
@@ -28,8 +28,8 @@ private String departmentName;
         editPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // padding
         
         // Department
-        JLabel departmentLabel = new JLabel(departmentName, SwingConstants.CENTER); 
-
+        //JLabel departmentLabel = new JLabel(departmentName, SwingConstants.CENTER); 
+        departmentLabel = new JLabel(departmentName, SwingConstants.CENTER);
         //JLabel departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER);
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
@@ -43,6 +43,8 @@ private String departmentName;
         editPanel.add(descriptionLabel);
         
         //JTextArea descriptionArea= new JTextArea("Περιγραφή...");
+        originalDescription = Description.getDepartmentDescription(departmentName);
+
         descriptionArea = new JTextArea(originalDescription);
         descriptionArea.setLineWrap(true);
         descriptionArea.setWrapStyleWord(true);
@@ -77,6 +79,8 @@ private String departmentName;
         
         add(editPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+        
+        //setDepartmentName(departmentName); call!!!
     }
     
     //public void openEditDescriptionWindow(){}
@@ -104,22 +108,24 @@ private String departmentName;
                 originalDescription = newDescription;
                 Description.setDepartmentDescription(departmentName, newDescription);
 
-                ProfilePanel.currentDescription = newDescription;          
+                //ProfilePanel.currentDescription = newDescription;          
                 
                 Component profileComp = null;
                 for (Component comp : cardPanel.getComponents()) 
                 {
                     if (comp instanceof ProfilePanel) 
                     {
-                        profileComp = comp;
+                        //profileComp = comp;
+                        ((ProfilePanel) comp).updateDescription(newDescription);
+
                         break;
                     }
                 }
 
-                if (profileComp != null) 
+               /* if (profileComp != null) 
                 {
                     ((ProfilePanel) profileComp).updateDescription(newDescription);
-                }
+                }*/
 
                 JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                 cardLayout.show(cardPanel, "seeProfileDetails");    
@@ -153,6 +159,10 @@ private String departmentName;
         this.departmentName = departmentName;
         originalDescription = Description.getDepartmentDescription(departmentName);
         descriptionArea.setText(originalDescription);
+        //departmentLabel.setText(departmentName); 
+if (departmentLabel != null) {
+        departmentLabel.setText(departmentName);  
+    }
     }
 
 }
