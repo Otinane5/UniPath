@@ -1,5 +1,6 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Student;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -155,6 +156,8 @@ public class QuizUI extends JPanel {
                         "Επιβεβαίωση Υποβολής Quiz",
                         JOptionPane.YES_NO_OPTION);
                 if(result == JOptionPane.YES_OPTION){
+                    Student.answerLog = answerLog;
+                    Student.hasAnswerLog = true;
                     onFinishQuiz.run();
                 }
             }
