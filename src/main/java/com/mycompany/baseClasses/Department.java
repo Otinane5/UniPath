@@ -11,22 +11,22 @@ public class Department {
     public String description;
     public List<Announcement> announcements;
 
-    public Department(int id) {
+    public Department(int id) 
+    {
         this.id=id;
         this.name = name;
         this.description = "Περιγραφή για το τμήμα " + name;
         this.announcements = new ArrayList<>();
     }
 
-    public void updateDescription(String description) {
+    public void updateDescription(String description) 
+    {
                 this.description = description;
-
-
     }
 
-    public void addAnnouncement(Announcement announcement) {
+    public void addAnnouncement(Announcement announcement) 
+    {
             announcements.add(announcement);
-
     }
     
     

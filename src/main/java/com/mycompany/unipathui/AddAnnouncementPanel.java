@@ -24,7 +24,7 @@ public class AddAnnouncementPanel extends JPanel {
         setLayout(new BorderLayout(10, 10));
         
         // Title label
-        JLabel titleLabel = new JLabel("Προσθήκη Νέας Ανακοίνωσης Τμήματος", SwingConstants.CENTER); //onoma tmhmatos
+        JLabel titleLabel = new JLabel("Προσθήκη Νέας Ανακοίνωσης", SwingConstants.CENTER); //onoma tmhmatos
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         add(titleLabel, BorderLayout.NORTH);
         
@@ -40,7 +40,8 @@ public class AddAnnouncementPanel extends JPanel {
         gbc.gridy = 0;
         
         // Department
-        departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER); //na deixnei poio tmhma einai
+        //jlabel
+        departmentLabel= new JLabel("Όνομα Τμήματος:"+departmentName, SwingConstants.CENTER); //na deixnei poio tmhma einai
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
@@ -142,7 +143,8 @@ public class AddAnnouncementPanel extends JPanel {
                     {
                          profilePanel.refreshAnnouncements();
                     }
-            cardLayout.show(cardPanel, "profile");      
+                //cardLayout.show(cardPanel, "profile");
+                cardLayout.show(cardPanel, "seeProfileDetails");
             });
         }
      
@@ -171,6 +173,7 @@ public class AddAnnouncementPanel extends JPanel {
        public void setDepartmentName(String departmentName) 
        {
             this.departmentName = departmentName;
+            departmentLabel.setText(departmentName);
             JPanel contentPanel = (JPanel) getComponent(1);
             Component[] components = contentPanel.getComponents();
                 for (Component comp : components) 

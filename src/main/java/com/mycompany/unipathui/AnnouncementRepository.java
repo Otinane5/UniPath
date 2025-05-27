@@ -114,8 +114,8 @@ public class AnnouncementRepository {
         
      }
      
-     public static List<AnnouncementView> getAnnouncements(String departmentName){
-         //return departmentAnnouncements.getOrDefault(departmentName, List.of());
+     public static List<AnnouncementView> getAnnouncements(String departmentName)
+     {
          return departmentAnnouncements.getOrDefault(departmentName, new ArrayList<>());
      }
      
