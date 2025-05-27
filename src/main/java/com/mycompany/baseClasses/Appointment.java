@@ -25,19 +25,19 @@ public class Appointment {
 
     public static void init() {
         appointmentsForCounselor.clear(); // optional: reset on re-init
-        appointmentsForCounselor.add(new Appointment("Σοφία Ιωάννου", "6941234567", "maria@example.com", "Πληροφορική", "sampleCounselor"));
-        appointmentsForCounselor.add(new Appointment("Γιάννης Παπαδόπουλος", "6971111111", "giannis@example.com", "Μηχανικών Υπολογιστών", "sampleCounselor"));
-        appointmentsForCounselor.add(new Appointment("Άννα Λεωνίδα", "6987654321", "anna@example.com", "Νομική, Ψυχολογία", "sampleCounselor"));
-        appointmentsForCounselor.add(new Appointment("Ευαγγελία Καραντάση", "6922222222", "georgia@example.com", "Ιατρική", "sampleCounselor"));
+        appointmentsForCounselor.add(new Appointment("Σοφία Ιωάννου", "6941234567", "maria@example.com", "Θετικών Σπουδών", "sampleCounselor"));
+        appointmentsForCounselor.add(new Appointment("Γιάννης Παπαδόπουλος", "6971111111", "giannis@example.com", "Πολυτεχνικών Σπουδών", "sampleCounselor"));
+        appointmentsForCounselor.add(new Appointment("Άννα Λεωνίδα", "6987654321", "anna@example.com", "Ανθρωπιστικών Σπουδών", "sampleCounselor"));
+        appointmentsForCounselor.add(new Appointment("Ευαγγελία Καραντάση", "6922222222", "georgia@example.com", "Σπουδών Υγείας", "sampleCounselor"));
         
-        appointmentsForCounselor.add(new Appointment("Νίκος Παπαχρήστου", "6988888888", "nikos@example.com", "Φιλοσοφία", "gdimtriou"));
+        appointmentsForCounselor.add(new Appointment("Νίκος Παπαχρήστου", "6988888888", "nikos@example.com", "Ανθρωπιστικών Σπουδών", "gdimtriou"));
         appointmentsForCounselor.add(new Appointment("Κώστας Χατζηνικολάου", "6933333333", "kostas@example.com", "Καλών Τεχνών", "gdimtriou"));
-        appointmentsForCounselor.add(new Appointment("Δημήτρης Παναγιωτόπουλος", "6944444444", "dimitri@example.com", "Φιλολογίας", "gdimtriou"));
+        appointmentsForCounselor.add(new Appointment("Δημήτρης Παναγιωτόπουλος", "6944444444", "dimitri@example.com", "Ανθρωπιστικών Σπουδών", "gdimtriou"));
         
-        appointmentsForCounselor.add(new Appointment("Κατερίνα Σκάζα", "6955555555", "katerina@example.com", "Διοίκηση Επιχειρήσεων, Οικονομικά", "akaragianni"));
+        appointmentsForCounselor.add(new Appointment("Κατερίνα Σκάζα", "6955555555", "katerina@example.com", "Οικονομικών Σπουδών", "akaragianni"));
         
-        appointmentsForCounselor.add(new Appointment("Βασιλική Δημοπούλου", "6966666666", "vasiliki@example.com", "Φαρμακευτική, Χημικών Μηχανικών", "nvasileiou"));
-        appointmentsForCounselor.add(new Appointment("Ειρήνη Νικολάου", "6977777777", "eirini@example.com", "Μαθηματικά, Λογοθεραπεία", "nvasileiou"));
+        appointmentsForCounselor.add(new Appointment("Βασιλική Δημοπούλου", "6966666666", "vasiliki@example.com", "Πολυτεχνικών Σπουδών", "nvasileiou"));
+        appointmentsForCounselor.add(new Appointment("Ειρήνη Νικολάου", "6977777777", "eirini@example.com", "Θετικών Σπουδών", "nvasileiou"));
     }
     public String getStatus() {
         return status;

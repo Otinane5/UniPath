@@ -60,6 +60,7 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
                 if (selectedAppointment != null) {
                     selectedAppointment.setStatus("Εγκεκριμένο");
                 }
+                //HERE SHOULD HAVE BEEN THE WAY TO SEND THE ACCEPTING MESSAGE TO THE STUDENT
                 JOptionPane.showMessageDialog(this, "Το μήνυμα αποδοχής στάλθηκε με επιτυχία!");
                 // Find the panel and make the refresh
                 if (cardPanel instanceof JPanel) {
