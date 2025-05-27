@@ -1,17 +1,22 @@
 package com.mycompany.unipathui;
 
+import com.mycompany.baseClasses.Description;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class EditDescriptionPanel extends JPanel {
 
     private JTextArea descriptionArea;
-    private String originalDescription= "Περιγραφή...";
+    //private String originalDescription= "Περιγραφή...";
+    private String originalDescription;
     private JLabel seeProfileLabel;
+private String departmentName;
 
-    public EditDescriptionPanel(CardLayout cardLayout, JPanel cardPanel) {
+    public EditDescriptionPanel(CardLayout cardLayout, JPanel cardPanel,String departmentName) {
         setLayout(new BorderLayout(10, 10));
-        
+        this.departmentName = departmentName;
+
         // Title label
         JLabel titleLabel = new JLabel("Τροποποίηση Προφίλ Τμήματος", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
@@ -23,7 +28,9 @@ public class EditDescriptionPanel extends JPanel {
         editPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // padding
         
         // Department
-        JLabel departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER);
+        JLabel departmentLabel = new JLabel(departmentName, SwingConstants.CENTER); 
+
+        //JLabel departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER);
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
@@ -95,6 +102,8 @@ public class EditDescriptionPanel extends JPanel {
             if (result == JOptionPane.OK_OPTION) 
             {
                 originalDescription = newDescription;
+                Description.setDepartmentDescription(departmentName, newDescription);
+
                 ProfilePanel.currentDescription = newDescription;          
                 
                 Component profileComp = null;
@@ -114,6 +123,8 @@ public class EditDescriptionPanel extends JPanel {
 
                 JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                 cardLayout.show(cardPanel, "seeProfileDetails");    
+           
+                
             } 
         });
         return accept;
@@ -135,4 +146,12 @@ public class EditDescriptionPanel extends JPanel {
         });
         return cancel;
     }
+    
+    
+    public void setDepartmentName(String departmentName) {
+    this.departmentName = departmentName;
+    originalDescription = Description.getDepartmentDescription(departmentName);
+    descriptionArea.setText(originalDescription);
+}
+
 }

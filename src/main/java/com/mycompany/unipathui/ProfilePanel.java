@@ -18,7 +18,7 @@ public class ProfilePanel extends JPanel {
 
     
    // public static java.util.List<String[]> announcements = new java.util.ArrayList<>();
-public static java.util.Map<String, java.util.List<String[]>> announcementsByDepartment = new java.util.HashMap<>();
+    public static java.util.Map<String, java.util.List<String[]>> announcementsByDepartment = new java.util.HashMap<>();
 
     public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
         setLayout(new BorderLayout(10, 10));

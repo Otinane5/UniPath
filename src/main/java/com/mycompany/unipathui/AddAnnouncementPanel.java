@@ -12,6 +12,8 @@ public class AddAnnouncementPanel extends JPanel {
     private JPanel cardPanel;
     private JButton publish;
 
+    
+    private JLabel departmentLabel;
     public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel) {
         
         this.cardLayout = cardLayout;
@@ -115,57 +117,61 @@ public class AddAnnouncementPanel extends JPanel {
         
         add(buttonPanel, BorderLayout.SOUTH);
 }
-    public void writeAnnouncement(){
-    }
-    public void postAnnouncement() 
-    {
-        publish.addActionListener(e -> 
+        public void writeAnnouncement(){
+        }
+        public void postAnnouncement() 
         {
-            String title = titleField.getText().trim();
-            String bodyText = bodyArea.getText().trim();
-            
-            if (title.isEmpty() || bodyText.isEmpty()) 
+            publish.addActionListener(e -> 
             {
-                JOptionPane.showMessageDialog(this, 
-                    "Παρακαλώ συμπληρώστε όλα τα πεδία.", 
-                    "Σφάλμα!", 
-                    JOptionPane.ERROR_MESSAGE);
-                    return;
-            }
-            
-            //!!!
-            // Αποθήκευση της ανακοίνωσης στο map
-            java.util.List<String[]> anns = ProfilePanel.announcementsByDepartment.get(departmentName);
-            if (anns == null) {
-                anns = new java.util.ArrayList<>();
-                ProfilePanel.announcementsByDepartment.put(departmentName, anns);
-            }
-            anns.add(new String[]{title, bodyText});
+                String title = titleField.getText().trim();
+                String bodyText = bodyArea.getText().trim();
 
-            // clear
-            titleField.setText("");
-            bodyArea.setText("");
-
-            JOptionPane.showMessageDialog(this,
-                "Η ανακοίνωση προστέθηκε με επιτυχία στο "+departmentName+".");
-                cardLayout.show(cardPanel, "seeProfileDetails");
-
-                // refresh
-                for (Component comp : cardPanel.getComponents()) 
+                if (title.isEmpty() || bodyText.isEmpty()) 
                 {
-                    if (comp instanceof ProfilePanel) 
-                    {
-                        ((ProfilePanel) comp).refreshAnnouncements();
-                    }
+                    JOptionPane.showMessageDialog(this, 
+                        "Παρακαλώ συμπληρώστε όλα τα πεδία.", 
+                        "Σφάλμα!", 
+                        JOptionPane.ERROR_MESSAGE);
+                        return;
                 }
-        });
-    }
-   // public void pressCancelNewAnnouncement(){}
-    
+
+                // Αποθήκευση της ανακοίνωσης στο map
+                java.util.List<String[]> anns = ProfilePanel.announcementsByDepartment.get(departmentName);
+                if (anns == null) {
+                    anns = new java.util.ArrayList<>();
+                    ProfilePanel.announcementsByDepartment.put(departmentName, anns);
+                }
+                anns.add(new String[]{title, bodyText});
+
+                // clear
+                titleField.setText("");
+                bodyArea.setText("");
+
+                JOptionPane.showMessageDialog(this,
+                    "Η ανακοίνωση προστέθηκε με επιτυχία στο "+departmentName+".");
+                    cardLayout.show(cardPanel, "seeProfileDetails");
+
+                    // refresh
+                    for (Component comp : cardPanel.getComponents()) 
+                    {
+                        if (comp instanceof ProfilePanel) 
+                        {
+                            ((ProfilePanel) comp).refreshAnnouncements();
+                        }
+                    }
+            });
+        }
+        
+    // public void pressCancelNewAnnouncement(){}
+
     
     public void setDepartmentName(String departmentName) 
     {
         this.departmentName = departmentName;
+        departmentLabel.setText(departmentName); 
+        
+        //this.originalDescription = Description.getDepartmentDescription(departmentName);
+    //descriptionArea.setText(originalDescription);
     }
 
 }
