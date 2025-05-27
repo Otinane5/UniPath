@@ -126,6 +126,9 @@ public class StudentMenuFrame extends JFrame {
         logoutButton.setBackground(Color.decode("#FF6666"));
         bottomPanel.add(logoutButton);
         add(bottomPanel, BorderLayout.SOUTH);
+        
+        Application_FormUI applicationFormPanel = new Application_FormUI();
+           
 
         // --- Panels ---
         DepartmentListUI deplistPanel = new DepartmentListUI(
@@ -135,6 +138,8 @@ public class StudentMenuFrame extends JFrame {
                 () -> cardLayout.show(cardPanel, "setFilters")
         );        
          
+        
+        
         SearchFiltersUI filterPanel = new SearchFiltersUI(
                 () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
                 criteria -> {
@@ -175,6 +180,7 @@ public class StudentMenuFrame extends JFrame {
         
         cardPanel.add(quizStarterPanel, "doQuiz");
         cardPanel.add(quizPanel, "startQuiz");
+        cardPanel.add(applicationFormPanel, "applicationForm");
         cardPanel.add(resultsPanel, "quizResults");
 
        // Action Listeners
