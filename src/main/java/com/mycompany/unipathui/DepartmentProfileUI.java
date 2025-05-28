@@ -43,7 +43,8 @@ public class DepartmentProfileUI extends JPanel
         JButton announcementButton = new JButton("Ανακοινώσεις");
         announcementButton.setBackground(Color.CYAN);
         announcementButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        announcementButton.addActionListener(e -> {
+        announcementButton.addActionListener(e -> 
+        {
             List<AnnouncementView> departmentAnnouncements = AnnouncementRepository.getAnnouncements(departmentName);
             onViewAnnouncement.accept(departmentName, departmentAnnouncements);
         });

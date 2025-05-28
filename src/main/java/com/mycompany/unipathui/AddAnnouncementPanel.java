@@ -3,20 +3,20 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddAnnouncementPanel extends JPanel {
+public class AddAnnouncementPanel extends JPanel 
+{
     private String departmentName;
-    
-    private JTextField titleField;
-    private JTextArea bodyArea;
     private CardLayout cardLayout;
     private JPanel cardPanel;
-    private JButton publish;
-    private ProfilePanel profilePanel;
     private JButton cancel;
     private JLabel departmentLabel;
+    private JTextField titleField;
+    private JTextArea bodyArea;
+    private JButton publish;
+    private ProfilePanel profilePanel; //αναφορά στο Profile Panel για ανανέωση ανακοινώσεων
     
-    public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) {
-        
+    public AddAnnouncementPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) 
+    {
         this.cardLayout = cardLayout;
         this.cardPanel = cardPanel;
         this.profilePanel = profilePanel;
@@ -24,7 +24,7 @@ public class AddAnnouncementPanel extends JPanel {
         setLayout(new BorderLayout(10, 10));
         
         // Title label
-        JLabel titleLabel = new JLabel("Προσθήκη Νέας Ανακοίνωσης", SwingConstants.CENTER); //onoma tmhmatos
+        JLabel titleLabel = new JLabel("Προσθήκη Νέας Ανακοίνωσης", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         add(titleLabel, BorderLayout.NORTH);
         
@@ -40,8 +40,7 @@ public class AddAnnouncementPanel extends JPanel {
         gbc.gridy = 0;
         
         // Department
-        //jlabel
-        departmentLabel= new JLabel("Όνομα Τμήματος:"+departmentName, SwingConstants.CENTER); //na deixnei poio tmhma einai
+        departmentLabel= new JLabel("Όνομα Τμήματος:"+departmentName, SwingConstants.CENTER); 
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
@@ -53,7 +52,6 @@ public class AddAnnouncementPanel extends JPanel {
         annPanel.add(announcementTitle, gbc);
                 
         gbc.gridx = 1;
-        //JTextField titleField = new JTextField(25);
         titleField = new JTextField(25);
         annPanel.add(titleField, gbc);
         
@@ -63,7 +61,6 @@ public class AddAnnouncementPanel extends JPanel {
         annPanel.add(body, gbc);
         
         gbc.gridx = 1;
-        //JTextArea bodyArea = new JTextArea(6, 25);
         bodyArea = new JTextArea(6, 25);
         bodyArea.setLineWrap(true);
         bodyArea.setWrapStyleWord(true);
@@ -86,7 +83,7 @@ public class AddAnnouncementPanel extends JPanel {
         publish = new JButton("Δημοσίευση");
         publish.setBackground(Color.GREEN);
         
-        //calling the method to post the announcement
+        //κλήση της μεθόδου για Δημοσίευση της ανακοίνωσης
         postAnnouncement();
         
         btnPanel.add(cancel);
@@ -110,7 +107,8 @@ public class AddAnnouncementPanel extends JPanel {
         buttonPanel.add(back);
         
         add(buttonPanel, BorderLayout.SOUTH);
-}
+    }
+    
         public void writeAnnouncement()
         {}
         
@@ -118,9 +116,11 @@ public class AddAnnouncementPanel extends JPanel {
         {
             publish.addActionListener(e -> 
             {
+                //ανακτά τον τίτλο/σώμα και αφαιρεί τα όποια κενά
                 String title = titleField.getText().trim();
                 String bodyText = bodyArea.getText().trim();
 
+                //έλεγχος για κενά πεδία
                 if (title.isEmpty() || bodyText.isEmpty()) 
                 {
                     JOptionPane.showMessageDialog(this, 
@@ -130,6 +130,7 @@ public class AddAnnouncementPanel extends JPanel {
                         return;
                 }
               
+                //προσθέτει την ανακοίνωση στο Announcement repository για το συγκεκριμένο τμήμα
                 AnnouncementView newAnnouncement = new AnnouncementView(title, bodyText);
                 AnnouncementRepository.addAnnouncement(departmentName, newAnnouncement);
             
@@ -143,11 +144,11 @@ public class AddAnnouncementPanel extends JPanel {
                     {
                          profilePanel.refreshAnnouncements();
                     }
-                //cardLayout.show(cardPanel, "profile");
-                cardLayout.show(cardPanel, "seeProfileDetails");
+                cardLayout.show(cardPanel, "seeProfileDetails"); //επιστροφή στο Προφίλ
             });
         }
      
+        //ορίζει την συμπεριφορά του κουμπιού "Ακύρωση"
         public void pressCancelNewAnnouncement()
         {
             cancel.addActionListener(e -> 
@@ -171,9 +172,9 @@ public class AddAnnouncementPanel extends JPanel {
         }
     
        public void setDepartmentName(String departmentName) 
-       {
+        {
             this.departmentName = departmentName;
-            departmentLabel.setText(departmentName);
+            departmentLabel.setText(departmentName); //ενημέρωση της ετικέτας με το όνομα Τμήματος
             JPanel contentPanel = (JPanel) getComponent(1);
             Component[] components = contentPanel.getComponents();
                 for (Component comp : components) 

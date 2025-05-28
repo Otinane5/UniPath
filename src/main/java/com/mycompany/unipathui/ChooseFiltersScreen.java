@@ -11,7 +11,8 @@ public class ChooseFiltersScreen extends JPanel {
     private final JPanel cardPanel;
     private final FilteredListScreen filteredListScreen;
     
-    public ChooseFiltersScreen(CardLayout cardLayout, JPanel cardPanel, FilteredListScreen filteredListScreen) {
+    public ChooseFiltersScreen(CardLayout cardLayout, JPanel cardPanel, FilteredListScreen filteredListScreen) 
+    {
         this.cardLayout = cardLayout;
         this.cardPanel = cardPanel;
         this.filteredListScreen = filteredListScreen;
@@ -74,7 +75,7 @@ public class ChooseFiltersScreen extends JPanel {
         saveButton.setBackground(Color.decode("#66FF66"));
         saveButton.setFont(new Font("Arial", Font.BOLD, 14));
         
-        //αποθήκευση και με enter
+        //Αποθήκευση και με Enter
         saveButton.addActionListener(e->saveFilters());
         dept.addActionListener(e -> saveFilters());
         city.addActionListener(e -> saveFilters());
@@ -107,20 +108,18 @@ public class ChooseFiltersScreen extends JPanel {
         back.addActionListener(e -> cardLayout.show(cardPanel, "applications"));
         
         buttonPanel.setBackground(new Color(245,245,245)); 
-        
-        //todo: γκρι και εκει που ειναι τα κουμπιά πισω αποθηκευση
-        
+                
         buttonPanel.add(homeButton);
         buttonPanel.add(back);
         add(buttonPanel, BorderLayout.SOUTH);
-}
+    }
     
     public void saveFilters(){
         try 
         {
-            //if else
             Integer minValue = min.getText().isEmpty() ? null : Integer.parseInt(min.getText());
             Integer maxValue = max.getText().isEmpty() ? null : Integer.parseInt(max.getText());
+            
             if((minValue!=null&& minValue<0)|| (maxValue!=null&& maxValue<0))
             {
                 JOptionPane.showMessageDialog(this,"Οι βαθμοί του μαθητή πρέπει να είναι θετικοί αριθμοί!", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
