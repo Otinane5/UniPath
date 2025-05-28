@@ -1,5 +1,4 @@
 package com.mycompany.baseClasses;
-
 import com.mycompany.unipathui.LoginFrame;
 import java.io.File;
 import java.io.IOException;

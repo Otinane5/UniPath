@@ -6,7 +6,7 @@ import java.util.Map;
 //Η κλάση Description διαχειρίζεται τις περιγραφές (Descriptions)των Τμημάτων.
 //Παρέχει στατικές μεθόδους για ανάκτηση, τροποποίηση και προβολή όλων των περιγραφών.
 
-public class Description 
+public class Description
 {
     //Στατικός "χάρτης" που αποθηκεύει τις περιγραφές
     private static final Map<String, String> departmentDescriptions = new HashMap<>();
