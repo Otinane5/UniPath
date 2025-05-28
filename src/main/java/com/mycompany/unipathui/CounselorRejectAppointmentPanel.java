@@ -39,7 +39,7 @@ public class CounselorRejectAppointmentPanel extends JPanel {
                 selectedAppointment.setStatus("Ακυρωμένο");
             }
             //HERE SHOULD HAVE BEEN THE WAY TO SEND THE REJECTING MESSAGE TO THE STUDENT
-            JOptionPane.showMessageDialog(this, "Το μήνυμα αποδοχής στάλθηκε με επιτυχία!");
+            JOptionPane.showMessageDialog(this, "Το μήνυμα απόρριψης στάλθηκε με επιτυχία!");
             // Find the panel and make the refresh
             if (cardPanel instanceof JPanel) {
                 for (Component comp : cardPanel.getComponents()) {

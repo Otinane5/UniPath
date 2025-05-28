@@ -32,5 +32,23 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.15.0</version> <!-- Check for the latest version -->
         </dependency>
+
+        <!-- Zeta here! I found the following from this site:
+        https://www.browserstack.com/guide/unit-testing-java
+        to be able to use the test cases -->
+
+        <!-- JUnit 5 dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.8.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.8.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
