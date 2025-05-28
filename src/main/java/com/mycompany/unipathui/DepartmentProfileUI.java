@@ -23,9 +23,6 @@ public class DepartmentProfileUI extends JPanel
         //Η περιγραφή του τμήματος και το κουμπί λίστας ανακοινώσεων θα είναι σε κάθετο BoxLayout
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
- 
-        //String description = departmentDescriptions.getOrDefault(departmentName,
-          //  "Δεν υπάρχουν διαθέσιμες πληροφορίες για αυτό το τμήμα.");
         
         String description = Description.getDepartmentDescription(departmentName);
 
@@ -43,7 +40,8 @@ public class DepartmentProfileUI extends JPanel
         JButton announcementButton = new JButton("Ανακοινώσεις");
         announcementButton.setBackground(Color.CYAN);
         announcementButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        announcementButton.addActionListener(e -> {
+        announcementButton.addActionListener(e -> 
+        {
             List<AnnouncementView> departmentAnnouncements = AnnouncementRepository.getAnnouncements(departmentName);
             onViewAnnouncement.accept(departmentName, departmentAnnouncements);
         });

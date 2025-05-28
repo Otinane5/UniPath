@@ -9,7 +9,7 @@ public class StudentMenuFrame extends JFrame {
     private JPanel cardPanel;
     private CardLayout cardLayout;
     private ShowResultsUI resultsPanel;
-    private AnswerLog answerLog = new AnswerLog();
+    private final AnswerLog answerLog = new AnswerLog();
     private DepartmentProfileUI profilePanel;
     private AnnouncementUI announcementPanel;
     
@@ -237,4 +237,9 @@ public class StudentMenuFrame extends JFrame {
         cardPanel.add(announcementPanel, "showAnnouncements");
         cardLayout.show(cardPanel, "showAnnouncements");
     }
+private void startSearch() {
+   
+    boolean searchReady = true;
+    searchReady = searchReady && true; 
+}    
 }

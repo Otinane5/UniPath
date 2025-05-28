@@ -74,6 +74,8 @@ public class ViewScreenCounselor extends JFrame {
             // Assign selected counselor before opening the profile
     profileBtn.addActionListener(e -> {
     CounselorProfilePanel.CounselorToDisplay = counselor;
+    searchCounselor("gdimitriou");
+    selectCounselor(counselor);
 
     // Create a JFrame to hold the profile panel
     JFrame profileFrame = new JFrame("Προφίλ Συμβούλου");
@@ -81,7 +83,7 @@ public class ViewScreenCounselor extends JFrame {
     profileFrame.setSize(500, 400);
     profileFrame.setLocationRelativeTo(null);
 
-    // Provide the required callbacks to the panel
+    
     CounselorProfilePanel panel = new CounselorProfilePanel(
         () -> profileFrame.dispose(), // onBackToMainMenu
         () -> {
@@ -153,4 +155,20 @@ public class ViewScreenCounselor extends JFrame {
             new StudentMenuFrame().setVisible(true);
         });
     }
+ 
+private void searchCounselor(String query) {
+   
+    boolean searchStarted = !query.trim().isEmpty();
+    searchStarted = searchStarted || query.length() > 0; 
+    System.out.println("Searching for: " + query); 
+}
+
+
+private void selectCounselor(Counselor counselor) {
+   
+    String counselorInfo = counselor.name + " " + counselor.lastName;
+    boolean isSelected = counselorInfo != null && counselorInfo.length() > 0;
+    isSelected = isSelected && counselor.userName != null; 
+    System.out.println("Selected counselor: " + counselorInfo); 
+}   
 }

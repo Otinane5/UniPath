@@ -5,8 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class StudentApplicationsPanel extends JPanel {
-    
+public class StudentApplicationsPanel extends JPanel 
+{
     private final JPanel applicationListPanel = new JPanel();  
     
     public StudentApplicationsPanel(CardLayout cardLayout, JPanel cardPanel) {
@@ -138,11 +138,11 @@ public class StudentApplicationsPanel extends JPanel {
                     });
                 buttonPanel.add(reject);
 
-                appPanel.add(buttonPanel); // Add buttons to the panel
+                appPanel.add(buttonPanel); // προσθήκη κουμπιών στο Panel
             }
 
             panel.add(appPanel);
-            panel.add(Box.createVerticalStrut(10)); // Space between applications
+            panel.add(Box.createVerticalStrut(10)); // κενό μεταξύ των αιτήσεων
         }
     }
     

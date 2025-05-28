@@ -3,7 +3,8 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
-public class ProfilePanel extends JPanel {
+public class ProfilePanel extends JPanel 
+{
     private JPanel announcementPanel;
     private JTextArea descriptionArea;
     
@@ -16,7 +17,8 @@ public class ProfilePanel extends JPanel {
     private ProfilePanel profilePanel;
     public AddAnnouncementPanel addAnnouncementPanel;
 
-    public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) {
+    public ProfilePanel(CardLayout cardLayout, JPanel cardPanel) 
+    {
         setLayout(new BorderLayout(10, 10));
         
         // Title label
@@ -30,9 +32,7 @@ public class ProfilePanel extends JPanel {
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // padding
         
         // Department
-        //JLabel departmentLabel= new JLabel("Τμήμα ...", SwingConstants.CENTER); //+department name
         departmentLabel = new JLabel(currentDepartment, SwingConstants.CENTER);
-
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
@@ -43,7 +43,6 @@ public class ProfilePanel extends JPanel {
         contentPanel.add(Box.createVerticalStrut(10));
         
         // Description and Edit
-        //JPanel
         descPanel = new JPanel(new BorderLayout(10, 0));
         descPanel.setMaximumSize(new Dimension(400, 70));
         descPanel.add(new JLabel("Περιγραφή Τμήματος"), BorderLayout.WEST);
@@ -61,6 +60,7 @@ public class ProfilePanel extends JPanel {
         descScroll.setMaximumSize(new Dimension(400, 60));
         contentPanel.add(descScroll);
         contentPanel.add(Box.createVerticalStrut(10));
+        
         
         // Announcements and Adding Announcements
         JPanel annPanel = new JPanel(new BorderLayout(10, 0));
@@ -86,7 +86,7 @@ public class ProfilePanel extends JPanel {
         
         refreshAnnouncements();
 
-        //scrolling enabled
+        //Scrolling enabled
         JScrollPane scroll = new JScrollPane(announcementPanel);
         scroll.setPreferredSize(new Dimension(380, 100));
         scroll.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -99,12 +99,10 @@ public class ProfilePanel extends JPanel {
         
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
-        //homeButton.setBounds(170,330,150,30);
         homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
-        //back.setBounds(330,330,150,30);
         back.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
         
         buttonPanel.add(homeButton);
@@ -112,25 +110,11 @@ public class ProfilePanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
-    //public void openDepartmentProfile() //departmentID:int
-    //{} to profile έχει ήδη ανοίξει. ίσως παει σαν μεθοδοσ στο προηγούμενο frame
-    
-    /* ϊσως να μεταφερθουν στο προηγούμενο panel
-    public void getDepartmentProfile() //departmentID:int
-    {}
-    public void getDescription() //departmentID: int
-    {}
-    public void getAnnouncements() //departmentID:int
-    {}
-    public void displayProfile()
-    {}
-    public void displayFullProfile()
-    {}*/
-    
     public void editDescription(CardLayout cardLayout, JPanel cardPanel)
     {
         JButton edit = new JButton("Τροποποίηση");
-        edit.addActionListener(e -> {
+        edit.addActionListener(e -> 
+        {
             // βρίσκουμε το EditDescriptionPanel και ενημερώνουμε το όνομα του τμήματος
             Component[] components = cardPanel.getComponents();
             for (Component comp : components) 
@@ -146,11 +130,6 @@ public class ProfilePanel extends JPanel {
         descPanel.add(edit, BorderLayout.EAST);
     }
     
-    public void addAnnouncement()
-    {}
-    
-    public void publishAnnouncement()
-    {}
     
     //public void pressBack()
     //{}
@@ -160,6 +139,23 @@ public class ProfilePanel extends JPanel {
     {
         currentDescription = newDesc;
         descriptionArea.setText(newDesc);
+    }
+    
+    public void refreshDescription() 
+    {
+        descriptionArea.setText(currentDescription);
+    }
+    
+    public void setAddAnnouncementPanel(AddAnnouncementPanel addAnnouncementPanel) 
+    {
+        this.addAnnouncementPanel = addAnnouncementPanel;
+    }
+    
+    public void addAnnouncementToRepository(String title, String body) 
+    {
+        AnnouncementView newAnnouncement = new AnnouncementView(title, body);
+        AnnouncementRepository.addAnnouncement(currentDepartment, newAnnouncement);
+        refreshAnnouncements(); 
     }
     
     //new method
@@ -204,7 +200,6 @@ public class ProfilePanel extends JPanel {
             noAnnouncementsLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             announcementPanel.add(noAnnouncementsLabel);
         }
-           
         announcementPanel.revalidate();
         announcementPanel.repaint();
     }
@@ -224,21 +219,28 @@ public class ProfilePanel extends JPanel {
         refreshProfile();
     }
 
-    public void setAddAnnouncementPanel(AddAnnouncementPanel addAnnouncementPanel) 
-    {
-        this.addAnnouncementPanel = addAnnouncementPanel;
-    }
+    //public void openDepartmentProfile() //departmentID:int
+    //{} to profile έχει ήδη ανοίξει. ίσως παει σαν μεθοδοσ στο προηγούμενο frame
     
-    public void addAnnouncementToRepository(String title, String body) 
-    {
-        AnnouncementView newAnnouncement = new AnnouncementView(title, body);
-        AnnouncementRepository.addAnnouncement(currentDepartment, newAnnouncement);
-        refreshAnnouncements(); 
-    }
+    //ϊσως να μεταφερθουν στο προηγούμενο panel
     
-    public void refreshDescription() 
-    {
-        descriptionArea.setText(currentDescription);
-    }
-
+    //public void displayFullProfile()
+    //{}
+    
+    //public void addAnnouncement()
+    //{} εγινε addAnnouncementToRepository
+    //public void publishAnnouncement()
+    //{} same
+    
+    //public void getDepartmentProfile() //departmentID:int
+    //{} ενσωματώθηκε στα refreshProfile και setProfileData
+    
+    //public void getDescription() //departmentID: int
+    //{}
+    
+    //public void getAnnouncements() //departmentID:int
+    //{}
+    
+    //public void displayProfile()
+    //{} setProfileData
 }

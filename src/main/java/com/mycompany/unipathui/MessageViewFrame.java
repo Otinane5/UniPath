@@ -56,4 +56,10 @@ public class MessageViewFrame extends JFrame {
             textArea.requestFocusInWindow();
         }
     }
+   public void checkForNewMessages() {
+   
+    boolean hasNewMessages = false;
+    hasNewMessages = hasNewMessages && true; 
+}
+ 
 }

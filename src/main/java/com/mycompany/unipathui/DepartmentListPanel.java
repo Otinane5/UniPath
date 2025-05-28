@@ -7,8 +7,8 @@ import com.mycompany.baseClasses.Description;
 
 import static java.util.Map.entry;
 
-public class DepartmentListPanel extends JPanel {
-    
+public class DepartmentListPanel extends JPanel 
+{
     private CardLayout cardLayout;
     private JPanel cardPanel;
     private String selectedDepartment = null;
@@ -35,7 +35,8 @@ public class DepartmentListPanel extends JPanel {
     entry(17, "Τμήμα Ηλεκτρολόγων Μηχανικών")
     );
     
-    public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) {
+    public DepartmentListPanel(CardLayout cardLayout, JPanel cardPanel,ProfilePanel profilePanel) 
+    {
         this.cardLayout = cardLayout;
         this.cardPanel = cardPanel;
         this.profilePanel = profilePanel; 
@@ -47,7 +48,6 @@ public class DepartmentListPanel extends JPanel {
         listTitle.setFont(new Font("Arial", Font.BOLD, 20));
         listTitle.setOpaque(true);
         listTitle.setBackground(Color.decode("#66A3FF"));
-        //listTitle.setBounds(110,75,300,25);
         add(listTitle, BorderLayout.NORTH);
 
         // Λίστα με τα panels για κάθε τμήμα
@@ -56,7 +56,53 @@ public class DepartmentListPanel extends JPanel {
         listPanel.setBackground(Color.WHITE);
         listPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        for (Map.Entry<Integer, String> entry : departments.entrySet()) {
+       getDepartmentList(listPanel);
+
+        // Scroll pane για λίστα
+        JScrollPane scrollPane = new JScrollPane(listPanel);
+        scrollPane.setBorder(null);
+        add(scrollPane, BorderLayout.CENTER);
+
+        // BOTTOM BUTTONS
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        buttonPanel.setBackground(Color.WHITE);
+        
+        JButton homeButton = new JButton("Αρχική Σελίδα");
+        homeButton.setBackground(Color.decode("#B3FF66"));
+        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
+        
+        JButton back = new JButton("Πίσω");
+        back.setBackground(Color.decode("#FFCC66"));
+        back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
+                
+        viewProfileButton = new JButton("Προβολή Προφίλ Τμήματος");
+        viewProfileButton.setBackground(Color.CYAN);
+        viewProfileButton.setEnabled(false); // Αρχικά απενεργοποιημένο
+        viewProfileButton.addActionListener(e -> 
+        {
+            if (selectedDepartment != null) 
+            {
+                String description = Description.getDepartmentDescription(selectedDepartment);
+                profilePanel.setProfileData(selectedDepartment, description);
+                cardLayout.show(cardPanel, "seeProfileDetails");
+            }
+        });
+        
+        buttonPanel.add(homeButton);
+        buttonPanel.add(back);
+        buttonPanel.add(viewProfileButton);
+                
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+    
+    //public void getDepartments() 
+    //{}
+    
+    public void getDepartmentList(JPanel listPanel )
+    {
+        
+     for (Map.Entry<Integer, String> entry : departments.entrySet())
+        {
             String departmentName = entry.getValue();
 
             JPanel departmentPanel = new JPanel(new BorderLayout());
@@ -74,51 +120,7 @@ public class DepartmentListPanel extends JPanel {
             listPanel.add(departmentPanel);
             listPanel.add(Box.createVerticalStrut(10));
         }
-
-        // Scroll pane για λίστα
-        JScrollPane scrollPane = new JScrollPane(listPanel);
-        scrollPane.setBorder(null);
-        add(scrollPane, BorderLayout.CENTER);
-
-        // BOTTOM BUTTONS
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        buttonPanel.setBackground(Color.WHITE);
-        
-        JButton homeButton = new JButton("Αρχική Σελίδα");
-        homeButton.setBackground(Color.decode("#B3FF66"));
-        //homeButton.setBounds(170,330,150,30);
-        homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
-        
-        JButton back = new JButton("Πίσω");
-        back.setBackground(Color.decode("#FFCC66"));
-       // back.setBounds(330,330,150,30);
-        back.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
-                
-        viewProfileButton = new JButton("Προβολή Προφίλ Τμήματος");
-        viewProfileButton.setBackground(Color.CYAN);
-        viewProfileButton.setEnabled(false); // Αρχικά απενεργοποιημένο
-        viewProfileButton.addActionListener(e -> 
-        {
-            if (selectedDepartment != null) {
-                //profilePanel.setProfileData(selectedDepartment, "Περιγραφή για το τμήμα " + selectedDepartment);
-                String description = Description.getDepartmentDescription(selectedDepartment);
-profilePanel.setProfileData(selectedDepartment, description);
-
-                cardLayout.show(cardPanel, "seeProfileDetails");
-            }
-        });
-        
-        buttonPanel.add(homeButton);
-        buttonPanel.add(back);
-        buttonPanel.add(viewProfileButton);
-                
-        add(buttonPanel, BorderLayout.SOUTH);
-    }
-    public void getDepartments() {
-        // For future use
-    }
-    public void getDepartmentList() {
-        // For future use
+     
     }
 
     public void selectDepartment(JPanel departmentPanel, String department, JPanel listPanel) 
@@ -135,15 +137,15 @@ profilePanel.setProfileData(selectedDepartment, description);
         });
     }
     
-    public void requestDepartmentList() {
-        // For future use
-    }
+    //public void requestDepartmentList() 
+    //{}
     
     private void highlightSelectedPanel(JPanel listPanel, JPanel selected) 
     {
         for (Component comp : listPanel.getComponents()) 
         {
-            if (comp instanceof JPanel) {
+            if (comp instanceof JPanel) 
+            {
                 comp.setBackground(Color.WHITE);
             }
         }

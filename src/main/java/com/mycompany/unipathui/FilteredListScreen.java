@@ -4,7 +4,6 @@ import com.mycompany.baseClasses.Application;
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.stream.Collectors;
  
 public class FilteredListScreen extends JPanel
 {
- 
     private final JPanel resultsPanel=new JPanel();
     private String departmentFilter="";
     private String cityFilter = "";
@@ -23,7 +21,6 @@ public class FilteredListScreen extends JPanel
     public FilteredListScreen(CardLayout cardLayout, JPanel cardPanel)
     {
         setLayout(new BorderLayout(10,10));
-        //setBackground(Color.LIGHT_GRAY);
 
         setBackground(new Color(245, 245, 245));
         JLabel titleLabel= new JLabel("Φιλτραρισμένη Λίστα Αιτήσεων", SwingConstants.CENTER);
@@ -46,7 +43,6 @@ public class FilteredListScreen extends JPanel
         JButton back = new JButton("Πίσω");
         back.setFont(new Font("Arial", Font.BOLD,14));
         back.setBackground(Color.decode("#FFCC66"));
-        //back.setFocusPainted(false);
         back.setBorder(BorderFactory.createLineBorder(Color.decode("#CCA644")));
         back.setPreferredSize(new Dimension(120, 35));
         back.addActionListener(e -> cardLayout.show(cardPanel, "chooseFilters"));
@@ -55,7 +51,6 @@ public class FilteredListScreen extends JPanel
         JButton home = new JButton("Αρχική Σελίδα");
         home.setFont(new Font("Arial", Font.BOLD, 14));
         home.setBackground(Color.decode("#B3FF66"));
-        //home.setFocusPainted(false);
         home.setBorder(BorderFactory.createLineBorder(Color.decode("#90CC44")));
         home.setPreferredSize(new Dimension(140, 35));
         home.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
@@ -85,11 +80,12 @@ public class FilteredListScreen extends JPanel
         };
 
         returnResults(); 
-        //filterApplications();
     }
     
     public void requestFullList()
-    {returnResults();}
+    {
+        returnResults();
+    }
     
     public void returnResults()
     {
@@ -133,7 +129,7 @@ public class FilteredListScreen extends JPanel
         {
             JLabel countLabel = new JLabel("Βρέθηκαν " + list.size() + " αιτήσεις!");
             countLabel.setFont(new Font("Arial", Font.BOLD, 14));
-            countLabel.setForeground(new Color(34, 139, 34)); //πράσινα γράμματα
+            countLabel.setForeground(new Color(34, 139, 34));
             countLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             countLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
             resultsPanel.add(countLabel);
@@ -168,7 +164,6 @@ public class FilteredListScreen extends JPanel
         }
         resultsPanel.revalidate();
         resultsPanel.repaint();
-    
     }
     
     private String translateState(String state)

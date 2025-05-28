@@ -6,7 +6,8 @@ public class DepartmentInfo {
     public int tuitionFee;     //Δίδακτρα
     public int academicPoints; //Απαιτούμενα μόρια
     
-    public DepartmentInfo(String name, String type, int tuitionFee, int academicPoints){
+    public DepartmentInfo(String name, String type, int tuitionFee, int academicPoints)
+    {
         this.name = name;
         this.type = type;
         this.tuitionFee = tuitionFee;
