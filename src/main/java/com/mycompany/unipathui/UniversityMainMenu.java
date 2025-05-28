@@ -5,7 +5,8 @@ import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
 
-public class UniversityMainMenu extends JFrame {
+public class UniversityMainMenu extends JFrame 
+{
     
     private JPanel cardPanel;
     private CardLayout cardLayout;
@@ -16,7 +17,7 @@ public class UniversityMainMenu extends JFrame {
         setSize(600, 600);
         setLayout(new BorderLayout(10, 10));
 
-        // --- TOP PANEL ---
+        //Top Panel
         JPanel topPanel = new JPanel(new GridBagLayout());
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //Προαιρετικό padding
         
@@ -105,7 +106,7 @@ public class UniversityMainMenu extends JFrame {
 
         add(cardPanel, BorderLayout.CENTER);
 
-        // --- BOTTOM ---
+        //Bottom
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton logoutButton = new JButton("Αποσύνδεση");
         logoutButton.setBounds(185,280,150,30);
@@ -113,7 +114,7 @@ public class UniversityMainMenu extends JFrame {
         bottomPanel.add(logoutButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        // --- Panels --- 
+        //Panels 
         StudentApplicationsPanel applicationsPanel = new StudentApplicationsPanel(cardLayout, cardPanel);
         ProfilePanel profilePanel = new ProfilePanel(cardLayout, cardPanel);
         DepartmentListPanel deplistPanel = new DepartmentListPanel(cardLayout, cardPanel,profilePanel);
@@ -130,28 +131,28 @@ public class UniversityMainMenu extends JFrame {
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(profilePanel, "seeProfileDetails");
         cardPanel.add(editDesc, "editUniDesc");
-        //cardPanel.add(addAnnoun, "addAnnouncement");
         cardPanel.add(addAnnouncementPanel, "addAnnouncement");
-
         cardPanel.add(chooseFilt, "chooseFilters");
         cardPanel.add(filteredListScreen, "filteredList");
 
         // Action Listeners
         viewApplicationsButton.addActionListener(e -> cardLayout.show(cardPanel, "applications"));
         viewDepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
-        logoutButton.addActionListener(e -> {
-            int result = JOptionPane.showConfirmDialog(
-                    this,
-                    "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;",
-                    "Επιβεβαίωση Αποσύνδεσης",
-                    JOptionPane.YES_NO_OPTION
-            );
+        logoutButton.addActionListener(e -> 
+            {
+                int result = JOptionPane.showConfirmDialog(
+                        this,
+                        "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;",
+                        "Επιβεβαίωση Αποσύνδεσης",
+                        JOptionPane.YES_NO_OPTION
+                );
 
-            if (result == JOptionPane.YES_OPTION) {
-                dispose(); // Κλείσιμο αυτού του frame
-                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
-            }
-        });
+                if (result == JOptionPane.YES_OPTION) 
+                {
+                    dispose(); // Κλείσιμο αυτού του frame
+                    new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
+                }
+            });
         setVisible(true);
     }
 }

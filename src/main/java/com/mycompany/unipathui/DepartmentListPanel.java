@@ -56,25 +56,7 @@ public class DepartmentListPanel extends JPanel
         listPanel.setBackground(Color.WHITE);
         listPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        for (Map.Entry<Integer, String> entry : departments.entrySet())
-        {
-            String departmentName = entry.getValue();
-
-            JPanel departmentPanel = new JPanel(new BorderLayout());
-            departmentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-            departmentPanel.setBackground(Color.WHITE);
-            departmentPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
-
-            JLabel departmentLabel = new JLabel(departmentName, SwingConstants.CENTER);
-            departmentLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-            departmentLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-            departmentPanel.add(departmentLabel, BorderLayout.CENTER);
-
-            selectDepartment(departmentPanel, departmentName, listPanel);
-
-            listPanel.add(departmentPanel);
-            listPanel.add(Box.createVerticalStrut(10));
-        }
+       getDepartmentList(listPanel);
 
         // Scroll pane για λίστα
         JScrollPane scrollPane = new JScrollPane(listPanel);
@@ -112,13 +94,33 @@ public class DepartmentListPanel extends JPanel
                 
         add(buttonPanel, BorderLayout.SOUTH);
     }
-    public void getDepartments() 
+    
+    //public void getDepartments() 
+    //{}
+    
+    public void getDepartmentList(JPanel listPanel )
     {
         
-    }
-    public void getDepartmentList() 
-    {
-        
+     for (Map.Entry<Integer, String> entry : departments.entrySet())
+        {
+            String departmentName = entry.getValue();
+
+            JPanel departmentPanel = new JPanel(new BorderLayout());
+            departmentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+            departmentPanel.setBackground(Color.WHITE);
+            departmentPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
+
+            JLabel departmentLabel = new JLabel(departmentName, SwingConstants.CENTER);
+            departmentLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+            departmentLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            departmentPanel.add(departmentLabel, BorderLayout.CENTER);
+
+            selectDepartment(departmentPanel, departmentName, listPanel);
+
+            listPanel.add(departmentPanel);
+            listPanel.add(Box.createVerticalStrut(10));
+        }
+     
     }
 
     public void selectDepartment(JPanel departmentPanel, String department, JPanel listPanel) 
@@ -135,8 +137,8 @@ public class DepartmentListPanel extends JPanel
         });
     }
     
-    public void requestDepartmentList() 
-    {}
+    //public void requestDepartmentList() 
+    //{}
     
     private void highlightSelectedPanel(JPanel listPanel, JPanel selected) 
     {

@@ -23,9 +23,6 @@ public class DepartmentProfileUI extends JPanel
         //Η περιγραφή του τμήματος και το κουμπί λίστας ανακοινώσεων θα είναι σε κάθετο BoxLayout
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
- 
-        //String description = departmentDescriptions.getOrDefault(departmentName,
-          //  "Δεν υπάρχουν διαθέσιμες πληροφορίες για αυτό το τμήμα.");
         
         String description = Description.getDepartmentDescription(departmentName);
 

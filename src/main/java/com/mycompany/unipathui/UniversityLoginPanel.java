@@ -5,15 +5,17 @@ import com.mycompany.baseClasses.User;
 import javax.swing.*;
 import java.awt.*;
 
-//Πάνελ Σύνδεσης Πανεπιστημίου: Εμφανίζει πλαίσια για όνομα χρή-
-//στη και κωδικό, καθώς και τα κουμπιά "Σύνδεση" και "Πίσω".
+//Πάνελ Σύνδεσης Πανεπιστημίου: Εμφανίζει πλαίσια για όνομα χρήστη
+//και κωδικό, καθώς και τα κουμπιά "Σύνδεση" και "Πίσω".
 
 public class UniversityLoginPanel extends JPanel {
     //ATTRIBUTES
     private JTextField usernameField;
     private JPasswordField passwordField;
+    
     //CONSTRUCTOR
-    public UniversityLoginPanel(LoginFrame parentFrame) {
+    public UniversityLoginPanel(LoginFrame parentFrame) 
+    {
         setLayout(new BorderLayout());
 
         //Επικεφαλίδα
@@ -38,10 +40,10 @@ public class UniversityLoginPanel extends JPanel {
         passwordField.setMaximumSize(new Dimension(200, 35));
         passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        // με το enter μεταβαίνει από το Username στο Password field
+        // Με το Enter μεταβαίνει από το Username στο Password field
         usernameField.addActionListener(e -> passwordField.requestFocusInWindow());
 
-        //αφου συμπληρωθεί και το Password με enter γίνεται η Σύνδεση
+        //Αφού συμπληρωθεί και το Password, η σύνδεση μπορεί να πραγματοποιηθεί και με Enter 
         passwordField.addActionListener(e -> performLogin());
         
         //Κουμπιά
@@ -117,9 +119,3 @@ public class UniversityLoginPanel extends JPanel {
         });    
     }
 }
-
-
-/*
-usernameField.addActionListener(e -> passwordField.requestFocus());
-passwordField.addActionListener(e -> loginButton.doClick());
-*/
