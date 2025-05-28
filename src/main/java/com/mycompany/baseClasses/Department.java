@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-
-public class Department {
+public class Department 
+{
     private int id;
-    
     public String name;
     public String description;
     public List<Announcement> announcements;
@@ -16,9 +15,7 @@ public class Department {
     {
         this.id=id;
         this.name = name;
-        //this.description = "Περιγραφή για το τμήμα " + name;
-           this.description = Description.getDepartmentDescription(name);
-
+        this.description = Description.getDepartmentDescription(name);
         this.announcements = new ArrayList<>();
     }
 
@@ -32,22 +29,24 @@ public class Department {
             announcements.add(announcement);
     }
     
-    
-    public String getName() {
+    public String getName() 
+    {
         return name;
     }
 
-    public String getDescription() {
+    public String getDescription() 
+    {
         return description;
     }
 
-    public List<Announcement> getAnnouncements() {
+    public List<Announcement> getAnnouncements() 
+    {
         return announcements;
     }
     
-    public int getId() {
+    public int getId() 
+    {
         return id;
     }
-
 }
 

@@ -31,6 +31,7 @@ public class Description
     
     public static String getDepartmentDescription(String departmentName) 
     {
+        
         return departmentDescriptions.getOrDefault(departmentName, "Δεν υπάρχει περιγραφή για το τμήμα.");
     }
 

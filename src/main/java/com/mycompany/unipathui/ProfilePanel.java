@@ -8,7 +8,7 @@ public class ProfilePanel extends JPanel {
     private JTextArea descriptionArea;
     
     public static String currentDescription = "Περιγραφή...";
-    public static String currentDepartment = "Τμήμα ..."; //!!!!!!!!
+    public static String currentDepartment = "Τμήμα ..."; 
     
     private JPanel contentPanel;
     private JPanel descPanel;
@@ -99,12 +99,12 @@ public class ProfilePanel extends JPanel {
         
         JButton homeButton = new JButton("Αρχική Σελίδα");
         homeButton.setBackground(Color.decode("#B3FF66"));
-        homeButton.setBounds(170,330,150,30);
+        //homeButton.setBounds(170,330,150,30);
         homeButton.addActionListener(e -> cardLayout.show(cardPanel, "menu"));
         
         JButton back= new JButton("Πίσω");
         back.setBackground(Color.decode("#FFCC66"));
-        back.setBounds(330,330,150,30);
+        //back.setBounds(330,330,150,30);
         back.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
         
         buttonPanel.add(homeButton);
@@ -130,7 +130,19 @@ public class ProfilePanel extends JPanel {
     public void editDescription(CardLayout cardLayout, JPanel cardPanel)
     {
         JButton edit = new JButton("Τροποποίηση");
-        edit.addActionListener(e -> cardLayout.show(cardPanel, "editUniDesc"));
+        edit.addActionListener(e -> {
+            // βρίσκουμε το EditDescriptionPanel και ενημερώνουμε το όνομα του τμήματος
+            Component[] components = cardPanel.getComponents();
+            for (Component comp : components) 
+            {
+                if (comp instanceof EditDescriptionPanel) 
+                {
+                    ((EditDescriptionPanel) comp).setDepartmentName(currentDepartment);
+                    break;
+                }
+            }
+            cardLayout.show(cardPanel, "editUniDesc");
+        });
         descPanel.add(edit, BorderLayout.EAST);
     }
     
@@ -202,6 +214,7 @@ public class ProfilePanel extends JPanel {
         departmentLabel.setText(currentDepartment);
         descriptionArea.setText(currentDescription);
         refreshAnnouncements();
+        refreshDescription();
     }
     
     public void setProfileData(String department, String description) 
@@ -222,4 +235,10 @@ public class ProfilePanel extends JPanel {
         AnnouncementRepository.addAnnouncement(currentDepartment, newAnnouncement);
         refreshAnnouncements(); 
     }
+    
+    public void refreshDescription() 
+    {
+        descriptionArea.setText(currentDescription);
+    }
+
 }

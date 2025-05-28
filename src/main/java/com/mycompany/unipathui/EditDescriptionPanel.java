@@ -10,10 +10,11 @@ public class EditDescriptionPanel extends JPanel {
     private JTextArea descriptionArea;
     private String originalDescription;
     private JLabel seeProfileLabel;
-private String departmentName;
-private JLabel departmentLabel;
+    private String departmentName;
+    private JLabel departmentLabel;
 
-    public EditDescriptionPanel(CardLayout cardLayout, JPanel cardPanel,String departmentName) {
+    public EditDescriptionPanel(CardLayout cardLayout, JPanel cardPanel,String departmentName) 
+    {
         setLayout(new BorderLayout(10, 10));
         this.departmentName = departmentName;
 
@@ -27,10 +28,7 @@ private JLabel departmentLabel;
         editPanel.setLayout(new BoxLayout(editPanel, BoxLayout.Y_AXIS));
         editPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // padding
         
-        // Department
-        //JLabel departmentLabel = new JLabel(departmentName, SwingConstants.CENTER); 
-        departmentLabel = new JLabel(departmentName, SwingConstants.CENTER);
-        //JLabel departmentLabel= new JLabel("Όνομα Τμήματος", SwingConstants.CENTER);
+        departmentLabel = new JLabel(departmentName != null ? departmentName : "Τμήμα...", SwingConstants.CENTER);
         departmentLabel.setOpaque(true);
         departmentLabel.setBackground(Color.GREEN);
         departmentLabel.setFont(new Font("Arial", Font.BOLD,16));
@@ -42,8 +40,14 @@ private JLabel departmentLabel;
         descriptionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         editPanel.add(descriptionLabel);
         
-        //JTextArea descriptionArea= new JTextArea("Περιγραφή...");
-        originalDescription = Description.getDepartmentDescription(departmentName);
+        if (departmentName != null) 
+        {
+            originalDescription = Description.getDepartmentDescription(departmentName);
+        } 
+        else 
+        {
+            originalDescription = "Περιγραφή...";
+        }
 
         descriptionArea = new JTextArea(originalDescription);
         descriptionArea.setLineWrap(true);
@@ -79,8 +83,6 @@ private JLabel departmentLabel;
         
         add(editPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
-        
-        //setDepartmentName(departmentName); call!!!
     }
     
     //public void openEditDescriptionWindow(){}
@@ -107,8 +109,6 @@ private JLabel departmentLabel;
             {
                 originalDescription = newDescription;
                 Description.setDepartmentDescription(departmentName, newDescription);
-
-                //ProfilePanel.currentDescription = newDescription;          
                 
                 Component profileComp = null;
                 for (Component comp : cardPanel.getComponents()) 
@@ -122,15 +122,8 @@ private JLabel departmentLabel;
                     }
                 }
 
-               /* if (profileComp != null) 
-                {
-                    ((ProfilePanel) profileComp).updateDescription(newDescription);
-                }*/
-
                 JOptionPane.showMessageDialog(this, "Οι αλλαγές αποθηκεύτηκαν με επιτυχία.");
                 cardLayout.show(cardPanel, "seeProfileDetails");    
-           
-                
             } 
         });
         return accept;
@@ -153,16 +146,22 @@ private JLabel departmentLabel;
         return cancel;
     }
     
-    
     public void setDepartmentName(String departmentName) 
     {
         this.departmentName = departmentName;
-        originalDescription = Description.getDepartmentDescription(departmentName);
-        descriptionArea.setText(originalDescription);
-        //departmentLabel.setText(departmentName); 
-if (departmentLabel != null) {
-        departmentLabel.setText(departmentName);  
-    }
-    }
 
+        // ενημερώνεται το Label Με το νεο όνομα τμηματος
+        if (departmentLabel != null) 
+        {
+            departmentLabel.setText(departmentName);
+            departmentLabel.repaint(); 
+        }
+
+        // Ενημέρωση της περιγραφής από το Description repository (Description.java)
+        originalDescription = Description.getDepartmentDescription(departmentName);
+        if (descriptionArea != null) 
+        {
+            descriptionArea.setText(originalDescription);
+        }
+    }
 }
