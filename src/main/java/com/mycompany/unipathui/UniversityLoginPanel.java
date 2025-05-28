@@ -58,7 +58,8 @@ public class UniversityLoginPanel extends JPanel {
         
         //Μέγεθος και στοίχιση κουμπιών ρόλου
         Dimension buttonSize = new Dimension(200, 35);
-        for (JButton btn : new JButton[]{loginButton, backButton}) {
+        for (JButton btn : new JButton[]{loginButton, backButton}) 
+        {
             btn.setMaximumSize(buttonSize);
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         }
@@ -82,14 +83,16 @@ public class UniversityLoginPanel extends JPanel {
         add(centerWrapper, BorderLayout.CENTER);
 
         //Λειτουργικότητα κουμπιών
-        backButton.addActionListener(e -> {
+        backButton.addActionListener(e -> 
+        {
             clearFields();
             parentFrame.showRoleSelectionPanel();
         });
     }
     
     //METHODS
-    private void performLogin(){
+    private void performLogin()
+    {
         String username = usernameField.getText();
         String password = new String(passwordField.getPassword());
 
@@ -100,19 +103,23 @@ public class UniversityLoginPanel extends JPanel {
             new UniversityMainMenu().setVisible(true);
             SwingUtilities.getWindowAncestor(this).dispose();
         }
-        else {
+        else 
+        {
             JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
         }
     }
     
     //Καθαρίζει τα πεδία και τα μηνύματα λάθους
-    public void clearFields() {
+    public void clearFields() 
+    {
         usernameField.setText("");
         passwordField.setText("");
     }
     
-    public void requestFocusOnUsername() {
-        SwingUtilities.invokeLater(() -> {
+    public void requestFocusOnUsername() 
+    {
+        SwingUtilities.invokeLater(() -> 
+        {
             if (usernameField.isShowing()) {
                 usernameField.requestFocusInWindow();
             }

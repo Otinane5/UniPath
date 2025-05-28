@@ -21,7 +21,7 @@ public class Department
     }
 
     //Αυτή η μέθοδος ενημερώνει την περιγραφή του Τμήματος
-    public void updateDescription(String description) 
+    public void updateDepartmentDescription(String description) 
     {
         this.description = description;
     }
@@ -53,3 +53,4 @@ public class Department
         return announcements;
     }
 }
+

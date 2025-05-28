@@ -9,7 +9,8 @@ public class StudentApplicationsPanel extends JPanel
 {
     private final JPanel applicationListPanel = new JPanel();  
     
-    public StudentApplicationsPanel(CardLayout cardLayout, JPanel cardPanel) {
+    public StudentApplicationsPanel(CardLayout cardLayout, JPanel cardPanel) 
+    {
         setLayout(new BorderLayout(10, 10));
         setBackground(Color.WHITE);
         
