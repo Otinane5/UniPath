@@ -28,9 +28,9 @@ public class DepartmentListCounselor extends JPanel {
         new DepartmentInfo("Τμήμα Μαθηματικών", "Θετικών Σπουδών", 8000, 13456),
         new DepartmentInfo("Τμήμα Χημικών Μηχανικών", "Πολυτεχνικών Σπουδών", 10500, 15672),
         new DepartmentInfo("Τμήμα Λογοθεραπείας", "Σπουδών Υγείας", 12000, 14860),
-        new DepartmentInfo("Τμήμα Πολιτικών Επιστημών", "Ανθρωπιστικών Σπουδών", 13000, 12453),
-        new DepartmentInfo("Τμήμα Εργοθεραπείας", "Σπουδών Υγείας", 8600, 8727),
-        new DepartmentInfo("Τμήμα Ηλεκτρολόγων Μηχανικών", "Πολυτεχνικών Σπουδών", 15000, 18769)
+        new DepartmentInfo("Τμήμα Πολιτικών Επιστημών", "Ανθρωπιστικών Σπουδών", 11000, 12487),    
+        new DepartmentInfo("Τμήμα Εργοθεραπείας", "Σπουδών Υγείας", 8000, 8243),    
+        new DepartmentInfo("Τμήμα Ηλεκτρολόγων Μηχανικών", "Πολυτεχνικών Σπουδών", 15000, 18956)
     );
     
     private List<DepartmentInfo> filteredDepartments = new ArrayList<>(allDepartments);
