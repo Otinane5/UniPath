@@ -32,7 +32,7 @@ public class User {
         this.userName = userName;
     }
     
-        public User() {
+    public User() {
         // No-argument constructor for Jackson
     }
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
+    //ATTRIBUTES
     public String fullName;
     public String residence;
     public String birthDate;

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Message {
+    //ATTRIBUTES
     private static int nextId = 1;
     private int messageId;
     private String senderId;

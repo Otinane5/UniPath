@@ -13,7 +13,7 @@ public class Appointment {
     public String counselorUsername;
     
     public static List<Appointment> appointmentsForCounselor = new ArrayList<>();
-
+    //CONSTRUCTOR
     public Appointment(String fullName, String phone, String email, String interests, String counselorUsername) {
         this.fullName = fullName;
         this.phone = phone;
@@ -22,7 +22,7 @@ public class Appointment {
         this.interests = interests;
         this.counselorUsername = counselorUsername;
     }
-
+    //Method to make the list
     public static void init() {
         appointmentsForCounselor.clear(); // optional: reset on re-init
         appointmentsForCounselor.add(new Appointment("Σοφία Ιωάννου", "6941234567", "maria@example.com", "Θετικών Σπουδών", "sampleCounselor"));

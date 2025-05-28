@@ -2,6 +2,7 @@ package com.mycompany.baseClasses;
 import java.util.List;
 
 public class MessageBox {
+    //ATTRIBUTES
     public List<String> messages;
     public int[] usersID; //δλδ μεταξύ ποιών χρηστών είναι το τσατ
     public int messageNumDis = 10; /* Μπορούμε με αυτή την μεταβλητή να ελέγχουμε οτι θα εμφανίζονται/φορτώνουν 

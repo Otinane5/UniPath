@@ -3,8 +3,7 @@ package com.mycompany.baseClasses;
 import java.util.ArrayList;
 import java.util.List;
 
-public class University extends User 
-{
+public class University extends User {
     public String name;
     public List<Department> departmentList;
     public static List<University> sample = new ArrayList<>();
