@@ -200,7 +200,7 @@ add(radioPanel);
                 // Step 10: Return to counselor list window
                 JOptionPane.showMessageDialog(
                     this,
-                    "Η φόρμα υποβλήθηκε επιτυχώς!\nΟ σύμβουλος θα λάβει το επιβεβαιωτικό μήνυμα σύντομα.",
+                    "Η φόρμα υποβλήθηκε επιτυχώς!\nΘα λάβετε το επιβεβαιωτικό μήνυμα σύντομα.",
                     "Επιτυχής Υποβολή",
                     JOptionPane.INFORMATION_MESSAGE
                 );
