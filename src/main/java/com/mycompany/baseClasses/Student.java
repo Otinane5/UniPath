@@ -9,14 +9,12 @@ public class Student extends User {
     public static AnswerLog answerLog = new AnswerLog();
     public static boolean hasAnswerLog = false;
 
-    
     public static List<Student> sample = new ArrayList<>();
 
     public Student(String password, int userType, String userName) {
         super(password, userType, userName);
     }
 
-  
     public Student() {}
 
     //  Sample init method
@@ -35,7 +33,5 @@ public class Student extends User {
         User.sample.add(s2);
     }
 
-    public static void takeTest() {
-   
-    }
+    public static void takeTest() {}
 }

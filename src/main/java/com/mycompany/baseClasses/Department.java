@@ -3,7 +3,8 @@ package com.mycompany.baseClasses;
 import java.util.List;
 import java.util.ArrayList;
 
-
+//Η κλάση Department αναπαριστά ένα πανεπιστημιακό Τμήμα
+//Το Τμήμα χαρακτηρίζεται από το ID, το όνομα, την Περιγραφή και τις Ανακοινώσεις του.
 public class Department 
 {
     private int id;
@@ -15,18 +16,25 @@ public class Department
     {
         this.id=id;
         this.name = name;
-        this.description = Description.getDepartmentDescription(name);
-        this.announcements = new ArrayList<>();
+        this.description = Description.getDepartmentDescription(name); //ανάκτηση της Περιγραφής
+        this.announcements = new ArrayList<>(); //αρχικοποίηση λίστας ανακοινώσεων
     }
 
+    //Αυτή η μέθοδος ενημερώνει την περιγραφή του Τμήματος
     public void updateDescription(String description) 
     {
-                this.description = description;
+        this.description = description;
     }
 
+    //Προσθέτει την νέα ανακοίνωση στην λίστα του Τμήματος
     public void addAnnouncement(Announcement announcement) 
     {
-            announcements.add(announcement);
+        announcements.add(announcement);
+    }
+    
+    public int getId() 
+    {
+        return id;
     }
     
     public String getName() 
@@ -39,14 +47,10 @@ public class Department
         return description;
     }
 
+    //επιστροφή της λίστας ανακοινώσεων του Τμήματος
     public List<Announcement> getAnnouncements() 
     {
         return announcements;
-    }
-    
-    public int getId() 
-    {
-        return id;
     }
 }
 

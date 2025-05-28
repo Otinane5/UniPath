@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException; */
 import java.util.ArrayList;
-
 import java.util.List;
 
 public class User {
@@ -26,7 +25,6 @@ public class User {
         //είναι 3, δηλαδή μαθητής, αλλά στον κώδικα και στην
         //κλάση για τον σύμβουλο, τον έχουμε ως σύμβουλο
     }
-    
     
     public User(String password, int userType, String userName) {
         this.password = password;
@@ -62,17 +60,20 @@ public class User {
 
     public static User login(String userName, String password) { // Αυτή η μέθοδος επιστρέφει τον user αν αυτός βρεθεί.
         //List<User> users = loadUsers(); for json
-        for (User user : sample) {
-            if (user.userName.equals(userName) && user.password.equals(password)) {
+        for (User user : sample) 
+        {
+            if (user.userName.equals(userName) && user.password.equals(password)) 
+            {
                 System.out.println("Success");
-                
                 return user; // Επιστρέφουμε το χρήστη αν βρεθεί
             }
         }
         System.out.println("Not-Found");
         return null; // Επιστρέφουμε null αν δεν βρεθεί ο χρήστης
     }
- public String getUserName() {
-    return this.userName;
-}   
+    
+    public String getUserName() 
+    {
+       return this.userName;
+    }   
 }

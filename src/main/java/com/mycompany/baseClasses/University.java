@@ -3,11 +3,10 @@ package com.mycompany.baseClasses;
 import java.util.ArrayList;
 import java.util.List;
 
-public class University extends User {
+public class University extends User 
+{
     public String name;
     public List<Department> departmentList;
-
-    
     public static List<University> sample = new ArrayList<>();
 
     public University(String password, int userType, String userName) {
@@ -16,8 +15,8 @@ public class University extends User {
 
     public University() {}
 
-    
-    public static void init() {
+    public static void init() 
+    {
         University u1 = new University("uni1", 1, "university1");
         u1.name = "Πανεπιστήμιο Αθηνών";
 
