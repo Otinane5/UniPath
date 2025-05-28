@@ -23,7 +23,7 @@ public class DepartmentTest {
     @Test
     public void testUpdateDescription() {
         Department dept = new Department(2, "Μηχανολογία");
-        dept.updateDescription("Νέα περιγραφή");
+        dept.updateDepartmentDescription("Νέα περιγραφή");
 
         Assertions.assertEquals("Νέα περιγραφή", dept.getDescription());
     }
