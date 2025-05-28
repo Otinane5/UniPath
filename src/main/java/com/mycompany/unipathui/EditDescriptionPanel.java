@@ -129,23 +129,6 @@ public class EditDescriptionPanel extends JPanel {
         return accept;
     }
     
-    public JButton pressCancelEdit(CardLayout cardLayout, JPanel cardPanel){
-        
-        JButton cancel=new JButton("Ακύρωση");
-        cancel.setBackground(Color.RED);
-        cancel.setForeground(Color.WHITE);
-                
-        cancel.addActionListener(e -> 
-        {
-            int confirm =JOptionPane.showConfirmDialog(this, "Με αυτή την επιλογή οι αλλαγές θα χαθούν!", "Ακύρωση", JOptionPane.YES_NO_OPTION);
-            if(confirm==JOptionPane.YES_OPTION)
-            {
-                cardLayout.show(cardPanel, "seeProfileDetails"); 
-            }
-        });
-        return cancel;
-    }
-    
     public void setDepartmentName(String departmentName) 
     {
         this.departmentName = departmentName;
@@ -163,5 +146,23 @@ public class EditDescriptionPanel extends JPanel {
         {
             descriptionArea.setText(originalDescription);
         }
+    }
+    
+    public JButton pressCancelEdit(CardLayout cardLayout, JPanel cardPanel)
+    {
+        
+        JButton cancel=new JButton("Ακύρωση");
+        cancel.setBackground(Color.RED);
+        cancel.setForeground(Color.WHITE);
+                
+        cancel.addActionListener(e -> 
+        {
+            int confirm =JOptionPane.showConfirmDialog(this, "Με αυτή την επιλογή οι αλλαγές θα χαθούν!", "Ακύρωση", JOptionPane.YES_NO_OPTION);
+            if(confirm==JOptionPane.YES_OPTION)
+            {
+                cardLayout.show(cardPanel, "seeProfileDetails"); 
+            }
+        });
+        return cancel;
     }
 }

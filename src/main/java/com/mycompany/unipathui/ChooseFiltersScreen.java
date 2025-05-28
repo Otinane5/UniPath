@@ -114,7 +114,8 @@ public class ChooseFiltersScreen extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
-    public void saveFilters(){
+    public void saveFilters()
+    {
         try 
         {
             Integer minValue = min.getText().isEmpty() ? null : Integer.parseInt(min.getText());
@@ -168,8 +169,8 @@ public class ChooseFiltersScreen extends JPanel {
         }
     }
     
-    public void returnFilteredApplicationList()
-    {}
+    //public void returnFilteredApplicationList()
+    //{}
     
     private void clearFilters()
     {

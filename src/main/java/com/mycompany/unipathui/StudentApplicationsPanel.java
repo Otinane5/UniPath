@@ -21,10 +21,7 @@ public class StudentApplicationsPanel extends JPanel
         sectionLabel.setFont(new Font("Arial", Font.BOLD, 16));
         topTools.add(sectionLabel);
 
-        JButton filt = new JButton("Ορισμός Φίλτρων");
-        filt.setBackground(new Color(180, 210, 240));
-        filt.setFocusPainted(false);
-        filt.addActionListener(e -> cardLayout.show(cardPanel, "chooseFilters"));
+        JButton filt= applyFilters(cardLayout,cardPanel);
         topTools.add(filt);
 
         add(topTools, BorderLayout.BEFORE_FIRST_LINE);
@@ -146,6 +143,15 @@ public class StudentApplicationsPanel extends JPanel
         }
     }
     
+    public JButton applyFilters(CardLayout cardLayout,JPanel cardPanel) 
+    {
+        JButton filt = new JButton("Ορισμός Φίλτρων");
+        filt.setBackground(new Color(180, 210, 240));
+        filt.setFocusPainted(false);
+        filt.addActionListener(e -> cardLayout.show(cardPanel, "chooseFilters"));
+        return filt;
+    }
+    
     private String translateState(String state) 
     {
         return switch (state) {
@@ -166,9 +172,4 @@ public class StudentApplicationsPanel extends JPanel
     //public void viewApplications() {
         // For future use
     //}
-    
-    public void applyFilters() 
-    {
-        // For future use
-    }
 }
