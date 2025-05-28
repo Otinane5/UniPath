@@ -42,11 +42,9 @@ Councelor_listUI$5.class
 com\mycompany\baseClasses\Announcement.class
 com\mycompany\unipathui\ShowResultsUI.class
 com\mycompany\baseClasses\Department.class
-com\mycompany\unipathui\ManageSearchClass.class
 Councelor_listUI$2.class
 com\mycompany\unipathui\LoginFrame.class
 com\mycompany\baseClasses\University.class
-com\mycompany\unipathui\SearchResultScreen.class
 com\mycompany\unipathui\CounselorEditProfilePanelUI.class
 com\mycompany\unipathui\ShowResultsUI$2.class
 com\mycompany\unipathui\AnnouncementUI.class
@@ -67,7 +65,6 @@ com\mycompany\unipathui\AnnouncementRepository.class
 com\mycompany\unipathui\SearchFiltersUI$FilterCriteria.class
 com\mycompany\unipathui\FilteredListScreen$GreekNormalizer.class
 com\mycompany\unipathui\StudentApplicationsPanel.class
-com\mycompany\unipathui\NewInterface.class
 com\mycompany\unipathui\StudentLoginPanel.class
 com\mycompany\baseClasses\Application.class
 com\mycompany\unipathui\CounselorFormScreen$BookingData.class
