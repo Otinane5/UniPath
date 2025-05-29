@@ -94,10 +94,6 @@ public class DepartmentListPanel extends JPanel
                 
         add(buttonPanel, BorderLayout.SOUTH);
     }
-    
-    //public void getDepartments() 
-    //{}
-    
     public void getDepartmentList(JPanel listPanel )
     {
         
@@ -136,10 +132,6 @@ public class DepartmentListPanel extends JPanel
             }
         });
     }
-    
-    //public void requestDepartmentList() 
-    //{}
-    
     private void highlightSelectedPanel(JPanel listPanel, JPanel selected) 
     {
         for (Component comp : listPanel.getComponents()) 

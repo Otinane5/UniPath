@@ -125,7 +125,7 @@ public class Application_FormUI extends JPanel {
         if (response == JOptionPane.YES_OPTION) {
             Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints,department);
             Application.sample.add(newApp);
-            JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!");
+            JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!Θα λάβετε επιβεβαιωτικό μήνυμα σύντομα");
             resetForm(null);
         }
     }
