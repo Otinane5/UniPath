@@ -61,7 +61,7 @@ public class CounselorRejectAppointmentPanel extends JPanel {
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
     }
-    //To specify which Appointment is getting "approved"
+    //To specify which Appointment is getting "rejected"
     public void setSelectedAppointment(Appointment appointment) {
         this.selectedAppointment = appointment;
     }

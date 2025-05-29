@@ -168,9 +168,4 @@ public class StudentApplicationsPanel extends JPanel
         applicationListPanel.revalidate();      // ενημέρωση layout
         applicationListPanel.repaint();         // redraw UI
     }
-    
-    //δεν εχει νόημα εδώ
-    //public void viewApplications() {
-        // For future use
-    //}
 }

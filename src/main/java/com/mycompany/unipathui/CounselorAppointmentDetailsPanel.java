@@ -9,9 +9,7 @@ import java.awt.*;
 
 public class CounselorAppointmentDetailsPanel extends JPanel {
     //ATTRIBUTES
-    private final JLabel nameLabel;
-    private final JLabel phoneLabel;
-    private final JLabel emailLabel;
+    private final JLabel nameLabel, phoneLabel, emailLabel;
     private final JTextArea interestsArea;
     private Appointment appointment;
     //CONSTRUCTOR

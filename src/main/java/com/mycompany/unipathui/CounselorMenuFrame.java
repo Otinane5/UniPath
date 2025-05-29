@@ -194,7 +194,6 @@ public class CounselorMenuFrame extends JFrame {
         });
         setVisible(true);
     }
-    
     private void showDepartmentProfile(String departmentName) {
         if(depProfilePanel!=null){
             cardPanel.remove(depProfilePanel); 
@@ -209,7 +208,6 @@ public class CounselorMenuFrame extends JFrame {
         cardPanel.add(depProfilePanel, "showProfile");
         cardLayout.show(cardPanel, "showProfile");
     }
-    
     private void showDepartmentAnnouncements(String departmentName, java.util.List<AnnouncementView> announcements){
         if(announcementPanel!=null){
             cardPanel.remove(announcementPanel);    

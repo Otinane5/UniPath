@@ -129,11 +129,6 @@ public class ProfilePanel extends JPanel
         });
         descPanel.add(edit, BorderLayout.EAST);
     }
-    
-    
-    //public void pressBack()
-    //{}
-    
     //new method
     public void updateDescription(String newDesc) 
     {
@@ -218,29 +213,4 @@ public class ProfilePanel extends JPanel
         currentDescription = description;
         refreshProfile();
     }
-
-    //public void openDepartmentProfile() //departmentID:int
-    //{} to profile έχει ήδη ανοίξει. ίσως παει σαν μεθοδοσ στο προηγούμενο frame
-    
-    //ϊσως να μεταφερθουν στο προηγούμενο panel
-    
-    //public void displayFullProfile()
-    //{}
-    
-    //public void addAnnouncement()
-    //{} εγινε addAnnouncementToRepository
-    //public void publishAnnouncement()
-    //{} same
-    
-    //public void getDepartmentProfile() //departmentID:int
-    //{} ενσωματώθηκε στα refreshProfile και setProfileData
-    
-    //public void getDescription() //departmentID: int
-    //{}
-    
-    //public void getAnnouncements() //departmentID:int
-    //{}
-    
-    //public void displayProfile()
-    //{} setProfileData
 }

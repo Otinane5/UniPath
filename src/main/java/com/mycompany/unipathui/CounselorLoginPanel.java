@@ -102,7 +102,6 @@ public class CounselorLoginPanel extends JPanel {
             JOptionPane.showMessageDialog(this,"Έχετε εισάγει λανθασμένα στοιχεία σύνδεσης.\n     Προσπαθήστε ξανά πατώντας το ΟΚ");
         }
     }
-    
     //Καθαρίζει τα πεδία και τα μηνύματα λάθους
     public void clearFields() {
         usernameField.setText("");
