@@ -16,7 +16,6 @@ com\mycompany\unipathui\NewMessageFrame.class
 com\mycompany\unipathui\CounselorAppointmentDetailsPanel.class
 com\mycompany\unipathui\MessageViewFrame.class
 com\mycompany\unipathui\MessageService.class
-Councelor_listUI$4.class
 com\mycompany\unipathui\CounselorFormScreen$2.class
 com\mycompany\unipathui\SearchFiltersUI.class
 com\mycompany\unipathui\UniversityLoginPanel.class
@@ -25,7 +24,6 @@ com\mycompany\unipathui\UniversityMainMenu.class
 com\mycompany\baseClasses\Counselor.class
 com\mycompany\baseClasses\Description.class
 com\mycompany\baseClasses\Form.class
-Councelor_listUI$1.class
 com\mycompany\unipathui\CounselorMenuFrame.class
 com\mycompany\unipathui\AddAnnouncementPanel.class
 com\mycompany\unipathui\MessageBoxFrame$1.class
@@ -35,14 +33,11 @@ com\mycompany\unipathui\CounselorFormScreen$1.class
 com\mycompany\unipathui\QuizUI.class
 com\mycompany\unipathui\AnswerLog$DepartmentType.class
 com\mycompany\unipathui\AnnouncementView.class
-Councelor_listUI.class
 com\mycompany\unipathui\DepartmentInfo.class
 com\mycompany\unipathui\ProfilePanel.class
-Councelor_listUI$5.class
 com\mycompany\baseClasses\Announcement.class
 com\mycompany\unipathui\ShowResultsUI.class
 com\mycompany\baseClasses\Department.class
-Councelor_listUI$2.class
 com\mycompany\unipathui\LoginFrame.class
 com\mycompany\baseClasses\University.class
 com\mycompany\unipathui\CounselorEditProfilePanelUI.class
@@ -54,11 +49,9 @@ com\mycompany\unipathui\AnswerLog.class
 com\mycompany\baseClasses\MessageBox.class
 com\mycompany\unipathui\StudentMenuFrame.class
 com\mycompany\unipathui\CounselorFormScreen.class
-Councelor_listUI$6.class
 com\mycompany\unipathui\IconUtil.class
 com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\MessageBoxFrame.class
-Councelor_listUI$3.class
 com\mycompany\unipathui\DepartmentProfileUI.class
 com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\AnnouncementRepository.class
