@@ -168,10 +168,6 @@ public class ChooseFiltersScreen extends JPanel {
             JOptionPane.showMessageDialog(this, "Παρακαλώ εισάγετε έγκυρα αριθμητικά όρια.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    //public void returnFilteredApplicationList()
-    //{}
-    
     private void clearFilters()
     {
         dept.setText("");
