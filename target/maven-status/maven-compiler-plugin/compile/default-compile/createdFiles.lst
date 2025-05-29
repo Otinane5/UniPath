@@ -67,6 +67,5 @@ com\mycompany\unipathui\FilteredListScreen$GreekNormalizer.class
 com\mycompany\unipathui\StudentApplicationsPanel.class
 com\mycompany\unipathui\StudentLoginPanel.class
 com\mycompany\baseClasses\Application.class
-com\mycompany\baseClasses\Profile.class
 com\mycompany\unipathui\CounselorFormScreen$BookingData.class
 com\mycompany\unipathui\ShowResultsUI$1.class
