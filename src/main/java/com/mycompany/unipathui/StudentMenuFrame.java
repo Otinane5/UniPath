@@ -127,6 +127,8 @@ public class StudentMenuFrame extends JFrame {
         bottomPanel.add(logoutButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
+         Application_FormUI applicationFormPanel = new Application_FormUI();
+
         // --- Panels ---
         DepartmentListUI deplistPanel = new DepartmentListUI(
                 () -> cardLayout.show(cardPanel, "menu"),
@@ -172,7 +174,7 @@ public class StudentMenuFrame extends JFrame {
         
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(filterPanel, "setFilters");
-        
+        cardPanel.add(applicationFormPanel, "applicationForm");
         cardPanel.add(quizStarterPanel, "doQuiz");
         cardPanel.add(quizPanel, "startQuiz");
         cardPanel.add(resultsPanel, "quizResults");

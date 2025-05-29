@@ -69,7 +69,6 @@ public class Application_FormUI extends JPanel {
         jTextField4.setText("Πληκτρολογήστε το email σας");
 
         jTextField5.setForeground(placeholderColor);
-        jTextField5.setText("Πληκτρολογήστε τα μόρια");
 
         // Buttons
         jButton1 = new JButton("Επαναφορά");
