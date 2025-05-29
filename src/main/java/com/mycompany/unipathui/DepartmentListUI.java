@@ -61,10 +61,12 @@ public class DepartmentListUI extends JPanel {
 
         JButton filterButton = new JButton("Φίλτρα");
         filterButton.setBackground(Color.PINK);
-        filterButton.setPreferredSize(new Dimension(80, 30));
+        filterButton.setPreferredSize(new Dimension(100, 30));
         filterButton.setMaximumSize(new Dimension(80, 30));
-        filterButton.addActionListener(e -> onShowFilters.run());
-
+        filterButton.addActionListener(e -> {
+            if(filterButton.getText().equals("disabled")){
+            System.out.println("Disabled");}else{onShowFilters.run();}              
+                    });
         topPanel.add(filterButton, BorderLayout.WEST);
 
         JScrollPane scrollPane = new JScrollPane(departmentPanel);
@@ -98,6 +100,7 @@ public class DepartmentListUI extends JPanel {
             if (selectedDepartment == null) {
                 JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε ένα τμήμα πρώτα.");
             } else {
+
                 onApplicationForm.run();
             }
         });
@@ -110,6 +113,7 @@ public class DepartmentListUI extends JPanel {
                 JOptionPane.showMessageDialog(this, "Παρακαλώ συμπληρώστε πρώτα το quiz για να δείτε προτάσεις.");
                 return;
             }else{
+            filterButton.setText("disabled");
             quizTaken = true;}
             refreshDepartmentList();
         });
