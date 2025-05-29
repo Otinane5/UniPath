@@ -184,7 +184,7 @@ public class StudentMenuFrame extends JFrame {
        viewdepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
        
        councelorcontactButton.addActionListener(e -> {
-       new ViewScreenCounselor().setVisible(true);
+           contactCounselor();
 });
         logoutButton.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(
@@ -246,4 +246,7 @@ public class StudentMenuFrame extends JFrame {
         boolean searchReady = true;
         searchReady = searchReady && true;
     }
+    private void contactCounselor(){openCounselorList(new ViewScreenCounselor());}
+    private void openCounselorList(ViewScreenCounselor vsc){vsc.setVisible(true);}
+    
 }

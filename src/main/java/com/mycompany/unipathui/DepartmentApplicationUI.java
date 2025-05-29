@@ -12,7 +12,7 @@ public class DepartmentApplicationUI extends JPanel {
     private JLabel jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8;
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
     private JComboBox<String> jComboBox1;
-    private JButton jButton1, jButton2;
+    private JButton jButton1, jButton2, jButton3;
     public static String uniName;
     private String department; //unusable
     
@@ -20,9 +20,12 @@ public class DepartmentApplicationUI extends JPanel {
         openDepartmentApplication();
         fillApplicationForm();
     }
+
     private void fillApplicationForm(){
         jTextField1.setForeground(new Color(60, 60, 60));
-        jTextField1.setText(Unipath.currentUser.userName);};
+        jTextField1.setText(Unipath.currentUser.userName);
+    }
+
     private void openDepartmentApplication() {
         setBackground(new Color(240, 240, 240));
         setPreferredSize(new Dimension(500, 700));
@@ -30,7 +33,6 @@ public class DepartmentApplicationUI extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        // Labels
         jLabel1 = new JLabel("Φόρμα Εγγραφής:");
         jLabel1.setFont(new Font("SansSerif", Font.BOLD, 18));
         jLabel1.setForeground(new Color(0, 102, 204));
@@ -38,7 +40,6 @@ public class DepartmentApplicationUI extends JPanel {
         add(jLabel1, gbc);
 
         jLabel2 = new JLabel("*");
-        //jLabel2 = new JLabel("Τμήμα: "+uniName);
         jLabel2.setFont(new Font("SansSerif", Font.PLAIN, 14));
         jLabel2.setForeground(new Color(51, 51, 51));
         gbc.gridy = 1; gbc.anchor = GridBagConstraints.WEST;
@@ -51,7 +52,6 @@ public class DepartmentApplicationUI extends JPanel {
         jLabel7 = new JLabel("Email:");
         jLabel8 = new JLabel("Μόρια:");
 
-        // Fields
         jTextField1 = new JTextField(20);
         jTextField2 = new JTextField(20);
         jTextField3 = new JTextField(20);
@@ -59,19 +59,12 @@ public class DepartmentApplicationUI extends JPanel {
         jTextField5 = new JTextField(20);
         jComboBox1 = new JComboBox<>(new String[]{"Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Ηράκλειο", "Άλλη","Εξωτερικό"});
 
-        //πρέπει να σβήνει ο χρήστης καθε φορά από το πλαίσιο το πληκτρολογήστε... 
         Color placeholderColor = new Color(60, 60, 60);
-        
-
         jTextField2.setForeground(placeholderColor);
-
         jTextField3.setForeground(placeholderColor);
-
         jTextField4.setForeground(placeholderColor);
-
         jTextField5.setForeground(placeholderColor);
 
-        // Buttons
         jButton1 = new JButton("Επαναφορά");
         jButton1.setBackground(new Color(255, 51, 51));
         jButton1.setForeground(Color.WHITE);
@@ -84,11 +77,8 @@ public class DepartmentApplicationUI extends JPanel {
         jButton2.setForeground(Color.WHITE);
         jButton2.setFont(new Font("SansSerif", Font.BOLD, 14));
         jButton2.setPreferredSize(new Dimension(120, 40));
-        jButton2.addActionListener(this::submitForm);
+        jButton2.addActionListener(this::submitApplicationForm);
 
-        //+ κουμπί "πίσω" και "Αρχική σελίδα"
-        
-        // Layout
         gbc.gridwidth = 1; gbc.anchor = GridBagConstraints.WEST;
 
         gbc.gridy = 2; gbc.gridx = 0; add(jLabel3, gbc); gbc.gridx = 1; add(jTextField1, gbc);
@@ -110,7 +100,7 @@ public class DepartmentApplicationUI extends JPanel {
         jComboBox1.setSelectedIndex(0);
     }
 
-    private void submitForm(ActionEvent evt) {
+    private void submitApplicationForm(ActionEvent evt) {
         String fullName = jTextField1.getText().trim();
         String residence = jComboBox1.getSelectedItem().toString();
         String birthDate = jTextField2.getText().trim();
@@ -118,21 +108,43 @@ public class DepartmentApplicationUI extends JPanel {
         String email = jTextField4.getText().trim();
         String gradePoints = jTextField5.getText().trim();
 
-        // Check if all fields are filled
         if (fullName.isEmpty() || residence.isEmpty() || birthDate.isEmpty() || phone.isEmpty() || email.isEmpty() || gradePoints.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Παρακαλώ συμπληρώστε όλα τα πεδία.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+            returnToLastList();
             return;
         }
 
-        // Ask for confirmation before submitting
         int response = JOptionPane.showConfirmDialog(this, "Είστε σίγουροι ότι θέλετε να υποβάλετε την αίτηση;", 
                                                      "Επιβεβαίωση Υποβολής", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) {
-            Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints,department);
+            Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints, department);
             Application.sample.add(newApp);
-            JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!Θα λάβετε επιβεβαιωτικό μήνυμα σύντομα");
+            sendApplicationForm();
             ApplicationSender.send();
             resetForm(null);
+        }
+    }
+
+    private void returnToLastList() {
+        notifyForInvalidity();
+        System.out.println("Invalid Symbit");
+    }
+
+    private void sendApplicationForm() {
+        JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!Θα λάβετε επιβεβαιωτικό μήνυμα σύντομα");
+    }
+
+    private void sendApplicationReceiptMessage() {
+        // applicationReceiptMessage
+    }
+
+    private void notifyForInvalidity() {
+        JOptionPane.showMessageDialog(this, "Παρακαλώ συμπληρώστε όλα τα πεδία.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private void cancelApplicationForm() {
+        int result = JOptionPane.showConfirmDialog(this, "Είστε σίγουροι ότι θέλετε να ακυρώσετε τη συμπλήρωση της φόρμας;", "Επιβεβαίωση Ακύρωσης", JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+
         }
     }
 }
