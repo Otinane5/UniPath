@@ -18,8 +18,11 @@ public class DepartmentApplicationUI extends JPanel {
     
     public DepartmentApplicationUI() {
         openDepartmentApplication();
+        fillApplicationForm();
     }
-
+    private void fillApplicationForm(){
+        jTextField1.setForeground(new Color(60, 60, 60));
+        jTextField1.setText(Unipath.currentUser.userName);};
     private void openDepartmentApplication() {
         setBackground(new Color(240, 240, 240));
         setPreferredSize(new Dimension(500, 700));
@@ -58,8 +61,7 @@ public class DepartmentApplicationUI extends JPanel {
 
         //πρέπει να σβήνει ο χρήστης καθε φορά από το πλαίσιο το πληκτρολογήστε... 
         Color placeholderColor = new Color(60, 60, 60);
-        jTextField1.setForeground(placeholderColor);
-        jTextField1.setText(Unipath.currentUser.userName);
+        
 
         jTextField2.setForeground(placeholderColor);
 
