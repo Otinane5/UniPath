@@ -55,18 +55,14 @@ public class Application_FormUI extends JPanel {
         jComboBox1 = new JComboBox<>(new String[]{"Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Ηράκλειο", "Άλλη","Εξωτερικό"});
 
         //πρέπει να σβήνει ο χρήστης καθε φορά από το πλαίσιο το πληκτρολογήστε... 
-        Color placeholderColor = new Color(163, 163, 163);
+        Color placeholderColor = new Color(60, 60, 60);
         jTextField1.setForeground(placeholderColor);
-        jTextField1.setText("Πληκτρολογήστε το όνομα και το επώνυμο");
 
         jTextField2.setForeground(placeholderColor);
-        jTextField2.setText("Πληκτρολογήστε ημερομηνία γέννησης");
 
         jTextField3.setForeground(placeholderColor);
-        jTextField3.setText("Πληκτρολογήστε τον αριθμό τηλεφώνου");
 
         jTextField4.setForeground(placeholderColor);
-        jTextField4.setText("Πληκτρολογήστε το email σας");
 
         jTextField5.setForeground(placeholderColor);
 
