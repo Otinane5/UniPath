@@ -1,6 +1,7 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Application;
+import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -57,6 +58,7 @@ public class Application_FormUI extends JPanel {
         //πρέπει να σβήνει ο χρήστης καθε φορά από το πλαίσιο το πληκτρολογήστε... 
         Color placeholderColor = new Color(60, 60, 60);
         jTextField1.setForeground(placeholderColor);
+        jTextField1.setText(Unipath.currentUser.userName);
 
         jTextField2.setForeground(placeholderColor);
 

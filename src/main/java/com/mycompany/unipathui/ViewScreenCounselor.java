@@ -4,9 +4,12 @@ import com.mycompany.baseClasses.Counselor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewScreenCounselor extends JFrame {
+
+    private List<JLabel> suggestionLabels = new ArrayList<>();
 
     public ViewScreenCounselor() {
         setTitle("Προφίλ Συμβούλου");
@@ -37,20 +40,21 @@ public class ViewScreenCounselor extends JFrame {
         advisorsPanel.setLayout(new GridLayout(0, 1, 10, 10));
         advisorsPanel.setBackground(Color.LIGHT_GRAY);
 
-        List<Counselor> counselors = Counselor.sample; 
+        List<Counselor> counselors = Counselor.sample;
 
         for (Counselor counselor : counselors) {
-            JPanel row = new JPanel(new GridLayout(3, 2, 5, 5));
+            JPanel row = new JPanel(new GridLayout(5, 2, 5, 5));
             row.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
             JLabel name = new JLabel(counselor.name + " " + counselor.lastName);
             JLabel phone = new JLabel(counselor.phoneNum);
             JButton profileBtn = new JButton("Προβολή προφίλ");
             JButton appointmentBtn = new JButton("Ραντεβού");
+
             appointmentBtn.addActionListener(e -> {
-             String studentName = "Όνομα Μαθητή"; 
-            String counselorFullName = counselor.name + " " + counselor.lastName;
-            new CounselorFormScreen(studentName, counselorFullName).setVisible(true);
+                String studentName = "Όνομα Μαθητή";
+                String counselorFullName = counselor.name + " " + counselor.lastName;
+                new CounselorFormScreen(studentName, counselorFullName).setVisible(true);
             });
 
             profileBtn.setBackground(Color.decode("#E6B3FF"));
@@ -62,40 +66,37 @@ public class ViewScreenCounselor extends JFrame {
 
             JButton submitReviewBtn = new JButton("Υποβολή");
             submitReviewBtn.addActionListener(e -> {
-    // Get the review score from the JSpinner
-    int reviewScore = (Integer) reviewSpinner.getValue();
-    
-    // Add the review score to the counselor's reviews list
-    System.out.println("Review submitted for " + counselor.userName + ": " + reviewScore);
-    //counselor.reviews.add(reviewScore);  // Add the review score to the counselor's reviews list
-});
+                int reviewScore = (Integer) reviewSpinner.getValue();
+                System.out.println("Review submitted for " + counselor.userName + ": " + reviewScore);
+                // counselor.reviews.add(reviewScore); // You can uncomment if you want to store it
+            });
 
+            profileBtn.addActionListener(e -> {
+                CounselorProfilePanel.CounselorToDisplay = counselor;
+                searchCounselor("gdimitriou");
+                selectCounselor(counselor);
 
-            // Assign selected counselor before opening the profile
-    profileBtn.addActionListener(e -> {
-    CounselorProfilePanel.CounselorToDisplay = counselor;
-    searchCounselor("gdimitriou");
-    selectCounselor(counselor);
+                JFrame profileFrame = new JFrame("Προφίλ Συμβούλου");
+                profileFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                profileFrame.setSize(500, 400);
+                profileFrame.setLocationRelativeTo(null);
 
-    // Create a JFrame to hold the profile panel
-    JFrame profileFrame = new JFrame("Προφίλ Συμβούλου");
-    profileFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    profileFrame.setSize(500, 400);
-    profileFrame.setLocationRelativeTo(null);
+                CounselorProfilePanel panel = new CounselorProfilePanel(
+                    () -> profileFrame.dispose(),
+                    () -> {
+                        profileFrame.dispose();
+                        JOptionPane.showMessageDialog(null, "Επεξεργασία προφίλ δεν υλοποιήθηκε ακόμα.");
+                    }
+                );
 
-    
-    CounselorProfilePanel panel = new CounselorProfilePanel(
-        () -> profileFrame.dispose(), // onBackToMainMenu
-        () -> {
-            profileFrame.dispose();
-            // You can add your edit screen here
-            JOptionPane.showMessageDialog(null, "Επεξεργασία προφίλ δεν υλοποιήθηκε ακόμα.");
-        }
-    );
+                profileFrame.setContentPane(panel);
+                profileFrame.setVisible(true);
+            });
 
-    profileFrame.setContentPane(panel);
-    profileFrame.setVisible(true);
-});
+            // Suggestion Label
+            JLabel suggestionTextLabel = new JLabel("Πρόταση:");
+            JLabel suggestionValueLabel = new JLabel("-");
+            suggestionLabels.add(suggestionValueLabel);
 
             row.add(name);
             row.add(profileBtn);
@@ -107,6 +108,9 @@ public class ViewScreenCounselor extends JFrame {
             reviewPanel.add(reviewSpinner);
             reviewPanel.add(submitReviewBtn);
             row.add(reviewPanel);
+
+            row.add(suggestionTextLabel);
+            row.add(suggestionValueLabel);
 
             advisorsPanel.add(row);
         }
@@ -135,7 +139,11 @@ public class ViewScreenCounselor extends JFrame {
         suggestionsBtn.setBounds(300, 360, 180, 30);
         add(suggestionsBtn);
 
-        suggestionsBtn.addActionListener(e -> System.out.println("pressed!"));
+        suggestionsBtn.addActionListener(e -> {
+            for (JLabel label : suggestionLabels) {
+                label.setText("5");
+            }
+        });
 
         logoutBtn.addActionListener(e -> {
             int result = JOptionPane.showConfirmDialog(this, "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;", "Επιβεβαίωση", JOptionPane.YES_NO_OPTION);
@@ -155,20 +163,17 @@ public class ViewScreenCounselor extends JFrame {
             new StudentMenuFrame().setVisible(true);
         });
     }
- 
-private void searchCounselor(String query) {
-   
-    boolean searchStarted = !query.trim().isEmpty();
-    searchStarted = searchStarted || query.length() > 0; 
-    System.out.println("Searching for: " + query); 
-}
 
+    private void searchCounselor(String query) {
+        boolean searchStarted = !query.trim().isEmpty();
+        searchStarted = searchStarted || query.length() > 0;
+        System.out.println("Searching for: " + query);
+    }
 
-private void selectCounselor(Counselor counselor) {
-   
-    String counselorInfo = counselor.name + " " + counselor.lastName;
-    boolean isSelected = counselorInfo != null && counselorInfo.length() > 0;
-    isSelected = isSelected && counselor.userName != null; 
-    System.out.println("Selected counselor: " + counselorInfo); 
-}   
+    private void selectCounselor(Counselor counselor) {
+        String counselorInfo = counselor.name + " " + counselor.lastName;
+        boolean isSelected = counselorInfo != null && counselorInfo.length() > 0;
+        isSelected = isSelected && counselor.userName != null;
+        System.out.println("Selected counselor: " + counselorInfo);
+    }
 }

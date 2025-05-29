@@ -1,5 +1,6 @@
 package com.mycompany.baseClasses;
 
+import com.mycompany.unipathui.AnswerLog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,12 +11,22 @@ public class Counselor extends User {
     public String email;
     public String phoneNum;
     public String bio;
-    public List<Integer> reviews = new ArrayList<>(); // Reviews will be integers (e.g., ratings 1-5)
+    public AnswerLog log;
+    public List<Integer> reviews = new ArrayList<>();
 
     public static List<Counselor> sample = new ArrayList<>();
 
+    public static AnswerLog createAnswerLog(int[] answerValues) {
+            AnswerLog log = new AnswerLog();
+            for (int i = 0; i < answerValues.length; i++) {
+                log.setAnswer(i, answerValues[i]);
+            }
+            return log;
+        }
+    
     public static void init() {
         
+
         // Counselor 1
         Counselor c1 = new Counselor("s2", 2, "sampleCounselor");
         c1.name = "Μαρία";
@@ -23,7 +34,10 @@ public class Counselor extends User {
         c1.email = "maria.pap@example.com";
         c1.phoneNum = "2101234567";
         c1.bio = "Ειδική στην επαγγελματική καθοδήγηση.";
-        c1.reviews = List.of(5, 4, 5, 5);  // Example reviews (ratings from 1 to 5)
+        c1.reviews = List.of(5, 4, 5, 5);
+        c1.log = createAnswerLog(new int[]{
+            1, 0, 2, 1, 3, 4, 0, 2, 1, 3, 4, 2, 1, 0, 2, 1, 3, 4
+        });
 
         // Counselor 2
         Counselor c2 = new Counselor("pass2", 2, "gdimtriou");
@@ -33,6 +47,9 @@ public class Counselor extends User {
         c2.phoneNum = "2107654321";
         c2.bio = "Σύμβουλος με εμπειρία σε πανεπιστημιακές σπουδές.";
         c2.reviews = List.of(4, 3, 4, 5);
+        c2.log = createAnswerLog(new int[]{
+            2, 3, 1, 0, 4, 3, 2, 1, 0, 3, 2, 1, 4, 0, 1, 2, 3, 0
+        });
 
         // Counselor 3
         Counselor c3 = new Counselor("pass3", 2, "akaragianni");
@@ -42,6 +59,9 @@ public class Counselor extends User {
         c3.phoneNum = "2109988776";
         c3.bio = "Βοηθώ μαθητές να βρουν το σωστό μονοπάτι.";
         c3.reviews = List.of(5, 4, 5);
+        c3.log = createAnswerLog(new int[]{
+            0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 0, 1, 2, 3, 4, 0, 1, 2
+        });
 
         // Counselor 4
         Counselor c4 = new Counselor("pass4", 2, "nvasileiou");
@@ -51,6 +71,9 @@ public class Counselor extends User {
         c4.phoneNum = "2103332211";
         c4.bio = "Εξειδίκευση σε επιλογή σχολών.";
         c4.reviews = List.of(4, 4, 3, 5);
+        c4.log = createAnswerLog(new int[]{
+            3, 2, 1, 0, 1, 2, 3, 4, 2, 0, 1, 3, 2, 1, 0, 4, 3, 2
+        });
 
         // Add counselors to the sample list
         sample.add(c1);
