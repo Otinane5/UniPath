@@ -26,7 +26,7 @@ public class Application_FormUI extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
 
         // Labels
-        jLabel1 = new JLabel("Φόρμα Εγγραφής");
+        jLabel1 = new JLabel("Φόρμα Εγγραφής:");
         jLabel1.setFont(new Font("SansSerif", Font.BOLD, 18));
         jLabel1.setForeground(new Color(0, 102, 204));
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2; gbc.anchor = GridBagConstraints.CENTER;
@@ -55,21 +55,16 @@ public class Application_FormUI extends JPanel {
         jComboBox1 = new JComboBox<>(new String[]{"Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Ηράκλειο", "Άλλη","Εξωτερικό"});
 
         //πρέπει να σβήνει ο χρήστης καθε φορά από το πλαίσιο το πληκτρολογήστε... 
-        Color placeholderColor = new Color(163, 163, 163);
+        Color placeholderColor = new Color(60, 60, 60);
         jTextField1.setForeground(placeholderColor);
-        jTextField1.setText("Πληκτρολογήστε το όνομα και το επώνυμο");
 
         jTextField2.setForeground(placeholderColor);
-        jTextField2.setText("Πληκτρολογήστε ημερομηνία γέννησης");
 
         jTextField3.setForeground(placeholderColor);
-        jTextField3.setText("Πληκτρολογήστε τον αριθμό τηλεφώνου");
 
         jTextField4.setForeground(placeholderColor);
-        jTextField4.setText("Πληκτρολογήστε το email σας");
 
         jTextField5.setForeground(placeholderColor);
-        jTextField5.setText("Πληκτρολογήστε τα μόρια");
 
         // Buttons
         jButton1 = new JButton("Επαναφορά");
@@ -130,7 +125,7 @@ public class Application_FormUI extends JPanel {
         if (response == JOptionPane.YES_OPTION) {
             Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints,department);
             Application.sample.add(newApp);
-            JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!");
+            JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!Θα λάβετε επιβεβαιωτικό μήνυμα σύντομα");
             resetForm(null);
         }
     }

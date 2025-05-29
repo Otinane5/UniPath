@@ -12,6 +12,7 @@ public class Unipath
 
     public static void main (String[] args)
     {
+        System.out.println("Welcome!");
         User.init();
         Counselor.init();
         Application.init();
