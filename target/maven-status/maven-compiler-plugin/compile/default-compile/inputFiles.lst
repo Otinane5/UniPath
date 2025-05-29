@@ -1,5 +1,6 @@
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\baseClasses\Announcement.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\baseClasses\Application.java
+C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\baseClasses\ApplicationSender.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\baseClasses\Appointment.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\baseClasses\Counselor.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\baseClasses\Department.java
@@ -16,7 +17,6 @@ C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\uni
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\AnnouncementUI.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\AnnouncementView.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\AnswerLog.java
-C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\Application_FormUI.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\ChooseFiltersScreen.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\CounselorAcceptAppointmentPanel.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\CounselorAppointmentDetailsPanel.java
@@ -27,6 +27,7 @@ C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\uni
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\CounselorMenuFrame.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\CounselorProfilePanel.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\CounselorRejectAppointmentPanel.java
+C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\DepartmentApplicationUI.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\DepartmentInfo.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\DepartmentListCounselor.java
 C:\Users\User\Documents\NetBeansProjects\Unipath\src\main\java\com\mycompany\unipathui\DepartmentListPanel.java

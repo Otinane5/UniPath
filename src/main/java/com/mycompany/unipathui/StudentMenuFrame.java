@@ -127,7 +127,7 @@ public class StudentMenuFrame extends JFrame {
         bottomPanel.add(logoutButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
-         Application_FormUI applicationFormPanel = new Application_FormUI();
+         DepartmentApplicationUI applicationFormPanel = new DepartmentApplicationUI();
 
         // --- Panels ---
         DepartmentListUI deplistPanel = new DepartmentListUI(
@@ -239,6 +239,9 @@ public class StudentMenuFrame extends JFrame {
         cardPanel.add(announcementPanel, "showAnnouncements");
         cardLayout.show(cardPanel, "showAnnouncements");
     }
+    
+    private void seeListOfDepartments(){System.out.println("List of departments is Shown");}
+    
     private void startSearch() {
         boolean searchReady = true;
         searchReady = searchReady && true;

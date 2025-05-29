@@ -8,7 +8,6 @@ com\mycompany\unipathui\FilteredListScreen.class
 com\mycompany\baseClasses\Appointment.class
 com\mycompany\baseClasses\Message.class
 com\mycompany\unipathui\DepartmentListCounselor.class
-com\mycompany\unipathui\Application_FormUI.class
 com\mycompany\unipathui\CounselorAppointmentRequestsPanel.class
 com\mycompany\unipathui\ChooseFiltersScreen.class
 com\mycompany\unipathui\CounselorRejectAppointmentPanel.class
@@ -49,9 +48,11 @@ com\mycompany\unipathui\AnswerLog.class
 com\mycompany\baseClasses\MessageBox.class
 com\mycompany\unipathui\StudentMenuFrame.class
 com\mycompany\unipathui\CounselorFormScreen.class
+com\mycompany\unipathui\DepartmentApplicationUI.class
 com\mycompany\unipathui\IconUtil.class
 com\mycompany\unipathui\CounselorLoginPanel.class
 com\mycompany\unipathui\MessageBoxFrame.class
+com\mycompany\baseClasses\ApplicationSender.class
 com\mycompany\unipathui\DepartmentProfileUI.class
 com\mycompany\unipathui\ViewScreenCounselor.class
 com\mycompany\unipathui\AnnouncementRepository.class

@@ -1,12 +1,13 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Application;
+import com.mycompany.baseClasses.ApplicationSender;
 import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Application_FormUI extends JPanel {
+public class DepartmentApplicationUI extends JPanel {
 
     private JLabel jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8;
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
@@ -15,11 +16,11 @@ public class Application_FormUI extends JPanel {
     public static String uniName;
     private String department; //unusable
     
-    public Application_FormUI() {
-        initComponents();
+    public DepartmentApplicationUI() {
+        openDepartmentApplication();
     }
 
-    private void initComponents() {
+    private void openDepartmentApplication() {
         setBackground(new Color(240, 240, 240));
         setPreferredSize(new Dimension(500, 700));
         setLayout(new GridBagLayout());
@@ -128,6 +129,7 @@ public class Application_FormUI extends JPanel {
             Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints,department);
             Application.sample.add(newApp);
             JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!Θα λάβετε επιβεβαιωτικό μήνυμα σύντομα");
+            ApplicationSender.send();
             resetForm(null);
         }
     }
