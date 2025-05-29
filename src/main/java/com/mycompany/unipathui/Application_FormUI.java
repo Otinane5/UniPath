@@ -26,7 +26,7 @@ public class Application_FormUI extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
 
         // Labels
-        jLabel1 = new JLabel("Φόρμα Εγγραφής");
+        jLabel1 = new JLabel("Φόρμα Εγγραφής:");
         jLabel1.setFont(new Font("SansSerif", Font.BOLD, 18));
         jLabel1.setForeground(new Color(0, 102, 204));
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2; gbc.anchor = GridBagConstraints.CENTER;
