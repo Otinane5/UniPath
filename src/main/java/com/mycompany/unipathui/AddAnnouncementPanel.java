@@ -108,10 +108,6 @@ public class AddAnnouncementPanel extends JPanel
         
         add(buttonPanel, BorderLayout.SOUTH);
     }
-    
-        //public void writeAnnouncement()
-        //{}
-        
         public void postAnnouncement() 
         {
             publish.addActionListener(e -> 

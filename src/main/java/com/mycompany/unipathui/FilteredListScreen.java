@@ -58,11 +58,6 @@ public class FilteredListScreen extends JPanel
 
         add(bottomPanel, BorderLayout.SOUTH);
     }
-    
-    //public void selectApplication()
-    //{} Δεν θα χρειαστεί αφου η αίτηση δεν "ανοίγει". 
-    //όπως ειναι το UI απλά παταει αποδοχή/απορριψη και φαίνονται επι τοπου ολα τα στοιχεια  
-
     //new
     public void setFilters(String department, String city, Integer min, Integer max, String status)
     {        

@@ -84,10 +84,6 @@ public class EditDescriptionPanel extends JPanel {
         add(editPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
     }
-    
-    //public void openEditDescriptionWindow(){}
-    //δεν χρειάζεται εδώ αφού το edit description είναι ηδη ανοιχτό, έτσι οπως φτιαξαμε το ui
-    
     public JButton acceptChanges(CardLayout cardLayout, JPanel cardPanel){
         
         JButton accept=new JButton("Αποδοχή Αλλαγών");
