@@ -11,6 +11,7 @@ public class LoginFrame extends JFrame {
     //ATTRIBUTES
     private final CardLayout cardLayout;
     private final JPanel contentPanel;
+    private UniversityMainMenu mainMenuPanel;
     private UniversityLoginPanel universityLoginPanel;
     private StudentLoginPanel studentLoginPanel;
     private CounselorLoginPanel counselorLoginPanel;

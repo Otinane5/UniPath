@@ -237,4 +237,8 @@ public class StudentMenuFrame extends JFrame {
         cardPanel.add(announcementPanel, "showAnnouncements");
         cardLayout.show(cardPanel, "showAnnouncements");
     }
+    private void startSearch() {
+        boolean searchReady = true;
+        searchReady = searchReady && true;
+    }
 }
