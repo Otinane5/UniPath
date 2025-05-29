@@ -1,6 +1,8 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Counselor;
+import com.mycompany.baseClasses.Student;
+import com.mycompany.unipathui.AnswerLog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -68,7 +70,7 @@ public class ViewScreenCounselor extends JFrame {
             submitReviewBtn.addActionListener(e -> {
                 int reviewScore = (Integer) reviewSpinner.getValue();
                 System.out.println("Review submitted for " + counselor.userName + ": " + reviewScore);
-                // counselor.reviews.add(reviewScore); // You can uncomment if you want to store it
+                // counselor.reviews.add(reviewScore);
             });
 
             profileBtn.addActionListener(e -> {
@@ -82,18 +84,17 @@ public class ViewScreenCounselor extends JFrame {
                 profileFrame.setLocationRelativeTo(null);
 
                 CounselorProfilePanel panel = new CounselorProfilePanel(
-                    () -> profileFrame.dispose(),
-                    () -> {
-                        profileFrame.dispose();
-                        JOptionPane.showMessageDialog(null, "Επεξεργασία προφίλ δεν υλοποιήθηκε ακόμα.");
-                    }
+                        () -> profileFrame.dispose(),
+                        () -> {
+                            profileFrame.dispose();
+                            JOptionPane.showMessageDialog(null, "Επεξεργασία προφίλ δεν υλοποιήθηκε ακόμα.");
+                        }
                 );
 
                 profileFrame.setContentPane(panel);
                 profileFrame.setVisible(true);
             });
 
-            // Suggestion Label
             JLabel suggestionTextLabel = new JLabel("Πρόταση:");
             JLabel suggestionValueLabel = new JLabel("-");
             suggestionLabels.add(suggestionValueLabel);
@@ -140,8 +141,30 @@ public class ViewScreenCounselor extends JFrame {
         add(suggestionsBtn);
 
         suggestionsBtn.addActionListener(e -> {
-            for (JLabel label : suggestionLabels) {
-                label.setText("5");
+            if (!Student.hasAnswerLog) {
+                JOptionPane.showMessageDialog(this, "Δεν έχετε απαντήσει το quiz.", "Προσοχή", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            int[] studentAnswers = Student.answerLog.getAnswers();
+
+            for (int i = 0; i < Counselor.sample.size(); i++) {
+                Counselor counselor = Counselor.sample.get(i);
+                int[] counselorAnswers = counselor.log.getAnswers();
+                int total = 0;
+                int matches = 0;
+
+                for (int q = 0; q < studentAnswers.length; q++) {
+                    if (studentAnswers[q] != -1 && counselorAnswers[q] != -1) {
+                        total++;
+                        if (Math.abs(studentAnswers[q] - counselorAnswers[q]) <= 1) {
+                            matches++;
+                        }
+                    }
+                }
+
+                int percentage = (total == 0) ? 0 : (int) Math.round((matches * 100.0) / total);
+                suggestionLabels.get(i).setText(percentage + "%");
             }
         });
 
