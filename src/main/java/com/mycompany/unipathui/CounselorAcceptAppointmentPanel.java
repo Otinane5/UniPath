@@ -3,10 +3,14 @@ package com.mycompany.unipathui;
 import com.mycompany.baseClasses.Appointment;
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class CounselorAcceptAppointmentPanel extends JPanel {
     //ATTRIBUTES
-    private final JTextField dateField, timeField, methodField;
+    private final JTextField dateField, timeField;
+    private final JComboBox<String> methodCombo;
     private Appointment selectedAppointment;
     //CONSTRUCTOR
     public CounselorAcceptAppointmentPanel(CardLayout cardLayout, JPanel cardPanel) {
@@ -22,7 +26,8 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
 
         dateField = new JTextField();
         timeField = new JTextField();
-        methodField = new JTextField();
+        String[] methods = { "Τηλέφωνο", "Δια ζώσης", "Βιντεοκλήση" };
+        methodCombo = new JComboBox<>(methods);
         JTextArea messageArea = new JTextArea(5, 30);
         messageArea.setLineWrap(true);
         messageArea.setWrapStyleWord(true);
@@ -36,7 +41,7 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
         formPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         formPanel.add(new JLabel("Τρόπος Επικοινωνίας:"));
-        formPanel.add(methodField);
+        formPanel.add(methodCombo);
         formPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         formPanel.add(new JLabel("(Προαιρετικό) Μήνυμα προς Μαθητή:"));
@@ -88,10 +93,9 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
     private boolean validateFields() {
         String date = dateField.getText().trim();
         String time = timeField.getText().trim();
-        String method = methodField.getText().trim();
         
-        if (date.isEmpty() || time.trim().isEmpty() || method.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Συμπληρώστε όλα τα υποχρεωτικά πεδία.");
+        if (date.isEmpty() || time.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Συμπληρώστε όλα τα υποχρεωτικά πεδία.", "Ημερομηνία ραντεβού και Ώρα Ραντεβού", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (!date.matches("\\d{2}/\\d{2}/\\d{4}")) {
@@ -102,6 +106,33 @@ public class CounselorAcceptAppointmentPanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Η ώρα πρέπει να είναι σε μορφή HH:mm.", "Μη έγκυρη ώρα", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        
+        //Check the date if it's valid
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(java.time.format.ResolverStyle.STRICT);
+            LocalDate selectedDate = LocalDate.parse(date, formatter);
+            LocalDate today = LocalDate.now();
+
+            if (!selectedDate.isAfter(today)) {
+                JOptionPane.showMessageDialog(this, "Η ημερομηνία ραντεβού πρέπει να είναι μελλοντική.", "Μη έγκυρη ημερομηνία", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Η ημερομηνία δεν είναι έγκυρη ή δεν υπάρχει.", "Μη έγκυρη ημερομηνία", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Check the time if it's valid
+        try {
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+            java.time.LocalTime.parse(time, timeFormatter);
+        }
+        catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Η ώρα δεν είναι έγκυρη. Πρέπει να είναι μεταξύ 00:00 και 23:59.", "Μη έγκυρη ώρα", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
         return true;
     }
     //To specify which Appointment is getting "approved"
