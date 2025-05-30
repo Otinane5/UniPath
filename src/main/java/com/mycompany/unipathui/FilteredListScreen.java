@@ -8,6 +8,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 import java.util.stream.Collectors;
+
+// Η κλάση FilteredListScreen είναι ένα JPanel που προβάλλει την φιλτραρισμένη λίστα 
+// με τις αιτήσεις των φοιτητών. Τα φίλτρα αποτελούνται από το Τμήμα,την πόλη, την 
+//βαθμολογία και την κατάσταση αίτησης. Χρησιμοποιείται από το Πανεπιστήμιο
+//για προβολή των σχετικών αιτήσεων μέσω συγκεκριμένων κριτηρίων.
  
 public class FilteredListScreen extends JPanel
 {
@@ -58,7 +63,7 @@ public class FilteredListScreen extends JPanel
 
         add(bottomPanel, BorderLayout.SOUTH);
     }
-    //new
+    
     public void setFilters(String department, String city, Integer min, Integer max, String status)
     {        
         this.departmentFilter=GreekNormalizer.normalize(department);

@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+//Εμφάνιση της λίστας με τις αιτήσεις εγγραφής των μαθητών, επιτρέποντας την 
+//έγκριση ή απόρριψη των υποβληθεισών αιτήσεων. Παρέχει επίσης επιλογή για ορισμό φίλτρων και πλοήγηση μεταξύ οθονών.
 public class StudentApplicationsPanel extends JPanel 
 {
     private final JPanel applicationListPanel = new JPanel();  

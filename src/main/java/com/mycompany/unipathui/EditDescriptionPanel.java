@@ -5,6 +5,10 @@ import com.mycompany.baseClasses.Description;
 import javax.swing.*;
 import java.awt.*;
 
+// Η κλάση EditDescriptionPanel δημιουργήθηκε για την επεξεργασία της περιγραφής ενός τμήματος,
+// με δυνατότητα αποδοχής ή ακύρωσης των αλλαγών. Είναι διαθέσιμη και η προεπισκόπησης πριν την αποθήκευση
+//και η αυτόματη ενημέρωση του προφίλ του Τμήματος.
+
 public class EditDescriptionPanel extends JPanel {
 
     private JTextArea descriptionArea;

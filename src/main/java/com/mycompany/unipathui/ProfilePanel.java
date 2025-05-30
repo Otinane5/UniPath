@@ -3,6 +3,9 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
+//Παρουσίαση του προφίλ ενός πανεπιστημιακού Τμήματος, εμφανίζοντας το όνομα, την περιγραφή και 
+//τις ανακοινώσεις του. Επιτρέπεται η τροποποίηση της περιγραφής και η προσθήκη νέων ανακοινώσεων 
+//και η πλοήγηση σε άλλες οθόνες.
 public class ProfilePanel extends JPanel 
 {
     private JPanel announcementPanel;
@@ -60,7 +63,6 @@ public class ProfilePanel extends JPanel
         descScroll.setMaximumSize(new Dimension(400, 60));
         contentPanel.add(descScroll);
         contentPanel.add(Box.createVerticalStrut(10));
-        
         
         // Announcements and Adding Announcements
         JPanel annPanel = new JPanel(new BorderLayout(10, 0));
@@ -153,8 +155,6 @@ public class ProfilePanel extends JPanel
         refreshAnnouncements(); 
     }
     
-    //new method
-    //is it used? μετά τον συγχρονισμό ανακοινώσεων?
     public void refreshAnnouncements() 
     {
         announcementPanel.removeAll();

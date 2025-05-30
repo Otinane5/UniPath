@@ -7,6 +7,9 @@ import com.mycompany.baseClasses.Description;
 
 import static java.util.Map.entry;
 
+// Η κλάση DepartmentListPanel εμφανίζει την λίστα με τα Τμήματα στο Πανεπιστήμιο και 
+//επιτρέπει την επιλογή και προβολή του προφίλ του. Σύνδεση με το προφίλ μέσω του ProfilePanel.
+
 public class DepartmentListPanel extends JPanel 
 {
     private CardLayout cardLayout;

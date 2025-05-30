@@ -3,6 +3,9 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
+// Η κλάση AddAnnouncementPanel υλοποιήθηκε για την προσθήκη νέας ανακοίνωσης,
+// με ανανέωση του προφίλ μετά τη δημοσίευση.
+
 public class AddAnnouncementPanel extends JPanel 
 {
     private String departmentName;
