@@ -9,6 +9,6 @@ package com.mycompany.baseClasses;
  * @author User
  */
 public class ApplicationSender {
-    public static void send(){System.out.println("Η αίτηση στάλθηκε επιτυχώς");}
+    public static void sendApplicationFrom(){System.out.println("Η αίτηση στάλθηκε επιτυχώς");}
 }
 
