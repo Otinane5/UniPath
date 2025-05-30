@@ -3,9 +3,10 @@ package com.mycompany.unipathui;
 import com.mycompany.baseClasses.Application;
 import com.mycompany.baseClasses.ApplicationSender;
 import com.mycompany.baseClasses.Unipath;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 
 public class DepartmentApplicationUI extends JPanel {
 
@@ -13,15 +14,17 @@ public class DepartmentApplicationUI extends JPanel {
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
     private JComboBox<String> jComboBox1;
     private JButton jButton1, jButton2, jButton3;
+    private final Runnable onCancel;
     public static String uniName;
-    private String department; //unusable
-    
-    public DepartmentApplicationUI() {
+    private String department;
+
+    public DepartmentApplicationUI(Runnable onCancel) {
+        this.onCancel = onCancel;
         openDepartmentApplication();
         fillApplicationForm();
     }
 
-    private void fillApplicationForm(){
+    private void fillApplicationForm() {
         jTextField1.setForeground(new Color(60, 60, 60));
         jTextField1.setText(Unipath.currentUser.userName);
     }
@@ -57,7 +60,7 @@ public class DepartmentApplicationUI extends JPanel {
         jTextField3 = new JTextField(20);
         jTextField4 = new JTextField(20);
         jTextField5 = new JTextField(20);
-        jComboBox1 = new JComboBox<>(new String[]{"Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Ηράκλειο", "Άλλη","Εξωτερικό"});
+        jComboBox1 = new JComboBox<>(new String[]{"Αθήνα", "Θεσσαλονίκη", "Πάτρα", "Ηράκλειο", "Άλλη", "Εξωτερικό"});
 
         Color placeholderColor = new Color(60, 60, 60);
         jTextField2.setForeground(placeholderColor);
@@ -79,6 +82,13 @@ public class DepartmentApplicationUI extends JPanel {
         jButton2.setPreferredSize(new Dimension(120, 40));
         jButton2.addActionListener(this::submitApplicationForm);
 
+        jButton3 = new JButton("Ακύρωση");
+        jButton3.setBackground(new Color(128, 128, 128));
+        jButton3.setForeground(Color.WHITE);
+        jButton3.setFont(new Font("SansSerif", Font.BOLD, 14));
+        jButton3.setPreferredSize(new Dimension(120, 40));
+        jButton3.addActionListener(e -> cancelApplicationForm());
+
         gbc.gridwidth = 1; gbc.anchor = GridBagConstraints.WEST;
 
         gbc.gridy = 2; gbc.gridx = 0; add(jLabel3, gbc); gbc.gridx = 1; add(jTextField1, gbc);
@@ -89,6 +99,7 @@ public class DepartmentApplicationUI extends JPanel {
         gbc.gridy = 7; gbc.gridx = 0; add(jLabel8, gbc); gbc.gridx = 1; add(jTextField5, gbc);
 
         gbc.gridy = 8; gbc.gridx = 0; add(jButton1, gbc); gbc.gridx = 1; add(jButton2, gbc);
+        gbc.gridy = 9; gbc.gridx = 0; add(jButton3, gbc);
     }
 
     private void resetForm(ActionEvent evt) {
@@ -109,12 +120,13 @@ public class DepartmentApplicationUI extends JPanel {
         String gradePoints = jTextField5.getText().trim();
 
         if (fullName.isEmpty() || residence.isEmpty() || birthDate.isEmpty() || phone.isEmpty() || email.isEmpty() || gradePoints.isEmpty()) {
-            returnToLastList();
+            notifyForInvalidity();
             return;
         }
 
-        int response = JOptionPane.showConfirmDialog(this, "Είστε σίγουροι ότι θέλετε να υποβάλετε την αίτηση;", 
-                                                     "Επιβεβαίωση Υποβολής", JOptionPane.YES_NO_OPTION);
+        int response = JOptionPane.showConfirmDialog(this, "Είστε σίγουροι ότι θέλετε να υποβάλετε την αίτηση;",
+                "Επιβεβαίωση Υποβολής", JOptionPane.YES_NO_OPTION);
+
         if (response == JOptionPane.YES_OPTION) {
             Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints, department);
             Application.sample.add(newApp);
@@ -124,17 +136,8 @@ public class DepartmentApplicationUI extends JPanel {
         }
     }
 
-    private void returnToLastList() {
-        notifyForInvalidity();
-        System.out.println("Invalid Symbit");
-    }
-
     private void sendApplicationForm() {
-        JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς!Θα λάβετε επιβεβαιωτικό μήνυμα σύντομα");
-    }
-
-    private void sendApplicationReceiptMessage() {
-        // applicationReceiptMessage
+        JOptionPane.showMessageDialog(this, "Η αίτηση υποβλήθηκε επιτυχώς! Θα λάβετε επιβεβαιωτικό μήνυμα σύντομα.");
     }
 
     private void notifyForInvalidity() {
@@ -142,9 +145,10 @@ public class DepartmentApplicationUI extends JPanel {
     }
 
     private void cancelApplicationForm() {
-        int result = JOptionPane.showConfirmDialog(this, "Είστε σίγουροι ότι θέλετε να ακυρώσετε τη συμπλήρωση της φόρμας;", "Επιβεβαίωση Ακύρωσης", JOptionPane.YES_NO_OPTION);
-        if (result == JOptionPane.YES_OPTION) {
-
+        int result = JOptionPane.showConfirmDialog(this, "Είστε σίγουροι ότι θέλετε να ακυρώσετε τη συμπλήρωση της φόρμας;",
+                "Επιβεβαίωση Ακύρωσης", JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION && onCancel != null) {
+            onCancel.run();
         }
     }
 }
