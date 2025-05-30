@@ -138,6 +138,7 @@ public class CounselorEditProfilePanelUI extends JPanel {
     }
     //When the counselor is updating, they should be writing valid data in the fields
     private boolean validateFields() {
+        String nameRegex = "^[Α-Ωα-ωA-Za-zάέήίόύώΆΈΉΊΌΎΏϊϋΐΰ\\s-]+$";
         String emailRegex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
         String phoneRegex = "^\\d{10}$"; // δέχεται μόνο 10ψήφιο αριθμό
         
@@ -146,6 +147,14 @@ public class CounselorEditProfilePanelUI extends JPanel {
             emailField.getText().trim().isEmpty() ||
             phoneField.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Συμπληρώστε όλα τα πεδία.");
+            return false;
+        }
+        if (!nameField.getText().matches(nameRegex)) {
+            JOptionPane.showMessageDialog(this, "Το όνομα πρέπει να περιέχει μόνο γράμματα.");
+            return false;
+        }
+        if (!surnameField.getText().matches(nameRegex)) {
+            JOptionPane.showMessageDialog(this, "Το επώνυμο πρέπει να περιέχει μόνο γράμματα.");
             return false;
         }
         if (!emailField.getText().matches(emailRegex)) {
