@@ -1,19 +1,20 @@
 package com.mycompany.unipathui;
 
 import com.mycompany.baseClasses.Unipath;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 public class StudentMenuFrame extends JFrame {
-    private JPanel cardPanel;
-    private CardLayout cardLayout;
-    private ShowResultsUI resultsPanel;
+    private final JPanel cardPanel;
+    private final CardLayout cardLayout;
     private final AnswerLog answerLog = new AnswerLog();
     private DepartmentProfileUI profilePanel;
     private AnnouncementUI announcementPanel;
-    
-    public StudentMenuFrame() {  
+    private ShowResultsUI resultsPanel;
+
+    public StudentMenuFrame() {
         setTitle("UniPath - Αρχικό Μενού μαθητή");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
@@ -21,77 +22,66 @@ public class StudentMenuFrame extends JFrame {
 
         // --- TOP PANEL ---
         JPanel topPanel = new JPanel(new GridBagLayout());
-        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //Προαιρετικό padding
-        
+        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 1; // κεντρική στήλη
+        gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.NONE;
         gbc.weightx = 1.0;
 
-        //Τίτλοι (στο κέντρο)
         JLabel titleLabel = new JLabel("UniPath");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
+
         JLabel studentNameLabel = new JLabel(Unipath.currentUser.userName);
-        studentNameLabel.setFont(new Font("Arial", Font.ITALIC,14));
+        studentNameLabel.setFont(new Font("Arial", Font.ITALIC, 14));
         studentNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        studentNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        //Τίτλοι σε κάθετη στοίχιση
+
         JPanel titleBox = new JPanel();
         titleBox.setLayout(new BoxLayout(titleBox, BoxLayout.Y_AXIS));
         titleBox.setOpaque(false);
         titleBox.add(titleLabel);
         titleBox.add(studentNameLabel);
-        
-        //Προσθήκη τίτλων στο κέντρο
+
         topPanel.add(titleBox, gbc);
 
-        //Κουμπί Μηνυμάτων (δεξιά)
+        // Messages Button
         JButton messagesButton = new JButton("Τα μηνύματά μου");
-        messagesButton.setPreferredSize(new Dimension(160, 30)); //Σταθερό μέγεθος
-        
+        messagesButton.setPreferredSize(new Dimension(160, 30));
         ImageIcon envelopeIcon = new ImageIcon(getClass().getResource("/icons/envelope.png"));
         Image envelopeImage = envelopeIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         messagesButton.setIcon(new ImageIcon(envelopeImage));
-        messagesButton.setBounds(630, 10, 150, 30);
-        add(messagesButton);
         messagesButton.addActionListener(e -> new MessageBoxFrame().setVisible(true));
-        
-        //Τοποθέτηση κουμπιού δεξιά
+
         gbc.gridx = 2;
         gbc.anchor = GridBagConstraints.EAST;
         gbc.weightx = 0.0;
         topPanel.add(messagesButton, gbc);
-        
-        //Dummy "αόρατο" panel αριστερά για να εξισορροπήσει το βάρος
+
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        gbc.weightx = 0.0;
-        topPanel.add(Box.createHorizontalStrut(160), gbc); // ίδιο πλάτος με το κουμπί
-        
-        //Προσθήκη panel στο frame
+        topPanel.add(Box.createHorizontalStrut(160), gbc);
+
         add(topPanel, BorderLayout.NORTH);
 
-        // --- CENTER ---
+        // --- CENTER PANEL WITH CARDS ---
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
+        add(cardPanel, BorderLayout.CENTER);
 
+        // --- MENU PANEL ---
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
-        
-        // Προσθήκη τίτλου
+
         JLabel actionTitle = new JLabel("Επιλογή Ενέργειας:");
         actionTitle.setFont(new Font("Arial", Font.BOLD, 18));
-        actionTitle.setAlignmentX(Component.CENTER_ALIGNMENT); // Κέντρο
+        actionTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         menuPanel.add(actionTitle);
-        menuPanel.add(Box.createRigidArea(new Dimension(0, 30))); // Απόσταση από κουμπιά
-        
+        menuPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+
         Dimension buttonSize = new Dimension(350, 50);
 
         JButton quizButton = new JButton("Κάνε το Quiz επαγγελματικού προσανατολισμού");
@@ -100,78 +90,84 @@ public class StudentMenuFrame extends JFrame {
         quizButton.setMaximumSize(buttonSize);
         quizButton.setBackground(Color.GREEN);
 
-        JButton viewdepartmentsButton = new JButton("Δες την λίστα των τμημάτων");
-        viewdepartmentsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        viewdepartmentsButton.setPreferredSize(buttonSize);
-        viewdepartmentsButton.setMaximumSize(buttonSize);
-        viewdepartmentsButton.setBackground(Color.CYAN);
+        JButton viewDepartmentsButton = new JButton("Δες την λίστα των τμημάτων");
+        viewDepartmentsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        viewDepartmentsButton.setPreferredSize(buttonSize);
+        viewDepartmentsButton.setMaximumSize(buttonSize);
+        viewDepartmentsButton.setBackground(Color.CYAN);
 
-        JButton councelorcontactButton = new JButton("Επικοινώνησε με σύμβουλο");
-        councelorcontactButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        councelorcontactButton.setPreferredSize(buttonSize);
-        councelorcontactButton.setMaximumSize(buttonSize);
-        councelorcontactButton.setBackground(Color.CYAN);
+        JButton counselorContactButton = new JButton("Επικοινώνησε με σύμβουλο");
+        counselorContactButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        counselorContactButton.setPreferredSize(buttonSize);
+        counselorContactButton.setMaximumSize(buttonSize);
+        counselorContactButton.setBackground(Color.CYAN);
 
         menuPanel.add(quizButton);
         menuPanel.add(Box.createRigidArea(new Dimension(0, 50)));
-        menuPanel.add(viewdepartmentsButton);
+        menuPanel.add(viewDepartmentsButton);
         menuPanel.add(Box.createRigidArea(new Dimension(0, 50)));
-        menuPanel.add(councelorcontactButton);
+        menuPanel.add(counselorContactButton);
 
-        add(cardPanel, BorderLayout.CENTER);
-
-        // --- BOTTOM ---
+        // --- LOGOUT BUTTON ---
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton logoutButton = new JButton("Αποσύνδεση");
         logoutButton.setBackground(Color.decode("#FF6666"));
+        logoutButton.addActionListener(e -> {
+            int result = JOptionPane.showConfirmDialog(this,
+                    "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;",
+                    "Επιβεβαίωση Αποσύνδεσης",
+                    JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
+                dispose();
+                new LoginFrame().setVisible(true);
+            }
+        });
         bottomPanel.add(logoutButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
-         Application_FormUI applicationFormPanel = new Application_FormUI();
+        // --- OTHER PANELS ---
+        DepartmentApplicationUI applicationFormPanel = new DepartmentApplicationUI(() ->
+                cardLayout.show(cardPanel, "seeListOfDepartments"));
 
-        // --- Panels ---
         DepartmentListUI deplistPanel = new DepartmentListUI(
                 () -> cardLayout.show(cardPanel, "menu"),
-                (String departmentName) -> showDepartmentProfile(departmentName),
+                this::showDepartmentProfile,
                 () -> cardLayout.show(cardPanel, "applicationForm"),
                 () -> cardLayout.show(cardPanel, "setFilters")
-        );        
-         
+        );
+
         SearchFiltersUI filterPanel = new SearchFiltersUI(
                 () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
                 criteria -> {
-                    deplistPanel.applyFilters(
-                    criteria.type, criteria.minFee, criteria.maxFee, criteria.minPoints
-                    );
+                    deplistPanel.applyFilters(criteria.type, criteria.minFee, criteria.maxFee, criteria.minPoints);
                     cardLayout.show(cardPanel, "seeListOfDepartments");
                 }
         );
-        
+
         StarterQuiz quizStarterPanel = new StarterQuiz(
                 () -> cardLayout.show(cardPanel, "menu"),
                 () -> cardLayout.show(cardPanel, "startQuiz")
-        );  
-        
-        QuizUI quizPanel = new QuizUI(
-            () -> cardLayout.show(cardPanel, "doQuiz"),
-            () -> {
-                updateResultsPanel();
-                cardLayout.show(cardPanel,"quizResults"); 
-            },
-            () -> System.out.println("Προηγούμενη ερώτηση"),
-            () -> {
-                answerLog.clearAnswers();
-                System.out.println("Εκκαθάριση Quiz");
-            },
-            () -> cardLayout.show(cardPanel, "quizResults"),
-            answerLog
         );
-        
-        //RESULTS (ON THE MAKING)
+
+        QuizUI quizPanel = new QuizUI(
+                () -> cardLayout.show(cardPanel, "doQuiz"),
+                () -> {
+                    updateResultsPanel();
+                    cardLayout.show(cardPanel, "quizResults");
+                },
+                () -> System.out.println("Προηγούμενη ερώτηση"),
+                () -> {
+                    answerLog.clearAnswers();
+                    System.out.println("Εκκαθάριση Quiz");
+                },
+                () -> cardLayout.show(cardPanel, "quizResults"),
+                answerLog
+        );
+
         resultsPanel = new ShowResultsUI(() -> cardLayout.show(cardPanel, "menu"), answerLog);
-        
+
+        // --- ADD TO CARD PANEL ---
         cardPanel.add(menuPanel, "menu");
-        
         cardPanel.add(deplistPanel, "seeListOfDepartments");
         cardPanel.add(filterPanel, "setFilters");
         cardPanel.add(applicationFormPanel, "applicationForm");
@@ -179,68 +175,49 @@ public class StudentMenuFrame extends JFrame {
         cardPanel.add(quizPanel, "startQuiz");
         cardPanel.add(resultsPanel, "quizResults");
 
-       // Action Listeners
-       quizButton.addActionListener(e -> cardLayout.show(cardPanel, "doQuiz"));
-       viewdepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
-       
-       councelorcontactButton.addActionListener(e -> {
-       new ViewScreenCounselor().setVisible(true);
-});
-        logoutButton.addActionListener(e -> {
-            int result = JOptionPane.showConfirmDialog(
-                    this,
-                    "Είστε σίγουρος ότι θέλετε να αποσυνδεθείτε;",
-                    "Επιβεβαίωση Αποσύνδεσης",
-                    JOptionPane.YES_NO_OPTION
-            );
-
-            if (result == JOptionPane.YES_OPTION) {
-                dispose(); // Κλείσιμο αυτού του frame
-                new LoginFrame().setVisible(true); // Άνοιγμα login από την αρχή
-            }
-        });
+        // --- BUTTON ACTIONS ---
+        quizButton.addActionListener(e -> cardLayout.show(cardPanel, "doQuiz"));
+        viewDepartmentsButton.addActionListener(e -> cardLayout.show(cardPanel, "seeListOfDepartments"));
+        counselorContactButton.addActionListener(e -> contactCounselor());
 
         setVisible(true);
     }
-    
-    private void updateResultsPanel(){
+
+    private void updateResultsPanel() {
         cardPanel.remove(resultsPanel);
         resultsPanel = new ShowResultsUI(() -> cardLayout.show(cardPanel, "menu"), answerLog);
         cardPanel.add(resultsPanel, "quizResults");
     }
-    
+
     private void showDepartmentProfile(String departmentName) {
-        if(profilePanel!=null){
-            cardPanel.remove(profilePanel); 
-        }
-        
+        if (profilePanel != null) cardPanel.remove(profilePanel);
+
         profilePanel = new DepartmentProfileUI(
-        departmentName,
-        () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
-        () -> cardLayout.show(cardPanel, "menu"),
-        (deptName, announcements) -> showDepartmentAnnouncements(deptName, announcements)        
+                departmentName,
+                () -> cardLayout.show(cardPanel, "seeListOfDepartments"),
+                () -> cardLayout.show(cardPanel, "menu"),
+                this::showDepartmentAnnouncements
         );
+
         cardPanel.add(profilePanel, "showProfile");
         cardLayout.show(cardPanel, "showProfile");
     }
-    
-    private void showDepartmentAnnouncements(String departmentName, List<AnnouncementView> announcements){
-        if(announcementPanel!=null){
-            cardPanel.remove(announcementPanel);    
-        }
-        
+
+    private void showDepartmentAnnouncements(String departmentName, List<AnnouncementView> announcements) {
+        if (announcementPanel != null) cardPanel.remove(announcementPanel);
+
         announcementPanel = new AnnouncementUI(
-            departmentName,
-            announcements,
-            () -> cardLayout.show(cardPanel, "showProfile"), //πίσω
-            () -> cardLayout.show(cardPanel, "menu") //πίσω στο μενού  
+                departmentName,
+                announcements,
+                () -> cardLayout.show(cardPanel, "showProfile"),
+                () -> cardLayout.show(cardPanel, "menu")
         );
-        
+
         cardPanel.add(announcementPanel, "showAnnouncements");
         cardLayout.show(cardPanel, "showAnnouncements");
     }
-    private void startSearch() {
-        boolean searchReady = true;
-        searchReady = searchReady && true;
+
+    private void contactCounselor() {
+        new ViewScreenCounselor().setVisible(true);
     }
 }

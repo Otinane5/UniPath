@@ -3,6 +3,10 @@ package com.mycompany.unipathui;
 import javax.swing.*;
 import java.awt.*;
 
+// Με την κλάση ChooseFiltersScreen παρέχεται η δυνατότητα στο Πανεπιστήμιο να ορίσει
+//και να αποθηκεύσει φίλτρα αναζήτησης για τις αιτήσεις των μαθητών με έλεγχο εγκυρότητας εισόδων.
+// Είναι δυνατή η εκκαθάριση φίλτρων. Τα φίλτρα προωθούνται στην οθόνη φιλτραρισμένης λίστας μέσω του FilteredListScreen.
+
 public class ChooseFiltersScreen extends JPanel {
     
     private JTextField dept,city,min,max;
@@ -127,6 +131,14 @@ public class ChooseFiltersScreen extends JPanel {
                 return;
             }
             
+            if ((minValue != null && (minValue < 0 || minValue > 20000)) || (maxValue != null && (maxValue < 0 || maxValue > 20000))) 
+            {
+                JOptionPane.showMessageDialog(this,
+                "Τα μόρια πρέπει να είναι μεταξύ 0 και 20000.",
+                "Σφάλμα", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             if(minValue!=null && maxValue !=null && minValue>maxValue)
             {
                 JOptionPane.showMessageDialog(this, "Τα ελάχιστα μόρια δεν μπορούν να ξεπερνούν τα μέγιστα. \n    Εισάγετε ένα νέο, έγκυρο διάστημα", "Σφάλμα", JOptionPane.ERROR_MESSAGE);

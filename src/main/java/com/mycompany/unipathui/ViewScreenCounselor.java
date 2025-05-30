@@ -70,13 +70,14 @@ public class ViewScreenCounselor extends JFrame {
             submitReviewBtn.addActionListener(e -> {
                 int reviewScore = (Integer) reviewSpinner.getValue();
                 System.out.println("Review submitted for " + counselor.userName + ": " + reviewScore);
-                // counselor.reviews.add(reviewScore);
+                rateCounselor();
             });
 
             profileBtn.addActionListener(e -> {
                 CounselorProfilePanel.CounselorToDisplay = counselor;
                 searchCounselor("gdimitriou");
-                selectCounselor(counselor);
+                selectCounselorProfile(counselor);
+                openCousnelorProfile();
 
                 JFrame profileFrame = new JFrame("Προφίλ Συμβούλου");
                 profileFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -142,15 +143,15 @@ public class ViewScreenCounselor extends JFrame {
 
         suggestionsBtn.addActionListener(e -> {
             if (!Student.hasAnswerLog) {
-                JOptionPane.showMessageDialog(this, "Δεν έχετε απαντήσει το quiz.", "Προσοχή", JOptionPane.WARNING_MESSAGE);
-                return;
+                pressCounselorsRecommendations();
+               return;
             }
 
-            int[] studentAnswers = Student.answerLog.getAnswers();
+            int[] studentAnswers = requestQuizData(); 
 
             for (int i = 0; i < Counselor.sample.size(); i++) {
                 Counselor counselor = Counselor.sample.get(i);
-                int[] counselorAnswers = counselor.log.getAnswers();
+                int[] counselorAnswers = counselor.log.retrieveQuizData();
                 int total = 0;
                 int matches = 0;
 
@@ -165,6 +166,7 @@ public class ViewScreenCounselor extends JFrame {
 
                 int percentage = (total == 0) ? 0 : (int) Math.round((matches * 100.0) / total);
                 suggestionLabels.get(i).setText(percentage + "%");
+                updateCounselorList();
             }
         });
 
@@ -193,10 +195,19 @@ public class ViewScreenCounselor extends JFrame {
         System.out.println("Searching for: " + query);
     }
 
-    private void selectCounselor(Counselor counselor) {
+    private void selectCounselorProfile(Counselor counselor) {
         String counselorInfo = counselor.name + " " + counselor.lastName;
         boolean isSelected = counselorInfo != null && counselorInfo.length() > 0;
         isSelected = isSelected && counselor.userName != null;
         System.out.println("Selected counselor: " + counselorInfo);
     }
+    private void openCousnelorProfile(){System.out.println("CounselorProfile Has been opened");}
+    
+    private void updateCounselorList(){System.out.println("Updated Counselor List is culculated");}
+    private void rateCounselor(){// counselor.reviews.add(reviewScore);
+}
+
+    private void pressCounselorsRecommendations(){ JOptionPane.showMessageDialog(this, "Δεν έχετε απαντήσει το quiz.", "Προσοχή", JOptionPane.WARNING_MESSAGE);
+    }
+    private int[] requestQuizData(){return Student.answerLog.retrieveQuizData();}
 }

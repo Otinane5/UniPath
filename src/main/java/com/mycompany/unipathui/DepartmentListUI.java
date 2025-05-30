@@ -97,12 +97,10 @@ public class DepartmentListUI extends JPanel {
         JButton applicationButton = new JButton("Αίτηση Εγγραφής");
         applicationButton.setBackground(Color.GREEN);
         applicationButton.addActionListener(e -> {
-            if (selectedDepartment == null) {
-                JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε ένα τμήμα πρώτα.");
-            } else {
-
+            if(selectDepartmentsApplication()){
                 onApplicationForm.run();
             }
+            
         });
 
         JButton suggestionsButton = new JButton("Προτάσεις για Εσένα");
@@ -195,7 +193,14 @@ public class DepartmentListUI extends JPanel {
             default -> null;
         };
     }
-
+    private void openDepartmentList(){}
+    private boolean selectDepartmentsApplication(){if (selectedDepartment == null) {
+                JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε ένα τμήμα πρώτα.");
+                return false;
+            } else {
+                return true;
+                
+            }}
     private Color getColorByPercentage(int percent) {
         if (percent >= 81) return new Color(0, 153, 0);
         if (percent >= 61) return new Color(102, 204, 0);

@@ -97,7 +97,8 @@ public class AnswerLog {
             .collect(LinkedHashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), LinkedHashMap::putAll);    
     }
     
-    public int[] getAnswers(){
+    public int[] retrieveQuizData(){
         return answers;
     }
+    public void showNoLogError(){System.out.println("Log does not exist");}
 }

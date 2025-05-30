@@ -5,6 +5,8 @@ import com.mycompany.baseClasses.Unipath;
 import javax.swing.*;
 import java.awt.*;
 
+//Η κλάση UniversityMainMenu αποτελεί το βασικό UI του χρήστη Πανεπιστημίου.
+//Παρέχει πρόσβαση σε λειτουργίες όπως προβολή αιτήσεων, λίστα τμημάτων, διαχείριση προφίλ, ανακοινώσεις...
 public class UniversityMainMenu extends JFrame 
 {
     
