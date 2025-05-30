@@ -131,7 +131,7 @@ public class DepartmentApplicationUI extends JPanel {
             Application newApp = new Application(fullName, residence, birthDate, phone, email, gradePoints, department);
             Application.sample.add(newApp);
             sendApplicationForm();
-            ApplicationSender.send();
+            ApplicationSender.sendApplicationFrom();
             resetForm(null);
         }
     }
